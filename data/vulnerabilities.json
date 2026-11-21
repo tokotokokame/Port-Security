@@ -1,0 +1,866 @@
+[
+  {
+    "id": "CVE-2017-0144",
+    "title": "The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8",
+    "description": "The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607; and Windows Server 2016 allows remote attackers to execute arbitrary code via crafted packets, aka \"Windows SMB Remote Code Execution Vulnerability.\" This vulnerability is different from those described in CVE-2017-0143, CVE-2017-0145, CVE-2017-0146, and CVE-2017-0148.",
+    "affected": [
+      {
+        "vendor": "Microsoft Corporation",
+        "product": "Windows SMB",
+        "versions": [
+          "The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607"
+        ],
+        "fixed": [],
+        "platforms": []
+      }
+    ],
+    "cvss": [
+      {
+        "version": "3.1",
+        "score": 8.8,
+        "severity": "HIGH",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "source": "CISA-ADP"
+      }
+    ],
+    "published": "2017-03-17",
+    "updated": "2026-08-14",
+    "kev": {
+      "listed": true,
+      "date_added": "2022-02-10",
+      "ransomware": "Known"
+    },
+    "service_ids": [
+      "SRV-SMB"
+    ],
+    "risk_ids": [
+      "RISK-00445-TCP"
+    ],
+    "condition": "記載の Windows の SMBv1 サーバ（細工したパケットで任意コード実行）。445/tcp が開いているだけでは該当しない",
+    "references": [
+      "https://www.cve.org/CVERecord?id=CVE-2017-0144",
+      "https://www.exploit-db.com/exploits/42031/",
+      "https://www.exploit-db.com/exploits/42030/",
+      "https://www.exploit-db.com/exploits/41891/"
+    ],
+    "raw": "data/raw/cve/CVE-2017-0144.json",
+    "source_ids": [
+      "SRC-CVE-2017-0144",
+      "SRC-CISA-KEV",
+      "SRC-MITRE-T1210"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "リスク評価の『MS17-010 (EternalBlue)』に対応。EternalBlue = CVE-2017-0144 は ATT&CK の手続き例（S0260 InvisiMole）の記載による。MS17-010 との対応は CVE レコードの参照に記載がなく未確認。"
+  },
+  {
+    "id": "CVE-2019-0708",
+    "title": "A remote code execution vulnerability exists in Remote Desktop Services formerly known as Terminal Services when an unau",
+    "description": "A remote code execution vulnerability exists in Remote Desktop Services formerly known as Terminal Services when an unauthenticated attacker connects to the target system using RDP and sends specially crafted requests, aka 'Remote Desktop Services Remote Code Execution Vulnerability'.",
+    "affected": [
+      {
+        "vendor": "Microsoft",
+        "product": "Windows",
+        "versions": [
+          "7 for 32-bit Systems Service Pack 1",
+          "7 for x64-based Systems Service Pack 1"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server",
+        "versions": [
+          "2008 R2 for x64-based Systems Service Pack 1 (Core installation)",
+          "2008 R2 for Itanium-Based Systems Service Pack 1",
+          "2008 R2 for x64-based Systems Service Pack 1",
+          "2008 for 32-bit Systems Service Pack 2 (Core installation)",
+          "2008 for Itanium-Based Systems Service Pack 2",
+          "2008 for 32-bit Systems Service Pack 2",
+          "2008 for x64-based Systems Service Pack 2",
+          "2008 for x64-based Systems Service Pack 2 (Core installation)"
+        ],
+        "fixed": [],
+        "platforms": []
+      }
+    ],
+    "cvss": [
+      {
+        "version": "3.1",
+        "score": 9.8,
+        "severity": "CRITICAL",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "source": "CISA-ADP"
+      }
+    ],
+    "published": "2019-05-16",
+    "updated": "2025-10-21",
+    "kev": {
+      "listed": true,
+      "date_added": "2021-11-03",
+      "ransomware": "Known"
+    },
+    "service_ids": [
+      "SRV-RDP"
+    ],
+    "risk_ids": [
+      "RISK-03389-TCP"
+    ],
+    "condition": "影響バージョンの Windows の Remote Desktop Services に、未認証の攻撃者が RDP で接続した場合（affected を参照）",
+    "references": [
+      "https://www.cve.org/CVERecord?id=CVE-2019-0708",
+      "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708",
+      "https://cert-portal.siemens.com/productcert/pdf/ssa-932041.pdf",
+      "https://cert-portal.siemens.com/productcert/pdf/ssa-616199.pdf"
+    ],
+    "raw": "data/raw/cve/CVE-2019-0708.json",
+    "source_ids": [
+      "SRC-CVE-2019-0708",
+      "SRC-CISA-KEV",
+      "SRC-MITRE-T1210"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "BlueKeep = CVE-2019-0708 は ATT&CK の手続き例（S0260 InvisiMole）の記載による。"
+  },
+  {
+    "id": "CVE-2020-0796",
+    "title": "A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3",
+    "description": "A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3.1.1 (SMBv3) protocol handles certain requests, aka 'Windows SMBv3 Client/Server Remote Code Execution Vulnerability'.",
+    "affected": [
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1903 for 32-bit Systems",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1903 for x64-based Systems",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1903 for ARM64-based Systems",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server, version 1903 (Server Core installation)",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1909 for 32-bit Systems",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1909 for x64-based Systems",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1909 for ARM64-based Systems",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server, version 1909 (Server Core installation)",
+        "versions": [
+          "unspecified"
+        ],
+        "fixed": [],
+        "platforms": []
+      }
+    ],
+    "cvss": [
+      {
+        "version": "3.1",
+        "score": 10,
+        "severity": "CRITICAL",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "source": "CISA-ADP"
+      }
+    ],
+    "published": "2020-03-12",
+    "updated": "2026-10-01",
+    "kev": {
+      "listed": true,
+      "date_added": "2022-02-10",
+      "ransomware": "Known"
+    },
+    "service_ids": [
+      "SRV-SMB"
+    ],
+    "risk_ids": [
+      "RISK-00445-TCP"
+    ],
+    "condition": "SMB 3.1.1 を処理する Windows 10 / Windows Server のバージョン 1903・1909（affected を参照）",
+    "references": [
+      "https://www.cve.org/CVERecord?id=CVE-2020-0796",
+      "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796"
+    ],
+    "raw": "data/raw/cve/CVE-2020-0796.json",
+    "source_ids": [
+      "SRC-CVE-2020-0796",
+      "SRC-CISA-KEV"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "通称 SMBGhost（リスク評価の記載。CVE レコードの参照 URL に SMBGhost の名称あり）。"
+  },
+  {
+    "id": "CVE-2021-21974",
+    "title": "OpenSLP as used in ESXi (7",
+    "description": "OpenSLP as used in ESXi (7.0 before ESXi70U1c-17325551, 6.7 before ESXi670-202102401-SG, 6.5 before ESXi650-202102101-SG) has a heap-overflow vulnerability. A malicious actor residing within the same network segment as ESXi who has access to port 427 may be able to trigger the heap-overflow issue in OpenSLP service resulting in remote code execution.",
+    "affected": [
+      {
+        "vendor": "（CNA 記載なし）",
+        "product": "VMware ESXi",
+        "versions": [
+          "7.0 before ESXi70U1c-17325551",
+          "6.7 before ESXi670-202102401-SG",
+          "6.5 before ESXi650-202102101-SG"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "（CNA 記載なし）",
+        "product": "VMware Cloud Foundation",
+        "versions": [
+          "4.x before 4.2 and 3.x"
+        ],
+        "fixed": [],
+        "platforms": []
+      }
+    ],
+    "cvss": [
+      {
+        "version": "3.1",
+        "score": 8.8,
+        "severity": "HIGH",
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "source": "CISA-ADP"
+      }
+    ],
+    "published": "2021-02-24",
+    "updated": "2026-06-02",
+    "kev": {
+      "listed": false
+    },
+    "service_ids": [],
+    "risk_ids": [
+      "RISK-00427-TCP"
+    ],
+    "condition": "OpenSLP を使う影響バージョンの VMware ESXi に、同一ネットワークセグメントから 427 へ到達できる場合（affected を参照）",
+    "references": [
+      "https://www.cve.org/CVERecord?id=CVE-2021-21974",
+      "https://www.vmware.com/security/advisories/VMSA-2021-0002.html",
+      "https://www.zerodayinitiative.com/advisories/ZDI-21-250/"
+    ],
+    "raw": "data/raw/cve/CVE-2021-21974.json",
+    "source_ids": [
+      "SRC-CVE-2021-21974"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "CVE-2022-21893",
+    "title": "Remote Desktop Protocol Remote Code Execution Vulnerability",
+    "description": "Remote Desktop Protocol Remote Code Execution Vulnerability",
+    "affected": [
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1809",
+        "versions": [
+          "10.0.17763.0 < 10.0.17763.2452",
+          "10.0.0 < 10.0.17763.2452"
+        ],
+        "fixed": [
+          "10.0.17763.2452"
+        ],
+        "platforms": [
+          "32-bit Systems",
+          "x64-based Systems",
+          "ARM64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2019",
+        "versions": [
+          "10.0.17763.0 < 10.0.17763.2452"
+        ],
+        "fixed": [
+          "10.0.17763.2452"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2019 (Server Core installation)",
+        "versions": [
+          "10.0.17763.0 < 10.0.17763.2452"
+        ],
+        "fixed": [
+          "10.0.17763.2452"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1909",
+        "versions": [
+          "10.0.0 < 10.0.18363.2037"
+        ],
+        "fixed": [
+          "10.0.18363.2037"
+        ],
+        "platforms": [
+          "32-bit Systems",
+          "x64-based Systems",
+          "ARM64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 21H1",
+        "versions": [
+          "10.0.0 < 10.0.19043.1466"
+        ],
+        "fixed": [
+          "10.0.19043.1466"
+        ],
+        "platforms": [
+          "x64-based Systems",
+          "ARM64-based Systems",
+          "32-bit Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2022",
+        "versions": [
+          "10.0.20348.0 < 10.0.20348.469"
+        ],
+        "fixed": [
+          "10.0.20348.469"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 20H2",
+        "versions": [
+          "10.0.0 < 10.0.19042.1466"
+        ],
+        "fixed": [
+          "10.0.19042.1466"
+        ],
+        "platforms": [
+          "32-bit Systems",
+          "ARM64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server version 20H2",
+        "versions": [
+          "10.0.0 < 10.0.19042.1466"
+        ],
+        "fixed": [
+          "10.0.19042.1466"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 11 version 21H2",
+        "versions": [
+          "10.0.0 < 10.0.22000.434"
+        ],
+        "fixed": [
+          "10.0.22000.434"
+        ],
+        "platforms": [
+          "x64-based Systems",
+          "ARM64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 21H2",
+        "versions": [
+          "10.0.19043.0 < 10.0.19044.1466"
+        ],
+        "fixed": [
+          "10.0.19044.1466"
+        ],
+        "platforms": [
+          "32-bit Systems",
+          "ARM64-based Systems",
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1507",
+        "versions": [
+          "10.0.10240.0 < 10.0.10240.19177"
+        ],
+        "fixed": [
+          "10.0.10240.19177"
+        ],
+        "platforms": [
+          "32-bit Systems",
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 10 Version 1607",
+        "versions": [
+          "10.0.14393.0 < 10.0.14393.4886"
+        ],
+        "fixed": [
+          "10.0.14393.4886"
+        ],
+        "platforms": [
+          "32-bit Systems",
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2016",
+        "versions": [
+          "10.0.14393.0 < 10.0.14393.4886"
+        ],
+        "fixed": [
+          "10.0.14393.4886"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2016 (Server Core installation)",
+        "versions": [
+          "10.0.14393.0 < 10.0.14393.4886"
+        ],
+        "fixed": [
+          "10.0.14393.4886"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 7",
+        "versions": [
+          "6.1.0 < 6.1.7601.25829"
+        ],
+        "fixed": [
+          "6.1.7601.25829"
+        ],
+        "platforms": [
+          "32-bit Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 7 Service Pack 1",
+        "versions": [
+          "6.1.0 < 6.1.7601.25829"
+        ],
+        "fixed": [
+          "6.1.7601.25829"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows 8.1",
+        "versions": [
+          "6.3.0 < 6.3.9600.20246"
+        ],
+        "fixed": [
+          "6.3.9600.20246"
+        ],
+        "platforms": [
+          "32-bit Systems",
+          "x64-based Systems",
+          "ARM64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2008 R2 Service Pack 1",
+        "versions": [
+          "6.1.7601.0 < 6.1.7601.25829"
+        ],
+        "fixed": [
+          "6.1.7601.25829"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2008 R2 Service Pack 1 (Server Core installation)",
+        "versions": [
+          "6.1.7601.0 < 6.1.7601.25829"
+        ],
+        "fixed": [
+          "6.1.7601.25829"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2012",
+        "versions": [
+          "6.2.9200.0 < 6.2.9200.23584"
+        ],
+        "fixed": [
+          "6.2.9200.23584"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2012 (Server Core installation)",
+        "versions": [
+          "6.2.9200.0 < 6.2.9200.23584"
+        ],
+        "fixed": [
+          "6.2.9200.23584"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2012 R2",
+        "versions": [
+          "6.3.9600.0 < 6.3.9600.20246"
+        ],
+        "fixed": [
+          "6.3.9600.20246"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      },
+      {
+        "vendor": "Microsoft",
+        "product": "Windows Server 2012 R2 (Server Core installation)",
+        "versions": [
+          "6.3.9600.0 < 6.3.9600.20246"
+        ],
+        "fixed": [
+          "6.3.9600.20246"
+        ],
+        "platforms": [
+          "x64-based Systems"
+        ]
+      }
+    ],
+    "cvss": [
+      {
+        "version": "3.1",
+        "score": 8,
+        "severity": "HIGH",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
+        "source": "microsoft"
+      }
+    ],
+    "published": "2022-01-11",
+    "updated": "2025-01-02",
+    "kev": {
+      "listed": false
+    },
+    "service_ids": [
+      "SRV-RDP"
+    ],
+    "risk_ids": [
+      "RISK-03389-TCP"
+    ],
+    "condition": "影響バージョンの Windows で Remote Desktop Protocol を利用している場合（affected を参照）",
+    "references": [
+      "https://www.cve.org/CVERecord?id=CVE-2022-21893",
+      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-21893"
+    ],
+    "raw": "data/raw/cve/CVE-2022-21893.json",
+    "source_ids": [
+      "SRC-CVE-2022-21893"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "CVE-2023-46604",
+    "title": "Apache ActiveMQ, Apache ActiveMQ Legacy OpenWire Module: Unbounded deserialization causes ActiveMQ to be vulnerable to a remote code execution (RCE) attack",
+    "description": "The Java OpenWire protocol marshaller is vulnerable to Remote Code \nExecution. This vulnerability may allow a remote attacker with network \naccess to either a Java-based OpenWire broker or client to run arbitrary\n shell commands by manipulating serialized class types in the OpenWire \nprotocol to cause either the client or the broker (respectively) to \ninstantiate any class on the classpath.\n\nUsers are recommended to upgrade\n both brokers and clients to version 5.15.16, 5.16.7, 5.17.6, or 5.18.3 \nwhich fixes this issue.",
+    "affected": [
+      {
+        "vendor": "Apache Software Foundation",
+        "product": "Apache ActiveMQ",
+        "versions": [
+          "5.18.0 < 5.18.3",
+          "5.17.0 < 5.17.6",
+          "5.16.0 < 5.16.7",
+          "0 < 5.15.16"
+        ],
+        "fixed": [
+          "5.18.3",
+          "5.17.6",
+          "5.16.7",
+          "5.15.16"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Apache Software Foundation",
+        "product": "Apache ActiveMQ Legacy OpenWire Module",
+        "versions": [
+          "5.18.0 < 5.18.3",
+          "5.17.0 < 5.17.6",
+          "5.16.0 < 5.16.7",
+          "5.8.0 < 5.15.16"
+        ],
+        "fixed": [
+          "5.18.3",
+          "5.17.6",
+          "5.16.7",
+          "5.15.16"
+        ],
+        "platforms": []
+      }
+    ],
+    "cvss": [
+      {
+        "version": "3.1",
+        "score": 10,
+        "severity": "CRITICAL",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:H/A:H",
+        "source": "apache"
+      }
+    ],
+    "published": "2023-10-27",
+    "updated": "2025-11-03",
+    "kev": {
+      "listed": true,
+      "date_added": "2023-11-02",
+      "ransomware": "Known"
+    },
+    "service_ids": [],
+    "risk_ids": [
+      "RISK-61616-TCP"
+    ],
+    "condition": "影響バージョンの Apache ActiveMQ の Java OpenWire ブローカー・クライアント。ポート番号だけでは判定できない",
+    "references": [
+      "https://www.cve.org/CVERecord?id=CVE-2023-46604",
+      "https://activemq.apache.org/security-advisories.data/CVE-2023-46604-announcement.txt",
+      "https://www.openwall.com/lists/oss-security/2023/10/27/5",
+      "https://security.netapp.com/advisory/ntap-20231110-0010/"
+    ],
+    "raw": "data/raw/cve/CVE-2023-46604.json",
+    "source_ids": [
+      "SRC-CVE-2023-46604",
+      "SRC-CISA-KEV",
+      "SRC-APACHE-CVE-2023-46604",
+      "SRC-NVD-CVE-2023-46604"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "CVE-2024-6387",
+    "title": "Openssh: regresshion - race condition in ssh allows rce/dos",
+    "description": "A security regression (CVE-2006-5051) was discovered in OpenSSH's server (sshd). There is a race condition which can lead sshd to handle some signals in an unsafe manner. An unauthenticated, remote attacker may be able to trigger it by failing to authenticate within a set time period.",
+    "affected": [
+      {
+        "vendor": "https://www.openssh.com/",
+        "product": "OpenSSH",
+        "versions": [
+          "8.5p1 ≤ 9.7p1"
+        ],
+        "fixed": [],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat Enterprise Linux 9",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [
+          "0:8.7p1-38.el9_4.1"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [
+          "0:8.7p1-12.el9_0.1"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat Enterprise Linux 9.2 Extended Update Support",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [
+          "0:8.7p1-30.el9_2.4"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat OpenShift Container Platform 4.13",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [
+          "413.92.202407091321-0"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat OpenShift Container Platform 4.14",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [
+          "414.92.202407091253-0"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat OpenShift Container Platform 4.15",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [
+          "415.92.202407091355-0"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat OpenShift Container Platform 4.16",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [
+          "416.94.202407081958-0"
+        ],
+        "platforms": []
+      },
+      {
+        "vendor": "Red Hat",
+        "product": "Red Hat OpenShift Container Platform 4",
+        "versions": [
+          "修正版より前の全バージョン（defaultStatus=affected）"
+        ],
+        "fixed": [],
+        "platforms": []
+      }
+    ],
+    "cvss": [
+      {
+        "version": "3.1",
+        "score": 8.1,
+        "severity": "HIGH",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "source": "redhat"
+      }
+    ],
+    "published": "2024-07-01",
+    "updated": "2026-11-06",
+    "kev": {
+      "listed": false
+    },
+    "service_ids": [
+      "SRV-SSH"
+    ],
+    "risk_ids": [
+      "RISK-00022-TCP"
+    ],
+    "condition": "影響バージョンの OpenSSH サーバ（sshd）。ディストリビューションの修正状況は各ベンダー情報を確認",
+    "references": [
+      "https://www.cve.org/CVERecord?id=CVE-2024-6387",
+      "https://access.redhat.com/errata/RHSA-2024:4312",
+      "https://access.redhat.com/errata/RHSA-2024:4340",
+      "https://access.redhat.com/errata/RHSA-2024:4389"
+    ],
+    "raw": "data/raw/cve/CVE-2024-6387.json",
+    "source_ids": [
+      "SRC-CVE-2024-6387"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "通称 regreSSHion（リスク評価の記載）。"
+  }
+]

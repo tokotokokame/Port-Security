@@ -55,9 +55,11 @@ def cve_report(db):
     L += [f"- {x['where']}: {x['msg']}" for x in findings]
     L += ["| CVE | 製品 | 影響バージョン | 修正 | CVSS | KEV | 該当条件 |", "|---|---|---|---|---|---|---|"]
     for v in V:
-        prod = "; ".join(f"{a['vendor']} {a['product']}" for a in v["affected"])
-        vers = "; ".join(", ".join(a["versions"][:3]) + (" …" if len(a["versions"]) > 3 else "") for a in v["affected"])
-        fixed = "; ".join(", ".join(a.get("fixed", [])[:3]) for a in v["affected"] if a.get("fixed")) or "—"
+        more = lambda xs, n: "; ".join(xs[:n]) + (f"（ほか {len(xs) - n} 件）" if len(xs) > n else "")
+        prod = more([f"{a['vendor']} {a['product']}" for a in v["affected"]], 2)
+        first = v["affected"][0]
+        vers = more(first["versions"], 2)[:160]
+        fixed = more(sorted({f for a in v["affected"] for f in a.get("fixed", [])}), 3) or "—"
         cv = "; ".join(f"{c['score']} (v{c['version']}, {c['source']})" for c in v["cvss"]) or "—"
         kev = f"掲載 {v['kev'].get('date_added', '')}" if v["kev"]["listed"] else "未掲載"
         L.append(f"| {v['id']} | {prod} | {vers} | {fixed} | {cv} | {kev} | {v['condition']} |")

@@ -40,7 +40,7 @@
       "external_exposure": "インターネットへの露出は例外なく即時無条件遮断対象 (CISA緊急勧告)",
       "authentication": "SMB v1/v2におけるNTLMハッシュ奪取やPass-the-Hash攻撃の標的",
       "encryption": "SMB 3.xでの暗号化が推奨されるが過去の平文・弱暗号構成の残存リスク",
-      "known_vulnerabilities": "MS17-010 (EternalBlue), CVE-2020-0796 (SMBGhost RCE) 等の高高評価CVE"
+      "known_vulnerabilities": "MS17-010 (EternalBlue, CVE-2017-0144), CVE-2020-0796 (SMBGhost RCE) 等の高高評価CVE"
     },
     "suspicious_indicators": "境界FWでの外部からのTCP 445接続試行, 内部ネットワークにおける短時間での多端末IPC$/C$/ADMIN$共有アクセス",
     "investigation_focus": "Sysmon Event 3(ネットワーク接続)/11(ファイル生成), 認証ログ 4624, SMBエラー率",

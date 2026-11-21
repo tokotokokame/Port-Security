@@ -169,7 +169,7 @@
      "pattern": "^RISK-\\d{5}-(TCP|UDP|SCTP|DCCP)$"
     },
     "uniqueItems": true,
-    "description": "言及しているリスク評価（ポートとの関係は製品・構成に依存）"
+    "description": "本文（リスク評価または対応ポート）で言及しているリスク評価。ポートとの関係は製品・構成に依存"
    },
    "condition": {
     "type": "string",

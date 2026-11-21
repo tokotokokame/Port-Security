@@ -193,8 +193,19 @@ def check_cve(db):
         for r in recs:
             for c in sorted(set(CVE_RE.findall(json.dumps(r, ensure_ascii=False)))):
                 if c not in known: out.append(F("Q-CVE", f"{f}:{rid(r)}", f"{c} が本文のみで、製品・影響バージョン付きの構造化データがない"))
+            if "MS17-010" in json.dumps(r, ensure_ascii=False) and "CVE-2017-0144" not in json.dumps(r, ensure_ascii=False):
+                out.append(F("Q-CVE", f"{f}:{rid(r)}", "MS17-010 の記載に対応 CVE がない"))
+    ptext = {p["risk_id"]: json.dumps(p, ensure_ascii=False) for p in db["ports"]}
+    risks = {r["id"]: json.dumps(r, ensure_ascii=False) + ptext.get(r["id"], "") for r in db["port_risks"]}  # リスク評価または対応ポートの本文
+    try:
+        sys.path.insert(0, str(Path(__file__).parent)); from import_cve import build
+        rebuilt = {v["id"]: v for v in build()[0]}
+    except FileNotFoundError as e: rebuilt = {}; out.append(F("Q-CVE", "data/raw/cve", f"一次データがない: {e}"))
     for v in db.get("vulnerabilities", []):
         w = f"vulnerabilities:{v['id']}"
+        if rebuilt and rebuilt.get(v["id"]) != v: out.append(F("Q-CVE", w, "data/raw の公式レコードから再生成した内容と一致しない（手編集の疑い）"))
+        for rid in v["risk_ids"]:
+            if v["id"] not in risks.get(rid, ""): out.append(F("Q-CVE", w, f"{rid}（または対応ポート）の本文に {v['id']} の記載がない"))
         if not CVE_RE.fullmatch(v["id"]): out.append(F("Q-CVE", w, "CVE ID 形式不正"))
         if not v.get("affected"): out.append(F("Q-CVE", w, "影響製品・バージョンがない"))
         if "port_number" in v or "ports" in v: out.append(F("Q-CVE", w, "CVE をポート番号に直接紐付けている"))

@@ -7,7 +7,7 @@ import json, re, sys
 from pathlib import Path
 
 FILES = ["ports", "services", "protocols", "attack_patterns", "port_risks", "log_investigation",
-         "mitre_techniques", "detection_strategies", "mitre_software", "tools", "sources"]
+         "mitre_techniques", "detection_strategies", "mitre_software", "tools", "vulnerabilities", "sources"]
 COMMON = ["id", "source_ids", "verified_date", "certainty", "unconfirmed_notes"]
 REQUIRED = {
     "ports": COMMON + ["port_number", "transport_protocol", "service_name", "category", "protocol_id", "service_id", "risk_id",
@@ -23,15 +23,16 @@ REQUIRED = {
     "mitre_software": COMMON + ["name", "technique_ids", "url"],
     "tools": COMMON + ["name", "category", "mitre_software_id", "ports", "artifacts", "detection", "attack_pattern_ids",
                        "technique_ids", "log_investigation_ids"],
+    "vulnerabilities": COMMON + ["affected", "cvss", "kev", "risk_ids", "condition", "raw"],
     "sources": ["source_id", "title", "url", "scope", "reverified_v4", "verification_status"],
 }
 ID_RE = {"ports": r"PORT-\d{5}-(TCP|UDP|SCTP)", "services": r"SRV-[A-Z0-9-]+", "protocols": r"PROTO-[A-Z0-9]+",
          "attack_patterns": r"ATK-[A-Z0-9-]+", "port_risks": r"RISK-\d{5}-(TCP|UDP|SCTP)", "log_investigation": r"LOG-[A-Z0-9-]+",
          "mitre_techniques": r"T\d{4}", "detection_strategies": r"DET\d{4}", "mitre_software": r"S\d{4}",
-         "tools": r"TOOL-[A-Z0-9-]+", "sources": r"SRC-[A-Z0-9-]+"}
+         "tools": r"TOOL-[A-Z0-9-]+", "vulnerabilities": r"CVE-\d{4}-\d{4,7}", "sources": r"SRC-[A-Z0-9-]+"}
 CERTAINTY = {"確認済み", "一部確認", "未確認"}
 THREAT = {"attack_technique", "detection", "threat_advisory"}
-NEEDS = {"log_investigation": {"detection", "log_format"}}
+NEEDS = {"log_investigation": {"detection", "log_format"}, "vulnerabilities": {"vulnerability"}}
 SCOPES = {"analytics", "any", "any_windows", "listed"}
 
 
@@ -108,6 +109,9 @@ def validate(db):
         fk(w, "mitre_software_id", "mitre_software", t["mitre_software_id"])
         E += [f"{w}: ports にない番号 -> {n}/{tp}" for n, tp in t["ports"] if (n, tp) not in port_keys]
         if not t["mitre_software_id"] and not t["technique_ids"]: E.append(f"{w}: ATT&CK 未収録ツールは technique_ids 必須")
+    for v in db["vulnerabilities"]:
+        w = f"vulnerabilities:{v['id']}"
+        fk(w, "risk_ids", "port_risks", v["risk_ids"]); fk(w, "service_ids", "services", v.get("service_ids", []))
     dets = idx["detection_strategies"]
     for t in db["mitre_techniques"]:
         for x in [t] + t["subtechniques"]:

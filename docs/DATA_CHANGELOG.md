@@ -42,3 +42,12 @@ Phase 0 基準（`docs/baseline/DATA_INVENTORY.json`）にある ID を削除・
 - ports に `technique_basis`（技術ごとの関連区分 direct / attack_pattern / service / reference と経路）を追加。271 件中 direct 57 / attack_pattern 204 / service 5 / reference 5
 - 経路がなかった 10 件は内容を確認し、ファイル共有系の T1039（548・873・2049）と VMConnect の T1021（2179）を service、残り 5 件を reference（一次資料未付与と明記）に分類
 - ATT&CK v20.1 公式 STIX との照合: 存在しない・廃止・名称不一致 0 件（`docs/MITRE_VALIDATION_REPORT.md`）
+
+### Phase 5（CVE）— `tools/fetch_cve.py` / `tools/import_cve.py` / `tools/cve_catalog.py`
+- 新規 `data/vulnerabilities.json`（7 件）: CVE-2017-0144 / CVE-2019-0708 / CVE-2020-0796 / CVE-2021-21974 / CVE-2022-21893 / CVE-2023-46604 / CVE-2024-6387
+  - 題名・説明・影響製品・影響バージョン・修正版（lessThan / unaffected）・CVSS（提供元つき）・公開日・更新日は CVE Program の公式レコード（CVEProject/cvelistV5）から、KEV 掲載状況は CISA 公式 kev-data（catalog 2026.11.20）からそのまま取り込み。原文は `data/raw/cve/`・`data/raw/kev/`
+  - CVSS は CNA（microsoft / apache / redhat）、CNA にない旧 CVE は CISA-ADP の値。提供元を併記
+  - KEV: 0144 / 0708 / 0796 / 46604 は掲載、21974 / 21893 / 6387 は未掲載（全 1,790 件で確認）
+  - ポート番号には直接紐付けず、`condition`（製品・バージョン・構成）と `risk_ids`（本文で言及しているリスク評価）で管理
+- RISK-00445-TCP: 「MS17-010 (EternalBlue)」に CVE-2017-0144 を併記（EternalBlue = CVE-2017-0144 は ATT&CK の手続き例 S0260 による）
+- sources: SRC-CVE-* 7 件と SRC-CISA-KEV を追加（scope: vulnerability）

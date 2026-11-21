@@ -203,6 +203,17 @@ def phase3():
     save("ports", ports)
 
 
+# ---------------------------------------------------------------- Phase 5: CVE は製品・バージョン経由（data/vulnerabilities.json）
+def phase5():
+    """本文の『MS17-010 (EternalBlue)』に対応 CVE を明記（EternalBlue = CVE-2017-0144 は ATT&CK S0260 の手続き例による）。"""
+    risks = load("port_risks")
+    for r in risks:
+        f = r["evaluation_factors"]
+        if r["id"] == "RISK-00445-TCP" and "CVE-2017-0144" not in f["known_vulnerabilities"]:
+            f["known_vulnerabilities"] = f["known_vulnerabilities"].replace("MS17-010 (EternalBlue)", "MS17-010 (EternalBlue, CVE-2017-0144)")
+    save("port_risks", risks)
+
+
 if __name__ == "__main__":
-    phase1(); phase2(); phase3()
-    print("applied: phase1, phase2, phase3")
+    phase1(); phase2(); phase3(); phase5()
+    print("applied: phase1, phase2, phase3, phase5")

@@ -149,7 +149,7 @@ FILES = {
         ("kev", {"type": "object", "additionalProperties": False, "required": ["listed"],
                  "properties": {"listed": {"type": "boolean"}, "date_added": DATE, "ransomware": S()}}, True, "CISA KEV 掲載状況"),
         ("service_ids", U(S(pattern=r"^SRV-[A-Z0-9-]+$")), False, "関連サービス"),
-        ("risk_ids", U(S(pattern=r"^RISK-\d{5}-(TCP|UDP|SCTP|DCCP)$")), True, "言及しているリスク評価（ポートとの関係は製品・構成に依存）"),
+        ("risk_ids", U(S(pattern=r"^RISK-\d{5}-(TCP|UDP|SCTP|DCCP)$")), True, "本文（リスク評価または対応ポート）で言及しているリスク評価。ポートとの関係は製品・構成に依存"),
         ("condition", S(minLength=1), True, "該当条件（製品・バージョン・構成）"),
         ("references", ARR(S(pattern=r"^https://"), minItems=1), True, "参照 URL"), ("raw", S(pattern=r"^data/raw/"), True, "取込元の一次データ")] + COMMON),
 }

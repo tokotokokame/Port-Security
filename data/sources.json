@@ -3131,5 +3131,150 @@
     ],
     "reverified_v4": true,
     "verified_via": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/networking/service-overview-and-network-port-requirements.md"
+  },
+  {
+    "source_id": "SRC-CVE-2017-0144",
+    "title": "CVE-2017-0144 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2017-0144",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2017-03-17",
+    "last_updated": "2026-08-14",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2017-0144.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2017/0xxx/CVE-2017-0144.json"
+  },
+  {
+    "source_id": "SRC-CVE-2019-0708",
+    "title": "CVE-2019-0708 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2019-0708",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2019-05-16",
+    "last_updated": "2025-10-21",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2019-0708.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2019/0xxx/CVE-2019-0708.json"
+  },
+  {
+    "source_id": "SRC-CVE-2020-0796",
+    "title": "CVE-2020-0796 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2020-0796",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2020-03-12",
+    "last_updated": "2026-10-01",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2020-0796.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2020/0xxx/CVE-2020-0796.json"
+  },
+  {
+    "source_id": "SRC-CVE-2021-21974",
+    "title": "CVE-2021-21974 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2021-21974",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2021-02-24",
+    "last_updated": "2026-06-02",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2021-21974.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/21xxx/CVE-2021-21974.json"
+  },
+  {
+    "source_id": "SRC-CVE-2022-21893",
+    "title": "CVE-2022-21893 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2022-21893",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2022-01-11",
+    "last_updated": "2025-01-02",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2022-21893.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2022/21xxx/CVE-2022-21893.json"
+  },
+  {
+    "source_id": "SRC-CVE-2023-46604",
+    "title": "CVE-2023-46604 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2023-46604",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2023-10-27",
+    "last_updated": "2025-11-03",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2023-46604.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2023/46xxx/CVE-2023-46604.json"
+  },
+  {
+    "source_id": "SRC-CVE-2024-6387",
+    "title": "CVE-2024-6387 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2024-6387",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2024-07-01",
+    "last_updated": "2026-11-06",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2024-6387.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2024/6xxx/CVE-2024-6387.json"
+  },
+  {
+    "source_id": "SRC-CISA-KEV",
+    "title": "Known Exploited Vulnerabilities Catalog",
+    "publisher": "CISA",
+    "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+    "document_type": "Government Catalog",
+    "applicable_data": "KEV 掲載状況・追加日・ランサムウェアでの利用",
+    "publication_date": null,
+    "last_updated": "2026-11-20",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "cisagov/kev-data（CISA 公式の GitHub 配布）catalogVersion 2026.11.20",
+    "scope": [
+      "vulnerability",
+      "threat_advisory"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json"
   }
 ]

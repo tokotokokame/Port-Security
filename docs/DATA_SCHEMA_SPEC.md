@@ -256,7 +256,7 @@
 | `updated` | ○ | `^\d{4}-\d{2}-\d{2}$` | 更新日 |
 | `kev` | ○ | `object` | CISA KEV 掲載状況 |
 | `service_ids` | — | `array` | 関連サービス |
-| `risk_ids` | ○ | `array` | 言及しているリスク評価（ポートとの関係は製品・構成に依存） |
+| `risk_ids` | ○ | `array` | 本文（リスク評価または対応ポート）で言及しているリスク評価。ポートとの関係は製品・構成に依存 |
 | `condition` | ○ | `string` | 該当条件（製品・バージョン・構成） |
 | `references` | ○ | `array` | 参照 URL |
 | `raw` | ○ | `^data/raw/` | 取込元の一次データ |
