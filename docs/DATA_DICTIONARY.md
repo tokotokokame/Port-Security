@@ -25,6 +25,21 @@
 
 `tools/apply_v5.py`・`v5_catalog.py`・`v5_ports.py` は v4→v5 の拡充記録です（監査用）。
 
+## ports の `evidence`（根拠の確認記録）
+
+`[{source_id, technique, kind, examples, keyword}]` の形式です。各項目は「その出典が、このポートのどの主張を裏付けるか」を記録します。
+
+- `kind`:
+  - `技術説明`: ATT&CK の技術の説明文にサービス名がある
+  - `手順例`: ATT&CK の実際の使用例にある
+  - `公式文書`: ベンダーや政府の文書にある
+- `examples`: 手順例を記載した攻撃グループやマルウェア
+- `keyword`: 一致した語、または確認した要点
+
+`evidence` で引用する出典は、必ず `source_ids` にも含めます（validate.py が検査します）。
+
+生成は `tools/evidence_attack.py`（ATT&CK 公式記述との照合）→ `tools/apply_evidence.py` / `apply_evidence_docs.py`（人によるレビューの結果）の順です。
+
 ## ログ調査の関連度（`ports.json` の `logs[].rank`）
 
 | rank | 意味 |

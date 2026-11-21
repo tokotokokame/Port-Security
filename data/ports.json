@@ -117,11 +117,12 @@
       "ATK-EXFIL-ALT"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1048"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1048 で FTP による持ち出しを確認。平文盗聴・総当たり・匿名FTPの記述は未確認。",
     "technique_ids": [
       "T1110",
       "T1040",
@@ -131,7 +132,16 @@
     "service_id": null,
     "risk_id": "RISK-00021-TCP",
     "category": "FILE",
-    "iana_description": "File Transfer Protocol [Control]"
+    "iana_description": "File Transfer Protocol [Control]",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1048",
+        "technique": "T1048",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "FTP"
+      }
+    ]
   },
   {
     "id": "PORT-00022-TCP",
@@ -268,14 +278,26 @@
       "T1040"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1040"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00049-TCP"
+    "risk_id": "RISK-00049-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1040",
+        "technique": "T1040",
+        "kind": "手順例",
+        "examples": [
+          "G1048 UNC3886"
+        ],
+        "keyword": "TACACS"
+      }
+    ]
   },
   {
     "id": "PORT-00053-TCP",
@@ -330,11 +352,14 @@
       "ATK-AMPLIFICATION"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1041",
+      "SRC-MITRE-T1071",
+      "SRC-MITRE-T1498"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1071.004",
       "T1041",
@@ -344,7 +369,38 @@
     "service_id": "SRV-DNS",
     "risk_id": "RISK-00053-UDP",
     "category": "NAME",
-    "iana_description": "Domain Name Server"
+    "iana_description": "Domain Name Server",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1041",
+        "technique": "T1041",
+        "kind": "手順例",
+        "examples": [
+          "S0377 Ebury",
+          "S1019 Shark",
+          "S1020 Kevin"
+        ],
+        "keyword": "DNS"
+      },
+      {
+        "source_id": "SRC-MITRE-T1071",
+        "technique": "T1071.004",
+        "kind": "手順例",
+        "examples": [
+          "C0029 Cutting Edge",
+          "G0004 Ke3chang",
+          "G0026 APT18"
+        ],
+        "keyword": "DNS"
+      },
+      {
+        "source_id": "SRC-MITRE-T1498",
+        "technique": "T1498.002",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "DNS"
+      }
+    ]
   },
   {
     "id": "PORT-00067-UDP",
@@ -365,11 +421,12 @@
       "ATK-NAME-POISON"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1557"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1595",
       "T1557.003"
@@ -378,7 +435,16 @@
     "service_id": null,
     "risk_id": "RISK-00067-UDP",
     "category": "MGMT",
-    "iana_description": "Bootstrap Protocol Server"
+    "iana_description": "Bootstrap Protocol Server",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1557",
+        "technique": "T1557.003",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "DHCP"
+      }
+    ]
   },
   {
     "id": "PORT-00068-UDP",
@@ -499,11 +565,13 @@
       "ATK-PUBLIC-EXPLOIT"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1071",
+      "SRC-MITRE-T1190"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1595.002",
       "T1071.001",
@@ -513,7 +581,29 @@
     "service_id": "SRV-HTTP",
     "risk_id": "RISK-00080-TCP",
     "category": "WEB",
-    "iana_description": "World Wide Web HTTP"
+    "iana_description": "World Wide Web HTTP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1071",
+        "technique": "T1071.001",
+        "kind": "手順例",
+        "examples": [
+          "C0001 Frankenstein",
+          "C0002 Night Dragon",
+          "C0012 Operation CuckooBees"
+        ],
+        "keyword": "HTTP"
+      },
+      {
+        "source_id": "SRC-MITRE-T1190",
+        "technique": "T1190",
+        "kind": "手順例",
+        "examples": [
+          "G0098 BlackTech"
+        ],
+        "keyword": "HTTP"
+      }
+    ]
   },
   {
     "id": "PORT-00088-TCP",
@@ -536,11 +626,12 @@
     ],
     "source_ids": [
       "SRC-MS-RDS",
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1558"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1110",
       "T1558.003",
@@ -550,7 +641,28 @@
     "service_id": null,
     "risk_id": "RISK-00088-TCP",
     "category": "AUTH",
-    "iana_description": "Kerberos"
+    "iana_description": "Kerberos",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1558",
+        "technique": "T1558.003",
+        "kind": "手順例",
+        "examples": [
+          "G0102 Wizard Spider",
+          "S1063 Brute Ratel C4"
+        ],
+        "keyword": "Kerberos"
+      },
+      {
+        "source_id": "SRC-MITRE-T1558",
+        "technique": "T1558.004",
+        "kind": "手順例",
+        "examples": [
+          "S1071 Rubeus"
+        ],
+        "keyword": "Kerberos"
+      }
+    ]
   },
   {
     "id": "PORT-00088-UDP",
@@ -573,11 +685,12 @@
     ],
     "source_ids": [
       "SRC-MS-RDS",
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1558"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1110",
       "T1558.003"
@@ -586,7 +699,19 @@
     "service_id": null,
     "risk_id": "RISK-00088-UDP",
     "category": "AUTH",
-    "iana_description": "Kerberos"
+    "iana_description": "Kerberos",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1558",
+        "technique": "T1558.003",
+        "kind": "手順例",
+        "examples": [
+          "G0102 Wizard Spider",
+          "S1063 Brute Ratel C4"
+        ],
+        "keyword": "Kerberos"
+      }
+    ]
   },
   {
     "id": "PORT-00102-TCP",
@@ -611,14 +736,27 @@
       "T1078.001"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0846-001"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK for ICS で 102 番 (S7) の探索を確認。制御プログラムの読み取り・変更の記述は未確認。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00102-TCP"
+    "risk_id": "RISK-00102-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-ICS-T0846-001",
+        "technique": "T0846.001",
+        "kind": "手順例",
+        "examples": [
+          "S0604 Industroyer",
+          "S1006 PLC-Blaster"
+        ],
+        "keyword": "Industroyer・PLC-Blaster が 102 番を走査"
+      }
+    ]
   },
   {
     "id": "PORT-00110-TCP",
@@ -742,11 +880,12 @@
       "ATK-AMPLIFICATION"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1498"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1595",
       "T1498.002"
@@ -755,7 +894,16 @@
     "service_id": null,
     "risk_id": "RISK-00123-UDP",
     "category": "AMP",
-    "iana_description": "Network Time Protocol"
+    "iana_description": "Network Time Protocol",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1498",
+        "technique": "T1498.002",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "NTP"
+      }
+    ]
   },
   {
     "id": "PORT-00135-TCP",
@@ -818,11 +966,12 @@
     ],
     "source_ids": [
       "SRC-CISA-HYGIENE",
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1557"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1557.001",
       "T1498.002"
@@ -831,7 +980,16 @@
     "service_id": null,
     "risk_id": "RISK-00137-UDP",
     "category": "NAME",
-    "iana_description": "NETBIOS Name Service"
+    "iana_description": "NETBIOS Name Service",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1557",
+        "technique": "T1557.001",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "NBT-NS"
+      }
+    ]
   },
   {
     "id": "PORT-00138-UDP",
@@ -886,11 +1044,13 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-CISA-HYGIENE"
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-T1021",
+      "SRC-MITRE-T1210"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1210",
       "T1021.002"
@@ -899,7 +1059,31 @@
     "service_id": null,
     "risk_id": "RISK-00139-TCP",
     "category": "FILE",
-    "iana_description": "NETBIOS Session Service"
+    "iana_description": "NETBIOS Session Service",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1021",
+        "technique": "T1021.002",
+        "kind": "手順例",
+        "examples": [
+          "C0024 SolarWinds Compromise",
+          "C0029 Cutting Edge",
+          "C0038 HomeLand Justice"
+        ],
+        "keyword": "SMB"
+      },
+      {
+        "source_id": "SRC-MITRE-T1210",
+        "technique": "T1210",
+        "kind": "手順例",
+        "examples": [
+          "G0007 APT28",
+          "S0260 InvisiMole",
+          "S0363 Empire"
+        ],
+        "keyword": "SMB"
+      }
+    ]
   },
   {
     "id": "PORT-00143-TCP",
@@ -921,11 +1105,12 @@
       "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1114"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1114.002 で IMAP によるメール収集を確認。平文盗聴・総当たりの記述は未確認。",
     "technique_ids": [
       "T1110",
       "T1040",
@@ -935,7 +1120,18 @@
     "service_id": null,
     "risk_id": "RISK-00143-TCP",
     "category": "MAIL",
-    "iana_description": "Internet Message Access Protocol"
+    "iana_description": "Internet Message Access Protocol",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1114",
+        "technique": "T1114.002",
+        "kind": "手順例",
+        "examples": [
+          "G0094 Kimsuky"
+        ],
+        "keyword": "IMAP"
+      }
+    ]
   },
   {
     "id": "PORT-00161-UDP",
@@ -957,11 +1153,12 @@
       "ATK-AMPLIFICATION"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1602"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1110",
       "T1595",
@@ -972,7 +1169,18 @@
     "service_id": null,
     "risk_id": "RISK-00161-UDP",
     "category": "MGMT",
-    "iana_description": "SNMP"
+    "iana_description": "SNMP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1602",
+        "technique": "T1602.001",
+        "kind": "手順例",
+        "examples": [
+          "G1045 Salt Typhoon"
+        ],
+        "keyword": "SNMP"
+      }
+    ]
   },
   {
     "id": "PORT-00162-UDP",
@@ -1059,11 +1267,12 @@
     ],
     "source_ids": [
       "SRC-MS-RDS",
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1087"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1087.002 で LDAP による列挙を確認。Bind 盗聴・LDAP 注入の記述は未確認。",
     "technique_ids": [
       "T1040",
       "T1110",
@@ -1073,7 +1282,20 @@
     "service_id": null,
     "risk_id": "RISK-00389-TCP",
     "category": "AUTH",
-    "iana_description": "Lightweight Directory Access Protocol"
+    "iana_description": "Lightweight Directory Access Protocol",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1087",
+        "technique": "T1087.002",
+        "kind": "手順例",
+        "examples": [
+          "G0034 Sandworm Team",
+          "G0117 Fox Kitten",
+          "S0483 IcedID"
+        ],
+        "keyword": "LDAP"
+      }
+    ]
   },
   {
     "id": "PORT-00389-UDP",
@@ -1170,11 +1392,13 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MS-RDS"
+      "SRC-MS-RDS",
+      "SRC-MITRE-T1041",
+      "SRC-MITRE-T1071"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1071.001",
       "T1041",
@@ -1185,7 +1409,31 @@
     "service_id": "SRV-HTTPS",
     "risk_id": "RISK-00443-TCP",
     "category": "WEB",
-    "iana_description": "http protocol over TLS/SSL"
+    "iana_description": "http protocol over TLS/SSL",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1041",
+        "technique": "T1041",
+        "kind": "手順例",
+        "examples": [
+          "C0058 SharePoint ToolShell Exploitation",
+          "S0533 SLOTHFULMEDIA",
+          "S1213 Lumma Stealer"
+        ],
+        "keyword": "HTTPS"
+      },
+      {
+        "source_id": "SRC-MITRE-T1071",
+        "technique": "T1071.001",
+        "kind": "手順例",
+        "examples": [
+          "C0012 Operation CuckooBees",
+          "C0014 Operation Wocao",
+          "C0022 Operation Dream Job"
+        ],
+        "keyword": "HTTPS"
+      }
+    ]
   },
   {
     "id": "PORT-00443-UDP",
@@ -1422,14 +1670,36 @@
       "T1046"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0836",
+      "SRC-MITRE-ICS-T0869"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00502-TCP"
+    "risk_id": "RISK-00502-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-ICS-T0836",
+        "technique": "T0836",
+        "kind": "手順例",
+        "examples": [
+          "S1165 FrostyGoop"
+        ],
+        "keyword": "FrostyGoop が Modbus でパラメータを変更"
+      },
+      {
+        "source_id": "SRC-MITRE-ICS-T0869",
+        "technique": "T0869",
+        "kind": "手順例",
+        "examples": [
+          "S1165 FrostyGoop"
+        ],
+        "keyword": "Modbus を指令通信に使用"
+      }
+    ]
   },
   {
     "id": "PORT-00512-TCP",
@@ -1756,14 +2026,24 @@
       "T1110"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-CISA-IPMI"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00623-UDP"
+    "risk_id": "RISK-00623-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-IPMI",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "インターネット接続の IPMI は OS の制御を上書きできる低レベルアクセスを与える"
+      }
+    ]
   },
   {
     "id": "PORT-00631-TCP",
@@ -1818,11 +2098,12 @@
     ],
     "source_ids": [
       "SRC-MS-RDS",
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1087"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1087.002 で LDAP による列挙を確認。証明書検証回避による中間者攻撃の記述は未確認。",
     "technique_ids": [
       "T1110",
       "T1087.002"
@@ -1831,7 +2112,20 @@
     "service_id": null,
     "risk_id": "RISK-00636-TCP",
     "category": "AUTH",
-    "iana_description": "ldap protocol over TLS/SSL (was sldap)"
+    "iana_description": "ldap protocol over TLS/SSL (was sldap)",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1087",
+        "technique": "T1087.002",
+        "kind": "手順例",
+        "examples": [
+          "G0034 Sandworm Team",
+          "G0117 Fox Kitten",
+          "S0483 IcedID"
+        ],
+        "keyword": "LDAP"
+      }
+    ]
   },
   {
     "id": "PORT-00830-TCP",
@@ -2050,11 +2344,12 @@
       "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1114"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1110",
       "T1114.002"
@@ -2063,7 +2358,18 @@
     "service_id": null,
     "risk_id": "RISK-00993-TCP",
     "category": "MAIL",
-    "iana_description": "IMAP over TLS protocol"
+    "iana_description": "IMAP over TLS protocol",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1114",
+        "technique": "T1114.002",
+        "kind": "手順例",
+        "examples": [
+          "G0094 Kimsuky"
+        ],
+        "keyword": "IMAP"
+      }
+    ]
   },
   {
     "id": "PORT-00995-TCP",
@@ -2122,14 +2428,28 @@
       "T1090"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1090"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-01080-TCP"
+    "risk_id": "RISK-01080-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1090",
+        "technique": "T1090",
+        "kind": "手順例",
+        "examples": [
+          "C0056 RedPenguin",
+          "C0063 2025 Poland Wiper Attacks",
+          "G0108 Blue Mockingbird"
+        ],
+        "keyword": "SOCKS"
+      }
+    ]
   },
   {
     "id": "PORT-01194-TCP",
@@ -2561,14 +2881,26 @@
       "T1135"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1135"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1135 で NFS 共有の探索を確認。誤 export 設定によるファイル取得の記述は未確認。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02049-TCP"
+    "risk_id": "RISK-02049-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1135",
+        "technique": "T1135",
+        "kind": "手順例",
+        "examples": [
+          "S9045 BACKUPOSINT v9.0 APEX PREDATOR"
+        ],
+        "keyword": "NFS"
+      }
+    ]
   },
   {
     "id": "PORT-02049-UDP",
@@ -2594,14 +2926,26 @@
       "T1135"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1135"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1135 で NFS 共有の探索を確認。誤 export 設定によるファイル取得の記述は未確認。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-02049-UDP"
+    "risk_id": "RISK-02049-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1135",
+        "technique": "T1135",
+        "kind": "手順例",
+        "examples": [
+          "S9045 BACKUPOSINT v9.0 APEX PREDATOR"
+        ],
+        "keyword": "NFS"
+      }
+    ]
   },
   {
     "id": "PORT-02179-TCP",
@@ -2647,7 +2991,7 @@
     "iana_description": "Docker REST API (plain text)",
     "category": "CONTAINER",
     "purpose": "Docker デーモンの API。",
-    "technical_description": "",
+    "technical_description": "Docker デーモンは既定で Unix ソケットのみで待ち受け、TCP は明示的な設定で有効化する。2375 は TLS なしで慣用的に使われる番号 (TLS は 2376)。",
     "normal_usage_examples": "",
     "malicious_exploitation_cases": "認証なし API からのコンテナ作成・ホスト乗っ取り",
     "suspicious_traffic_features": "外部からのAPI接続、想定外のコンテナ作成",
@@ -2663,14 +3007,32 @@
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1613",
+      "SRC-DOCKER-REMOTE"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02375-TCP"
+    "risk_id": "RISK-02375-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1613",
+        "technique": "T1613",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "Docker API"
+      },
+      {
+        "source_id": "SRC-DOCKER-REMOTE",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "保護せずネットワーク公開するとリモートの非 root ユーザーがホストの root 権限を得うる"
+      }
+    ]
   },
   {
     "id": "PORT-02376-TCP",
@@ -2696,14 +3058,32 @@
       "T1613"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1613",
+      "SRC-DOCKER-PROTECT"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02376-TCP"
+    "risk_id": "RISK-02376-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1613",
+        "technique": "T1613",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "Docker API"
+      },
+      {
+        "source_id": "SRC-DOCKER-PROTECT",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "鍵を持つ者はデーモンに任意の指示ができ root 権限に相当。TLS は 2376"
+      }
+    ]
   },
   {
     "id": "PORT-02379-TCP",
@@ -2730,14 +3110,24 @@
       "T1078.001"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-ETCD-SECURITY"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02379-TCP"
+    "risk_id": "RISK-02379-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-ETCD-SECURITY",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "既定では RBAC 認証も転送層の認証も無効"
+      }
+    ]
   },
   {
     "id": "PORT-02380-TCP",
@@ -2794,14 +3184,36 @@
       "T1078.001"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0806",
+      "SRC-MITRE-ICS-T0888"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02404-TCP"
+    "risk_id": "RISK-02404-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-ICS-T0806",
+        "technique": "T0806",
+        "kind": "手順例",
+        "examples": [
+          "S0604 Industroyer"
+        ],
+        "keyword": "Industroyer が IEC 104 で I/O を総当たり操作"
+      },
+      {
+        "source_id": "SRC-MITRE-ICS-T0888",
+        "technique": "T0888",
+        "kind": "手順例",
+        "examples": [
+          "S0604 Industroyer"
+        ],
+        "keyword": "IEC 104 で遠隔機器情報を探索"
+      }
+    ]
   },
   {
     "id": "PORT-02483-TCP",
@@ -2925,14 +3337,26 @@
       "T1090"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1090"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-03128-TCP"
+    "risk_id": "RISK-03128-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1090",
+        "technique": "T1090",
+        "kind": "手順例",
+        "examples": [
+          "S1141 LunarWeb"
+        ],
+        "keyword": "HTTP proxy"
+      }
+    ]
   },
   {
     "id": "PORT-03260-TCP",
@@ -2993,14 +3417,38 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MS-PORTS"
+      "SRC-MS-PORTS",
+      "SRC-MITRE-T1087",
+      "SRC-MITRE-T1482"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-03268-TCP"
+    "risk_id": "RISK-03268-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1087",
+        "technique": "T1087.002",
+        "kind": "手順例",
+        "examples": [
+          "G0034 Sandworm Team",
+          "G0117 Fox Kitten",
+          "S0483 IcedID"
+        ],
+        "keyword": "LDAP"
+      },
+      {
+        "source_id": "SRC-MITRE-T1482",
+        "technique": "T1482",
+        "kind": "手順例",
+        "examples": [
+          "S1063 Brute Ratel C4"
+        ],
+        "keyword": "LDAP"
+      }
+    ]
   },
   {
     "id": "PORT-03269-TCP",
@@ -3027,14 +3475,28 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MS-PORTS"
+      "SRC-MS-PORTS",
+      "SRC-MITRE-T1087"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-03269-TCP"
+    "risk_id": "RISK-03269-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1087",
+        "technique": "T1087.002",
+        "kind": "手順例",
+        "examples": [
+          "G0034 Sandworm Team",
+          "G0117 Fox Kitten",
+          "S0483 IcedID"
+        ],
+        "keyword": "LDAP"
+      }
+    ]
   },
   {
     "id": "PORT-03283-TCP",
@@ -3234,11 +3696,12 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MS-RDS"
+      "SRC-MS-RDS",
+      "SRC-MITRE-T1210"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1210 で RDP の脆弱性悪用を確認。UDP 経由の DoS・セッション干渉の記述は未確認。",
     "technique_ids": [
       "T1210"
     ],
@@ -3246,7 +3709,19 @@
     "service_id": "SRV-RDP",
     "risk_id": "RISK-03389-UDP",
     "category": "REMOTE",
-    "iana_description": "MS WBT Server"
+    "iana_description": "MS WBT Server",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1210",
+        "technique": "T1210",
+        "kind": "手順例",
+        "examples": [
+          "G0117 Fox Kitten",
+          "S0260 InvisiMole"
+        ],
+        "keyword": "RDP"
+      }
+    ]
   },
   {
     "id": "PORT-03478-UDP",
@@ -3468,14 +3943,40 @@
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1190",
+      "SRC-CISA-TA18-106A",
+      "SRC-CISCO-TSA18-106A"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-04786-TCP"
+    "risk_id": "RISK-04786-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1190",
+        "technique": "T1190",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "Smart Install"
+      },
+      {
+        "source_id": "SRC-CISA-TA18-106A",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "国家支援の攻撃者が SMI (4786) を含む管理プロトコルを走査・悪用"
+      },
+      {
+        "source_id": "SRC-CISCO-TSA18-106A",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "未使用なら Smart Install を無効化するよう推奨"
+      }
+    ]
   },
   {
     "id": "PORT-04840-TCP",
@@ -3761,14 +4262,24 @@
       "T1557.001"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1557"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-05355-UDP"
+    "risk_id": "RISK-05355-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1557",
+        "technique": "T1557.001",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "LLMNR"
+      }
+    ]
   },
   {
     "id": "PORT-05432-TCP",
@@ -3927,14 +4438,28 @@
       "T1110"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1021"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05800-TCP"
+    "risk_id": "RISK-05800-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1021",
+        "technique": "T1021.005",
+        "kind": "手順例",
+        "examples": [
+          "G0036 GCMAN",
+          "G0047 Gamaredon Group",
+          "S0266 TrickBot"
+        ],
+        "keyword": "VNC"
+      }
+    ]
   },
   {
     "id": "PORT-05900-TCP",
@@ -3997,14 +4522,26 @@
       "T1219"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1219"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05938-TCP"
+    "risk_id": "RISK-05938-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1219",
+        "technique": "T1219",
+        "kind": "手順例",
+        "examples": [
+          "G0080 Cobalt Group"
+        ],
+        "keyword": "TeamViewer"
+      }
+    ]
   },
   {
     "id": "PORT-05984-TCP",
@@ -4238,14 +4775,32 @@
       "T1210"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-REDIS-SECURITY",
+      "SRC-REDIS-ANTIREZ"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-06379-TCP"
+    "risk_id": "RISK-06379-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-REDIS-SECURITY",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "信頼された環境向けの設計。多数のインスタンスが公開 IP で放置されている"
+      },
+      {
+        "source_id": "SRC-REDIS-ANTIREZ",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "外部公開された Redis への攻撃手法を作者が解説"
+      }
+    ]
   },
   {
     "id": "PORT-06443-TCP",
@@ -4271,14 +4826,24 @@
       "T1613"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1613"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK T1613 で Kubernetes API を使った探索を確認。認証情報・匿名アクセス悪用の記述は未確認。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-06443-TCP"
+    "risk_id": "RISK-06443-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1613",
+        "technique": "T1613",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "Kubernetes API"
+      }
+    ]
   },
   {
     "id": "PORT-06514-TCP",
@@ -4368,14 +4933,28 @@
       "T1071"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1071"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-06667-TCP"
+    "risk_id": "RISK-06667-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1071",
+        "technique": "T1071",
+        "kind": "手順例",
+        "examples": [
+          "G0059 Magic Hound",
+          "G0139 TeamTNT",
+          "S0601 Hildegard"
+        ],
+        "keyword": "IRC"
+      }
+    ]
   },
   {
     "id": "PORT-07547-TCP",
@@ -5122,14 +5701,34 @@
       "T1613"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1613",
+      "SRC-K8S-KUBELET"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-10250-TCP"
+    "risk_id": "RISK-10250-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1613",
+        "technique": "T1613",
+        "kind": "手順例",
+        "examples": [
+          "S0601 Hildegard"
+        ],
+        "keyword": "kubelet"
+      },
+      {
+        "source_id": "SRC-K8S-KUBELET",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "既定で匿名要求を受け付け、既定の認可は AlwaysAllow。nodes/proxy はコマンド実行 API に到達"
+      }
+    ]
   },
   {
     "id": "PORT-11211-TCP",
@@ -5255,14 +5854,24 @@
       "T1078.001"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0869"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK for ICS で DNP3 を攻撃に用いうるプロトコルとして確認。制御コマンド送信の具体例は未確認。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-20000-TCP"
+    "risk_id": "RISK-20000-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-ICS-T0869",
+        "technique": "T0869",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "DNP3 が攻撃に使われうる標準プロトコルとして明記"
+      }
+    ]
   },
   {
     "id": "PORT-27017-TCP",
@@ -5288,14 +5897,24 @@
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MONGODB-CHECKLIST"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "MongoDB 公式チェックリストで認証無効・露出のリスクを確認。データ削除・身代金要求の記述は未確認。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-27017-TCP"
+    "risk_id": "RISK-27017-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MONGODB-CHECKLIST",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "アクセス制御の有効化とネットワーク露出の制限を推奨"
+      }
+    ]
   },
   {
     "id": "PORT-44818-TCP",
@@ -5322,14 +5941,24 @@
       "T1046"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0883"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK for ICS で EtherNet/IP の外部露出リスクを確認。機器制御の具体例は未確認。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-44818-TCP"
+    "risk_id": "RISK-44818-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-ICS-T0883",
+        "technique": "T0883",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "インターネットから到達可能な機器の例として EtherNet/IP を明記"
+      }
+    ]
   },
   {
     "id": "PORT-47808-UDP",
@@ -5356,14 +5985,24 @@
       "T1046"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0846-002"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ATT&CK for ICS で BACnet の探索を確認。空調・照明等の制御の具体例は未確認。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-47808-UDP"
+    "risk_id": "RISK-47808-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-ICS-T0846-002",
+        "technique": "T0846.002",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "ブロードキャスト探索の対象として BACnet を明記"
+      }
+    ]
   },
   {
     "id": "PORT-61616-TCP",
@@ -5390,13 +6029,31 @@
       "T1210"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-APACHE-CVE-2023-46604",
+      "SRC-NVD-CVE-2023-46604"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-61616-TCP"
+    "risk_id": "RISK-61616-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-APACHE-CVE-2023-46604",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "OpenWire プロトコルのマーシャラーにリモートコード実行の脆弱性"
+      },
+      {
+        "source_id": "SRC-NVD-CVE-2023-46604",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "ネットワーク到達でブローカーに任意コマンド実行。CISA KEV 掲載"
+      }
+    ]
   }
 ]

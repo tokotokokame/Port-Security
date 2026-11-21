@@ -88,6 +88,9 @@ def validate(db):
         if "SRC-MITRE-DET0118" in p["source_ids"] and p["port_number"] not in det0118_ports:
             E.append(f"{w}: DET0118の公式監視ポート外なのに根拠に引用")
         if not p["technique_ids"]: W.append(f"{w}: technique_ids が空")
+        for e in p.get("evidence", []):
+            fk(w, "evidence.source_id", "sources", e["source_id"])
+            if e["source_id"] not in p["source_ids"]: E.append(f"{w}: evidence の出典が source_ids にない -> {e['source_id']}")
     by_port = {(p["port_number"], p["transport_protocol"]): p for p in db["ports"]}
     for r in db["port_risks"]:
         p = by_port.get((r["port_number"], r["transport_protocol"]))
