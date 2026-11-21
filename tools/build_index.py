@@ -92,4 +92,7 @@ if __name__ == "__main__":
     (ROOT / "docs").mkdir(exist_ok=True); (ROOT / "dist").mkdir(exist_ok=True)
     (ROOT / "docs/VALIDATION_REPORT.md").write_text(report(db, index, errors, warnings), encoding="utf-8")
     (ROOT / "dist/port_index.json").write_text(json.dumps(index, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    app_asset = ROOT / "app/assets/data/port_index.json"  # compact copy bundled into the mobile app
+    app_asset.parent.mkdir(parents=True, exist_ok=True)
+    app_asset.write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"dist/port_index.json: {len(index)} ports")
