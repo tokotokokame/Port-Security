@@ -17,7 +17,7 @@ class Group {
 
 class PortRepository {
   PortRepository(List<PortEntry> ports)
-      : ports = List.unmodifiable([...ports]..sort(_byPort));
+      : ports = List<PortEntry>.unmodifiable(List<PortEntry>.of(ports)..sort(_byPort));
 
   final List<PortEntry> ports;
 
