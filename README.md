@@ -1,58 +1,117 @@
-# Port-Security
+# Port Security
 
-ポート番号を起点に「攻撃の特徴 → MITRE ATT&CK 技術 → 検知戦略 → ログ調査 → 根拠資料」を一貫して引けるサイバーセキュリティ・データベースです。スマートフォン向け検索ツールのデータ層として使います。
+**オフラインで引ける、ポート／プロトコル調査ツール（Android）**
 
-> ⚠️ 教育・防御目的のデータです。攻撃コードや実ネットワークへの操作手順は含みません。
+ポート番号やサービス名を入れるだけで、「どんな攻撃に使われるか → MITRE ATT&CK の技術 → 検知に使うログ → 根拠資料」までを一続きで調べられます。データはすべてアプリに入っているので、通信できない現場や閉域網でもそのまま使えます。
 
-## Android アプリ
+> ⚠️ 教育・防御目的の参照ツールです。攻撃コードや実ネットワークへの操作手順は含みません。
 
-[Releases](https://github.com/tokotokokame/Port-Security/releases/latest) から `port-security-*-arm64.apk` をダウンロードしてインストールします（古い32bit端末は `armv7` 版）。通信は行わず、データはすべてアプリに同梱されています。
+<table>
+  <tr>
+    <td><img src="docs/images/search.png" width="200" alt="ポート検索"></td>
+    <td><img src="docs/images/attack.png" width="200" alt="攻撃手法の詳細"></td>
+    <td><img src="docs/images/tool.png" width="200" alt="攻撃ツールの検知痕跡"></td>
+    <td><img src="docs/images/log.png" width="200" alt="ログ調査手順"></td>
+  </tr>
+  <tr>
+    <td align="center">ポート検索</td>
+    <td align="center">攻撃手法</td>
+    <td align="center">攻撃ツールの痕跡</td>
+    <td align="center">ログ調査手順</td>
+  </tr>
+</table>
 
-- **収録範囲**: IANA 登録の全ポートと、セキュリティ上重要なポート160件の詳細
-- **検索**: ポート番号、通信方式（`445/tcp` など）、サービス名、MITRE ID、イベントID、ツール名
-- **詳細検索設定**:
+*画面はイメージです。収録内容はバージョンにより変わります。*
+
+---
+
+## 1. どんなツールか
+
+ターミナル風の画面で、エンジニアが「このポート、何に使われて、どう調べればいい？」をすぐ引けるように作っています。
+
+### 検索
+- `445/tcp`、`rdp`、`T1110`、`4769`（イベントID）、`impacket` など、思いついた言葉でそのまま検索できます
+- 検索バー下の **詳細検索設定** で絞り込み・並び替え
   - 基本: 通信方式・区分・番号範囲・詳細ありのみ
   - 脅威: リスク・攻撃手法・攻撃ツール・MITRE 戦術
   - 調査: ログ基盤・確度
-  - 並び替え
-- **ポート詳細**: `概要 / 攻撃 / tools / att&ck / logs / src` のタブで、ATT&CK の検知戦略が指定するログ源（例: `WinEventLog:Security EventCode=4769`）まで表示
-- **逆引き**: 攻撃手法・攻撃ツール・ログ基盤（Windows / Linux / macOS / ESXi / Hyper-V / VirtualBox / FortiGate / NEC IX）から対象ポートを引ける
-- **攻撃ツール**: Impacket・Mimikatz・smbclient など18件を、検知に使う痕跡だけで収録
+  - 並び替え: 関連度・ポート番号・リスク
 
-ソースは `app/` にあります。セキュリティ方針と点検内容は [SECURITY.md](SECURITY.md) を参照してください。
+### 調べられること
 
-## 構成
-
-| パス | 内容 |
+| 画面 | 内容 |
 |---|---|
-| `data/` | 正本データ（JSON 9種）。編集はここだけ |
-| `dist/port_index.json` | アプリ用の結合済みインデックス（自動生成・1ポート=1レコード） |
-| `docs/DATA_DICTIONARY.md` | スキーマ・ID体系・リンク構造 |
-| `docs/VALIDATION_REPORT.md` | 整合性検証と到達率・不足リスト（自動生成） |
-| `docs/DATA_UPDATE_GUIDE.md` | データ追加・更新の手順 |
-| `tools/validate.py` | 参照整合性・根拠ルールの検証（標準ライブラリのみ） |
-| `tools/test_validate.py` | 検証器の自己テスト（壊したデータを確実に検出するか） |
-| `tools/build_index.py` | インデックスとレポートの生成 |
-| `tools/migrate_v3_to_v4.py` | v3→v4 移行スクリプト（修正内容の監査記録） |
+| ポート | 概要 / 攻撃 / 攻撃ツール / ATT&CK / ログ / 根拠資料 をタブで表示。検知に使うログ源（例: `WinEventLog:Security EventCode=4769`）まで辿れます |
+| 攻撃手法 | 特徴・検知方法・対策と、対応する ATT&CK 技術・ツール・ポート |
+| 攻撃ツール | Impacket・Mimikatz・smbclient・Evil-WinRM など。使い方ではなく **検知に使う痕跡** だけを収録 |
+| ログ調査 | 基盤ごとの検知ロジック・調査手順・確認するチャネル／イベントID |
 
-## 使い方
+### 収録データ
+
+| 項目 | 件数 |
+|---|---|
+| ポート（IANA 登録の全件） | 約 11,600 |
+| ポート（詳細あり） | 160（根拠の確度: 確認済み 50 / 一部確認 110） |
+| 攻撃手法 | 24 |
+| 攻撃ツール | 18 |
+| ログ調査の基盤 | 9（Windows / Linux / macOS / VMware ESXi / Hyper-V / VirtualBox / FortiGate / NEC IX / Windows イベントログ） |
+| MITRE ATT&CK 技術・検知戦略 | 技術 90 + サブ技術 74 / 検知戦略 164 |
+| 根拠資料 | 176 |
+
+各項目には根拠資料と **確度**（確認済み / 一部確認）が付いており、確認できていない点は「未確認事項」として明示しています。
+
+---
+
+## 2. インストール方法
+
+**対応環境:** Android 7.0 以上
+
+1. スマホのブラウザで [Releases（最新版）](https://github.com/tokotokokame/Port-Security/releases/latest) を開きます
+2. APK をダウンロードします
+   - 通常はこちら: `port-security-vX.X.X-arm64.apk`
+   - 古い 32bit 端末の場合: `port-security-vX.X.X-armv7.apk`
+3. ダウンロードした APK を開きます
+4. 「提供元不明のアプリ」の確認が出たら、ダウンロードに使ったアプリ（Chrome など）に **このソースからのインストールを許可** して、インストールを続けます
+5. ホーム画面の **Port Security** を起動します
+
+### ファイルの改ざん確認（任意）
+Releases の `SHA256SUMS.txt` に、各 APK のハッシュ値を載せています。PC で確認する場合は次のとおりです。
 
 ```bash
-python3 tools/validate.py data          # 整合性検証（エラーがあれば exit 1）
-python3 -m unittest discover -s tools   # 検証器の自己テスト
-python3 tools/build_index.py            # dist/ と docs/VALIDATION_REPORT.md を再生成
+sha256sum -c SHA256SUMS.txt --ignore-missing
 ```
 
-GitHub Actions（`.github/workflows/validate.yml`）が push / PR ごとに上記を実行し、生成物のコミット漏れも検出します。
+### アップデート
+新しい APK を同じ手順でインストールすると上書き更新されます。
+「パッケージが既存のパッケージと競合しています」と表示された場合は、署名鍵が変わっています。いったんアンインストールしてから入れ直してください（利用者データは保存していないため、失われるものはありません）。
 
-## アプリからの参照
+---
 
-`dist/port_index.json` を読み、`port_number` と `transport_protocol` で1件引けば、関連する全情報が入っています。
+## 3. アプリのセキュリティ
 
-- `logs[].match` … 関連度（`DET公式監視ポート一致` > `DETサービス名から推定` > `攻撃手法経由` > `境界機器ログ(全ポート共通)`）。強い順に並んでいます
-- `gaps` … そのポートで未整備の情報（UIで「未作成」表示に使えます）
-- `certainty` / `unconfirmed_notes` … 根拠の確度
+### 設計方針
+- **通信しません。** APK に `INTERNET` 権限がありません。検索内容がどこかへ送られることはありません
+- **個人データを扱いません。** 保存・送信するデータはなく、バックアップも無効（`allowBackup="false"`）です
+- **余計な権限を持ちません。** ストレージ・位置情報・カメラ・マイク・連絡先などの権限は要求しません
+- **外部リンクは `https` のみ。** 根拠資料のリンクは外部ブラウザで開き、それ以外のスキームは開きません（開けないときは URL をコピーします）
+- **外部公開コンポーネントを最小限にしています。** ほかのアプリから呼べるのは起動画面と、権限で保護された部品だけです
 
-## 現状
+### リリース前の自動点検
+GitHub Actions が、リリースのたびに次を実行し、1つでも失敗したら公開しません。
 
-到達率・不足の一覧は [`docs/VALIDATION_REPORT.md`](docs/VALIDATION_REPORT.md) を参照。リスク評価・サービス辞書・ポート別の一次資料が主な未整備領域です。
+| 点検 | 内容 |
+|---|---|
+| 静的解析 | `flutter analyze` の指摘 0 件 |
+| テスト | 検索・データ読込・異常データ耐性・画面遷移 |
+| データ検証 | 参照整合性・根拠ルール（「確認済み」には検証済みの根拠資料が必須）・同梱データとの一致 |
+| APK 点検 | 権限・外部公開コンポーネント・バックアップ・デバッグ可否・平文通信を `aapt2` で検査 |
+
+### 署名
+リリース用の署名鍵は GitHub Secrets で管理し、リポジトリには含めません。
+
+### 脆弱性の報告
+Issues には書かず、リポジトリ所有者へ直接ご連絡ください。詳細は [SECURITY.md](SECURITY.md) を参照してください。
+
+---
+
+開発者向けの情報（データ構成・検証・ビルド）は [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) にあります。
