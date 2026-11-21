@@ -15,10 +15,12 @@ jobs:
           python-version: "3.12"
       - name: Install pinned checker dependencies
         run: pip install -r tools/requirements.txt
-      - name: Integrity check
-        run: python3 tools/validate.py data
-      - name: Quality standard (docs/DATA_QUALITY_STANDARD.md)
-        run: python3 tools/quality.py --all
+      - name: Integrity check and quality standard (both always run)
+        run: |
+          rc=0
+          python3 tools/validate.py data || rc=1
+          python3 tools/quality.py --all || rc=1
+          exit $rc
       - name: Validator self-test (injected defects must be caught)
         run: python3 -m unittest discover -s tools -v
       - name: Rebuild schemas, index and reports

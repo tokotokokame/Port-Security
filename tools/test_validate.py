@@ -66,6 +66,12 @@ class Defects(unittest.TestCase):
     def test_vulnerability_risk_ref(self):
         self.assertCaught(lambda d: d["vulnerabilities"][0]["risk_ids"].append("RISK-99999-TCP"), "参照切れ")
 
+    def test_port_number_only_is_reported_not_crash(self):
+        def m(d):
+            a = next(a for x in d["detection_strategies"] if x["id"] == "DET0118" for a in x["analytics"] if a["id"] == "AN0329")
+            a["monitored_ports"].append(443)
+        self.assertCaught(m, "(番号, 通信方式)")
+
     def test_unknown_software(self):
         self.assertCaught(lambda d: d["tools"][0].update(mitre_software_id="S9999"), "参照切れ")
 

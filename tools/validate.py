@@ -3,7 +3,7 @@
 
 Usage: python3 tools/validate.py [data_dir]   -> exit 1 on any error
 """
-import json, re, sys
+import json, os, re, sys
 from pathlib import Path
 
 FILES = ["ports", "services", "protocols", "attack_patterns", "port_risks", "log_investigation",
@@ -57,6 +57,14 @@ def validate(db):
     tech_ok = set(idx["mitre_techniques"]) | set(subs)
     port_keys = {(p["port_number"], p["transport_protocol"]) for p in db["ports"]}
     det0118 = idx["detection_strategies"].get("DET0118", {"analytics": []})
+    pair = lambda x: isinstance(x, list) and len(x) == 2 and isinstance(x[0], int) and isinstance(x[1], str)
+    for d in db["detection_strategies"]:
+        for a in d["analytics"]:
+            E += [f"{d['id']}/{a['id']}: 監視ポート {x} が (番号, 通信方式) の形でない" for x in a["monitored_ports"] if not pair(x)]
+    for f in ("tools", "log_investigation", "services"):
+        for r in db[f]:
+            E += [f"{f}:{r['id']}: ports の要素 {x} が (番号, 通信方式) の形でない" for x in r.get("ports", []) if not pair(x)]
+    if E: return E, W
     det0118_ports = {tuple(p) for a in det0118["analytics"] if a["port_basis"] == "official" for p in a["monitored_ports"]}
 
     def fk(where, field, target, vals):
@@ -141,5 +149,7 @@ if __name__ == "__main__":
     errors, warnings = validate(db)
     for w in warnings: print("WARN ", w)
     for e in errors: print("ERROR", e)
+    if os.environ.get("GITHUB_ACTIONS"):
+        for e in errors[:50]: print(f"::error title=validate::{e}")
     print(f"\n{sum(len(v) for v in db.values())} records / errors={len(errors)} warnings={len(warnings)} -> {'FAIL' if errors else 'PASS'}")
     sys.exit(1 if errors else 0)
