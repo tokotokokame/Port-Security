@@ -4,6 +4,16 @@
 
 > ⚠️ 教育・防御目的のデータです。攻撃コードや実ネットワークへの操作手順は含みません。
 
+## Android アプリ
+
+[Releases](https://github.com/tokotokokame/Port-Security/releases/latest) から `port-security-*-arm64.apk` をダウンロードしてインストールします（古い32bit端末は `armv7` 版）。通信は行わず、データはすべてアプリに同梱されています。
+
+- ポート番号・通信方式（`445/tcp` など）・サービス名・MITRE ID・イベントIDで検索
+- ポート詳細で「攻撃の特徴 → 攻撃手法 → MITRE ATT&CK → 検知・ログ調査 → 推奨対策 → 根拠資料」を表示
+- 攻撃手法・ログ調査から対象ポートを逆引き
+
+ソースは `app/` にあります。セキュリティ方針と点検内容は [SECURITY.md](SECURITY.md) を参照してください。
+
 ## 構成
 
 | パス | 内容 |

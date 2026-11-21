@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## app v1.0 (2026-11-21)
+
+- Android アプリ（Flutter）を追加しました。`port_index.json` を同梱したオフライン検索です。
+- CI で analyze・test・APK ビルド・APK のセキュリティ点検を行い、`main` に入るたびに Releases へ APK を公開します。
+
 ## v4.0.0 (2026-11-21)
 
 v3 の監査で、ポートから攻撃手法・出典までは辿れる一方、MITRE詳細・ログ調査・リスク評価でリンクが途切れていることが判明しました。v4 はその修正版です。変更の詳細は `tools/migrate_v3_to_v4.py` に残しています。

@@ -20,4 +20,4 @@ jobs:
       - name: Rebuild index and report
         run: python3 tools/build_index.py
       - name: Generated files must be committed
-        run: git diff --exit-code -- dist docs/VALIDATION_REPORT.md
+        run: git diff --exit-code -- dist docs/VALIDATION_REPORT.md app/assets/data
