@@ -51,3 +51,9 @@ Phase 0 基準（`docs/baseline/DATA_INVENTORY.json`）にある ID を削除・
   - ポート番号には直接紐付けず、`condition`（製品・バージョン・構成）と `risk_ids`（本文で言及しているリスク評価）で管理
 - RISK-00445-TCP: 「MS17-010 (EternalBlue)」に CVE-2017-0144 を併記（EternalBlue = CVE-2017-0144 は ATT&CK の手続き例 S0260 による）
 - sources: SRC-CVE-* 7 件と SRC-CISA-KEV を追加（scope: vulnerability）
+
+### Phase 6（自動検証）
+- データの変更なし。CI の品質ゲート・注入テスト・週次の鮮度チェックを追加（`docs/TEST_REPORT.md`）
+
+### Phase 4（FortiGate / NEC IX）
+- 今回は対象外。LOG-FORTIGATE-VENDOR / LOG-NECIX-VENDOR は `一部確認` のまま（quality.py が info として記録）
