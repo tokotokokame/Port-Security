@@ -2737,5 +2737,362 @@
       "detection"
     ],
     "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-DOCKER-REMOTE",
+    "title": "Configure remote access for Docker daemon",
+    "publisher": "Docker",
+    "url": "https://docs.docker.com/engine/daemon/remote-access/",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Configure remote access for Docker daemon",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-DOCKER-PROTECT",
+    "title": "Protect the Docker daemon socket",
+    "publisher": "Docker",
+    "url": "https://docs.docker.com/engine/security/protect-access/",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Protect the Docker daemon socket",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-REDIS-SECURITY",
+    "title": "Redis security",
+    "publisher": "Redis",
+    "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/security/",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Redis security",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-REDIS-ANTIREZ",
+    "title": "A few things about Redis security",
+    "publisher": "antirez (Redis author)",
+    "url": "https://antirez.com/news/96",
+    "document_type": "Author Blog",
+    "applicable_data": "A few things about Redis security",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MONGODB-CHECKLIST",
+    "title": "Security Checklist for Self-Managed Deployments",
+    "publisher": "MongoDB",
+    "url": "https://www.mongodb.com/docs/manual/administration/security-checklist/",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Security Checklist for Self-Managed Deployments",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-K8S-KUBELET",
+    "title": "Kubelet authentication/authorization",
+    "publisher": "Kubernetes",
+    "url": "https://kubernetes.io/docs/reference/access-authn-authz/kubelet-authn-authz/",
+    "document_type": "Project Documentation",
+    "applicable_data": "Kubelet authentication/authorization",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-ETCD-SECURITY",
+    "title": "etcd Transport security model",
+    "publisher": "etcd",
+    "url": "https://etcd.io/docs/v3.7/op-guide/security/",
+    "document_type": "Project Documentation",
+    "applicable_data": "etcd Transport security model",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-APACHE-CVE-2023-46604",
+    "title": "Apache ActiveMQ CVE-2023-46604 advisory",
+    "publisher": "Apache Software Foundation",
+    "url": "https://activemq.apache.org/security-advisories.data/CVE-2023-46604",
+    "document_type": "Vendor Advisory",
+    "applicable_data": "Apache ActiveMQ CVE-2023-46604 advisory",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-NVD-CVE-2023-46604",
+    "title": "NVD CVE-2023-46604",
+    "publisher": "NIST NVD",
+    "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-46604",
+    "document_type": "Vulnerability Database",
+    "applicable_data": "NVD CVE-2023-46604",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-CISA-IPMI",
+    "title": "TA13-207A: Risks of Using the Intelligent Platform Management Interface (IPMI)",
+    "publisher": "CISA",
+    "url": "https://www.cisa.gov/ncas/alerts/TA13-207A",
+    "document_type": "Government Advisory",
+    "applicable_data": "TA13-207A: Risks of Using the Intelligent Platform Management Interface (IPMI)",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-CISA-TA18-106A",
+    "title": "TA18-106A: Russian State-Sponsored Cyber Actors Targeting Network Infrastructure Devices",
+    "publisher": "CISA",
+    "url": "https://us-cert.cisa.gov/ncas/alerts/TA18-106A",
+    "document_type": "Government Advisory",
+    "applicable_data": "TA18-106A: Russian State-Sponsored Cyber Actors Targeting Network Infrastructure Devices",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-CISCO-TSA18-106A",
+    "title": "Cisco guidance on US-CERT TA18-106A",
+    "publisher": "Cisco",
+    "url": "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-20180416-tsa18-106a.html",
+    "document_type": "Vendor Advisory",
+    "applicable_data": "Cisco guidance on US-CERT TA18-106A",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0836",
+    "title": "ATT&CK for ICS T0836 Modify Parameter",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0836/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0836 Modify Parameter",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0869",
+    "title": "ATT&CK for ICS T0869 Standard Application Layer Protocol",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0869/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0869 Standard Application Layer Protocol",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0806",
+    "title": "ATT&CK for ICS T0806 Brute Force I/O",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0806/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0806 Brute Force I/O",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0888",
+    "title": "ATT&CK for ICS T0888 Remote System Information Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0888/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0888 Remote System Information Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0846-001",
+    "title": "ATT&CK for ICS T0846.001 Port Scan",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0846/001/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0846.001 Port Scan",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0883",
+    "title": "ATT&CK for ICS T0883 Internet Accessible Device",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0883/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0883 Internet Accessible Device",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0885",
+    "title": "ATT&CK for ICS T0885 Commonly Used Port",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0885/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0885 Commonly Used Port",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0846-002",
+    "title": "ATT&CK for ICS T0846.002 Broadcast Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0846/002/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0846.002 Broadcast Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-ICS-T0871",
+    "title": "ATT&CK for ICS T0871 Execution through API",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T0871/",
+    "document_type": "MITRE ATT&CK for ICS v20.1 (STIX)",
+    "applicable_data": "ATT&CK for ICS T0871 Execution through API",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2026-11-22 再調査で本文を確認",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
   }
 ]

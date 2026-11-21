@@ -33,6 +33,16 @@ void main() {
       expect(repo.tools.values.map((t) => t.name), containsAll(['Impacket', 'smbclient (Samba)', 'Mimikatz']));
       expect(repo.attacks.length, greaterThanOrEqualTo(20));
     });
+    test('reviewed evidence is attached and resolvable', () {
+      final withEv = repo.detailed.where((e) => e.detail!.evidence.isNotEmpty).toList();
+      expect(withEv.length, greaterThanOrEqualTo(40));
+      for (final e in withEv) {
+        expect(e.detail!.evidence.every((x) => repo.sources.containsKey(x.source)), isTrue, reason: e.label);
+      }
+      final docker = repo.detailed.firstWhere((e) => e.label == '2375/tcp').detail!;
+      expect(docker.certainty, '確認済み');
+      expect(docker.evidence.map((x) => x.source), contains('SRC-DOCKER-REMOTE'));
+    });
     test('all links are https', () {
       final urls = [...repo.sources.values.map((s) => s.url), ...repo.techniques.values.map((t) => t.url)];
       expect(urls.every((u) => Uri.parse(u).scheme == 'https'), isTrue);

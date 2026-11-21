@@ -119,6 +119,15 @@ class SourcesTab extends StatelessWidget {
   Widget build(BuildContext context) => _tab(context, [
         TermSection('certainty', children: [KV('確度', d.certainty), KV('確認日', d.verified, mono: true), KV('未確認事項', d.notes),
           KV('未整備', d.gaps.join('\n'))]),
+        TermSection('evidence', note: '根拠の確認内容', children: [
+          for (final e in d.evidence)
+            RuleCard(
+              title: [e.kind, if (e.technique.isNotEmpty) e.technique].join(' · '),
+              subtitle: [e.summary, if (e.examples.isNotEmpty) '例: ${e.examples.join(', ')}'].join('\n'),
+              trailing: repo.sources[e.source]?.publisher ?? '',
+              onTap: repo.sources[e.source] == null ? null : () => openLink(context, repo.sources[e.source]!.url),
+            ),
+        ]),
         TermSection('sources', children: [for (final id in d.sources) SourceRow(id, repo)]),
       ]);
 }

@@ -51,6 +51,9 @@ class Defects(unittest.TestCase):
     def test_listed_log_port_must_exist(self):
         self.assertCaught(lambda d: next(l for l in d["log_investigation"] if l["id"] == "LOG-HYPERV")["ports"].append([1, "UDP"]), "ports にない番号")
 
+    def test_evidence_source_must_be_cited(self):
+        self.assertCaught(lambda d: port(d, "PORT-02375-TCP")["source_ids"].remove("SRC-DOCKER-REMOTE"), "evidence の出典")
+
     def test_unknown_software(self):
         self.assertCaught(lambda d: d["tools"][0].update(mitre_software_id="S9999"), "参照切れ")
 

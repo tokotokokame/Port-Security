@@ -66,6 +66,8 @@ def build(db):
             "logs": [{"id": l, "match": MATCH[rank[l]], "rank": rank[l], "via": sorted(v)} for l, v in sorted(logs.items(), key=lambda kv: (rank[kv[0]], kv[0]))],
             "sources": list(dict.fromkeys(p["source_ids"] + (risk or {}).get("source_ids", []) +
                                           [f"SRC-MITRE-{t.split('.')[0]}" for t in p["technique_ids"]])),
+            "evidence": [{"source": e["source_id"], "kind": e["kind"], "technique": e.get("technique"),
+                          "examples": e.get("examples", []), "summary": e.get("keyword", "")} for e in p.get("evidence", [])],
             "gaps": gaps})
     techniques = {}
     for t in db["mitre_techniques"]:

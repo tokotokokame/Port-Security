@@ -86,11 +86,22 @@ class Detail {
         notes = str(j['notes']), verified = str(j['verified']),
         risk = j['risk'] is Json ? Risk(j['risk'] as Json) : null,
         attacks = strs(j['attacks']), techniques = strs(j['techniques']), tools = strs(j['tools']),
-        logs = maps(j['logs']).map(LogRef.new).toList(), sources = strs(j['sources']), gaps = strs(j['gaps']);
+        logs = maps(j['logs']).map(LogRef.new).toList(), sources = strs(j['sources']), gaps = strs(j['gaps']),
+        evidence = maps(j['evidence']).map(Evidence.new).toList();
   final String name, category, purpose, technical, normal, malicious, suspicious, checkpoints, defenses, certainty, notes, verified;
   final Risk? risk;
   final List<String> attacks, techniques, tools, sources, gaps;
   final List<LogRef> logs;
+  final List<Evidence> evidence;
+}
+
+/// Reviewed proof that a source supports this port's claim.
+class Evidence {
+  Evidence(Json j)
+      : source = str(j['source']), kind = str(j['kind']), technique = str(j['technique']),
+        examples = strs(j['examples']), summary = str(j['summary']);
+  final String source, kind, technique, summary;
+  final List<String> examples;
 }
 
 class PortEntry {
