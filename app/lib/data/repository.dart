@@ -19,6 +19,7 @@ class Repository {
     tools = table('tools', Tool.new);
     logs = table('logs', LogSource.new);
     sources = table('sources', Source.new);
+    vulns = table('vulns', Vuln.new);
     meta = obj(kb['meta']);
     final ianaByKey = {for (final r in iana) if (r.length == 5 && r[0] is int) '${r[0]}/${str(r[1])}': r};
     final seen = <String>{};
@@ -46,6 +47,7 @@ class Repository {
   late final Map<String, Tool> tools;
   late final Map<String, LogSource> logs;
   late final Map<String, Source> sources;
+  late final Map<String, Vuln> vulns;
   late final Json meta;
   late final List<PortEntry> entries;
   late final Set<int> _numbers;

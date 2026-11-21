@@ -140,3 +140,16 @@ class Bullet extends StatelessWidget {
         ]),
       );
 }
+
+/// Certainty, last review date and what is still unverified — shown for every entity.
+class ReviewSection extends StatelessWidget {
+  const ReviewSection({super.key, required this.certainty, required this.verified, required this.notes, this.title = 'review'});
+  final String certainty, verified, notes, title;
+
+  @override
+  Widget build(BuildContext context) => TermSection(title, children: [
+        KV('確度', certainty),
+        KV('最終確認日', verified, mono: true),
+        KV('未確認事項', notes.trim().isEmpty && certainty == '確認済み' ? 'なし' : notes),
+      ]);
+}

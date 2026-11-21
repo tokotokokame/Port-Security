@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:port_security/data/repository.dart';
 import 'package:port_security/main.dart';
+import 'package:port_security/ui/kb_screens.dart';
 import 'package:port_security/ui/port_detail_screen.dart';
 import 'package:port_security/ui/search_screen.dart';
 import 'package:port_security/ui/theme.dart';
@@ -74,6 +75,30 @@ void main() {
     await tester.tap(find.text('logs'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Hyper-V'), findsWidgets);
+  });
+
+  testWidgets('v1.1: risk shows CVE with condition; CVE screen opens', (tester) async {
+    await start(tester);
+    await tester.enterText(find.byKey(const Key('search-field')), '445/tcp');
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(PortRow).first);
+    await tester.pumpAndSettle();
+    final card = find.textContaining('CVE-2017-0144');
+    await tester.dragUntilVisible(card, find.byType(ListView).first, const Offset(0, -300));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('条件:'), findsWidgets);
+    await tester.tap(card);
+    await tester.pumpAndSettle();
+    expect(find.text('~/cve/CVE-2017-0144'), findsOneWidget);
+    expect(find.textContaining('ポート番号だけでは該当を判定できません'), findsOneWidget);
+  });
+
+  testWidgets('v1.1: attack detail shows certainty and review date', (tester) async {
+    final a = repo.attacks.values.first;
+    await tester.pumpWidget(MaterialApp(theme: Term.theme(), home: AttackDetailScreen(a, repo)));
+    await tester.pumpAndSettle();
+    expect(find.text('確度'), findsOneWidget);
+    expect(find.text('最終確認日'), findsOneWidget);
   });
 
   testWidgets('lists keep clear of the system navigation bar', (tester) async {

@@ -4,6 +4,7 @@ import '../data/models.dart';
 import '../data/repository.dart';
 import 'kb_screens.dart';
 import 'theme.dart';
+import 'vuln_screen.dart';
 import 'widgets.dart';
 
 ListView _tab(BuildContext context, List<Widget> children) => ListView(padding: listPadding(context), children: children);
@@ -40,6 +41,11 @@ class OverviewTab extends StatelessWidget {
       if (r != null)
         TermSection('risk', note: r.level, children: [
           KV('狙われる理由', r.reason), KV('不審な兆候', r.indicators), KV('調査の焦点', r.focus), KV('緩和策', r.mitigation),
+          KV('評価の確度', r.certainty), KV('評価の未確認事項', r.notes),
+        ]),
+      if (r != null && r.vulns.isNotEmpty)
+        TermSection('cve', note: '製品・バージョン依存', children: [
+          for (final id in r.vulns) if (repo.vulns[id] case final v?) VulnCard(v, repo),
         ]),
       TermSection('defense', children: [KV('推奨対策', d.defenses)]),
     ]);
@@ -88,7 +94,7 @@ class AttackMatrixTab extends StatelessWidget {
   Widget build(BuildContext context) => _tab(context, [
         TermSection('att&ck', note: 'MITRE ATT&CK', children: [
           for (final id in d.techniques)
-            if (repo.techniques[id] case final t?) TechniqueCard(t, repo),
+            if (repo.techniques[id] case final t?) TechniqueCard(t, repo, basis: d.basis[id]),
         ]),
       ]);
 }
@@ -117,8 +123,8 @@ class SourcesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _tab(context, [
-        TermSection('certainty', children: [KV('確度', d.certainty), KV('確認日', d.verified, mono: true), KV('未確認事項', d.notes),
-          KV('未整備', d.gaps.join('\n'))]),
+        ReviewSection(title: 'certainty', certainty: d.certainty, verified: d.verified, notes: d.notes),
+        TermSection('gaps', children: [KV('未整備', d.gaps.join('\n'))]),
         TermSection('evidence', note: '根拠の確認内容', children: [
           for (final e in d.evidence)
             RuleCard(
