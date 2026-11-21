@@ -403,5 +403,2339 @@
       "detection"
     ],
     "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-PORTS",
+    "title": "Service overview and network port requirements for Windows",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/service-overview-and-network-port-requirements",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Service overview and network port requirements for Windows",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "service",
+      "port_assignment"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-HYPERV-LM",
+    "title": "Virtual machine live migration troubleshooting guidance",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/virtualization/troubleshoot-live-migration-guidance",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Virtual machine live migration troubleshooting guidance",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "TCP 6600 と 3343(クラスタ)の待受確認を記載",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-HYPERV-CONN",
+    "title": "Troubleshoot Hyper-V cluster connectivity, management, and configuration failures",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/virtualization/hyper-v-cluster-connectivity-management-configuration",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Troubleshoot Hyper-V cluster connectivity, management, and configuration failures",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "VMConnect の 2179 を記載",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-HYPERV-EVTLOG",
+    "title": "Looking at the Hyper-V Event Log (January 2018 edition)",
+    "publisher": "Microsoft Tech Community",
+    "url": "https://techcommunity.microsoft.com/blog/virtualization/looking-at-the-hyper-v-event-log-january-2018-edition/382411",
+    "document_type": "Vendor Blog",
+    "applicable_data": "Looking at the Hyper-V Event Log (January 2018 edition)",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "障害解析は Hyper-V-VMMS と Hyper-V-Worker から始めると記載",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-HYPERV-TS",
+    "title": "Troubleshoot Hyper-V virtual machine input, migration, and device integration issues",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/virtualization/hyper-v-virtual-machine-input-migration-integration",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Troubleshoot Hyper-V virtual machine input, migration, and device integration issues",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "Hyper-V-Worker 18502 (VM電源断) 等を記載",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-ORACLE-VBOX-TS",
+    "title": "Oracle VirtualBox User Guide 7.1 - Troubleshooting",
+    "publisher": "Oracle",
+    "url": "https://docs.oracle.com/en/virtualization/virtualbox/7.1/user/Troubleshooting.html",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Oracle VirtualBox User Guide 7.1 - Troubleshooting",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-ORACLE-VBOX-VRDP",
+    "title": "Oracle VirtualBox User Guide 7.2 - Remote Virtual Machines",
+    "publisher": "Oracle",
+    "url": "https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/remotevm.html",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Oracle VirtualBox User Guide 7.2 - Remote Virtual Machines",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "VRDP サーバーの既定は TCP 3389",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-ORACLE-VBOX-WEB",
+    "title": "Starting the Oracle VM VirtualBox Web Service Automatically",
+    "publisher": "Oracle",
+    "url": "https://docs.oracle.com/en/virtualization/virtualbox/6.0/admin/vboxwebsrv-daemon.html",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Starting the Oracle VM VirtualBox Web Service Automatically",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "vboxwebsrv の既定ポート 18083、既定バインドは localhost",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-CISA-AMP",
+    "title": "TA14-017A: UDP-Based Amplification Attacks",
+    "publisher": "CISA",
+    "url": "https://www.cisa.gov/ncas/alerts/TA14-017A",
+    "document_type": "Government Advisory",
+    "applicable_data": "TA14-017A: UDP-Based Amplification Attacks",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-KERBRUTE",
+    "title": "kerbrute README",
+    "publisher": "ropnop (GitHub)",
+    "url": "https://github.com/ropnop/kerbrute",
+    "document_type": "Project Documentation",
+    "applicable_data": "kerbrute README",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "事前認証失敗は 4625 でなく 4768/4771 を発生させると記載",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-CHISEL",
+    "title": "chisel README",
+    "publisher": "jpillora (GitHub)",
+    "url": "https://github.com/jpillora/chisel",
+    "document_type": "Project Documentation",
+    "applicable_data": "chisel README",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "HTTP 上のトンネル。--port 既定 8080",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-EVILWINRM",
+    "title": "Evil-WinRM README",
+    "publisher": "Hackplayers (GitHub)",
+    "url": "https://github.com/Hackplayers/evil-winrm",
+    "document_type": "Project Documentation",
+    "applicable_data": "Evil-WinRM README",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-METASPLOIT-REVSHELL",
+    "title": "How to use a reverse shell in Metasploit",
+    "publisher": "Rapid7",
+    "url": "https://docs.metasploit.com/docs/using-metasploit/basics/how-to-use-a-reverse-shell-in-metasploit.html",
+    "document_type": "Project Documentation",
+    "applicable_data": "How to use a reverse shell in Metasploit",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "リスナー例で LPORT 4444 を使用",
+    "scope": [
+      "threat_advisory"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-HYDRA",
+    "title": "THC-Hydra",
+    "publisher": "vanhauser-thc (GitHub)",
+    "url": "https://github.com/vanhauser-thc/thc-hydra",
+    "document_type": "Project Documentation",
+    "applicable_data": "THC-Hydra",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-NMAP",
+    "title": "Nmap",
+    "publisher": "Nmap Project",
+    "url": "https://nmap.org/",
+    "document_type": "Project Documentation",
+    "applicable_data": "Nmap",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-SAMBA-SMBCLIENT",
+    "title": "smbclient(1) manual",
+    "publisher": "Samba Team",
+    "url": "https://www.samba.org/samba/docs/current/man-html/smbclient.1.html",
+    "document_type": "Project Documentation",
+    "applicable_data": "smbclient(1) manual",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "",
+    "scope": [
+      "service"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-SIGMA-IMPACKET-LM",
+    "title": "Sigma: HackTool - Potential Impacket Lateral Movement Activity",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_impacket_lateral_movement.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: HackTool - Potential Impacket Lateral Movement Activity",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-SMBEXEC",
+    "title": "Sigma: smbexec.py Service Installation",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/system/service_control_manager/win_system_hack_smbexec.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: smbexec.py Service Installation",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-CS-PIPE",
+    "title": "Sigma: CobaltStrike Named Pipe",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/pipe_created/pipe_created_hktl_cobaltstrike.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: CobaltStrike Named Pipe",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-KERBEROAST",
+    "title": "Sigma: Kerberoasting Activity - Initial Query",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_kerberoasting_activity.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: Kerberoasting Activity - Initial Query",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-ASREP",
+    "title": "Sigma: Potential AS-REP Roasting via Kerberos TGT Requests",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_kerberos_asrep_roasting.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: Potential AS-REP Roasting via Kerberos TGT Requests",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-DCSYNC",
+    "title": "Sigma: Active Directory Replication from Non Machine Account - DcSync Indicator",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_ad_replication_non_machine_account.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: Active Directory Replication from Non Machine Account - DcSync Indicator",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-PSEXESVC",
+    "title": "Sigma: PsExec Service Execution",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_sysinternals_psexesvc.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: PsExec Service Execution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-WINRM-CHILD",
+    "title": "Sigma: Suspicious Processes Spawned by WinRM",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_winrm_susp_child_process.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: Suspicious Processes Spawned by WinRM",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-EVILWINRM",
+    "title": "Sigma: HackTool - Evil-WinRm Execution - PowerShell Module",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_module/posh_pm_hktl_evil_winrm_execution.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: HackTool - Evil-WinRm Execution - PowerShell Module",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-UA-RECON",
+    "title": "Sigma: Suspicious User-Agents Related To Recon Tools",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/web/webserver_generic/web_susp_useragents.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: Suspicious User-Agents Related To Recon Tools",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-RUBEUS",
+    "title": "Sigma: HackTool - Rubeus Execution",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_rubeus.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: HackTool - Rubeus Execution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-SHARPHOUND",
+    "title": "Sigma: SharpHound Recon Sessions",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/application/rpc_firewall/rpc_firewall_sharphound_recon_sessions.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: SharpHound Recon Sessions",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-CHISEL",
+    "title": "Sigma: PUA - Chisel Tunneling Tool Execution",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_pua_chisel.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: PUA - Chisel Tunneling Tool Execution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-ADFIND",
+    "title": "Sigma: PUA - AdFind Suspicious Execution",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_pua_adfind_susp_usage.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: PUA - AdFind Suspicious Execution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-NGROK",
+    "title": "Sigma: Process Initiated Network Connection To Ngrok Domain",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/network_connection/net_connection_win_domain_ngrok.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: Process Initiated Network Connection To Ngrok Domain",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-SIGMA-LSASS",
+    "title": "Sigma: Potential Credential Dumping Activity Via LSASS",
+    "publisher": "SigmaHQ",
+    "url": "https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_access/proc_access_win_lsass_memdump.yml",
+    "document_type": "Detection Rule",
+    "applicable_data": "Sigma: Potential Credential Dumping Activity Via LSASS",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-EVT-4624",
+    "title": "4624: An account was successfully logged on",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4624",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4624: An account was successfully logged on",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-4625",
+    "title": "4625: An account failed to log on",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4625",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4625: An account failed to log on",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-4648",
+    "title": "4648: A logon was attempted using explicit credentials",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4648",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4648: A logon was attempted using explicit credentials",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-4662",
+    "title": "4662: An operation was performed on an object",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4662",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4662: An operation was performed on an object",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-4697",
+    "title": "4697: A service was installed in the system",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4697",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4697: A service was installed in the system",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-4768",
+    "title": "4768: A Kerberos authentication ticket (TGT) was requested",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4768",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4768: A Kerberos authentication ticket (TGT) was requested",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-4769",
+    "title": "4769: A Kerberos service ticket was requested",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4769: A Kerberos service ticket was requested",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-EVT-4771",
+    "title": "4771: Kerberos pre-authentication failed",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4771",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4771: Kerberos pre-authentication failed",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-4776",
+    "title": "4776: The computer attempted to validate the credentials for an account",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4776",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "4776: The computer attempted to validate the credentials for an account",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-5140",
+    "title": "5140: A network share object was accessed",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5140",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "5140: A network share object was accessed",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MS-EVT-5145",
+    "title": "5145: A network share object was checked to see whether client can be granted desired access",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5145",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "5145: A network share object was checked to see whether client can be granted desired access",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-21",
+    "verification_status": "未再検証",
+    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false
+  },
+  {
+    "source_id": "SRC-MITRE-T1001",
+    "title": "T1001 Data Obfuscation",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1001/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1001 Data Obfuscation",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1005",
+    "title": "T1005 Data from Local System",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1005/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1005 Data from Local System",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1007",
+    "title": "T1007 System Service Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1007/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1007 System Service Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1012",
+    "title": "T1012 Query Registry",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1012/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1012 Query Registry",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1016",
+    "title": "T1016 System Network Configuration Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1016/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1016 System Network Configuration Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1018",
+    "title": "T1018 Remote System Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1018/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1018 Remote System Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1027",
+    "title": "T1027 Obfuscated Files or Information",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1027/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1027 Obfuscated Files or Information",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1029",
+    "title": "T1029 Scheduled Transfer",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1029/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1029 Scheduled Transfer",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1030",
+    "title": "T1030 Data Transfer Size Limits",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1030/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1030 Data Transfer Size Limits",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1033",
+    "title": "T1033 System Owner/User Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1033/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1033 System Owner/User Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1039",
+    "title": "T1039 Data from Network Shared Drive",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1039/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1039 Data from Network Shared Drive",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1046",
+    "title": "T1046 Network Service Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1046/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1046 Network Service Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1047",
+    "title": "T1047 Windows Management Instrumentation",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1047/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1047 Windows Management Instrumentation",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1048",
+    "title": "T1048 Exfiltration Over Alternative Protocol",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1048/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1048 Exfiltration Over Alternative Protocol",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1049",
+    "title": "T1049 System Network Connections Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1049/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1049 System Network Connections Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1053",
+    "title": "T1053 Scheduled Task/Job",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1053/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1053 Scheduled Task/Job",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1055",
+    "title": "T1055 Process Injection",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1055/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1055 Process Injection",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1056",
+    "title": "T1056 Input Capture",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1056/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1056 Input Capture",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1057",
+    "title": "T1057 Process Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1057/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1057 Process Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1059",
+    "title": "T1059 Command and Scripting Interpreter",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1059/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1059 Command and Scripting Interpreter",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1068",
+    "title": "T1068 Exploitation for Privilege Escalation",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1068/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1068 Exploitation for Privilege Escalation",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1069",
+    "title": "T1069 Permission Groups Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1069/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1069 Permission Groups Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1070",
+    "title": "T1070 Indicator Removal",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1070/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1070 Indicator Removal",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1078",
+    "title": "T1078 Valid Accounts",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1078/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1078 Valid Accounts",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1083",
+    "title": "T1083 File and Directory Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1083/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1083 File and Directory Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1087",
+    "title": "T1087 Account Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1087/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1087 Account Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1090",
+    "title": "T1090 Proxy",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1090/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1090 Proxy",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1095",
+    "title": "T1095 Non-Application Layer Protocol",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1095/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1095 Non-Application Layer Protocol",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1098",
+    "title": "T1098 Account Manipulation",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1098/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1098 Account Manipulation",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1102",
+    "title": "T1102 Web Service",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1102/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1102 Web Service",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1105",
+    "title": "T1105 Ingress Tool Transfer",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1105/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1105 Ingress Tool Transfer",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1106",
+    "title": "T1106 Native API",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1106/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1106 Native API",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1112",
+    "title": "T1112 Modify Registry",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1112/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1112 Modify Registry",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1113",
+    "title": "T1113 Screen Capture",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1113/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1113 Screen Capture",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1114",
+    "title": "T1114 Email Collection",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1114/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1114 Email Collection",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1132",
+    "title": "T1132 Data Encoding",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1132/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1132 Data Encoding",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1133",
+    "title": "T1133 External Remote Services",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1133/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1133 External Remote Services",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1134",
+    "title": "T1134 Access Token Manipulation",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1134/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1134 Access Token Manipulation",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1135",
+    "title": "T1135 Network Share Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1135/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1135 Network Share Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1136",
+    "title": "T1136 Create Account",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1136/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1136 Create Account",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1137",
+    "title": "T1137 Office Application Startup",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1137/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1137 Office Application Startup",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1140",
+    "title": "T1140 Deobfuscate/Decode Files or Information",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1140/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1140 Deobfuscate/Decode Files or Information",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1185",
+    "title": "T1185 Browser Session Hijacking",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1185/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1185 Browser Session Hijacking",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1190",
+    "title": "T1190 Exploit Public-Facing Application",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1190/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1190 Exploit Public-Facing Application",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1197",
+    "title": "T1197 BITS Jobs",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1197/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1197 BITS Jobs",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1201",
+    "title": "T1201 Password Policy Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1201/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1201 Password Policy Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1203",
+    "title": "T1203 Exploitation for Client Execution",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1203/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1203 Exploitation for Client Execution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1207",
+    "title": "T1207 Rogue Domain Controller",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1207/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1207 Rogue Domain Controller",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1218",
+    "title": "T1218 System Binary Proxy Execution",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1218/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1218 System Binary Proxy Execution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1219",
+    "title": "T1219 Remote Access Tools",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1219/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1219 Remote Access Tools",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1482",
+    "title": "T1482 Domain Trust Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1482/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1482 Domain Trust Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1497",
+    "title": "T1497 Virtualization/Sandbox Evasion",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1497/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1497 Virtualization/Sandbox Evasion",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1498",
+    "title": "T1498 Network Denial of Service",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1498/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1498 Network Denial of Service",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1518",
+    "title": "T1518 Software Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1518/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1518 Software Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1543",
+    "title": "T1543 Create or Modify System Process",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1543/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1543 Create or Modify System Process",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1547",
+    "title": "T1547 Boot or Logon Autostart Execution",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1547/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1547 Boot or Logon Autostart Execution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1548",
+    "title": "T1548 Abuse Elevation Control Mechanism",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1548/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1548 Abuse Elevation Control Mechanism",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1550",
+    "title": "T1550 Use Alternate Authentication Material",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1550/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1550 Use Alternate Authentication Material",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1553",
+    "title": "T1553 Subvert Trust Controls",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1553/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1553 Subvert Trust Controls",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1555",
+    "title": "T1555 Credentials from Password Stores",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1555/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1555 Credentials from Password Stores",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1560",
+    "title": "T1560 Archive Collected Data",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1560/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1560 Archive Collected Data",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1564",
+    "title": "T1564 Hide Artifacts",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1564/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1564 Hide Artifacts",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1566",
+    "title": "T1566 Phishing",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1566/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1566 Phishing",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1567",
+    "title": "T1567 Exfiltration Over Web Service",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1567/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1567 Exfiltration Over Web Service",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1568",
+    "title": "T1568 Dynamic Resolution",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1568/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1568 Dynamic Resolution",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1569",
+    "title": "T1569 System Services",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1569/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1569 System Services",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1570",
+    "title": "T1570 Lateral Tool Transfer",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1570/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1570 Lateral Tool Transfer",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1571",
+    "title": "T1571 Non-Standard Port",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1571/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1571 Non-Standard Port",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1572",
+    "title": "T1572 Protocol Tunneling",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1572/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1572 Protocol Tunneling",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1573",
+    "title": "T1573 Encrypted Channel",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1573/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1573 Encrypted Channel",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1602",
+    "title": "T1602 Data from Configuration Repository",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1602/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1602 Data from Configuration Repository",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1610",
+    "title": "T1610 Deploy Container",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1610/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1610 Deploy Container",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1613",
+    "title": "T1613 Container and Resource Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1613/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1613 Container and Resource Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1615",
+    "title": "T1615 Group Policy Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1615/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1615 Group Policy Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1620",
+    "title": "T1620 Reflective Code Loading",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1620/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1620 Reflective Code Loading",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1649",
+    "title": "T1649 Steal or Forge Authentication Certificates",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1649/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1649 Steal or Forge Authentication Certificates",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1680",
+    "title": "T1680 Local Storage Discovery",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1680/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1680 Local Storage Discovery",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-T1685",
+    "title": "T1685 Disable or Modify Tools",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1685/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "T1685 Disable or Modify Tools",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0002",
+    "title": "S0002 Mimikatz",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0002/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0002 Mimikatz",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0029",
+    "title": "S0029 PsExec",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0029/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0029 PsExec",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0154",
+    "title": "S0154 Cobalt Strike",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0154/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0154 Cobalt Strike",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0174",
+    "title": "S0174 Responder",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0174/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0174 Responder",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0357",
+    "title": "S0357 Impacket",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0357/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0357 Impacket",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0488",
+    "title": "S0488 CrackMapExec",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0488/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0488 CrackMapExec",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0508",
+    "title": "S0508 ngrok",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0508/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0508 ngrok",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0521",
+    "title": "S0521 BloodHound",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0521/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0521 BloodHound",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0552",
+    "title": "S0552 AdFind",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0552/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0552 AdFind",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S0590",
+    "title": "S0590 NBTscan",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S0590/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S0590 NBTscan",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MITRE-S1071",
+    "title": "S1071 Rubeus",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/software/S1071/",
+    "document_type": "MITRE ATT&CK v20.1 (STIX)",
+    "applicable_data": "S1071 Rubeus",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-05",
+    "verification_status": "確認済み",
+    "notes": "公式STIXデータから取得",
+    "scope": [
+      "attack_technique",
+      "detection"
+    ],
+    "reverified_v4": true
   }
 ]

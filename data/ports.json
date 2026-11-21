@@ -1,5 +1,71 @@
 [
   {
+    "id": "PORT-00017-UDP",
+    "port_number": 17,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "qotd",
+    "formal_name": "QOTD",
+    "iana_description": "Quote of the Day",
+    "category": "AMP",
+    "purpose": "短い文を返す試験用サービス。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "増幅攻撃の反射元",
+    "suspicious_traffic_features": "外部からの小さな要求と大きな応答の急増",
+    "investigation_checkpoints": "応答量、送信元の分布、要求の種類",
+    "recommended_defenses": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "attack_pattern_ids": [
+      "ATK-AMPLIFICATION"
+    ],
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-00017-UDP"
+  },
+  {
+    "id": "PORT-00019-UDP",
+    "port_number": 19,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "chargen",
+    "formal_name": "CharGEN",
+    "iana_description": "Character Generator",
+    "category": "AMP",
+    "purpose": "文字列を返す試験用サービス。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "増幅攻撃の反射元",
+    "suspicious_traffic_features": "外部からの小さな要求と大きな応答の急増",
+    "investigation_checkpoints": "応答量、送信元の分布、要求の種類",
+    "recommended_defenses": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "attack_pattern_ids": [
+      "ATK-AMPLIFICATION"
+    ],
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-00019-UDP"
+  },
+  {
     "id": "PORT-00020-TCP",
     "port_number": 20,
     "protocol_number": 6,
@@ -27,7 +93,9 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00020-TCP",
+    "category": "FILE",
+    "iana_description": "File Transfer [Default Data]"
   },
   {
     "id": "PORT-00021-TCP",
@@ -45,7 +113,8 @@
     "recommended_defenses": "FTPS/SFTPへの移行, 匿名ログイン無効化",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-EXFIL-ALT"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -55,11 +124,14 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1040"
+      "T1040",
+      "T1048"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00021-TCP",
+    "category": "FILE",
+    "iana_description": "File Transfer Protocol [Control]"
   },
   {
     "id": "PORT-00022-TCP",
@@ -79,7 +151,9 @@
       "ATK-BRUTE-FORCE",
       "ATK-REMOTE-EXPLOIT",
       "ATK-LATERAL-MOVE",
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-TUNNEL",
+      "ATK-EXFIL-ALT"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -91,11 +165,14 @@
     "technique_ids": [
       "T1110",
       "T1210",
-      "T1021.004"
+      "T1021.004",
+      "T1572"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": "SRV-SSH",
-    "risk_id": "RISK-00022-TCP"
+    "risk_id": "RISK-00022-TCP",
+    "category": "REMOTE",
+    "iana_description": "The Secure Shell (SSH) Protocol"
   },
   {
     "id": "PORT-00023-TCP",
@@ -113,7 +190,8 @@
     "recommended_defenses": "Telnetの完全廃止およびSSH(TCP 22)への移行",
     "attack_pattern_ids": [
       "ATK-CRED-THEFT",
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-UNAUTH-SERVICE"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -124,11 +202,14 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1040",
-      "T1595"
+      "T1595",
+      "T1078.001"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00023-TCP"
+    "risk_id": "RISK-00023-TCP",
+    "category": "REMOTE",
+    "iana_description": "Telnet"
   },
   {
     "id": "PORT-00025-TCP",
@@ -145,7 +226,8 @@
     "investigation_checkpoints": "メールサーバー送信ログ, 送信元IP, SMTPコマンドログ",
     "recommended_defenses": "STARTTLS暗号化強制, オープンリレー禁止, SPF/DKIM/DMARC導入",
     "attack_pattern_ids": [
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -154,11 +236,46 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1595"
+      "T1595",
+      "T1566"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00025-TCP",
+    "category": "MAIL",
+    "iana_description": "Simple Mail Transfer"
+  },
+  {
+    "id": "PORT-00049-TCP",
+    "port_number": 49,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "tacacs",
+    "formal_name": "TACACS+",
+    "iana_description": "Login Host Protocol (TACACS)",
+    "category": "MGMT",
+    "purpose": "ネットワーク機器の認証・認可。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "共有鍵の弱さによる盗聴・なりすまし",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-CRED-THEFT"
+    ],
+    "technique_ids": [
+      "T1040"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00049-TCP"
   },
   {
     "id": "PORT-00053-TCP",
@@ -189,7 +306,9 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": "SRV-DNS",
-    "risk_id": null
+    "risk_id": "RISK-00053-TCP",
+    "category": "NAME",
+    "iana_description": "Domain Name Server"
   },
   {
     "id": "PORT-00053-UDP",
@@ -207,7 +326,8 @@
     "recommended_defenses": "オープンリゾルバの閉鎖, DNSSEC導入, 指定DNS以外のUDP 53遮断",
     "attack_pattern_ids": [
       "ATK-DATA-EXFIL",
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-AMPLIFICATION"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -217,11 +337,14 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1071.004",
-      "T1041"
+      "T1041",
+      "T1498.002"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": "SRV-DNS",
-    "risk_id": "RISK-00053-UDP"
+    "risk_id": "RISK-00053-UDP",
+    "category": "NAME",
+    "iana_description": "Domain Name Server"
   },
   {
     "id": "PORT-00067-UDP",
@@ -238,7 +361,8 @@
     "investigation_checkpoints": "スイッチDHCP Snoopingログ, MACアドレスログ",
     "recommended_defenses": "スイッチでのDHCP Snooping有効化, 信頼ポート設定",
     "attack_pattern_ids": [
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-NAME-POISON"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -247,11 +371,14 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1595"
+      "T1595",
+      "T1557.003"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00067-UDP",
+    "category": "MGMT",
+    "iana_description": "Bootstrap Protocol Server"
   },
   {
     "id": "PORT-00068-UDP",
@@ -281,7 +408,41 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00068-UDP",
+    "category": "MGMT",
+    "iana_description": "Bootstrap Protocol Client"
+  },
+  {
+    "id": "PORT-00069-TCP",
+    "port_number": 69,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "tftp",
+    "formal_name": "TFTP (TCP)",
+    "iana_description": "Trivial File Transfer",
+    "category": "FILE",
+    "purpose": "TFTP は通常 UDP。TCP 登録もある。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "設定ファイルの取得",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-CRED-THEFT"
+    ],
+    "technique_ids": [
+      "T1552.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00069-TCP"
   },
   {
     "id": "PORT-00069-UDP",
@@ -298,7 +459,8 @@
     "investigation_checkpoints": "TFTPサーバーアクセスログ, 転送ファイル名",
     "recommended_defenses": "TFTPサービスの外部非公開, 必要な時のみ一時起動",
     "attack_pattern_ids": [
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-AMPLIFICATION"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -307,11 +469,14 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1552.001"
+      "T1552.001",
+      "T1498.002"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00069-UDP",
+    "category": "FILE",
+    "iana_description": "Trivial File Transfer"
   },
   {
     "id": "PORT-00080-TCP",
@@ -330,7 +495,8 @@
     "attack_pattern_ids": [
       "ATK-VULN-SCAN",
       "ATK-CRED-THEFT",
-      "ATK-DATA-EXFIL"
+      "ATK-DATA-EXFIL",
+      "ATK-PUBLIC-EXPLOIT"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -340,11 +506,14 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1595.002",
-      "T1071.001"
+      "T1071.001",
+      "T1190"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": "SRV-HTTP",
-    "risk_id": "RISK-00080-TCP"
+    "risk_id": "RISK-00080-TCP",
+    "category": "WEB",
+    "iana_description": "World Wide Web HTTP"
   },
   {
     "id": "PORT-00088-TCP",
@@ -362,7 +531,8 @@
     "recommended_defenses": "強固なパスワードポリシー, AES暗号化の強制, Managed Service Accounts",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-KERBEROAST"
     ],
     "source_ids": [
       "SRC-MS-RDS",
@@ -378,7 +548,9 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00088-TCP",
+    "category": "AUTH",
+    "iana_description": "Kerberos"
   },
   {
     "id": "PORT-00088-UDP",
@@ -396,7 +568,8 @@
     "recommended_defenses": "MFA導入, ドメインコントローラアクセス制御",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-KERBEROAST"
     ],
     "source_ids": [
       "SRC-MS-RDS",
@@ -411,7 +584,41 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00088-UDP",
+    "category": "AUTH",
+    "iana_description": "Kerberos"
+  },
+  {
+    "id": "PORT-00102-TCP",
+    "port_number": 102,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "iso-tsap",
+    "formal_name": "ISO-TSAP (S7 等)",
+    "iana_description": "ISO-TSAP Class 0",
+    "category": "ICS",
+    "purpose": "Siemens S7 等の産業機器通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "制御プログラムの読み取り・変更",
+    "suspicious_traffic_features": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_checkpoints": "ICS向けIDS、FWログ",
+    "recommended_defenses": "ネットワーク分離、通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00102-TCP"
   },
   {
     "id": "PORT-00110-TCP",
@@ -429,7 +636,8 @@
     "recommended_defenses": "POP3S (TCP 995 / TLS) への移行",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -439,11 +647,81 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1040"
+      "T1040",
+      "T1114.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00110-TCP",
+    "category": "MAIL",
+    "iana_description": "Post Office Protocol - Version 3"
+  },
+  {
+    "id": "PORT-00111-TCP",
+    "port_number": 111,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "sunrpc",
+    "formal_name": "rpcbind",
+    "iana_description": "SUN Remote Procedure Call",
+    "category": "FILE",
+    "purpose": "NFS などの RPC サービスのポートを案内する。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "RPC サービス(NFS等)の列挙",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00111-TCP"
+  },
+  {
+    "id": "PORT-00111-UDP",
+    "port_number": 111,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "sunrpc",
+    "formal_name": "Portmap/RPC",
+    "iana_description": "SUN Remote Procedure Call",
+    "category": "AMP",
+    "purpose": "ONC RPC サービスのポート番号を案内する。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "増幅攻撃の反射元、RPC サービスの列挙",
+    "suspicious_traffic_features": "外部からの小さな要求と大きな応答の急増",
+    "investigation_checkpoints": "応答量、送信元の分布、要求の種類",
+    "recommended_defenses": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "attack_pattern_ids": [
+      "ATK-AMPLIFICATION",
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1498.002",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-00111-UDP"
   },
   {
     "id": "PORT-00123-UDP",
@@ -460,7 +738,8 @@
     "investigation_checkpoints": "NTPサーバーログ, パケット増幅率",
     "recommended_defenses": "NTP monlist機能の無効化, 内部NTPサーバーの参照制限",
     "attack_pattern_ids": [
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-AMPLIFICATION"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -469,11 +748,14 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1595"
+      "T1595",
+      "T1498.002"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00123-UDP",
+    "category": "AMP",
+    "iana_description": "Network Time Protocol"
   },
   {
     "id": "PORT-00135-TCP",
@@ -491,7 +773,9 @@
     "recommended_defenses": "TCP 135の境界FWでの遮断, 内部セグメント化",
     "attack_pattern_ids": [
       "ATK-REMOTE-EXPLOIT",
-      "ATK-LATERAL-MOVE"
+      "ATK-LATERAL-MOVE",
+      "ATK-REMOTE-EXEC",
+      "ATK-DCSYNC"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -503,11 +787,15 @@
     "unconfirmed_notes": "",
     "technique_ids": [
       "T1210",
-      "T1021"
+      "T1021",
+      "T1047",
+      "T1003.006"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00135-TCP",
+    "category": "REMOTE",
+    "iana_description": "DCE endpoint resolution"
   },
   {
     "id": "PORT-00137-UDP",
@@ -524,7 +812,9 @@
     "investigation_checkpoints": "パケットキャプチャ, Responder動作検知",
     "recommended_defenses": "NBT-NSおよびLLMNRの完全無効化",
     "attack_pattern_ids": [
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-NAME-POISON",
+      "ATK-AMPLIFICATION"
     ],
     "source_ids": [
       "SRC-CISA-HYGIENE",
@@ -534,11 +824,14 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1557.001"
+      "T1557.001",
+      "T1498.002"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00137-UDP",
+    "category": "NAME",
+    "iana_description": "NETBIOS Name Service"
   },
   {
     "id": "PORT-00138-UDP",
@@ -569,7 +862,9 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00138-UDP",
+    "category": "NAME",
+    "iana_description": "NETBIOS Datagram Service"
   },
   {
     "id": "PORT-00139-TCP",
@@ -602,7 +897,9 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00139-TCP",
+    "category": "FILE",
+    "iana_description": "NETBIOS Session Service"
   },
   {
     "id": "PORT-00143-TCP",
@@ -620,7 +917,8 @@
     "recommended_defenses": "IMAPS (TCP 993 / TLS) への移行",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -630,11 +928,14 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1040"
+      "T1040",
+      "T1114.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00143-TCP",
+    "category": "MAIL",
+    "iana_description": "Internet Message Access Protocol"
   },
   {
     "id": "PORT-00161-UDP",
@@ -652,7 +953,8 @@
     "recommended_defenses": "SNMP v3 (暗号化・認証付) への移行, コミュニティ名変更, IP制限",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-AMPLIFICATION"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -662,11 +964,15 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1595"
+      "T1595",
+      "T1498.002",
+      "T1602.001"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00161-UDP",
+    "category": "MGMT",
+    "iana_description": "SNMP"
   },
   {
     "id": "PORT-00162-UDP",
@@ -696,7 +1002,41 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00162-UDP",
+    "category": "MGMT",
+    "iana_description": "SNMPTRAP"
+  },
+  {
+    "id": "PORT-00179-TCP",
+    "port_number": 179,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "bgp",
+    "formal_name": "BGP",
+    "iana_description": "Border Gateway Protocol",
+    "category": "MGMT",
+    "purpose": "AS 間の経路交換。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "セッション妨害、経路の不正広告",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00179-TCP"
   },
   {
     "id": "PORT-00389-TCP",
@@ -714,7 +1054,8 @@
     "recommended_defenses": "LDAPS (TCP 636) への移行, Channel Binding有効化",
     "attack_pattern_ids": [
       "ATK-CRED-THEFT",
-      "ATK-BRUTE-FORCE"
+      "ATK-BRUTE-FORCE",
+      "ATK-AD-RECON"
     ],
     "source_ids": [
       "SRC-MS-RDS",
@@ -725,11 +1066,14 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1040",
-      "T1110"
+      "T1110",
+      "T1087.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00389-TCP",
+    "category": "AUTH",
+    "iana_description": "Lightweight Directory Access Protocol"
   },
   {
     "id": "PORT-00389-UDP",
@@ -746,7 +1090,8 @@
     "investigation_checkpoints": "境界FWログ, パケット増幅率監視",
     "recommended_defenses": "外部からのUDP 389遮断 (CISA要請)",
     "attack_pattern_ids": [
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-AMPLIFICATION"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -756,11 +1101,14 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1595"
+      "T1595",
+      "T1498.002"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00389-UDP",
+    "category": "AUTH",
+    "iana_description": "Lightweight Directory Access Protocol"
   },
   {
     "id": "PORT-00427-TCP",
@@ -778,22 +1126,25 @@
     "recommended_defenses": "ESXi上のslpd停止, 外部からの427アクセス遮断",
     "attack_pattern_ids": [
       "ATK-REMOTE-EXPLOIT",
-      "ATK-RANSOMWARE"
+      "ATK-RANSOMWARE",
+      "ATK-HYPERVISOR"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-DET0118"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "一部確認",
-    "unconfirmed_notes": "v4でport_risks側の孤立レコードから新設。427/TCP=svrlocはIANAで確認、AN0329の監視対象。CVE-2021-21974/ESXiArgsの記述は個別出典未付与。",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
     "technique_ids": [
       "T1210",
       "T1486"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00427-TCP"
+    "risk_id": "RISK-00427-TCP",
+    "category": "VIRT",
+    "iana_description": "Server Location"
   },
   {
     "id": "PORT-00443-TCP",
@@ -812,7 +1163,10 @@
     "attack_pattern_ids": [
       "ATK-DATA-EXFIL",
       "ATK-REMOTE-EXPLOIT",
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-C2-PORT",
+      "ATK-TUNNEL"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -824,11 +1178,14 @@
     "technique_ids": [
       "T1071.001",
       "T1041",
-      "T1210"
+      "T1210",
+      "T1190"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": "SRV-HTTPS",
-    "risk_id": "RISK-00443-TCP"
+    "risk_id": "RISK-00443-TCP",
+    "category": "WEB",
+    "iana_description": "http protocol over TLS/SSL"
   },
   {
     "id": "PORT-00443-UDP",
@@ -858,7 +1215,9 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": "SRV-HTTPS",
-    "risk_id": null
+    "risk_id": "RISK-00443-UDP",
+    "category": "WEB",
+    "iana_description": "http protocol over TLS/SSL"
   },
   {
     "id": "PORT-00445-TCP",
@@ -878,7 +1237,9 @@
       "ATK-REMOTE-EXPLOIT",
       "ATK-LATERAL-MOVE",
       "ATK-RANSOMWARE",
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-REMOTE-EXEC",
+      "ATK-NAME-POISON"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -891,11 +1252,114 @@
     "technique_ids": [
       "T1210",
       "T1021.002",
-      "T1486"
+      "T1486",
+      "T1569.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": "SRV-SMB",
-    "risk_id": "RISK-00445-TCP"
+    "risk_id": "RISK-00445-TCP",
+    "category": "FILE",
+    "iana_description": "Microsoft-DS"
+  },
+  {
+    "id": "PORT-00464-TCP",
+    "port_number": 464,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "kpasswd",
+    "formal_name": "Kerberos パスワード変更",
+    "iana_description": "kpasswd",
+    "category": "AUTH",
+    "purpose": "Kerberos のパスワード変更 (kpasswd)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "パスワード変更機能への総当たり",
+    "suspicious_traffic_features": "認証失敗の急増、大量の列挙要求",
+    "investigation_checkpoints": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "recommended_defenses": "署名とチャネルバインディング、管理ネットワークの分離",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00464-TCP"
+  },
+  {
+    "id": "PORT-00464-UDP",
+    "port_number": 464,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "kpasswd",
+    "formal_name": "Kerberos パスワード変更",
+    "iana_description": "kpasswd",
+    "category": "AUTH",
+    "purpose": "Kerberos のパスワード変更 (kpasswd)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "パスワード変更機能への総当たり",
+    "suspicious_traffic_features": "認証失敗の急増、大量の列挙要求",
+    "investigation_checkpoints": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "recommended_defenses": "署名とチャネルバインディング、管理ネットワークの分離",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-00464-UDP"
+  },
+  {
+    "id": "PORT-00465-TCP",
+    "port_number": 465,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "urd",
+    "formal_name": "SMTP over TLS (submissions)",
+    "iana_description": "URL Rendezvous Directory for SSM",
+    "category": "MAIL",
+    "purpose": "TLS で保護したメール送信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "乗っ取りアカウントからの大量送信",
+    "suspicious_traffic_features": "大量送信、認証失敗、平文認証",
+    "investigation_checkpoints": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "recommended_defenses": "TLSの強制、多要素認証、送信ドメイン認証",
+    "attack_pattern_ids": [
+      "ATK-MAIL-ABUSE",
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1566",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00465-TCP"
   },
   {
     "id": "PORT-00500-UDP",
@@ -913,7 +1377,8 @@
     "recommended_defenses": "アグレッシブモード廃止, メインモード/IKEv2への移行, 強固なPSK/証明書",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-EXTERNAL-REMOTE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -923,11 +1388,116 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1110.002"
+      "T1110.002",
+      "T1133"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00500-UDP",
+    "category": "VPN",
+    "iana_description": "isakmp"
+  },
+  {
+    "id": "PORT-00502-TCP",
+    "port_number": 502,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "mbap",
+    "formal_name": "Modbus/TCP",
+    "iana_description": "Modbus Application Protocol",
+    "category": "ICS",
+    "purpose": "PLC 等の産業機器の読み書き。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでの値の読み取り・書込み",
+    "suspicious_traffic_features": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_checkpoints": "ICS向けIDS、FWログ",
+    "recommended_defenses": "ネットワーク分離、通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00502-TCP"
+  },
+  {
+    "id": "PORT-00512-TCP",
+    "port_number": 512,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "exec",
+    "formal_name": "rexec",
+    "iana_description": "remote process execution; authentication performed using passwords and UNIX login names",
+    "category": "REMOTE",
+    "purpose": "古いリモート実行サービス。平文。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "平文認証の盗聴、遠隔実行",
+    "suspicious_traffic_features": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_checkpoints": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "recommended_defenses": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "attack_pattern_ids": [
+      "ATK-CRED-THEFT",
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1040",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00512-TCP"
+  },
+  {
+    "id": "PORT-00513-TCP",
+    "port_number": 513,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "login",
+    "formal_name": "rlogin",
+    "iana_description": "remote login a la telnet; automatic authentication performed based on priviledged port numbers and distributed data bases which identify \"authentication domains\"",
+    "category": "REMOTE",
+    "purpose": "古いリモートログイン。平文。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "平文認証の盗聴、信頼関係の悪用",
+    "suspicious_traffic_features": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_checkpoints": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "recommended_defenses": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "attack_pattern_ids": [
+      "ATK-CRED-THEFT",
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1040",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00513-TCP"
   },
   {
     "id": "PORT-00514-TCP",
@@ -957,7 +1527,9 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00514-TCP",
+    "category": "MGMT",
+    "iana_description": "cmd like exec, but automatic authentication is performed as for login server"
   },
   {
     "id": "PORT-00514-UDP",
@@ -987,7 +1559,107 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00514-UDP",
+    "category": "MGMT",
+    "iana_description": ""
+  },
+  {
+    "id": "PORT-00515-TCP",
+    "port_number": 515,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "printer",
+    "formal_name": "LPD",
+    "iana_description": "spooler",
+    "category": "PRINT",
+    "purpose": "古い印刷プロトコル。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "外部からの印刷・情報取得",
+    "suspicious_traffic_features": "外部からの印刷ジョブ、設定変更",
+    "investigation_checkpoints": "プリンタ/スプーラのログ",
+    "recommended_defenses": "外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00515-TCP"
+  },
+  {
+    "id": "PORT-00520-UDP",
+    "port_number": 520,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "router",
+    "formal_name": "RIP",
+    "iana_description": "local routing process (on site); uses variant of Xerox NS routing information protocol - RIP",
+    "category": "AMP",
+    "purpose": "距離ベクタ型のルーティング情報を交換する。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "増幅攻撃の反射元(RIPv1)、経路情報の注入",
+    "suspicious_traffic_features": "外部からの小さな要求と大きな応答の急増",
+    "investigation_checkpoints": "応答量、送信元の分布、要求の種類",
+    "recommended_defenses": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "attack_pattern_ids": [
+      "ATK-AMPLIFICATION"
+    ],
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-00520-UDP"
+  },
+  {
+    "id": "PORT-00548-TCP",
+    "port_number": 548,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "afpovertcp",
+    "formal_name": "AFP",
+    "iana_description": "AFP over TCP",
+    "category": "FILE",
+    "purpose": "Apple のファイル共有。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "共有への総当たり",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110",
+      "T1039"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00548-TCP"
   },
   {
     "id": "PORT-00587-TCP",
@@ -1005,7 +1677,8 @@
     "recommended_defenses": "SMTP AUTH認証必須化, TLS 1.2以上強制, 送信レート制限",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-CRED-THEFT"
+      "ATK-CRED-THEFT",
+      "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1014,11 +1687,116 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1110"
+      "T1110",
+      "T1566"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00587-TCP",
+    "category": "MAIL",
+    "iana_description": "Message Submission"
+  },
+  {
+    "id": "PORT-00593-TCP",
+    "port_number": 593,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "http-rpc-epmap",
+    "formal_name": "RPC over HTTP",
+    "iana_description": "HTTP RPC Ep Map",
+    "category": "REMOTE",
+    "purpose": "HTTP 経由で RPC エンドポイントを提供する。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "RPC インターフェースの列挙・悪用",
+    "suspicious_traffic_features": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_checkpoints": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "recommended_defenses": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "attack_pattern_ids": [
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-AD-RECON"
+    ],
+    "technique_ids": [
+      "T1210",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00593-TCP"
+  },
+  {
+    "id": "PORT-00623-UDP",
+    "port_number": 623,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "asf-rmcp",
+    "formal_name": "IPMI (RMCP)",
+    "iana_description": "ASF Remote Management and Control Protocol",
+    "category": "MGMT",
+    "purpose": "サーバーの帯域外管理 (BMC)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "BMC の認証ハッシュ取得・既定認証情報での乗っ取り",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-00623-UDP"
+  },
+  {
+    "id": "PORT-00631-TCP",
+    "port_number": 631,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ipp",
+    "formal_name": "IPP",
+    "iana_description": "IPP (Internet Printing Protocol)",
+    "category": "PRINT",
+    "purpose": "インターネット印刷プロトコル (CUPS 等)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "印刷サービスの脆弱性悪用",
+    "suspicious_traffic_features": "外部からの印刷ジョブ、設定変更",
+    "investigation_checkpoints": "プリンタ/スプーラのログ",
+    "recommended_defenses": "外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00631-TCP"
   },
   {
     "id": "PORT-00636-TCP",
@@ -1035,7 +1813,8 @@
     "investigation_checkpoints": "Windows Security Event 2889 (解決済), LDAPS接続ログ",
     "recommended_defenses": "有効なPKI証明書運用, TLS 1.2/1.3強制",
     "attack_pattern_ids": [
-      "ATK-BRUTE-FORCE"
+      "ATK-BRUTE-FORCE",
+      "ATK-AD-RECON"
     ],
     "source_ids": [
       "SRC-MS-RDS",
@@ -1045,11 +1824,212 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1110"
+      "T1110",
+      "T1087.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00636-TCP",
+    "category": "AUTH",
+    "iana_description": "ldap protocol over TLS/SSL (was sldap)"
+  },
+  {
+    "id": "PORT-00830-TCP",
+    "port_number": 830,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "netconf-ssh",
+    "formal_name": "NETCONF over SSH",
+    "iana_description": "NETCONF over SSH",
+    "category": "MGMT",
+    "purpose": "ネットワーク機器の設定 API。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "管理 API の総当たり・悪用",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00830-TCP"
+  },
+  {
+    "id": "PORT-00853-TCP",
+    "port_number": 853,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "domain-s",
+    "formal_name": "DNS over TLS",
+    "iana_description": "DNS query-response protocol run over TLS",
+    "category": "NAME",
+    "purpose": "TLS で保護した DNS。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "監視を回避した名前解決・トンネル",
+    "suspicious_traffic_features": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_checkpoints": "クエリ/応答ログ、応答サイズ、送信元",
+    "recommended_defenses": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "attack_pattern_ids": [
+      "ATK-TUNNEL",
+      "ATK-DATA-EXFIL"
+    ],
+    "technique_ids": [
+      "T1572",
+      "T1071.004"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00853-TCP"
+  },
+  {
+    "id": "PORT-00873-TCP",
+    "port_number": 873,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "rsync",
+    "formal_name": "rsync",
+    "iana_description": "rsync",
+    "category": "FILE",
+    "purpose": "ファイル同期。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしモジュールからのファイル取得",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-EXFIL-ALT"
+    ],
+    "technique_ids": [
+      "T1039",
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00873-TCP"
+  },
+  {
+    "id": "PORT-00902-TCP",
+    "port_number": 902,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ideafarm-door",
+    "formal_name": "VMware ESXi 管理",
+    "iana_description": "self documenting Telnet Door",
+    "category": "VIRT",
+    "purpose": "ESXi/vCenter の管理・コンソール通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "ESXi 管理面の悪用",
+    "suspicious_traffic_features": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_checkpoints": "ハイパーバイザーの管理ログ、接続元",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化",
+    "attack_pattern_ids": [
+      "ATK-HYPERVISOR",
+      "ATK-REMOTE-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00902-TCP"
+  },
+  {
+    "id": "PORT-00989-TCP",
+    "port_number": 989,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ftps-data",
+    "formal_name": "FTPS (データ)",
+    "iana_description": "ftp protocol, data, over TLS/SSL",
+    "category": "FILE",
+    "purpose": "TLS で保護した FTP のデータ転送。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "持ち出しの通信路",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-EXFIL-ALT"
+    ],
+    "technique_ids": [
+      "T1048"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00989-TCP"
+  },
+  {
+    "id": "PORT-00990-TCP",
+    "port_number": 990,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ftps",
+    "formal_name": "FTPS (制御)",
+    "iana_description": "ftp protocol, control, over TLS/SSL",
+    "category": "FILE",
+    "purpose": "TLS で保護した FTP の制御。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "総当たり",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-00990-TCP"
   },
   {
     "id": "PORT-00993-TCP",
@@ -1066,7 +2046,8 @@
     "investigation_checkpoints": "IMAPサーバー認証ログ, IP制限",
     "recommended_defenses": "MFA導入, 強固なパスワードポリシー",
     "attack_pattern_ids": [
-      "ATK-BRUTE-FORCE"
+      "ATK-BRUTE-FORCE",
+      "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1075,11 +2056,14 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1110"
+      "T1110",
+      "T1114.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00993-TCP",
+    "category": "MAIL",
+    "iana_description": "IMAP over TLS protocol"
   },
   {
     "id": "PORT-00995-TCP",
@@ -1096,7 +2080,8 @@
     "investigation_checkpoints": "POP3サーバー認証ログ",
     "recommended_defenses": "MFA導入, 強固なパスワードポリシー",
     "attack_pattern_ids": [
-      "ATK-BRUTE-FORCE"
+      "ATK-BRUTE-FORCE",
+      "ATK-MAIL-ABUSE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1105,11 +2090,46 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1110"
+      "T1110",
+      "T1114.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-00995-TCP",
+    "category": "MAIL",
+    "iana_description": "POP3 over TLS protocol"
+  },
+  {
+    "id": "PORT-01080-TCP",
+    "port_number": 1080,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "socks",
+    "formal_name": "SOCKS",
+    "iana_description": "Socks",
+    "category": "PROXY",
+    "purpose": "汎用プロキシ (SOCKS)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "踏み台・トンネルとしての悪用",
+    "suspicious_traffic_features": "外部からのプロキシ利用(オープンプロキシ)、CONNECTの多用",
+    "investigation_checkpoints": "プロキシのアクセスログ、接続元",
+    "recommended_defenses": "認証の必須化、外部からの利用遮断",
+    "attack_pattern_ids": [
+      "ATK-TUNNEL"
+    ],
+    "technique_ids": [
+      "T1090"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-01080-TCP"
   },
   {
     "id": "PORT-01194-TCP",
@@ -1126,7 +2146,8 @@
     "investigation_checkpoints": "OpenVPNログ",
     "recommended_defenses": "MFA導入, IPアクセス制限",
     "attack_pattern_ids": [
-      "ATK-BRUTE-FORCE"
+      "ATK-BRUTE-FORCE",
+      "ATK-EXTERNAL-REMOTE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1135,11 +2156,14 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1110"
+      "T1110",
+      "T1133"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-01194-TCP",
+    "category": "VPN",
+    "iana_description": "OpenVPN"
   },
   {
     "id": "PORT-01194-UDP",
@@ -1157,7 +2181,8 @@
     "recommended_defenses": "MFA必須化, 既知脆弱性パッチ適用, 証明書＋パスワード二重認証",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-REMOTE-EXPLOIT"
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-EXTERNAL-REMOTE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1167,11 +2192,14 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1210"
+      "T1210",
+      "T1133"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-01194-UDP",
+    "category": "VPN",
+    "iana_description": "OpenVPN"
   },
   {
     "id": "PORT-01433-TCP",
@@ -1189,7 +2217,8 @@
     "recommended_defenses": "インターネット非公開, saアカウント無効化/改名, Windows認証強制",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-REMOTE-EXPLOIT"
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-UNAUTH-SERVICE"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -1204,7 +2233,42 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-01433-TCP",
+    "category": "DB",
+    "iana_description": "Microsoft-SQL-Server"
+  },
+  {
+    "id": "PORT-01434-UDP",
+    "port_number": 1434,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "ms-sql-m",
+    "formal_name": "SQL Server Browser",
+    "iana_description": "Microsoft-SQL-Monitor",
+    "category": "DB",
+    "purpose": "SQL Server の名前付きインスタンスのポートを案内する。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "インスタンスの列挙",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-01434-UDP"
   },
   {
     "id": "PORT-01521-TCP",
@@ -1236,7 +2300,9 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-01521-TCP",
+    "category": "DB",
+    "iana_description": "nCube License Manager"
   },
   {
     "id": "PORT-01701-UDP",
@@ -1266,7 +2332,9 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-01701-UDP",
+    "category": "VPN",
+    "iana_description": "l2f"
   },
   {
     "id": "PORT-01723-TCP",
@@ -1299,7 +2367,708 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-01723-TCP",
+    "category": "VPN",
+    "iana_description": "pptp"
+  },
+  {
+    "id": "PORT-01812-UDP",
+    "port_number": 1812,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "radius",
+    "formal_name": "RADIUS 認証",
+    "iana_description": "RADIUS",
+    "category": "AUTH",
+    "purpose": "ネットワークアクセスの認証。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "共有鍵の弱さを突く解析・総当たり",
+    "suspicious_traffic_features": "認証失敗の急増、大量の列挙要求",
+    "investigation_checkpoints": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "recommended_defenses": "署名とチャネルバインディング、管理ネットワークの分離",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-CRED-THEFT"
+    ],
+    "technique_ids": [
+      "T1110",
+      "T1040"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-01812-UDP"
+  },
+  {
+    "id": "PORT-01813-UDP",
+    "port_number": 1813,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "radius-acct",
+    "formal_name": "RADIUS アカウンティング",
+    "iana_description": "RADIUS Accounting",
+    "category": "AUTH",
+    "purpose": "接続記録の送信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "記録の盗聴・偽装",
+    "suspicious_traffic_features": "認証失敗の急増、大量の列挙要求",
+    "investigation_checkpoints": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "recommended_defenses": "署名とチャネルバインディング、管理ネットワークの分離",
+    "attack_pattern_ids": [
+      "ATK-CRED-THEFT"
+    ],
+    "technique_ids": [
+      "T1040"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-01813-UDP"
+  },
+  {
+    "id": "PORT-01883-TCP",
+    "port_number": 1883,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "mqtt",
+    "formal_name": "MQTT",
+    "iana_description": "Message Queuing Telemetry Transport Protocol",
+    "category": "MSG",
+    "purpose": "IoT 向けの軽量メッセージング。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしブローカーでのデータ取得・機器操作",
+    "suspicious_traffic_features": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_checkpoints": "ブローカーのログ、接続元",
+    "recommended_defenses": "認証とTLS、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-01883-TCP"
+  },
+  {
+    "id": "PORT-01900-UDP",
+    "port_number": 1900,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "ssdp",
+    "formal_name": "SSDP",
+    "iana_description": "SSDP",
+    "category": "AMP",
+    "purpose": "UPnP 機器の探索に使う。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "増幅攻撃の反射元、UPnP 機器の情報収集",
+    "suspicious_traffic_features": "外部からの小さな要求と大きな応答の急増",
+    "investigation_checkpoints": "応答量、送信元の分布、要求の種類",
+    "recommended_defenses": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "attack_pattern_ids": [
+      "ATK-AMPLIFICATION",
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1498.002",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-01900-UDP"
+  },
+  {
+    "id": "PORT-01985-UDP",
+    "port_number": 1985,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "hsrp",
+    "formal_name": "HSRP",
+    "iana_description": "Hot Standby Router Protocol",
+    "category": "MGMT",
+    "purpose": "ゲートウェイ冗長化 (Cisco)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "優先度の偽装によるゲートウェイ乗っ取り(中間者)",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-NAME-POISON"
+    ],
+    "technique_ids": [
+      "T1557"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-01985-UDP"
+  },
+  {
+    "id": "PORT-02049-TCP",
+    "port_number": 2049,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "shilp",
+    "formal_name": "NFS",
+    "iana_description": "",
+    "category": "FILE",
+    "purpose": "Unix 系のネットワークファイル共有。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "誤った export 設定によるファイル取得",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-LATERAL-MOVE",
+      "ATK-EXFIL-ALT"
+    ],
+    "technique_ids": [
+      "T1039",
+      "T1135"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02049-TCP"
+  },
+  {
+    "id": "PORT-02049-UDP",
+    "port_number": 2049,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "shilp",
+    "formal_name": "NFS",
+    "iana_description": "",
+    "category": "FILE",
+    "purpose": "Unix 系のネットワークファイル共有。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "誤った export 設定によるファイル取得",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-LATERAL-MOVE"
+    ],
+    "technique_ids": [
+      "T1039",
+      "T1135"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-02049-UDP"
+  },
+  {
+    "id": "PORT-02179-TCP",
+    "port_number": 2179,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "vmrdp",
+    "formal_name": "Hyper-V VMConnect",
+    "iana_description": "Microsoft RDP for virtual machines",
+    "category": "VIRT",
+    "purpose": "Hyper-V の仮想マシン接続 (VMConnect)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "管理者権限の悪用による VM の操作・画面取得",
+    "suspicious_traffic_features": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_checkpoints": "ハイパーバイザーの管理ログ、接続元",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化",
+    "attack_pattern_ids": [
+      "ATK-HYPERVISOR"
+    ],
+    "technique_ids": [
+      "T1078",
+      "T1021"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-CONN"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02179-TCP"
+  },
+  {
+    "id": "PORT-02375-TCP",
+    "port_number": 2375,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "docker",
+    "formal_name": "Docker API (平文)",
+    "iana_description": "Docker REST API (plain text)",
+    "category": "CONTAINER",
+    "purpose": "Docker デーモンの API。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なし API からのコンテナ作成・ホスト乗っ取り",
+    "suspicious_traffic_features": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_checkpoints": "API監査ログ、コンテナ作成イベント",
+    "recommended_defenses": "TLSと認証、RBAC、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-CONTAINER-API",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1610",
+      "T1613",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02375-TCP"
+  },
+  {
+    "id": "PORT-02376-TCP",
+    "port_number": 2376,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "docker-s",
+    "formal_name": "Docker API (TLS)",
+    "iana_description": "Docker REST API (ssl)",
+    "category": "CONTAINER",
+    "purpose": "TLS で保護した Docker デーモンの API。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "証明書管理の不備による API 悪用",
+    "suspicious_traffic_features": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_checkpoints": "API監査ログ、コンテナ作成イベント",
+    "recommended_defenses": "TLSと認証、RBAC、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-CONTAINER-API"
+    ],
+    "technique_ids": [
+      "T1610",
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02376-TCP"
+  },
+  {
+    "id": "PORT-02379-TCP",
+    "port_number": 2379,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "etcd-client",
+    "formal_name": "etcd (クライアント)",
+    "iana_description": "etcd client communication",
+    "category": "CONTAINER",
+    "purpose": "Kubernetes 等の設定ストア。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでの機密 (Secret 等) 取得",
+    "suspicious_traffic_features": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_checkpoints": "API監査ログ、コンテナ作成イベント",
+    "recommended_defenses": "TLSと認証、RBAC、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-CONTAINER-API",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1613",
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02379-TCP"
+  },
+  {
+    "id": "PORT-02380-TCP",
+    "port_number": 2380,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "etcd-server",
+    "formal_name": "etcd (ピア)",
+    "iana_description": "etcd server to server communication",
+    "category": "CONTAINER",
+    "purpose": "etcd クラスタのピア通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "クラスタへの不正参加",
+    "suspicious_traffic_features": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_checkpoints": "API監査ログ、コンテナ作成イベント",
+    "recommended_defenses": "TLSと認証、RBAC、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-CONTAINER-API"
+    ],
+    "technique_ids": [
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02380-TCP"
+  },
+  {
+    "id": "PORT-02404-TCP",
+    "port_number": 2404,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "iec-104",
+    "formal_name": "IEC 60870-5-104",
+    "iana_description": "IEC 60870-5-104 process control over IP",
+    "category": "ICS",
+    "purpose": "電力系統の監視制御。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "制御コマンドの送信",
+    "suspicious_traffic_features": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_checkpoints": "ICS向けIDS、FWログ",
+    "recommended_defenses": "ネットワーク分離、通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02404-TCP"
+  },
+  {
+    "id": "PORT-02483-TCP",
+    "port_number": 2483,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ttc",
+    "formal_name": "Oracle DB (TTC)",
+    "iana_description": "Oracle TTC",
+    "category": "DB",
+    "purpose": "Oracle Database のクライアント接続。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "総当たり・既定アカウントの悪用",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110",
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02483-TCP"
+  },
+  {
+    "id": "PORT-02484-TCP",
+    "port_number": 2484,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ttc-ssl",
+    "formal_name": "Oracle DB (TTC/SSL)",
+    "iana_description": "Oracle TTC SSL",
+    "category": "DB",
+    "purpose": "TLS で保護した Oracle Database 接続。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "総当たり",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-02484-TCP"
+  },
+  {
+    "id": "PORT-03000-TCP",
+    "port_number": 3000,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "hbci",
+    "formal_name": "ダッシュボード (Grafana 等)",
+    "iana_description": "HBCI",
+    "category": "MONITOR",
+    "purpose": "可視化ダッシュボードでよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "既定認証情報・脆弱性の悪用",
+    "suspicious_traffic_features": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_checkpoints": "アクセスログ、認証ログ",
+    "recommended_defenses": "認証の必須化、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-PUBLIC-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-03000-TCP"
+  },
+  {
+    "id": "PORT-03128-TCP",
+    "port_number": 3128,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ndl-aas",
+    "formal_name": "HTTP プロキシ (Squid 等)",
+    "iana_description": "Active API Server Port",
+    "category": "PROXY",
+    "purpose": "Web プロキシとしてよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "オープンプロキシの踏み台化、トンネル",
+    "suspicious_traffic_features": "外部からのプロキシ利用(オープンプロキシ)、CONNECTの多用",
+    "investigation_checkpoints": "プロキシのアクセスログ、接続元",
+    "recommended_defenses": "認証の必須化、外部からの利用遮断",
+    "attack_pattern_ids": [
+      "ATK-TUNNEL"
+    ],
+    "technique_ids": [
+      "T1090"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-03128-TCP"
+  },
+  {
+    "id": "PORT-03260-TCP",
+    "port_number": 3260,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "iscsi-target",
+    "formal_name": "iSCSI",
+    "iana_description": "iSCSI port",
+    "category": "FILE",
+    "purpose": "ブロックストレージの共有。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでのボリュームへのアクセス",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-03260-TCP"
+  },
+  {
+    "id": "PORT-03268-TCP",
+    "port_number": 3268,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "msft-gc",
+    "formal_name": "グローバルカタログ (LDAP)",
+    "iana_description": "Microsoft Global Catalog",
+    "category": "AUTH",
+    "purpose": "フォレスト全体のディレクトリ検索。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "フォレスト全体の列挙、AD 偵察",
+    "suspicious_traffic_features": "認証失敗の急増、大量の列挙要求",
+    "investigation_checkpoints": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "recommended_defenses": "署名とチャネルバインディング、管理ネットワークの分離",
+    "attack_pattern_ids": [
+      "ATK-AD-RECON",
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1087.002",
+      "T1069.002",
+      "T1482"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-03268-TCP"
+  },
+  {
+    "id": "PORT-03269-TCP",
+    "port_number": 3269,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "msft-gc-ssl",
+    "formal_name": "グローバルカタログ (LDAPS)",
+    "iana_description": "Microsoft Global Catalog with LDAP/SSL",
+    "category": "AUTH",
+    "purpose": "TLS で保護したグローバルカタログ検索。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "フォレスト全体の列挙",
+    "suspicious_traffic_features": "認証失敗の急増、大量の列挙要求",
+    "investigation_checkpoints": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "recommended_defenses": "署名とチャネルバインディング、管理ネットワークの分離",
+    "attack_pattern_ids": [
+      "ATK-AD-RECON"
+    ],
+    "technique_ids": [
+      "T1087.002",
+      "T1069.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-03269-TCP"
+  },
+  {
+    "id": "PORT-03283-TCP",
+    "port_number": 3283,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "net-assistant",
+    "formal_name": "Apple Remote Desktop",
+    "iana_description": "Net Assistant",
+    "category": "REMOTE",
+    "purpose": "macOS のリモート管理。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証突破による遠隔操作",
+    "suspicious_traffic_features": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_checkpoints": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "recommended_defenses": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-EXTERNAL-REMOTE"
+    ],
+    "technique_ids": [
+      "T1110",
+      "T1021.005"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-03283-TCP"
   },
   {
     "id": "PORT-03306-TCP",
@@ -1317,7 +3086,8 @@
     "recommended_defenses": "3306ポートのローカル(127.0.0.1)限定バインド, 外部遮断",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-REMOTE-EXPLOIT"
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-UNAUTH-SERVICE"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -1332,7 +3102,75 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-03306-TCP",
+    "category": "DB",
+    "iana_description": "MySQL"
+  },
+  {
+    "id": "PORT-03343-TCP",
+    "port_number": 3343,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ms-cluster-net",
+    "formal_name": "フェールオーバークラスタ",
+    "iana_description": "MS Cluster Net",
+    "category": "VIRT",
+    "purpose": "Windows フェールオーバークラスタのノード間通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "クラスタ管理の悪用",
+    "suspicious_traffic_features": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_checkpoints": "ハイパーバイザーの管理ログ、接続元",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化",
+    "attack_pattern_ids": [
+      "ATK-HYPERVISOR"
+    ],
+    "technique_ids": [
+      "T1078"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-LM"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-03343-TCP"
+  },
+  {
+    "id": "PORT-03343-UDP",
+    "port_number": 3343,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "ms-cluster-net",
+    "formal_name": "フェールオーバークラスタ",
+    "iana_description": "MS Cluster Net",
+    "category": "VIRT",
+    "purpose": "Windows フェールオーバークラスタのハートビート。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "クラスタ通信の妨害",
+    "suspicious_traffic_features": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_checkpoints": "ハイパーバイザーの管理ログ、接続元",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化",
+    "attack_pattern_ids": [
+      "ATK-HYPERVISOR"
+    ],
+    "technique_ids": [
+      "T1078"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-LM"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-03343-UDP"
   },
   {
     "id": "PORT-03389-TCP",
@@ -1353,7 +3191,8 @@
       "ATK-REMOTE-EXPLOIT",
       "ATK-LATERAL-MOVE",
       "ATK-RANSOMWARE",
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-EXTERNAL-REMOTE"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -1367,11 +3206,14 @@
     "technique_ids": [
       "T1110",
       "T1210",
-      "T1021.001"
+      "T1021.001",
+      "T1133"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": "SRV-RDP",
-    "risk_id": "RISK-03389-TCP"
+    "risk_id": "RISK-03389-TCP",
+    "category": "REMOTE",
+    "iana_description": "MS WBT Server"
   },
   {
     "id": "PORT-03389-UDP",
@@ -1402,7 +3244,139 @@
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": "SRV-RDP",
-    "risk_id": null
+    "risk_id": "RISK-03389-UDP",
+    "category": "REMOTE",
+    "iana_description": "MS WBT Server"
+  },
+  {
+    "id": "PORT-03478-UDP",
+    "port_number": 3478,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "stun",
+    "formal_name": "STUN",
+    "iana_description": "Session Traversal Utilities for NAT (STUN) port",
+    "category": "VOIP",
+    "purpose": "NAT 越えのためのアドレス確認。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "外部公開時の反射・トンネル",
+    "suspicious_traffic_features": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_checkpoints": "SIPサーバーのログ、送信元",
+    "recommended_defenses": "認証の強化、送信元の制限",
+    "attack_pattern_ids": [
+      "ATK-TUNNEL"
+    ],
+    "technique_ids": [
+      "T1090"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-03478-UDP"
+  },
+  {
+    "id": "PORT-03702-UDP",
+    "port_number": 3702,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "ws-discovery",
+    "formal_name": "WS-Discovery",
+    "iana_description": "Web Service Discovery",
+    "category": "NAME",
+    "purpose": "Webサービス機器の探索に使う。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "機器の探索、外部公開時の反射",
+    "suspicious_traffic_features": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_checkpoints": "クエリ/応答ログ、応答サイズ、送信元",
+    "recommended_defenses": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-03702-UDP"
+  },
+  {
+    "id": "PORT-04369-TCP",
+    "port_number": 4369,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "epmd",
+    "formal_name": "Erlang Port Mapper",
+    "iana_description": "Erlang Port Mapper Daemon",
+    "category": "MSG",
+    "purpose": "Erlang ノード (RabbitMQ 等) のポート案内。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "ノードの列挙、クッキー漏えい時の遠隔実行",
+    "suspicious_traffic_features": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_checkpoints": "ブローカーのログ、接続元",
+    "recommended_defenses": "認証とTLS、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-04369-TCP"
+  },
+  {
+    "id": "PORT-04444-TCP",
+    "port_number": 4444,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "krb524",
+    "formal_name": "Metasploit リスナー例",
+    "iana_description": "KRB524",
+    "category": "C2",
+    "purpose": "IANA 上は別サービスの登録。攻撃ツールの例で多用される。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "リバースシェルの待受・外向き接続",
+    "suspicious_traffic_features": "業務端末からの外向き接続、一定間隔の通信",
+    "investigation_checkpoints": "FWの外向きログ、通信元プロセス",
+    "recommended_defenses": "外向き通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-C2-PORT"
+    ],
+    "technique_ids": [
+      "T1571"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-METASPLOIT-REVSHELL"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-04444-TCP"
   },
   {
     "id": "PORT-04500-UDP",
@@ -1419,7 +3393,8 @@
     "investigation_checkpoints": "VPNルータログ, UDP 4500トラフィック",
     "recommended_defenses": "強固なIKEv2/IPsecポリシー適用, MFA導入",
     "attack_pattern_ids": [
-      "ATK-VULN-SCAN"
+      "ATK-VULN-SCAN",
+      "ATK-EXTERNAL-REMOTE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1428,11 +3403,372 @@
     "certainty": "一部確認",
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
-      "T1595"
+      "T1595",
+      "T1133"
     ],
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-04500-UDP",
+    "category": "VPN",
+    "iana_description": "IPsec NAT-Traversal"
+  },
+  {
+    "id": "PORT-04739-UDP",
+    "port_number": 4739,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "ipfix",
+    "formal_name": "IPFIX",
+    "iana_description": "IP Flow Info Export",
+    "category": "MGMT",
+    "purpose": "フロー情報のエクスポート。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "フロー情報の盗聴・偽装",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-04739-UDP"
+  },
+  {
+    "id": "PORT-04786-TCP",
+    "port_number": 4786,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "smart-install",
+    "formal_name": "Cisco Smart Install",
+    "iana_description": "Smart Install Service",
+    "category": "MGMT",
+    "purpose": "Cisco スイッチのゼロタッチ設定。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでの設定取得・変更",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-04786-TCP"
+  },
+  {
+    "id": "PORT-04840-TCP",
+    "port_number": 4840,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "opcua-tcp",
+    "formal_name": "OPC UA",
+    "iana_description": "OPC UA Connection Protocol",
+    "category": "ICS",
+    "purpose": "産業機器のデータ交換。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "匿名アクセス設定の悪用",
+    "suspicious_traffic_features": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_checkpoints": "ICS向けIDS、FWログ",
+    "recommended_defenses": "ネットワーク分離、通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-04840-TCP"
+  },
+  {
+    "id": "PORT-04899-TCP",
+    "port_number": 4899,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "radmin-port",
+    "formal_name": "Radmin",
+    "iana_description": "RAdmin Port",
+    "category": "RMM",
+    "purpose": "Radmin のリモート操作。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "無断導入による遠隔操作",
+    "suspicious_traffic_features": "未承認端末からのベンダー中継先への接続",
+    "investigation_checkpoints": "FWの外向きログ、導入ソフトの棚卸し",
+    "recommended_defenses": "承認済みツールの許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-REMOTE-ACCESS-SW"
+    ],
+    "technique_ids": [
+      "T1219"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-04899-TCP"
+  },
+  {
+    "id": "PORT-05060-TCP",
+    "port_number": 5060,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "sip",
+    "formal_name": "SIP",
+    "iana_description": "SIP",
+    "category": "VOIP",
+    "purpose": "VoIP の呼制御。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "内線への総当たり登録、不正発信",
+    "suspicious_traffic_features": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_checkpoints": "SIPサーバーのログ、送信元",
+    "recommended_defenses": "認証の強化、送信元の制限",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05060-TCP"
+  },
+  {
+    "id": "PORT-05060-UDP",
+    "port_number": 5060,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "sip",
+    "formal_name": "SIP",
+    "iana_description": "SIP",
+    "category": "VOIP",
+    "purpose": "VoIP の呼制御。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "内線への総当たり登録、不正発信",
+    "suspicious_traffic_features": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_checkpoints": "SIPサーバーのログ、送信元",
+    "recommended_defenses": "認証の強化、送信元の制限",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1110",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-05060-UDP"
+  },
+  {
+    "id": "PORT-05061-TCP",
+    "port_number": 5061,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "sips",
+    "formal_name": "SIP over TLS",
+    "iana_description": "SIP-TLS",
+    "category": "VOIP",
+    "purpose": "TLS で保護した SIP。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "総当たり登録",
+    "suspicious_traffic_features": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_checkpoints": "SIPサーバーのログ、送信元",
+    "recommended_defenses": "認証の強化、送信元の制限",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05061-TCP"
+  },
+  {
+    "id": "PORT-05222-TCP",
+    "port_number": 5222,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "xmpp-client",
+    "formal_name": "XMPP クライアント",
+    "iana_description": "XMPP Client Connection",
+    "category": "CHAT",
+    "purpose": "メッセージング (XMPP)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "C2 通信への悪用",
+    "suspicious_traffic_features": "業務端末からの想定外の接続",
+    "investigation_checkpoints": "FWの外向きログ",
+    "recommended_defenses": "不要な外向き通信の遮断",
+    "attack_pattern_ids": [
+      "ATK-C2-PORT"
+    ],
+    "technique_ids": [
+      "T1071"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05222-TCP"
+  },
+  {
+    "id": "PORT-05269-TCP",
+    "port_number": 5269,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "xmpp-server",
+    "formal_name": "XMPP サーバー間",
+    "iana_description": "XMPP Server Connection",
+    "category": "CHAT",
+    "purpose": "XMPP のサーバー間通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "C2 通信への悪用",
+    "suspicious_traffic_features": "業務端末からの想定外の接続",
+    "investigation_checkpoints": "FWの外向きログ",
+    "recommended_defenses": "不要な外向き通信の遮断",
+    "attack_pattern_ids": [
+      "ATK-C2-PORT"
+    ],
+    "technique_ids": [
+      "T1071"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05269-TCP"
+  },
+  {
+    "id": "PORT-05353-UDP",
+    "port_number": 5353,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "mdns",
+    "formal_name": "mDNS",
+    "iana_description": "Multicast DNS",
+    "category": "NAME",
+    "purpose": "マルチキャストDNSで機器やサービスを発見する。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "偽応答によるポイズニング、増幅攻撃の反射元",
+    "suspicious_traffic_features": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_checkpoints": "クエリ/応答ログ、応答サイズ、送信元",
+    "recommended_defenses": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "attack_pattern_ids": [
+      "ATK-NAME-POISON",
+      "ATK-AMPLIFICATION"
+    ],
+    "technique_ids": [
+      "T1557.001",
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-05353-UDP"
+  },
+  {
+    "id": "PORT-05355-UDP",
+    "port_number": 5355,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "llmnr",
+    "formal_name": "LLMNR",
+    "iana_description": "LLMNR",
+    "category": "NAME",
+    "purpose": "DNSで解決できない名前をローカルセグメントで問い合わせる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "偽応答で認証情報を横取りする(ポイズニング)",
+    "suspicious_traffic_features": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_checkpoints": "クエリ/応答ログ、応答サイズ、送信元",
+    "recommended_defenses": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "attack_pattern_ids": [
+      "ATK-NAME-POISON"
+    ],
+    "technique_ids": [
+      "T1557.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-05355-UDP"
   },
   {
     "id": "PORT-05432-TCP",
@@ -1450,7 +3786,8 @@
     "recommended_defenses": "pg_hba.confによる接続元IP制限, ローカルソケット利用, パスワード暗号化(scram-sha-256)",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-REMOTE-EXPLOIT"
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-UNAUTH-SERVICE"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1464,7 +3801,140 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-05432-TCP",
+    "category": "DB",
+    "iana_description": "PostgreSQL Database"
+  },
+  {
+    "id": "PORT-05601-TCP",
+    "port_number": 5601,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "esmagent",
+    "formal_name": "Kibana",
+    "iana_description": "Enterprise Security Agent",
+    "category": "MONITOR",
+    "purpose": "Elasticsearch の可視化 UI。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なし UI からのデータ閲覧",
+    "suspicious_traffic_features": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_checkpoints": "アクセスログ、認証ログ",
+    "recommended_defenses": "認証の必須化、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05601-TCP"
+  },
+  {
+    "id": "PORT-05671-TCP",
+    "port_number": 5671,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "amqps",
+    "formal_name": "AMQP over TLS",
+    "iana_description": "amqp protocol over TLS/SSL",
+    "category": "MSG",
+    "purpose": "TLS で保護した AMQP。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "弱い認証の悪用",
+    "suspicious_traffic_features": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_checkpoints": "ブローカーのログ、接続元",
+    "recommended_defenses": "認証とTLS、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05671-TCP"
+  },
+  {
+    "id": "PORT-05672-TCP",
+    "port_number": 5672,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "amqp",
+    "formal_name": "AMQP",
+    "iana_description": "AMQP",
+    "category": "MSG",
+    "purpose": "メッセージキュー (RabbitMQ 等)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "既定認証情報での接続",
+    "suspicious_traffic_features": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_checkpoints": "ブローカーのログ、接続元",
+    "recommended_defenses": "認証とTLS、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05672-TCP"
+  },
+  {
+    "id": "PORT-05800-TCP",
+    "port_number": 5800,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "VNC (HTTP)",
+    "iana_description": "",
+    "category": "REMOTE",
+    "purpose": "ブラウザ経由の VNC 接続。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証の弱い VNC への遠隔操作",
+    "suspicious_traffic_features": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_checkpoints": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "recommended_defenses": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1021.005",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05800-TCP"
   },
   {
     "id": "PORT-05900-TCP",
@@ -1483,7 +3953,8 @@
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
       "ATK-CRED-THEFT",
-      "ATK-LATERAL-MOVE"
+      "ATK-LATERAL-MOVE",
+      "ATK-UNAUTH-SERVICE"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -1499,7 +3970,74 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-05900-TCP",
+    "category": "REMOTE",
+    "iana_description": "Remote Framebuffer"
+  },
+  {
+    "id": "PORT-05938-TCP",
+    "port_number": 5938,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "TeamViewer",
+    "iana_description": "",
+    "category": "RMM",
+    "purpose": "TeamViewer の通信で使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "無断導入による遠隔操作",
+    "suspicious_traffic_features": "未承認端末からのベンダー中継先への接続",
+    "investigation_checkpoints": "FWの外向きログ、導入ソフトの棚卸し",
+    "recommended_defenses": "承認済みツールの許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-REMOTE-ACCESS-SW"
+    ],
+    "technique_ids": [
+      "T1219"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05938-TCP"
+  },
+  {
+    "id": "PORT-05984-TCP",
+    "port_number": 5984,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "couchdb",
+    "formal_name": "CouchDB",
+    "iana_description": "CouchDB",
+    "category": "DB",
+    "purpose": "ドキュメント指向データベースの HTTP API。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なし API の悪用",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05984-TCP"
   },
   {
     "id": "PORT-05985-TCP",
@@ -1518,7 +4056,8 @@
     "attack_pattern_ids": [
       "ATK-REMOTE-EXPLOIT",
       "ATK-LATERAL-MOVE",
-      "ATK-BRUTE-FORCE"
+      "ATK-BRUTE-FORCE",
+      "ATK-REMOTE-EXEC"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -1534,7 +4073,9 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05985-TCP"
+    "risk_id": "RISK-05985-TCP",
+    "category": "REMOTE",
+    "iana_description": "WBEM WS-Management HTTP"
   },
   {
     "id": "PORT-05986-TCP",
@@ -1552,7 +4093,8 @@
     "recommended_defenses": "アクセス可能IP制限, 管理者アカウントMFA導入",
     "attack_pattern_ids": [
       "ATK-REMOTE-EXPLOIT",
-      "ATK-LATERAL-MOVE"
+      "ATK-LATERAL-MOVE",
+      "ATK-REMOTE-EXEC"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -1568,7 +4110,371 @@
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-05986-TCP",
+    "category": "REMOTE",
+    "iana_description": "WBEM WS-Management HTTP over TLS/SSL"
+  },
+  {
+    "id": "PORT-05989-TCP",
+    "port_number": 5989,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "wbem-https",
+    "formal_name": "CIM over HTTPS",
+    "iana_description": "WBEM CIM-XML (HTTPS)",
+    "category": "VIRT",
+    "purpose": "ESXi 等のハードウェア管理 (CIM/WBEM)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "CIM サービスの脆弱性悪用",
+    "suspicious_traffic_features": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_checkpoints": "ハイパーバイザーの管理ログ、接続元",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化",
+    "attack_pattern_ids": [
+      "ATK-HYPERVISOR",
+      "ATK-REMOTE-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-05989-TCP"
+  },
+  {
+    "id": "PORT-06000-TCP",
+    "port_number": 6000,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "X11",
+    "iana_description": "",
+    "category": "REMOTE",
+    "purpose": "X Window System の表示 (6000-6063)。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なし X サーバーからの画面取得・入力",
+    "suspicious_traffic_features": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_checkpoints": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "recommended_defenses": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-06000-TCP"
+  },
+  {
+    "id": "PORT-06343-UDP",
+    "port_number": 6343,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "sflow",
+    "formal_name": "sFlow",
+    "iana_description": "sFlow traffic monitoring",
+    "category": "MGMT",
+    "purpose": "サンプリングしたトラフィック情報の送出。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "フロー情報の盗聴",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-06343-UDP"
+  },
+  {
+    "id": "PORT-06379-TCP",
+    "port_number": 6379,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "redis",
+    "formal_name": "Redis",
+    "iana_description": "An advanced key-value cache and store",
+    "category": "DB",
+    "purpose": "インメモリデータストア。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでのデータ取得、設定悪用による侵入",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-REMOTE-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-06379-TCP"
+  },
+  {
+    "id": "PORT-06443-TCP",
+    "port_number": 6443,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "sun-sr-https",
+    "formal_name": "Kubernetes API",
+    "iana_description": "Service Registry Default HTTPS Domain",
+    "category": "CONTAINER",
+    "purpose": "Kubernetes の API サーバー。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証情報の悪用、匿名アクセスの悪用",
+    "suspicious_traffic_features": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_checkpoints": "API監査ログ、コンテナ作成イベント",
+    "recommended_defenses": "TLSと認証、RBAC、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-CONTAINER-API"
+    ],
+    "technique_ids": [
+      "T1610",
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-06443-TCP"
+  },
+  {
+    "id": "PORT-06514-TCP",
+    "port_number": 6514,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "syslog-tls",
+    "formal_name": "Syslog over TLS",
+    "iana_description": "Syslog over TLS",
+    "category": "MGMT",
+    "purpose": "TLS で保護したログ転送。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "ログ転送の妨害",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-06514-TCP"
+  },
+  {
+    "id": "PORT-06600-TCP",
+    "port_number": 6600,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "mshvlm",
+    "formal_name": "Hyper-V ライブマイグレーション",
+    "iana_description": "Microsoft Hyper-V Live Migration",
+    "category": "VIRT",
+    "purpose": "Hyper-V の仮想マシンをホスト間で移行する。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "移行通信の盗聴・不正な移行",
+    "suspicious_traffic_features": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_checkpoints": "ハイパーバイザーの管理ログ、接続元",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化",
+    "attack_pattern_ids": [
+      "ATK-HYPERVISOR"
+    ],
+    "technique_ids": [
+      "T1078"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-LM"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-06600-TCP"
+  },
+  {
+    "id": "PORT-06667-TCP",
+    "port_number": 6667,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "IRC",
+    "iana_description": "",
+    "category": "CHAT",
+    "purpose": "テキストチャット。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "旧来のボットネットの指令通信",
+    "suspicious_traffic_features": "業務端末からの想定外の接続",
+    "investigation_checkpoints": "FWの外向きログ",
+    "recommended_defenses": "不要な外向き通信の遮断",
+    "attack_pattern_ids": [
+      "ATK-C2-PORT"
+    ],
+    "technique_ids": [
+      "T1071"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-06667-TCP"
+  },
+  {
+    "id": "PORT-07547-TCP",
+    "port_number": 7547,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "cwmp",
+    "formal_name": "TR-069 (CWMP)",
+    "iana_description": "Broadband Forum CWMP",
+    "category": "MGMT",
+    "purpose": "ISP による宅内機器の遠隔管理。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "外部公開された管理機能の悪用",
+    "suspicious_traffic_features": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_checkpoints": "機器のログ、要求元、設定変更履歴",
+    "recommended_defenses": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-07547-TCP"
+  },
+  {
+    "id": "PORT-08000-TCP",
+    "port_number": 8000,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "irdmi",
+    "formal_name": "HTTP (代替)",
+    "iana_description": "iRDMI",
+    "category": "WEB",
+    "purpose": "開発用・アプリサーバーの HTTP でよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "開発用サーバーの脆弱性悪用",
+    "suspicious_traffic_features": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_checkpoints": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "recommended_defenses": "パッチ適用、WAF、管理画面の外部公開停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1190",
+      "T1595.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-08000-TCP"
+  },
+  {
+    "id": "PORT-08008-TCP",
+    "port_number": 8008,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "http-alt",
+    "formal_name": "HTTP (代替)",
+    "iana_description": "HTTP Alternate",
+    "category": "WEB",
+    "purpose": "代替 HTTP。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "管理画面・API の脆弱性悪用",
+    "suspicious_traffic_features": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_checkpoints": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "recommended_defenses": "パッチ適用、WAF、管理画面の外部公開停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-08008-TCP"
   },
   {
     "id": "PORT-08080-TCP",
@@ -1586,7 +4492,9 @@
     "recommended_defenses": "デフォルト管理者アカウント変更, 8080ポートの外部非公開",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-REMOTE-EXPLOIT"
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-TUNNEL"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1596,11 +4504,110 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1210"
+      "T1210",
+      "T1190"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-08080-TCP",
+    "category": "WEB",
+    "iana_description": "HTTP Alternate (see port 80)"
+  },
+  {
+    "id": "PORT-08081-TCP",
+    "port_number": 8081,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "sunproxyadmin",
+    "formal_name": "HTTP (代替)",
+    "iana_description": "Sun Proxy Admin Service",
+    "category": "WEB",
+    "purpose": "代替 HTTP・管理画面でよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "管理画面の脆弱性悪用",
+    "suspicious_traffic_features": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_checkpoints": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "recommended_defenses": "パッチ適用、WAF、管理画面の外部公開停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-08081-TCP"
+  },
+  {
+    "id": "PORT-08086-TCP",
+    "port_number": 8086,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "d-s-n",
+    "formal_name": "InfluxDB",
+    "iana_description": "Distributed SCADA Networking Rendezvous Port",
+    "category": "DB",
+    "purpose": "時系列データベースの HTTP API。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なし API の悪用",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-08086-TCP"
+  },
+  {
+    "id": "PORT-08088-TCP",
+    "port_number": 8088,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "radan-http",
+    "formal_name": "HTTP (代替)",
+    "iana_description": "Radan HTTP",
+    "category": "WEB",
+    "purpose": "代替 HTTP・API でよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "API の脆弱性悪用",
+    "suspicious_traffic_features": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_checkpoints": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "recommended_defenses": "パッチ適用、WAF、管理画面の外部公開停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-08088-TCP"
   },
   {
     "id": "PORT-08443-TCP",
@@ -1618,7 +4625,8 @@
     "recommended_defenses": "管理インターフェースのWAN側無効化, 管理IP限定",
     "attack_pattern_ids": [
       "ATK-BRUTE-FORCE",
-      "ATK-REMOTE-EXPLOIT"
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-PUBLIC-EXPLOIT"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1628,10 +4636,767 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "technique_ids": [
       "T1110",
-      "T1210"
+      "T1210",
+      "T1190"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": null
+    "risk_id": "RISK-08443-TCP",
+    "category": "WEB",
+    "iana_description": "PCsync HTTPS"
+  },
+  {
+    "id": "PORT-08883-TCP",
+    "port_number": 8883,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "secure-mqtt",
+    "formal_name": "MQTT over TLS",
+    "iana_description": "Secure MQTT",
+    "category": "MSG",
+    "purpose": "TLS で保護した MQTT。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "弱い認証の悪用",
+    "suspicious_traffic_features": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_checkpoints": "ブローカーのログ、接続元",
+    "recommended_defenses": "認証とTLS、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-08883-TCP"
+  },
+  {
+    "id": "PORT-08888-TCP",
+    "port_number": 8888,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "ddi-tcp-1",
+    "formal_name": "HTTP (代替)",
+    "iana_description": "NewsEDGE server TCP (TCP 1)",
+    "category": "WEB",
+    "purpose": "代替 HTTP・ノートブック等でよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なし管理画面の悪用",
+    "suspicious_traffic_features": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_checkpoints": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "recommended_defenses": "パッチ適用、WAF、管理画面の外部公開停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-08888-TCP"
+  },
+  {
+    "id": "PORT-09000-TCP",
+    "port_number": 9000,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "cslistener",
+    "formal_name": "HTTP (代替)",
+    "iana_description": "CSlistener",
+    "category": "WEB",
+    "purpose": "代替 HTTP・管理コンソールでよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "管理コンソールの悪用",
+    "suspicious_traffic_features": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_checkpoints": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "recommended_defenses": "パッチ適用、WAF、管理画面の外部公開停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09000-TCP"
+  },
+  {
+    "id": "PORT-09042-TCP",
+    "port_number": 9042,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "Cassandra (CQL)",
+    "iana_description": "",
+    "category": "DB",
+    "purpose": "分散データベースのクライアント接続。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "既定認証情報での接続",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09042-TCP"
+  },
+  {
+    "id": "PORT-09090-TCP",
+    "port_number": 9090,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "websm",
+    "formal_name": "監視 Web UI (Prometheus 等)",
+    "iana_description": "WebSM",
+    "category": "MONITOR",
+    "purpose": "監視基盤の Web UI でよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "監視対象・構成情報の取得",
+    "suspicious_traffic_features": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_checkpoints": "アクセスログ、認証ログ",
+    "recommended_defenses": "認証の必須化、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09090-TCP"
+  },
+  {
+    "id": "PORT-09092-TCP",
+    "port_number": 9092,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "XmlIpcRegSvc",
+    "formal_name": "Kafka",
+    "iana_description": "Xml-Ipc Server Reg",
+    "category": "MSG",
+    "purpose": "分散ストリーミング基盤のブローカー。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでのトピック読み書き",
+    "suspicious_traffic_features": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_checkpoints": "ブローカーのログ、接続元",
+    "recommended_defenses": "認証とTLS、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09092-TCP"
+  },
+  {
+    "id": "PORT-09100-TCP",
+    "port_number": 9100,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "hp-pdl-datastr",
+    "formal_name": "RAW 印刷 (JetDirect)",
+    "iana_description": "PDL Data Streaming Port",
+    "category": "PRINT",
+    "purpose": "プリンタへの直接印刷でよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでの印刷・設定変更",
+    "suspicious_traffic_features": "外部からの印刷ジョブ、設定変更",
+    "investigation_checkpoints": "プリンタ/スプーラのログ",
+    "recommended_defenses": "外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09100-TCP"
+  },
+  {
+    "id": "PORT-09200-TCP",
+    "port_number": 9200,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "wap-wsp",
+    "formal_name": "Elasticsearch (HTTP)",
+    "iana_description": "WAP connectionless session service",
+    "category": "DB",
+    "purpose": "全文検索エンジンの REST API。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでのデータ取得・削除",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09200-TCP"
+  },
+  {
+    "id": "PORT-09300-TCP",
+    "port_number": 9300,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "vrace",
+    "formal_name": "Elasticsearch (ノード間)",
+    "iana_description": "Virtual Racing Service",
+    "category": "DB",
+    "purpose": "Elasticsearch のノード間通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "クラスタへの不正参加",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09300-TCP"
+  },
+  {
+    "id": "PORT-09389-TCP",
+    "port_number": 9389,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "adws",
+    "formal_name": "Active Directory Web Services",
+    "iana_description": "Active Directory Web Services",
+    "category": "AUTH",
+    "purpose": "PowerShell の AD モジュール等が使う AD の Web サービス。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "AD の大量列挙",
+    "suspicious_traffic_features": "認証失敗の急増、大量の列挙要求",
+    "investigation_checkpoints": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "recommended_defenses": "署名とチャネルバインディング、管理ネットワークの分離",
+    "attack_pattern_ids": [
+      "ATK-AD-RECON"
+    ],
+    "technique_ids": [
+      "T1087.002",
+      "T1069.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09389-TCP"
+  },
+  {
+    "id": "PORT-09418-TCP",
+    "port_number": 9418,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "git",
+    "formal_name": "Git",
+    "iana_description": "git pack transfer service",
+    "category": "FILE",
+    "purpose": "Git の匿名プロトコル。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "公開リポジトリからの情報取得",
+    "suspicious_traffic_features": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_checkpoints": "共有/転送ログ、転送量、接続元",
+    "recommended_defenses": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09418-TCP"
+  },
+  {
+    "id": "PORT-09443-TCP",
+    "port_number": 9443,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "tungsten-https",
+    "formal_name": "HTTPS (代替)",
+    "iana_description": "WSO2 Tungsten HTTPS",
+    "category": "WEB",
+    "purpose": "代替 HTTPS・管理画面でよく使われる。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "管理画面の脆弱性悪用",
+    "suspicious_traffic_features": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_checkpoints": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "recommended_defenses": "パッチ適用、WAF、管理画面の外部公開停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-09443-TCP"
+  },
+  {
+    "id": "PORT-10050-TCP",
+    "port_number": 10050,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "zabbix-agent",
+    "formal_name": "Zabbix エージェント",
+    "iana_description": "Zabbix Agent",
+    "category": "MONITOR",
+    "purpose": "Zabbix サーバーからの監視要求を受ける。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "エージェント設定悪用による情報取得",
+    "suspicious_traffic_features": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_checkpoints": "アクセスログ、認証ログ",
+    "recommended_defenses": "認証の必須化、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-10050-TCP"
+  },
+  {
+    "id": "PORT-10051-TCP",
+    "port_number": 10051,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "zabbix-trapper",
+    "formal_name": "Zabbix サーバー",
+    "iana_description": "Zabbix Trapper",
+    "category": "MONITOR",
+    "purpose": "Zabbix のトラッパー。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "監視基盤の悪用",
+    "suspicious_traffic_features": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_checkpoints": "アクセスログ、認証ログ",
+    "recommended_defenses": "認証の必須化、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-10051-TCP"
+  },
+  {
+    "id": "PORT-10250-TCP",
+    "port_number": 10250,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "kubelet API",
+    "iana_description": "",
+    "category": "CONTAINER",
+    "purpose": "各ノードの kubelet。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証不備による Pod 内でのコマンド実行",
+    "suspicious_traffic_features": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_checkpoints": "API監査ログ、コンテナ作成イベント",
+    "recommended_defenses": "TLSと認証、RBAC、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-CONTAINER-API"
+    ],
+    "technique_ids": [
+      "T1610",
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-10250-TCP"
+  },
+  {
+    "id": "PORT-11211-TCP",
+    "port_number": 11211,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "memcache",
+    "formal_name": "Memcached",
+    "iana_description": "Memory cache service",
+    "category": "DB",
+    "purpose": "分散メモリキャッシュ。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでのキャッシュ内容の取得・改ざん",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-11211-TCP"
+  },
+  {
+    "id": "PORT-11211-UDP",
+    "port_number": 11211,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "memcache",
+    "formal_name": "Memcached (UDP)",
+    "iana_description": "Memory cache service",
+    "category": "AMP",
+    "purpose": "分散キャッシュ。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "非常に大きな増幅率の反射元",
+    "suspicious_traffic_features": "外部からの小さな要求と大きな応答の急増",
+    "investigation_checkpoints": "応答量、送信元の分布、要求の種類",
+    "recommended_defenses": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "attack_pattern_ids": [
+      "ATK-AMPLIFICATION"
+    ],
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-11211-UDP"
+  },
+  {
+    "id": "PORT-18083-TCP",
+    "port_number": 18083,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "VirtualBox Web サービス",
+    "iana_description": "",
+    "category": "VIRT",
+    "purpose": "vboxwebsrv の API。既定では localhost にバインド。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "外部公開時の VM 操作",
+    "suspicious_traffic_features": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_checkpoints": "ハイパーバイザーの管理ログ、接続元",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化",
+    "attack_pattern_ids": [
+      "ATK-HYPERVISOR",
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-ORACLE-VBOX-WEB"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-18083-TCP"
+  },
+  {
+    "id": "PORT-20000-TCP",
+    "port_number": 20000,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "dnp",
+    "formal_name": "DNP3",
+    "iana_description": "DNP",
+    "category": "ICS",
+    "purpose": "電力・水道等の監視制御。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "制御コマンドの送信",
+    "suspicious_traffic_features": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_checkpoints": "ICS向けIDS、FWログ",
+    "recommended_defenses": "ネットワーク分離、通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-20000-TCP"
+  },
+  {
+    "id": "PORT-27017-TCP",
+    "port_number": 27017,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "mongodb",
+    "formal_name": "MongoDB",
+    "iana_description": "Mongo database system",
+    "category": "DB",
+    "purpose": "ドキュメント指向データベース。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "認証なしでのデータ取得・削除・身代金要求",
+    "suspicious_traffic_features": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_checkpoints": "DB監査ログ、接続元、クエリ量",
+    "recommended_defenses": "外部公開の停止、認証の有効化、最小権限",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-27017-TCP"
+  },
+  {
+    "id": "PORT-44818-TCP",
+    "port_number": 44818,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "EtherNet-IP-2",
+    "formal_name": "EtherNet/IP",
+    "iana_description": "EtherNet/IP messaging\n\nIANA assigned this well-formed service name as a replacement for \"EtherNet/IP-2\".",
+    "category": "ICS",
+    "purpose": "産業用 Ethernet の機器通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "機器情報の取得・制御",
+    "suspicious_traffic_features": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_checkpoints": "ICS向けIDS、FWログ",
+    "recommended_defenses": "ネットワーク分離、通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-44818-TCP"
+  },
+  {
+    "id": "PORT-47808-UDP",
+    "port_number": 47808,
+    "protocol_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "bacnet",
+    "formal_name": "BACnet",
+    "iana_description": "Building Automation and Control Networks",
+    "category": "ICS",
+    "purpose": "ビル管理システムの通信。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "空調・照明等の制御",
+    "suspicious_traffic_features": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_checkpoints": "ICS向けIDS、FWログ",
+    "recommended_defenses": "ネットワーク分離、通信の許可リスト化",
+    "attack_pattern_ids": [
+      "ATK-UNAUTH-SERVICE",
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1078.001",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "protocol_id": "PROTO-UDP",
+    "service_id": null,
+    "risk_id": "RISK-47808-UDP"
+  },
+  {
+    "id": "PORT-61616-TCP",
+    "port_number": 61616,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "formal_name": "ActiveMQ (OpenWire)",
+    "iana_description": "",
+    "category": "MSG",
+    "purpose": "メッセージブローカー。",
+    "technical_description": "",
+    "normal_usage_examples": "",
+    "malicious_exploitation_cases": "ブローカーの脆弱性悪用",
+    "suspicious_traffic_features": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_checkpoints": "ブローカーのログ、接続元",
+    "recommended_defenses": "認証とTLS、外部公開の停止",
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-REMOTE-EXPLOIT"
+    ],
+    "technique_ids": [
+      "T1190",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
+    "protocol_id": "PROTO-TCP",
+    "service_id": null,
+    "risk_id": "RISK-61616-TCP"
   }
 ]

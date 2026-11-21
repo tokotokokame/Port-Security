@@ -247,5 +247,3758 @@
       "T1071.004",
       "T1041"
     ]
+  },
+  {
+    "id": "RISK-05355-UDP",
+    "port_number": 5355,
+    "transport_protocol": "UDP",
+    "service_name": "llmnr",
+    "risk_level": "High",
+    "reason_targeted": "偽応答で認証情報を横取りする(ポイズニング)",
+    "evaluation_factors": {
+      "category": "名前解決・探索",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_focus": "クエリ/応答ログ、応答サイズ、送信元",
+    "mitigation_controls": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "technique_ids": [
+      "T1557.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05353-UDP",
+    "port_number": 5353,
+    "transport_protocol": "UDP",
+    "service_name": "mdns",
+    "risk_level": "Medium",
+    "reason_targeted": "偽応答によるポイズニング、増幅攻撃の反射元",
+    "evaluation_factors": {
+      "category": "名前解決・探索",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_focus": "クエリ/応答ログ、応答サイズ、送信元",
+    "mitigation_controls": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "technique_ids": [
+      "T1557.001",
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01900-UDP",
+    "port_number": 1900,
+    "transport_protocol": "UDP",
+    "service_name": "ssdp",
+    "risk_level": "Medium",
+    "reason_targeted": "増幅攻撃の反射元、UPnP 機器の情報収集",
+    "evaluation_factors": {
+      "category": "UDP増幅の悪用対象",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの小さな要求と大きな応答の急増",
+    "investigation_focus": "応答量、送信元の分布、要求の種類",
+    "mitigation_controls": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "technique_ids": [
+      "T1498.002",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03702-UDP",
+    "port_number": 3702,
+    "transport_protocol": "UDP",
+    "service_name": "ws-discovery",
+    "risk_level": "Medium",
+    "reason_targeted": "機器の探索、外部公開時の反射",
+    "evaluation_factors": {
+      "category": "名前解決・探索",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_focus": "クエリ/応答ログ、応答サイズ、送信元",
+    "mitigation_controls": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00019-UDP",
+    "port_number": 19,
+    "transport_protocol": "UDP",
+    "service_name": "chargen",
+    "risk_level": "Medium",
+    "reason_targeted": "増幅攻撃の反射元",
+    "evaluation_factors": {
+      "category": "UDP増幅の悪用対象",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの小さな要求と大きな応答の急増",
+    "investigation_focus": "応答量、送信元の分布、要求の種類",
+    "mitigation_controls": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00017-UDP",
+    "port_number": 17,
+    "transport_protocol": "UDP",
+    "service_name": "qotd",
+    "risk_level": "Low",
+    "reason_targeted": "増幅攻撃の反射元",
+    "evaluation_factors": {
+      "category": "UDP増幅の悪用対象",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの小さな要求と大きな応答の急増",
+    "investigation_focus": "応答量、送信元の分布、要求の種類",
+    "mitigation_controls": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00111-UDP",
+    "port_number": 111,
+    "transport_protocol": "UDP",
+    "service_name": "sunrpc",
+    "risk_level": "Medium",
+    "reason_targeted": "増幅攻撃の反射元、RPC サービスの列挙",
+    "evaluation_factors": {
+      "category": "UDP増幅の悪用対象",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの小さな要求と大きな応答の急増",
+    "investigation_focus": "応答量、送信元の分布、要求の種類",
+    "mitigation_controls": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "technique_ids": [
+      "T1498.002",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00111-TCP",
+    "port_number": 111,
+    "transport_protocol": "TCP",
+    "service_name": "sunrpc",
+    "risk_level": "Medium",
+    "reason_targeted": "RPC サービス(NFS等)の列挙",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00520-UDP",
+    "port_number": 520,
+    "transport_protocol": "UDP",
+    "service_name": "router",
+    "risk_level": "Medium",
+    "reason_targeted": "増幅攻撃の反射元(RIPv1)、経路情報の注入",
+    "evaluation_factors": {
+      "category": "UDP増幅の悪用対象",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの小さな要求と大きな応答の急増",
+    "investigation_focus": "応答量、送信元の分布、要求の種類",
+    "mitigation_controls": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-11211-UDP",
+    "port_number": 11211,
+    "transport_protocol": "UDP",
+    "service_name": "memcache",
+    "risk_level": "High",
+    "reason_targeted": "非常に大きな増幅率の反射元",
+    "evaluation_factors": {
+      "category": "UDP増幅の悪用対象",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの小さな要求と大きな応答の急増",
+    "investigation_focus": "応答量、送信元の分布、要求の種類",
+    "mitigation_controls": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-AMP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-11211-TCP",
+    "port_number": 11211,
+    "transport_protocol": "TCP",
+    "service_name": "memcache",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでのキャッシュ内容の取得・改ざん",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00464-TCP",
+    "port_number": 464,
+    "transport_protocol": "TCP",
+    "service_name": "kpasswd",
+    "risk_level": "Medium",
+    "reason_targeted": "パスワード変更機能への総当たり",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00464-UDP",
+    "port_number": 464,
+    "transport_protocol": "UDP",
+    "service_name": "kpasswd",
+    "risk_level": "Medium",
+    "reason_targeted": "パスワード変更機能への総当たり",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03268-TCP",
+    "port_number": 3268,
+    "transport_protocol": "TCP",
+    "service_name": "msft-gc",
+    "risk_level": "High",
+    "reason_targeted": "フォレスト全体の列挙、AD 偵察",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1087.002",
+      "T1069.002",
+      "T1482"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03269-TCP",
+    "port_number": 3269,
+    "transport_protocol": "TCP",
+    "service_name": "msft-gc-ssl",
+    "risk_level": "Medium",
+    "reason_targeted": "フォレスト全体の列挙",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1087.002",
+      "T1069.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00593-TCP",
+    "port_number": 593,
+    "transport_protocol": "TCP",
+    "service_name": "http-rpc-epmap",
+    "risk_level": "Medium",
+    "reason_targeted": "RPC インターフェースの列挙・悪用",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1210",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09389-TCP",
+    "port_number": 9389,
+    "transport_protocol": "TCP",
+    "service_name": "adws",
+    "risk_level": "Medium",
+    "reason_targeted": "AD の大量列挙",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1087.002",
+      "T1069.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01434-UDP",
+    "port_number": 1434,
+    "transport_protocol": "UDP",
+    "service_name": "ms-sql-m",
+    "risk_level": "Medium",
+    "reason_targeted": "インスタンスの列挙",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-PORTS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02179-TCP",
+    "port_number": 2179,
+    "transport_protocol": "TCP",
+    "service_name": "vmrdp",
+    "risk_level": "High",
+    "reason_targeted": "管理者権限の悪用による VM の操作・画面取得",
+    "evaluation_factors": {
+      "category": "仮想化基盤",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_focus": "ハイパーバイザーの管理ログ、接続元",
+    "mitigation_controls": "管理ネットワークの分離、管理サービスの最小化",
+    "technique_ids": [
+      "T1078",
+      "T1021"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-CONN"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-06600-TCP",
+    "port_number": 6600,
+    "transport_protocol": "TCP",
+    "service_name": "mshvlm",
+    "risk_level": "High",
+    "reason_targeted": "移行通信の盗聴・不正な移行",
+    "evaluation_factors": {
+      "category": "仮想化基盤",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_focus": "ハイパーバイザーの管理ログ、接続元",
+    "mitigation_controls": "管理ネットワークの分離、管理サービスの最小化",
+    "technique_ids": [
+      "T1078"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-LM"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03343-TCP",
+    "port_number": 3343,
+    "transport_protocol": "TCP",
+    "service_name": "ms-cluster-net",
+    "risk_level": "Medium",
+    "reason_targeted": "クラスタ管理の悪用",
+    "evaluation_factors": {
+      "category": "仮想化基盤",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_focus": "ハイパーバイザーの管理ログ、接続元",
+    "mitigation_controls": "管理ネットワークの分離、管理サービスの最小化",
+    "technique_ids": [
+      "T1078"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-LM"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03343-UDP",
+    "port_number": 3343,
+    "transport_protocol": "UDP",
+    "service_name": "ms-cluster-net",
+    "risk_level": "Medium",
+    "reason_targeted": "クラスタ通信の妨害",
+    "evaluation_factors": {
+      "category": "仮想化基盤",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_focus": "ハイパーバイザーの管理ログ、接続元",
+    "mitigation_controls": "管理ネットワークの分離、管理サービスの最小化",
+    "technique_ids": [
+      "T1078"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-HYPERV-LM"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-18083-TCP",
+    "port_number": 18083,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "High",
+    "reason_targeted": "外部公開時の VM 操作",
+    "evaluation_factors": {
+      "category": "仮想化基盤",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_focus": "ハイパーバイザーの管理ログ、接続元",
+    "mitigation_controls": "管理ネットワークの分離、管理サービスの最小化",
+    "technique_ids": [
+      "T1078",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-ORACLE-VBOX-WEB"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00902-TCP",
+    "port_number": 902,
+    "transport_protocol": "TCP",
+    "service_name": "ideafarm-door",
+    "risk_level": "High",
+    "reason_targeted": "ESXi 管理面の悪用",
+    "evaluation_factors": {
+      "category": "仮想化基盤",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_focus": "ハイパーバイザーの管理ログ、接続元",
+    "mitigation_controls": "管理ネットワークの分離、管理サービスの最小化",
+    "technique_ids": [
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05989-TCP",
+    "port_number": 5989,
+    "transport_protocol": "TCP",
+    "service_name": "wbem-https",
+    "risk_level": "High",
+    "reason_targeted": "CIM サービスの脆弱性悪用",
+    "evaluation_factors": {
+      "category": "仮想化基盤",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "管理ネットワーク外からの接続、VMの一斉操作",
+    "investigation_focus": "ハイパーバイザーの管理ログ、接続元",
+    "mitigation_controls": "管理ネットワークの分離、管理サービスの最小化",
+    "technique_ids": [
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03283-TCP",
+    "port_number": 3283,
+    "transport_protocol": "TCP",
+    "service_name": "net-assistant",
+    "risk_level": "High",
+    "reason_targeted": "認証突破による遠隔操作",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1110",
+      "T1021.005"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05800-TCP",
+    "port_number": 5800,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "High",
+    "reason_targeted": "認証の弱い VNC への遠隔操作",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1021.005",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00512-TCP",
+    "port_number": 512,
+    "transport_protocol": "TCP",
+    "service_name": "exec",
+    "risk_level": "High",
+    "reason_targeted": "平文認証の盗聴、遠隔実行",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1040",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00513-TCP",
+    "port_number": 513,
+    "transport_protocol": "TCP",
+    "service_name": "login",
+    "risk_level": "High",
+    "reason_targeted": "平文認証の盗聴、信頼関係の悪用",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1040",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05938-TCP",
+    "port_number": 5938,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "Medium",
+    "reason_targeted": "無断導入による遠隔操作",
+    "evaluation_factors": {
+      "category": "リモートアクセスソフト",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "未承認端末からのベンダー中継先への接続",
+    "investigation_focus": "FWの外向きログ、導入ソフトの棚卸し",
+    "mitigation_controls": "承認済みツールの許可リスト化",
+    "technique_ids": [
+      "T1219"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-04899-TCP",
+    "port_number": 4899,
+    "transport_protocol": "TCP",
+    "service_name": "radmin-port",
+    "risk_level": "Medium",
+    "reason_targeted": "無断導入による遠隔操作",
+    "evaluation_factors": {
+      "category": "リモートアクセスソフト",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "未承認端末からのベンダー中継先への接続",
+    "investigation_focus": "FWの外向きログ、導入ソフトの棚卸し",
+    "mitigation_controls": "承認済みツールの許可リスト化",
+    "technique_ids": [
+      "T1219"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00465-TCP",
+    "port_number": 465,
+    "transport_protocol": "TCP",
+    "service_name": "urd",
+    "risk_level": "Medium",
+    "reason_targeted": "乗っ取りアカウントからの大量送信",
+    "evaluation_factors": {
+      "category": "メール",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量送信、認証失敗、平文認証",
+    "investigation_focus": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "mitigation_controls": "TLSの強制、多要素認証、送信ドメイン認証",
+    "technique_ids": [
+      "T1566",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08000-TCP",
+    "port_number": 8000,
+    "transport_protocol": "TCP",
+    "service_name": "irdmi",
+    "risk_level": "Medium",
+    "reason_targeted": "開発用サーバーの脆弱性悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1190",
+      "T1595.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08008-TCP",
+    "port_number": 8008,
+    "transport_protocol": "TCP",
+    "service_name": "http-alt",
+    "risk_level": "Medium",
+    "reason_targeted": "管理画面・API の脆弱性悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08081-TCP",
+    "port_number": 8081,
+    "transport_protocol": "TCP",
+    "service_name": "sunproxyadmin",
+    "risk_level": "Medium",
+    "reason_targeted": "管理画面の脆弱性悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08088-TCP",
+    "port_number": 8088,
+    "transport_protocol": "TCP",
+    "service_name": "radan-http",
+    "risk_level": "Medium",
+    "reason_targeted": "API の脆弱性悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08888-TCP",
+    "port_number": 8888,
+    "transport_protocol": "TCP",
+    "service_name": "ddi-tcp-1",
+    "risk_level": "Medium",
+    "reason_targeted": "認証なし管理画面の悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09000-TCP",
+    "port_number": 9000,
+    "transport_protocol": "TCP",
+    "service_name": "cslistener",
+    "risk_level": "Medium",
+    "reason_targeted": "管理コンソールの悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09443-TCP",
+    "port_number": 9443,
+    "transport_protocol": "TCP",
+    "service_name": "tungsten-https",
+    "risk_level": "Medium",
+    "reason_targeted": "管理画面の脆弱性悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03128-TCP",
+    "port_number": 3128,
+    "transport_protocol": "TCP",
+    "service_name": "ndl-aas",
+    "risk_level": "Medium",
+    "reason_targeted": "オープンプロキシの踏み台化、トンネル",
+    "evaluation_factors": {
+      "category": "プロキシ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのプロキシ利用(オープンプロキシ)、CONNECTの多用",
+    "investigation_focus": "プロキシのアクセスログ、接続元",
+    "mitigation_controls": "認証の必須化、外部からの利用遮断",
+    "technique_ids": [
+      "T1090"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01080-TCP",
+    "port_number": 1080,
+    "transport_protocol": "TCP",
+    "service_name": "socks",
+    "risk_level": "Medium",
+    "reason_targeted": "踏み台・トンネルとしての悪用",
+    "evaluation_factors": {
+      "category": "プロキシ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのプロキシ利用(オープンプロキシ)、CONNECTの多用",
+    "investigation_focus": "プロキシのアクセスログ、接続元",
+    "mitigation_controls": "認証の必須化、外部からの利用遮断",
+    "technique_ids": [
+      "T1090"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-27017-TCP",
+    "port_number": 27017,
+    "transport_protocol": "TCP",
+    "service_name": "mongodb",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでのデータ取得・削除・身代金要求",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-06379-TCP",
+    "port_number": 6379,
+    "transport_protocol": "TCP",
+    "service_name": "redis",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでのデータ取得、設定悪用による侵入",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001",
+      "T1190",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09200-TCP",
+    "port_number": 9200,
+    "transport_protocol": "TCP",
+    "service_name": "wap-wsp",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでのデータ取得・削除",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09300-TCP",
+    "port_number": 9300,
+    "transport_protocol": "TCP",
+    "service_name": "vrace",
+    "risk_level": "Medium",
+    "reason_targeted": "クラスタへの不正参加",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05984-TCP",
+    "port_number": 5984,
+    "transport_protocol": "TCP",
+    "service_name": "couchdb",
+    "risk_level": "High",
+    "reason_targeted": "認証なし API の悪用",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09042-TCP",
+    "port_number": 9042,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "Medium",
+    "reason_targeted": "既定認証情報での接続",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08086-TCP",
+    "port_number": 8086,
+    "transport_protocol": "TCP",
+    "service_name": "d-s-n",
+    "risk_level": "Medium",
+    "reason_targeted": "認証なし API の悪用",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02483-TCP",
+    "port_number": 2483,
+    "transport_protocol": "TCP",
+    "service_name": "ttc",
+    "risk_level": "Medium",
+    "reason_targeted": "総当たり・既定アカウントの悪用",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1110",
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02484-TCP",
+    "port_number": 2484,
+    "transport_protocol": "TCP",
+    "service_name": "ttc-ssl",
+    "risk_level": "Low",
+    "reason_targeted": "総当たり",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01883-TCP",
+    "port_number": 1883,
+    "transport_protocol": "TCP",
+    "service_name": "mqtt",
+    "risk_level": "Medium",
+    "reason_targeted": "認証なしブローカーでのデータ取得・機器操作",
+    "evaluation_factors": {
+      "category": "メッセージング",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_focus": "ブローカーのログ、接続元",
+    "mitigation_controls": "認証とTLS、外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08883-TCP",
+    "port_number": 8883,
+    "transport_protocol": "TCP",
+    "service_name": "secure-mqtt",
+    "risk_level": "Low",
+    "reason_targeted": "弱い認証の悪用",
+    "evaluation_factors": {
+      "category": "メッセージング",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_focus": "ブローカーのログ、接続元",
+    "mitigation_controls": "認証とTLS、外部公開の停止",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05672-TCP",
+    "port_number": 5672,
+    "transport_protocol": "TCP",
+    "service_name": "amqp",
+    "risk_level": "Medium",
+    "reason_targeted": "既定認証情報での接続",
+    "evaluation_factors": {
+      "category": "メッセージング",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_focus": "ブローカーのログ、接続元",
+    "mitigation_controls": "認証とTLS、外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05671-TCP",
+    "port_number": 5671,
+    "transport_protocol": "TCP",
+    "service_name": "amqps",
+    "risk_level": "Low",
+    "reason_targeted": "弱い認証の悪用",
+    "evaluation_factors": {
+      "category": "メッセージング",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_focus": "ブローカーのログ、接続元",
+    "mitigation_controls": "認証とTLS、外部公開の停止",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09092-TCP",
+    "port_number": 9092,
+    "transport_protocol": "TCP",
+    "service_name": "XmlIpcRegSvc",
+    "risk_level": "Medium",
+    "reason_targeted": "認証なしでのトピック読み書き",
+    "evaluation_factors": {
+      "category": "メッセージング",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_focus": "ブローカーのログ、接続元",
+    "mitigation_controls": "認証とTLS、外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-61616-TCP",
+    "port_number": 61616,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "High",
+    "reason_targeted": "ブローカーの脆弱性悪用",
+    "evaluation_factors": {
+      "category": "メッセージング",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_focus": "ブローカーのログ、接続元",
+    "mitigation_controls": "認証とTLS、外部公開の停止",
+    "technique_ids": [
+      "T1190",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-04369-TCP",
+    "port_number": 4369,
+    "transport_protocol": "TCP",
+    "service_name": "epmd",
+    "risk_level": "Medium",
+    "reason_targeted": "ノードの列挙、クッキー漏えい時の遠隔実行",
+    "evaluation_factors": {
+      "category": "メッセージング",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
+    "investigation_focus": "ブローカーのログ、接続元",
+    "mitigation_controls": "認証とTLS、外部公開の停止",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02375-TCP",
+    "port_number": 2375,
+    "transport_protocol": "TCP",
+    "service_name": "docker",
+    "risk_level": "Critical",
+    "reason_targeted": "認証なし API からのコンテナ作成・ホスト乗っ取り",
+    "evaluation_factors": {
+      "category": "コンテナ・クラスタ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_focus": "API監査ログ、コンテナ作成イベント",
+    "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
+    "technique_ids": [
+      "T1610",
+      "T1613",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02376-TCP",
+    "port_number": 2376,
+    "transport_protocol": "TCP",
+    "service_name": "docker-s",
+    "risk_level": "High",
+    "reason_targeted": "証明書管理の不備による API 悪用",
+    "evaluation_factors": {
+      "category": "コンテナ・クラスタ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_focus": "API監査ログ、コンテナ作成イベント",
+    "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
+    "technique_ids": [
+      "T1610",
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-06443-TCP",
+    "port_number": 6443,
+    "transport_protocol": "TCP",
+    "service_name": "sun-sr-https",
+    "risk_level": "High",
+    "reason_targeted": "認証情報の悪用、匿名アクセスの悪用",
+    "evaluation_factors": {
+      "category": "コンテナ・クラスタ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_focus": "API監査ログ、コンテナ作成イベント",
+    "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
+    "technique_ids": [
+      "T1610",
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-10250-TCP",
+    "port_number": 10250,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "High",
+    "reason_targeted": "認証不備による Pod 内でのコマンド実行",
+    "evaluation_factors": {
+      "category": "コンテナ・クラスタ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_focus": "API監査ログ、コンテナ作成イベント",
+    "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
+    "technique_ids": [
+      "T1610",
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02379-TCP",
+    "port_number": 2379,
+    "transport_protocol": "TCP",
+    "service_name": "etcd-client",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでの機密 (Secret 等) 取得",
+    "evaluation_factors": {
+      "category": "コンテナ・クラスタ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_focus": "API監査ログ、コンテナ作成イベント",
+    "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
+    "technique_ids": [
+      "T1613",
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02380-TCP",
+    "port_number": 2380,
+    "transport_protocol": "TCP",
+    "service_name": "etcd-server",
+    "risk_level": "Medium",
+    "reason_targeted": "クラスタへの不正参加",
+    "evaluation_factors": {
+      "category": "コンテナ・クラスタ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からのAPI接続、想定外のコンテナ作成",
+    "investigation_focus": "API監査ログ、コンテナ作成イベント",
+    "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
+    "technique_ids": [
+      "T1613"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03000-TCP",
+    "port_number": 3000,
+    "transport_protocol": "TCP",
+    "service_name": "hbci",
+    "risk_level": "Medium",
+    "reason_targeted": "既定認証情報・脆弱性の悪用",
+    "evaluation_factors": {
+      "category": "監視・可視化",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_focus": "アクセスログ、認証ログ",
+    "mitigation_controls": "認証の必須化、外部公開の停止",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05601-TCP",
+    "port_number": 5601,
+    "transport_protocol": "TCP",
+    "service_name": "esmagent",
+    "risk_level": "Medium",
+    "reason_targeted": "認証なし UI からのデータ閲覧",
+    "evaluation_factors": {
+      "category": "監視・可視化",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_focus": "アクセスログ、認証ログ",
+    "mitigation_controls": "認証の必須化、外部公開の停止",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09090-TCP",
+    "port_number": 9090,
+    "transport_protocol": "TCP",
+    "service_name": "websm",
+    "risk_level": "Medium",
+    "reason_targeted": "監視対象・構成情報の取得",
+    "evaluation_factors": {
+      "category": "監視・可視化",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_focus": "アクセスログ、認証ログ",
+    "mitigation_controls": "認証の必須化、外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-10050-TCP",
+    "port_number": 10050,
+    "transport_protocol": "TCP",
+    "service_name": "zabbix-agent",
+    "risk_level": "Medium",
+    "reason_targeted": "エージェント設定悪用による情報取得",
+    "evaluation_factors": {
+      "category": "監視・可視化",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_focus": "アクセスログ、認証ログ",
+    "mitigation_controls": "認証の必須化、外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-10051-TCP",
+    "port_number": 10051,
+    "transport_protocol": "TCP",
+    "service_name": "zabbix-trapper",
+    "risk_level": "Medium",
+    "reason_targeted": "監視基盤の悪用",
+    "evaluation_factors": {
+      "category": "監視・可視化",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
+    "investigation_focus": "アクセスログ、認証ログ",
+    "mitigation_controls": "認証の必須化、外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-06514-TCP",
+    "port_number": 6514,
+    "transport_protocol": "TCP",
+    "service_name": "syslog-tls",
+    "risk_level": "Low",
+    "reason_targeted": "ログ転送の妨害",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-04739-UDP",
+    "port_number": 4739,
+    "transport_protocol": "UDP",
+    "service_name": "ipfix",
+    "risk_level": "Low",
+    "reason_targeted": "フロー情報の盗聴・偽装",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-06343-UDP",
+    "port_number": 6343,
+    "transport_protocol": "UDP",
+    "service_name": "sflow",
+    "risk_level": "Low",
+    "reason_targeted": "フロー情報の盗聴",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00623-UDP",
+    "port_number": 623,
+    "transport_protocol": "UDP",
+    "service_name": "asf-rmcp",
+    "risk_level": "High",
+    "reason_targeted": "BMC の認証ハッシュ取得・既定認証情報での乗っ取り",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1078.001",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00049-TCP",
+    "port_number": 49,
+    "transport_protocol": "TCP",
+    "service_name": "tacacs",
+    "risk_level": "Medium",
+    "reason_targeted": "共有鍵の弱さによる盗聴・なりすまし",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1040"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01812-UDP",
+    "port_number": 1812,
+    "transport_protocol": "UDP",
+    "service_name": "radius",
+    "risk_level": "Medium",
+    "reason_targeted": "共有鍵の弱さを突く解析・総当たり",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1110",
+      "T1040"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01813-UDP",
+    "port_number": 1813,
+    "transport_protocol": "UDP",
+    "service_name": "radius-acct",
+    "risk_level": "Low",
+    "reason_targeted": "記録の盗聴・偽装",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1040"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00179-TCP",
+    "port_number": 179,
+    "transport_protocol": "TCP",
+    "service_name": "bgp",
+    "risk_level": "Medium",
+    "reason_targeted": "セッション妨害、経路の不正広告",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01985-UDP",
+    "port_number": 1985,
+    "transport_protocol": "UDP",
+    "service_name": "hsrp",
+    "risk_level": "Medium",
+    "reason_targeted": "優先度の偽装によるゲートウェイ乗っ取り(中間者)",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1557"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00830-TCP",
+    "port_number": 830,
+    "transport_protocol": "TCP",
+    "service_name": "netconf-ssh",
+    "risk_level": "Medium",
+    "reason_targeted": "管理 API の総当たり・悪用",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-07547-TCP",
+    "port_number": 7547,
+    "transport_protocol": "TCP",
+    "service_name": "cwmp",
+    "risk_level": "High",
+    "reason_targeted": "外部公開された管理機能の悪用",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-04786-TCP",
+    "port_number": 4786,
+    "transport_protocol": "TCP",
+    "service_name": "smart-install",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでの設定取得・変更",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02049-TCP",
+    "port_number": 2049,
+    "transport_protocol": "TCP",
+    "service_name": "shilp",
+    "risk_level": "High",
+    "reason_targeted": "誤った export 設定によるファイル取得",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1039",
+      "T1135"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02049-UDP",
+    "port_number": 2049,
+    "transport_protocol": "UDP",
+    "service_name": "shilp",
+    "risk_level": "Medium",
+    "reason_targeted": "誤った export 設定によるファイル取得",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1039",
+      "T1135"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00873-TCP",
+    "port_number": 873,
+    "transport_protocol": "TCP",
+    "service_name": "rsync",
+    "risk_level": "High",
+    "reason_targeted": "認証なしモジュールからのファイル取得",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1039",
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00548-TCP",
+    "port_number": 548,
+    "transport_protocol": "TCP",
+    "service_name": "afpovertcp",
+    "risk_level": "Medium",
+    "reason_targeted": "共有への総当たり",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1110",
+      "T1039"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00989-TCP",
+    "port_number": 989,
+    "transport_protocol": "TCP",
+    "service_name": "ftps-data",
+    "risk_level": "Low",
+    "reason_targeted": "持ち出しの通信路",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1048"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00990-TCP",
+    "port_number": 990,
+    "transport_protocol": "TCP",
+    "service_name": "ftps",
+    "risk_level": "Medium",
+    "reason_targeted": "総当たり",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03260-TCP",
+    "port_number": 3260,
+    "transport_protocol": "TCP",
+    "service_name": "iscsi-target",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでのボリュームへのアクセス",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05060-UDP",
+    "port_number": 5060,
+    "transport_protocol": "UDP",
+    "service_name": "sip",
+    "risk_level": "Medium",
+    "reason_targeted": "内線への総当たり登録、不正発信",
+    "evaluation_factors": {
+      "category": "音声・リアルタイム通信",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_focus": "SIPサーバーのログ、送信元",
+    "mitigation_controls": "認証の強化、送信元の制限",
+    "technique_ids": [
+      "T1110",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05060-TCP",
+    "port_number": 5060,
+    "transport_protocol": "TCP",
+    "service_name": "sip",
+    "risk_level": "Medium",
+    "reason_targeted": "内線への総当たり登録、不正発信",
+    "evaluation_factors": {
+      "category": "音声・リアルタイム通信",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_focus": "SIPサーバーのログ、送信元",
+    "mitigation_controls": "認証の強化、送信元の制限",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05061-TCP",
+    "port_number": 5061,
+    "transport_protocol": "TCP",
+    "service_name": "sips",
+    "risk_level": "Low",
+    "reason_targeted": "総当たり登録",
+    "evaluation_factors": {
+      "category": "音声・リアルタイム通信",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_focus": "SIPサーバーのログ、送信元",
+    "mitigation_controls": "認証の強化、送信元の制限",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03478-UDP",
+    "port_number": 3478,
+    "transport_protocol": "UDP",
+    "service_name": "stun",
+    "risk_level": "Low",
+    "reason_targeted": "外部公開時の反射・トンネル",
+    "evaluation_factors": {
+      "category": "音声・リアルタイム通信",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の登録試行(スキャン)、不正な発信",
+    "investigation_focus": "SIPサーバーのログ、送信元",
+    "mitigation_controls": "認証の強化、送信元の制限",
+    "technique_ids": [
+      "T1090"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00515-TCP",
+    "port_number": 515,
+    "transport_protocol": "TCP",
+    "service_name": "printer",
+    "risk_level": "Medium",
+    "reason_targeted": "外部からの印刷・情報取得",
+    "evaluation_factors": {
+      "category": "印刷",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの印刷ジョブ、設定変更",
+    "investigation_focus": "プリンタ/スプーラのログ",
+    "mitigation_controls": "外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00631-TCP",
+    "port_number": 631,
+    "transport_protocol": "TCP",
+    "service_name": "ipp",
+    "risk_level": "Medium",
+    "reason_targeted": "印刷サービスの脆弱性悪用",
+    "evaluation_factors": {
+      "category": "印刷",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの印刷ジョブ、設定変更",
+    "investigation_focus": "プリンタ/スプーラのログ",
+    "mitigation_controls": "外部公開の停止",
+    "technique_ids": [
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09100-TCP",
+    "port_number": 9100,
+    "transport_protocol": "TCP",
+    "service_name": "hp-pdl-datastr",
+    "risk_level": "Medium",
+    "reason_targeted": "認証なしでの印刷・設定変更",
+    "evaluation_factors": {
+      "category": "印刷",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの印刷ジョブ、設定変更",
+    "investigation_focus": "プリンタ/スプーラのログ",
+    "mitigation_controls": "外部公開の停止",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00502-TCP",
+    "port_number": 502,
+    "transport_protocol": "TCP",
+    "service_name": "mbap",
+    "risk_level": "High",
+    "reason_targeted": "認証なしでの値の読み取り・書込み",
+    "evaluation_factors": {
+      "category": "制御システム",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_focus": "ICS向けIDS、FWログ",
+    "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
+    "technique_ids": [
+      "T1078.001",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00102-TCP",
+    "port_number": 102,
+    "transport_protocol": "TCP",
+    "service_name": "iso-tsap",
+    "risk_level": "High",
+    "reason_targeted": "制御プログラムの読み取り・変更",
+    "evaluation_factors": {
+      "category": "制御システム",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_focus": "ICS向けIDS、FWログ",
+    "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-20000-TCP",
+    "port_number": 20000,
+    "transport_protocol": "TCP",
+    "service_name": "dnp",
+    "risk_level": "High",
+    "reason_targeted": "制御コマンドの送信",
+    "evaluation_factors": {
+      "category": "制御システム",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_focus": "ICS向けIDS、FWログ",
+    "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-44818-TCP",
+    "port_number": 44818,
+    "transport_protocol": "TCP",
+    "service_name": "EtherNet-IP-2",
+    "risk_level": "High",
+    "reason_targeted": "機器情報の取得・制御",
+    "evaluation_factors": {
+      "category": "制御システム",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_focus": "ICS向けIDS、FWログ",
+    "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
+    "technique_ids": [
+      "T1078.001",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-47808-UDP",
+    "port_number": 47808,
+    "transport_protocol": "UDP",
+    "service_name": "bacnet",
+    "risk_level": "High",
+    "reason_targeted": "空調・照明等の制御",
+    "evaluation_factors": {
+      "category": "制御システム",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_focus": "ICS向けIDS、FWログ",
+    "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
+    "technique_ids": [
+      "T1078.001",
+      "T1046"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-02404-TCP",
+    "port_number": 2404,
+    "transport_protocol": "TCP",
+    "service_name": "iec-104",
+    "risk_level": "High",
+    "reason_targeted": "制御コマンドの送信",
+    "evaluation_factors": {
+      "category": "制御システム",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_focus": "ICS向けIDS、FWログ",
+    "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-04840-TCP",
+    "port_number": 4840,
+    "transport_protocol": "TCP",
+    "service_name": "opcua-tcp",
+    "risk_level": "Medium",
+    "reason_targeted": "匿名アクセス設定の悪用",
+    "evaluation_factors": {
+      "category": "制御システム",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
+    "investigation_focus": "ICS向けIDS、FWログ",
+    "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-06667-TCP",
+    "port_number": 6667,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "Medium",
+    "reason_targeted": "旧来のボットネットの指令通信",
+    "evaluation_factors": {
+      "category": "チャット・その他",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "業務端末からの想定外の接続",
+    "investigation_focus": "FWの外向きログ",
+    "mitigation_controls": "不要な外向き通信の遮断",
+    "technique_ids": [
+      "T1071"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-04444-TCP",
+    "port_number": 4444,
+    "transport_protocol": "TCP",
+    "service_name": "krb524",
+    "risk_level": "High",
+    "reason_targeted": "リバースシェルの待受・外向き接続",
+    "evaluation_factors": {
+      "category": "攻撃ツールの既定ポート",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "業務端末からの外向き接続、一定間隔の通信",
+    "investigation_focus": "FWの外向きログ、通信元プロセス",
+    "mitigation_controls": "外向き通信の許可リスト化",
+    "technique_ids": [
+      "T1571"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-METASPLOIT-REVSHELL"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-06000-TCP",
+    "port_number": 6000,
+    "transport_protocol": "TCP",
+    "service_name": "(未登録)",
+    "risk_level": "High",
+    "reason_targeted": "認証なし X サーバーからの画面取得・入力",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1078.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00853-TCP",
+    "port_number": 853,
+    "transport_protocol": "TCP",
+    "service_name": "domain-s",
+    "risk_level": "Low",
+    "reason_targeted": "監視を回避した名前解決・トンネル",
+    "evaluation_factors": {
+      "category": "名前解決・探索",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_focus": "クエリ/応答ログ、応答サイズ、送信元",
+    "mitigation_controls": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "technique_ids": [
+      "T1572",
+      "T1071.004"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-09418-TCP",
+    "port_number": 9418,
+    "transport_protocol": "TCP",
+    "service_name": "git",
+    "risk_level": "Low",
+    "reason_targeted": "公開リポジトリからの情報取得",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05222-TCP",
+    "port_number": 5222,
+    "transport_protocol": "TCP",
+    "service_name": "xmpp-client",
+    "risk_level": "Low",
+    "reason_targeted": "C2 通信への悪用",
+    "evaluation_factors": {
+      "category": "チャット・その他",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "業務端末からの想定外の接続",
+    "investigation_focus": "FWの外向きログ",
+    "mitigation_controls": "不要な外向き通信の遮断",
+    "technique_ids": [
+      "T1071"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05269-TCP",
+    "port_number": 5269,
+    "transport_protocol": "TCP",
+    "service_name": "xmpp-server",
+    "risk_level": "Low",
+    "reason_targeted": "C2 通信への悪用",
+    "evaluation_factors": {
+      "category": "チャット・その他",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "業務端末からの想定外の接続",
+    "investigation_focus": "FWの外向きログ",
+    "mitigation_controls": "不要な外向き通信の遮断",
+    "technique_ids": [
+      "T1071"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00069-TCP",
+    "port_number": 69,
+    "transport_protocol": "TCP",
+    "service_name": "tftp",
+    "risk_level": "Medium",
+    "reason_targeted": "設定ファイルの取得",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1552.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00020-TCP",
+    "port_number": 20,
+    "transport_protocol": "TCP",
+    "service_name": "ftp-data",
+    "risk_level": "Medium",
+    "reason_targeted": "平文データ盗聴, 未暗号化ファイル送信",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1040"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00021-TCP",
+    "port_number": 21,
+    "transport_protocol": "TCP",
+    "service_name": "ftp",
+    "risk_level": "High",
+    "reason_targeted": "平文パスワード盗聴, ブルートフォース認証試行, 匿名FTP悪用",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1110",
+      "T1040",
+      "T1048"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00025-TCP",
+    "port_number": 25,
+    "transport_protocol": "TCP",
+    "service_name": "smtp",
+    "risk_level": "Medium",
+    "reason_targeted": "オープンリレー悪用によるスパム送信, スプーフィングメール送信, 認証前RCE",
+    "evaluation_factors": {
+      "category": "メール",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量送信、認証失敗、平文認証",
+    "investigation_focus": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "mitigation_controls": "TLSの強制、多要素認証、送信ドメイン認証",
+    "technique_ids": [
+      "T1595",
+      "T1566"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00053-TCP",
+    "port_number": 53,
+    "transport_protocol": "TCP",
+    "service_name": "domain",
+    "risk_level": "Medium",
+    "reason_targeted": "未承認ゾーン転送(AXFR)による内部ネットワーク構成情報の漏洩",
+    "evaluation_factors": {
+      "category": "名前解決・探索",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_focus": "クエリ/応答ログ、応答サイズ、送信元",
+    "mitigation_controls": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00067-UDP",
+    "port_number": 67,
+    "transport_protocol": "UDP",
+    "service_name": "bootps",
+    "risk_level": "Medium",
+    "reason_targeted": "Rogue DHCP Server (不正DHCPサーバーによるMan-in-the-Middle), DHCP Starvation (IP枯渇DoS)",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1595",
+      "T1557.003"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00068-UDP",
+    "port_number": 68,
+    "transport_protocol": "UDP",
+    "service_name": "bootpc",
+    "risk_level": "Low",
+    "reason_targeted": "不正DHCPサーバーからの偽設定(DNS/GW)受入",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00069-UDP",
+    "port_number": 69,
+    "transport_protocol": "UDP",
+    "service_name": "tftp",
+    "risk_level": "Medium",
+    "reason_targeted": "未認証での構成ファイル(パスワード含む)の不正ダウンロード",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1552.001",
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00088-TCP",
+    "port_number": 88,
+    "transport_protocol": "TCP",
+    "service_name": "kerberos",
+    "risk_level": "High",
+    "reason_targeted": "Kerberoasting (TGSハッシュ奪取), AS-REP Roasting, パスワードスプレー",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1110",
+      "T1558.003",
+      "T1558.004"
+    ],
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00088-UDP",
+    "port_number": 88,
+    "transport_protocol": "UDP",
+    "service_name": "kerberos",
+    "risk_level": "High",
+    "reason_targeted": "Kerberoasting, パスワードスプレー",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1110",
+      "T1558.003"
+    ],
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00110-TCP",
+    "port_number": 110,
+    "transport_protocol": "TCP",
+    "service_name": "pop3",
+    "risk_level": "Medium",
+    "reason_targeted": "平文認証情報の盗聴, ブルートフォース認証試行",
+    "evaluation_factors": {
+      "category": "メール",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量送信、認証失敗、平文認証",
+    "investigation_focus": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "mitigation_controls": "TLSの強制、多要素認証、送信ドメイン認証",
+    "technique_ids": [
+      "T1110",
+      "T1040",
+      "T1114.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00123-UDP",
+    "port_number": 123,
+    "transport_protocol": "UDP",
+    "service_name": "ntp",
+    "risk_level": "Medium",
+    "reason_targeted": "NTPアンプ攻撃 (monlistリフレクションDDoS), 時刻偽装によるログ無効化",
+    "evaluation_factors": {
+      "category": "UDP増幅の悪用対象",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの小さな要求と大きな応答の急増",
+    "investigation_focus": "応答量、送信元の分布、要求の種類",
+    "mitigation_controls": "外部公開の停止、送信元検証(BCP38)、レート制限",
+    "technique_ids": [
+      "T1595",
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00135-TCP",
+    "port_number": 135,
+    "transport_protocol": "TCP",
+    "service_name": "epmap",
+    "risk_level": "High",
+    "reason_targeted": "RPCエンドポイント探索, 脆弱性悪用によるRCE, 横展開",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1210",
+      "T1021",
+      "T1047",
+      "T1003.006"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-RDS",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00137-UDP",
+    "port_number": 137,
+    "transport_protocol": "UDP",
+    "service_name": "netbios-ns",
+    "risk_level": "High",
+    "reason_targeted": "LLMNR/NBT-NS Poisoning (Responder等による認証ハッシュ奪取)",
+    "evaluation_factors": {
+      "category": "名前解決・探索",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_focus": "クエリ/応答ログ、応答サイズ、送信元",
+    "mitigation_controls": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "technique_ids": [
+      "T1557.001",
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-CISA-HYGIENE",
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00138-UDP",
+    "port_number": 138,
+    "transport_protocol": "UDP",
+    "service_name": "netbios-dgm",
+    "risk_level": "Low",
+    "reason_targeted": "NetBIOS名前スプーフィング, 境界露出時の情報漏洩",
+    "evaluation_factors": {
+      "category": "名前解決・探索",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量の問い合わせ、想定外ホストからの応答",
+    "investigation_focus": "クエリ/応答ログ、応答サイズ、送信元",
+    "mitigation_controls": "不要プロトコルの無効化、外部公開の最小化、レート制限",
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00139-TCP",
+    "port_number": 139,
+    "transport_protocol": "TCP",
+    "service_name": "netbios-ssn",
+    "risk_level": "High",
+    "reason_targeted": "Pass-the-Hash, 横展開, ヌルセッション接続",
+    "evaluation_factors": {
+      "category": "ファイル共有・転送",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
+    "investigation_focus": "共有/転送ログ、転送量、接続元",
+    "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
+    "technique_ids": [
+      "T1210",
+      "T1021.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00143-TCP",
+    "port_number": 143,
+    "transport_protocol": "TCP",
+    "service_name": "imap",
+    "risk_level": "Medium",
+    "reason_targeted": "平文パスワード盗聴, ブルートフォース試行",
+    "evaluation_factors": {
+      "category": "メール",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量送信、認証失敗、平文認証",
+    "investigation_focus": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "mitigation_controls": "TLSの強制、多要素認証、送信ドメイン認証",
+    "technique_ids": [
+      "T1110",
+      "T1040",
+      "T1114.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00161-UDP",
+    "port_number": 161,
+    "transport_protocol": "UDP",
+    "service_name": "snmp",
+    "risk_level": "High",
+    "reason_targeted": "コミュニティ名(public/private)推測による情報漏洩・構成改ざん, SNMPアンプ攻撃",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1110",
+      "T1595",
+      "T1498.002",
+      "T1602.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00162-UDP",
+    "port_number": 162,
+    "transport_protocol": "UDP",
+    "service_name": "snmptrap",
+    "risk_level": "Low",
+    "reason_targeted": "偽装Trapパケットによる管理者への偽アラート攻撃",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00389-TCP",
+    "port_number": 389,
+    "transport_protocol": "TCP",
+    "service_name": "ldap",
+    "risk_level": "High",
+    "reason_targeted": "LDAP Bindパスワード盗聴, Kerberoasting予備検索, LDAP注入",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1040",
+      "T1110",
+      "T1087.002"
+    ],
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00389-UDP",
+    "port_number": 389,
+    "transport_protocol": "UDP",
+    "service_name": "ldap",
+    "risk_level": "Medium",
+    "reason_targeted": "CLDAPアンプ攻撃 (超高倍率リフレクションDDoS)",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1595",
+      "T1498.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-RDS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00443-UDP",
+    "port_number": 443,
+    "transport_protocol": "UDP",
+    "service_name": "http-3",
+    "risk_level": "Medium",
+    "reason_targeted": "プロキシ(TCP 443前提)の監視回避目的でのC2通信悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1071.001"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00500-UDP",
+    "port_number": 500,
+    "transport_protocol": "UDP",
+    "service_name": "isakmp",
+    "risk_level": "Medium",
+    "reason_targeted": "IKEメインモード/アグレッシブモード攻撃, 事前共有鍵(PSK)ハッシュ奪取",
+    "evaluation_factors": {
+      "category": "VPN・トンネル",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "異常な地点からの接続、認証やネゴシエーション失敗の急増",
+    "investigation_focus": "VPN認証ログ、IKE/SSL-VPNログ、接続元",
+    "mitigation_controls": "パッチ適用、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1110",
+      "T1110.002",
+      "T1133"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00514-TCP",
+    "port_number": 514,
+    "transport_protocol": "TCP",
+    "service_name": "syslog-conn",
+    "risk_level": "Medium",
+    "reason_targeted": "Syslogセッション切断攻撃",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00514-UDP",
+    "port_number": 514,
+    "transport_protocol": "UDP",
+    "service_name": "syslog",
+    "risk_level": "Low",
+    "reason_targeted": "ログ偽装(スプーフィング), ログ送信妨害(DoS), 平文ログ盗聴",
+    "evaluation_factors": {
+      "category": "ネットワーク機器管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの要求、既定の認証情報やコミュニティ名の使用",
+    "investigation_focus": "機器のログ、要求元、設定変更履歴",
+    "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
+    "technique_ids": [
+      "T1595"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00587-TCP",
+    "port_number": 587,
+    "transport_protocol": "TCP",
+    "service_name": "submission",
+    "risk_level": "Medium",
+    "reason_targeted": "奪取されたアカウントによるスパムメール大量送信",
+    "evaluation_factors": {
+      "category": "メール",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量送信、認証失敗、平文認証",
+    "investigation_focus": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "mitigation_controls": "TLSの強制、多要素認証、送信ドメイン認証",
+    "technique_ids": [
+      "T1110",
+      "T1566"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00636-TCP",
+    "port_number": 636,
+    "transport_protocol": "TCP",
+    "service_name": "ldaps",
+    "risk_level": "Medium",
+    "reason_targeted": "TLS証明書検証回避による中間者攻撃試行",
+    "evaluation_factors": {
+      "category": "認証・ディレクトリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "認証失敗の急増、大量の列挙要求",
+    "investigation_focus": "DCのセキュリティログ(4768/4769/4776)、LDAPクエリ量、送信元",
+    "mitigation_controls": "署名とチャネルバインディング、管理ネットワークの分離",
+    "technique_ids": [
+      "T1110",
+      "T1087.002"
+    ],
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00993-TCP",
+    "port_number": 993,
+    "transport_protocol": "TCP",
+    "service_name": "imaps",
+    "risk_level": "Low",
+    "reason_targeted": "奪取アカウントによる不正ログイン試行",
+    "evaluation_factors": {
+      "category": "メール",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量送信、認証失敗、平文認証",
+    "investigation_focus": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "mitigation_controls": "TLSの強制、多要素認証、送信ドメイン認証",
+    "technique_ids": [
+      "T1110",
+      "T1114.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-00995-TCP",
+    "port_number": 995,
+    "transport_protocol": "TCP",
+    "service_name": "pop3s",
+    "risk_level": "Low",
+    "reason_targeted": "認証突破狙いのパスワード試行",
+    "evaluation_factors": {
+      "category": "メール",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "大量送信、認証失敗、平文認証",
+    "investigation_focus": "MTA・認証ログ、送信量、SPF/DKIM結果",
+    "mitigation_controls": "TLSの強制、多要素認証、送信ドメイン認証",
+    "technique_ids": [
+      "T1110",
+      "T1114.002"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01194-TCP",
+    "port_number": 1194,
+    "transport_protocol": "TCP",
+    "service_name": "openvpn",
+    "risk_level": "Medium",
+    "reason_targeted": "VPN認証攻撃",
+    "evaluation_factors": {
+      "category": "VPN・トンネル",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "異常な地点からの接続、認証やネゴシエーション失敗の急増",
+    "investigation_focus": "VPN認証ログ、IKE/SSL-VPNログ、接続元",
+    "mitigation_controls": "パッチ適用、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1110",
+      "T1133"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01194-UDP",
+    "port_number": 1194,
+    "transport_protocol": "UDP",
+    "service_name": "openvpn",
+    "risk_level": "Medium",
+    "reason_targeted": "VPN資格情報の奪取による不正侵入, 未修正VPN脆弱性悪用",
+    "evaluation_factors": {
+      "category": "VPN・トンネル",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "異常な地点からの接続、認証やネゴシエーション失敗の急増",
+    "investigation_focus": "VPN認証ログ、IKE/SSL-VPNログ、接続元",
+    "mitigation_controls": "パッチ適用、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1110",
+      "T1210",
+      "T1133"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01433-TCP",
+    "port_number": 1433,
+    "transport_protocol": "TCP",
+    "service_name": "ms-sql-s",
+    "risk_level": "High",
+    "reason_targeted": "saアカウントに対するブルートフォース攻撃, SQL注入, 未パッチRCE悪用",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1110",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01521-TCP",
+    "port_number": 1521,
+    "transport_protocol": "TCP",
+    "service_name": "ncube-lm",
+    "risk_level": "High",
+    "reason_targeted": "TNS Listener脆弱性悪用, SYSTEM/SCOTTアカウントへの辞書攻撃",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1110",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01701-UDP",
+    "port_number": 1701,
+    "transport_protocol": "UDP",
+    "service_name": "l2f",
+    "risk_level": "Medium",
+    "reason_targeted": "VPN認証突破狙い, IPsec非併用時の平文情報漏洩",
+    "evaluation_factors": {
+      "category": "VPN・トンネル",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "異常な地点からの接続、認証やネゴシエーション失敗の急増",
+    "investigation_focus": "VPN認証ログ、IKE/SSL-VPNログ、接続元",
+    "mitigation_controls": "パッチ適用、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-01723-TCP",
+    "port_number": 1723,
+    "transport_protocol": "TCP",
+    "service_name": "pptp",
+    "risk_level": "High",
+    "reason_targeted": "MS-CHAPv2の解読脆弱性を狙う中間者攻撃・認証奪取",
+    "evaluation_factors": {
+      "category": "VPN・トンネル",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "異常な地点からの接続、認証やネゴシエーション失敗の急増",
+    "investigation_focus": "VPN認証ログ、IKE/SSL-VPNログ、接続元",
+    "mitigation_controls": "パッチ適用、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1557",
+      "T1110.002",
+      "T1110"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03306-TCP",
+    "port_number": 3306,
+    "transport_protocol": "TCP",
+    "service_name": "mysql",
+    "risk_level": "High",
+    "reason_targeted": "rootアカウントへのブルートフォース攻撃, SQLインジェクション後の直接接続",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1110",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-03389-UDP",
+    "port_number": 3389,
+    "transport_protocol": "UDP",
+    "service_name": "ms-wbt-server",
+    "risk_level": "High",
+    "reason_targeted": "DoS攻撃, RDPセッション干渉試行",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-RDS"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-04500-UDP",
+    "port_number": 4500,
+    "transport_protocol": "UDP",
+    "service_name": "ipsec-nat-t",
+    "risk_level": "Medium",
+    "reason_targeted": "VPNネゴシエーション妨害, 未認証セッション送信",
+    "evaluation_factors": {
+      "category": "VPN・トンネル",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "異常な地点からの接続、認証やネゴシエーション失敗の急増",
+    "investigation_focus": "VPN認証ログ、IKE/SSL-VPNログ、接続元",
+    "mitigation_controls": "パッチ適用、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1595",
+      "T1133"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05432-TCP",
+    "port_number": 5432,
+    "transport_protocol": "TCP",
+    "service_name": "postgresql",
+    "risk_level": "High",
+    "reason_targeted": "postgres管理者アカウントに対する辞書攻撃, 未認証RCE悪用",
+    "evaluation_factors": {
+      "category": "データベース・キャッシュ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
+    "investigation_focus": "DB監査ログ、接続元、クエリ量",
+    "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
+    "technique_ids": [
+      "T1110",
+      "T1210"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05900-TCP",
+    "port_number": 5900,
+    "transport_protocol": "TCP",
+    "service_name": "vnc",
+    "risk_level": "High",
+    "reason_targeted": "無防備なVNC認証パスワードに対する辞書攻撃, 暗号化なしパケットの盗聴",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1110",
+      "T1040",
+      "T1021.005"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-05986-TCP",
+    "port_number": 5986,
+    "transport_protocol": "TCP",
+    "service_name": "wsmans",
+    "risk_level": "High",
+    "reason_targeted": "資格情報を用いた不正管理者ログイン試行",
+    "evaluation_factors": {
+      "category": "リモート管理",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
+    "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
+    "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
+    "technique_ids": [
+      "T1210",
+      "T1021.006"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MS-RDS",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08080-TCP",
+    "port_number": 8080,
+    "transport_protocol": "TCP",
+    "service_name": "http-alt",
+    "risk_level": "Medium",
+    "reason_targeted": "Web管理UI(Apache Tomcat Manager等)に対するブルートフォース, 脆弱性悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1110",
+      "T1210",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+  },
+  {
+    "id": "RISK-08443-TCP",
+    "port_number": 8443,
+    "transport_protocol": "TCP",
+    "service_name": "https-alt",
+    "risk_level": "Medium",
+    "reason_targeted": "管理UIへの認証突破狙い, 未修整Web RCE脆弱性悪用",
+    "evaluation_factors": {
+      "category": "Web・アプリ",
+      "basis": "docs/RISK_RUBRIC.md"
+    },
+    "suspicious_indicators": "既知脆弱性パスへの要求、スキャナのUser-Agent、エラー率の上昇",
+    "investigation_focus": "アクセスログ、WAFログ、Webサーバー配下の子プロセス",
+    "mitigation_controls": "パッチ適用、WAF、管理画面の外部公開停止",
+    "technique_ids": [
+      "T1110",
+      "T1210",
+      "T1190"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
   }
 ]
