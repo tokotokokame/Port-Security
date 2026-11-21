@@ -164,7 +164,7 @@ class _NumFieldState extends State<_NumField> {
           decoration: InputDecoration(hintText: widget.hint, counterText: '', hintStyle: Term.monoStyle(color: Term.dim)),
           onChanged: (t) {
             final n = int.tryParse(t);
-            widget.onChanged(n == null ? null : n.clamp(0, 65535));
+            widget.onChanged(n?.clamp(0, 65535));
           },
         ),
       );
