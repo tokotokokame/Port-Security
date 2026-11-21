@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:port_security/data/repository.dart';
 import 'package:port_security/main.dart';
 import 'package:port_security/ui/port_detail_screen.dart';
+import 'package:port_security/ui/search_screen.dart';
 import 'package:port_security/ui/theme.dart';
 
 import 'repository_test.dart' show loadRepo;
@@ -25,7 +26,7 @@ void main() {
     await tester.enterText(find.byKey(const Key('search-field')), '445/tcp');
     await tester.pumpAndSettle();
     expect(find.textContaining('1 hits'), findsOneWidget);
-    await tester.tap(find.text('445/tcp').first);
+    await tester.tap(find.byType(PortRow).first); // not the search field, which also shows '445/tcp'
     await tester.pumpAndSettle();
     for (final tab in ['攻撃', 'tools', 'att&ck', 'logs', 'src']) {
       await tester.tap(find.text(tab));
@@ -42,8 +43,11 @@ void main() {
     expect(find.text('-- 基本'), findsOneWidget);
     await tester.tap(find.text('詳細ありのみ'));
     await tester.pumpAndSettle();
+    // the expanded panel pushes the hit counter below the fold
+    await tester.scrollUntilVisible(find.textContaining('160 hits'), 200, scrollable: find.byType(Scrollable).first);
     expect(find.textContaining('160 hits'), findsOneWidget);
     expect(find.byKey(const Key('filter-count')), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('reset'), -200, scrollable: find.byType(Scrollable).first);
     await tester.tap(find.text('reset'));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('filter-count')), findsNothing);
@@ -64,7 +68,7 @@ void main() {
     await tester.tap(find.text('Impacket'));
     await tester.pumpAndSettle();
     expect(find.textContaining('# artifacts'), findsOneWidget);
-    await tester.pageBack();
+    await tester.tap(find.byType(BackButton)); // pageBack() looks for the English 'Back' tooltip
     await tester.pumpAndSettle();
     await tester.tap(find.text('logs'));
     await tester.pumpAndSettle();
