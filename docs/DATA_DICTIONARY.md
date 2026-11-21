@@ -1,4 +1,4 @@
-# DATA_DICTIONARY（v4）
+# DATA_DICTIONARY（v5）
 
 ## ファイルと主キー
 
@@ -12,7 +12,29 @@
 | `log_investigation.json` | `LOG-{基盤}-{識別子}` | ログ調査手順 |
 | `mitre_techniques.json` | `T####` | ATT&CK 技術（サブ技術は `subtechniques` に内包） |
 | `detection_strategies.json` | `DET####` | ATT&CK 検知戦略と analytic |
+| `tools.json` | `TOOL-{名前}` | 攻撃ツール（検知の痕跡のみ。使い方は含まない） |
+| `mitre_software.json` | `S####` | ATT&CK に収録されたツール情報（公式 STIX から生成） |
 | `sources.json` | `SRC-{略称}` | 根拠資料 |
+| `raw/iana/service-names-port-numbers.csv` | — | IANA 公式台帳（CI の `refresh-iana` が取得） |
+
+## 生成の流れ
+
+1. `tools/import_mitre.py <enterprise-attack.json>`: 参照中の技術・ツールについて、技術・検知戦略・analytic・ソフトウェアを ATT&CK 公式 STIX から再生成します。
+2. `tools/validate.py`: 整合性を検証します。
+3. `tools/build_index.py`: `dist/` と `app/assets/data/` に `ports.json` / `kb.json` / `iana.json` を出力します。
+
+`tools/apply_v5.py`・`v5_catalog.py`・`v5_ports.py` は v4→v5 の拡充記録です（監査用）。
+
+## ログ調査の関連度（`ports.json` の `logs[].rank`）
+
+| rank | 意味 |
+|---|---|
+| 0 | DET の公式監視ポートに一致 |
+| 1 | 公式文書でポートが指定されている（Hyper-V / VirtualBox など） |
+| 2 | DET のサービス名から推定したポート |
+| 3 | 技術 → 検知戦略 → analytic のプラットフォームで対応 |
+| 4 | 攻撃手法・ツールの経由 |
+| 5 | 境界機器ログ（全ポート共通） |
 
 ## リンク構造（すべて ID による外部キー）
 
@@ -45,7 +67,7 @@ ports ──service_id──▶ services
 
 ## sources の `scope` と `reverified_v4`
 
-`scope`: `port_assignment` / `protocol_assignment` / `service` / `attack_technique` / `detection` / `threat_guidance` / `log_format` / `reference`
+`scope`: `port_assignment` / `protocol_assignment` / `service` / `attack_technique` / `detection` / `threat_advisory` / `threat_guidance` / `log_format` / `reference`
 
 `reverified_v4`: v4 作成時に実ページを再確認したか。
 
@@ -53,7 +75,7 @@ ports ──service_id──▶ services
 
 | 値 | 条件 |
 |---|---|
-| `確認済み` | `reverified_v4=true` かつ脅威系 scope（`attack_technique` / `detection`）の資料を `source_ids` に持つ。ログは `detection` / `log_format` |
+| `確認済み` | `reverified_v4=true` かつ脅威系 scope（`attack_technique` / `detection` / `threat_advisory`）の資料を `source_ids` に持つ。ログは `detection` / `log_format` |
 | `一部確認` | 上記を満たさない。`unconfirmed_notes` に不足を必ず記載 |
 | `未確認` | 根拠なし。`unconfirmed_notes` 必須 |
 

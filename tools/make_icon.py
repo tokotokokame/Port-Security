@@ -43,8 +43,8 @@ def jack(d, x, y, color, hole=BG):
         d.point((x + 2 + i * 2, y + 1), fill=color)  # contacts
 
 
-def icon_a():  # shield + port socket
-    im, d = base()
+def icon_a(bg=True):  # shield + port socket (bg=False: adaptive-icon foreground)
+    im, d = base() if bg else (lambda i: (i, ImageDraw.Draw(i)))(Image.new("RGBA", (32, 32), (0, 0, 0, 0)))
     shield = [(16, 4), (26, 7), (26, 16), (22, 23), (16, 28), (10, 23), (6, 16), (6, 7)]
     d.polygon(shield, fill=TEAL_DD, outline=TEAL)
     d.line([(16, 5), (16, 27)], fill=TEAL_D)
@@ -80,7 +80,34 @@ def icon_c():  # port socket under a magnifying glass, with network nodes
     return im
 
 
+ANDROID = {"mdpi": (48, 2), "hdpi": (72, 3), "xhdpi": (96, 4), "xxhdpi": (144, 6), "xxxhdpi": (192, 9)}
+
+
+def android(res):
+    """Launcher icons: legacy PNGs + adaptive icon (foreground on a 108dp canvas)."""
+    res = Path(res)
+    for dpi, (legacy, k) in ANDROID.items():
+        d = res / f"mipmap-{dpi}"
+        d.mkdir(parents=True, exist_ok=True)
+        icon_a().resize((legacy, legacy), Image.NEAREST).save(d / "ic_launcher.png")
+        size = legacy * 108 // 48
+        fg = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+        art = icon_a(bg=False).resize((32 * k, 32 * k), Image.NEAREST)
+        fg.paste(art, ((size - 32 * k) // 2, (size - 32 * k) // 2), art)
+        fg.save(d / "ic_launcher_foreground.png")
+    (res / "mipmap-anydpi-v26").mkdir(exist_ok=True)
+    (res / "mipmap-anydpi-v26/ic_launcher.xml").write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n'
+        '    <background android:drawable="@color/ic_launcher_background"/>\n'
+        '    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>\n</adaptive-icon>\n')
+    (res / "values").mkdir(exist_ok=True)
+    (res / "values/ic_launcher_background.xml").write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <color name="ic_launcher_background">#0D1117</color>\n</resources>\n')
+
+
 if __name__ == "__main__":
+    if len(sys.argv) > 2 and sys.argv[1] == "--android":
+        android(sys.argv[2]); print("android icons written"); sys.exit()
     out = Path(sys.argv[1] if len(sys.argv) > 1 else ".")
     out.mkdir(parents=True, exist_ok=True)
     for name, fn in [("a", icon_a), ("b", icon_b), ("c", icon_c)]:
