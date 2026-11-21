@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v5 / app v2.0 (2026-11-21)
+
+### データ
+- IANA 公式台帳（11,625 ポート）を基本レイヤーとして収録しました。取得は CI の `refresh-iana` で行います。
+- 詳細付きポートを51件から160件に増やし、全件にリスク評価を付けました（基準は `docs/RISK_RUBRIC.md`）。
+- 攻撃手法を7件から24件に増やしました（Kerberoasting、名前解決ポイズニング、DCSync、反射型DDoS、コンテナ API の悪用など）。
+- 攻撃ツール18件を追加しました（Impacket、Mimikatz、CrackMapExec、Responder、Rubeus、BloodHound、smbclient など）。記載は検知の痕跡だけで、SigmaHQ のルールと各公式文書で裏取りしています。
+- ログ調査に Hyper-V、VirtualBox、Windows Security を追加しました。
+- ATT&CK v20.1 の公式 STIX から、技術90件（サブ技術74件）、検知戦略164件、analytic 533件を取り込みました。
+
+### アプリ
+- ターミナル風の UI に作り直しました（ダーク固定、等幅フォント）。
+- 検索バーの下に「詳細検索設定」を追加し、例示用の選択チップを削除しました。
+- 下部タブを `ports / attacks / tools / logs` にしました。
+- アプリアイコンをドット絵（シールド＋ポート）にしました（アダプティブアイコン対応）。
+
 ## app v1.0 (2026-11-21)
 
 - Android アプリ（Flutter）を追加しました。`port_index.json` を同梱したオフライン検索です。

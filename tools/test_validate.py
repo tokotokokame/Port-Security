@@ -43,7 +43,16 @@ class Defects(unittest.TestCase):
         self.assertCaught(lambda d: port(d, "PORT-00022-TCP").update(port_number=23), "不一致")
 
     def test_one_way_log_link(self):
-        self.assertCaught(lambda d: d["log_investigation"][0]["analytics_ids"].append("AN0329"), "双方向")
+        self.assertCaught(lambda d: d["log_investigation"][0]["analytics_ids"].append("AN0329"), "参照がない")
+
+    def test_tool_port_must_exist(self):
+        self.assertCaught(lambda d: d["tools"][0]["ports"].append([65000, "TCP"]), "ports にない番号")
+
+    def test_listed_log_port_must_exist(self):
+        self.assertCaught(lambda d: next(l for l in d["log_investigation"] if l["id"] == "LOG-HYPERV")["ports"].append([1, "UDP"]), "ports にない番号")
+
+    def test_unknown_software(self):
+        self.assertCaught(lambda d: d["tools"][0].update(mitre_software_id="S9999"), "参照切れ")
 
 
 if __name__ == "__main__":

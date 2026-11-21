@@ -1,123 +1,112 @@
-// Typed, null-tolerant views over assets/data/port_index.json.
-// Every accessor falls back to an empty value so a malformed record
-// can never crash the UI.
-import 'text.dart';
+import 'json.dart';
 
-String _s(Object? v) => v is String ? v : (v == null ? '' : '$v');
-List<Map<String, dynamic>> _maps(Object? v) =>
-    v is List ? v.whereType<Map<String, dynamic>>().toList() : const [];
-List<String> _strs(Object? v) =>
-    v is List ? v.whereType<String>().toList() : const [];
+const riskOrder = {'Low': 1, 'Medium': 2, 'High': 3, 'Critical': 4};
 
-class NamedLink {
-  const NamedLink(this.id, this.name, this.url);
-  final String id, name, url;
-  factory NamedLink.fromJson(Map<String, dynamic> j) =>
-      NamedLink(_s(j['id'] ?? j['source_id']), _s(j['name'] ?? j['title']), _s(j['url']));
+class Attack {
+  Attack(this.id, Json j)
+      : name = str(j['name']), category = str(j['category']), description = str(j['description']),
+        features = str(j['features']), detection = str(j['detection']), defenses = str(j['defenses']),
+        techniques = strs(j['techniques']), logs = strs(j['logs']), sources = strs(j['sources']);
+  final String id, name, category, description, features, detection, defenses;
+  final List<String> techniques, logs, sources;
 }
 
 class Technique {
-  Technique.fromJson(Map<String, dynamic> j)
-      : id = _s(j['id']),
-        name = _s(j['name']),
-        tactics = _strs(j['tactics']),
-        url = _s(j['url']),
-        detections = _maps(j['detection_strategies']).map(NamedLink.fromJson).toList();
+  Technique(this.id, Json j)
+      : name = str(j['name']), url = str(j['url']), parent = j['parent'] as String?,
+        tactics = strs(j['tactics']), dets = strs(j['dets']);
   final String id, name, url;
-  final List<String> tactics;
-  final List<NamedLink> detections;
+  final String? parent;
+  final List<String> tactics, dets;
 }
 
-class AttackRef {
-  AttackRef.fromJson(Map<String, dynamic> j)
-      : id = _s(j['id']),
-        name = _s(j['attack_name']),
-        features = _s(j['attack_features']),
-        detection = _s(j['detection_methods']),
-        defenses = _s(j['recommended_defenses']);
-  final String id, name, features, detection, defenses;
+class Analytic {
+  Analytic(Json j)
+      : id = str(j['id']), platforms = strs(j['platforms']), description = str(j['description']),
+        logs = [for (final r in rows(j['logs'])) '${str(r.isNotEmpty ? r[0] : '')}  ${str(r.length > 1 ? r[1] : '')}'];
+  final String id, description;
+  final List<String> platforms, logs;
+}
+
+class Det {
+  Det(this.id, Json j) : name = str(j['name']), url = str(j['url']), analytics = maps(j['analytics']).map(Analytic.new).toList();
+  final String id, name, url;
+  final List<Analytic> analytics;
+}
+
+class Tool {
+  Tool(this.id, Json j)
+      : name = str(j['name']), category = str(j['category']), sid = j['sid'] as String?, summary = str(j['summary']),
+        ports = [for (final r in rows(j['ports'])) if (r.length == 2) '${r[0]}/${str(r[1]).toLowerCase()}'],
+        artifacts = strs(j['artifacts']), detection = strs(j['detection']), attacks = strs(j['attacks']),
+        techniques = strs(j['techniques']), logs = strs(j['logs']), sources = strs(j['sources']),
+        certainty = str(j['certainty']), notes = str(j['notes']);
+  final String id, name, category, summary, certainty, notes;
+  final String? sid;
+  final List<String> ports, artifacts, detection, attacks, techniques, logs, sources;
+}
+
+class LogSource {
+  LogSource(this.id, Json j)
+      : platform = str(j['platform']), analytics = str(j['analytics']), procedure = str(j['procedure']),
+        certainty = str(j['certainty']), notes = str(j['notes']), refs = strs(j['refs']),
+        channels = [for (final r in rows(j['sources'])) if (r.length == 3) (str(r[0]), r[1] is int ? r[1] as int : null, str(r[2]))];
+  final String id, platform, analytics, procedure, certainty, notes;
+  final List<String> refs;
+  final List<(String, int?, String)> channels;
+}
+
+class Source {
+  Source(this.id, Json j) : title = str(j['title']), url = str(j['url']), publisher = str(j['publisher']), verified = j['verified'] == true;
+  final String id, title, url, publisher;
+  final bool verified;
 }
 
 class LogRef {
-  LogRef.fromJson(Map<String, dynamic> j)
-      : id = _s(j['id']),
-        platform = _s(j['platform']),
-        analytics = _s(j['detection_analytics']),
-        procedure = _s(j['investigation_procedure']),
-        certainty = _s(j['certainty']),
-        match = _s(j['match']),
-        via = _strs(j['via']);
-  final String id, platform, analytics, procedure, certainty, match;
+  LogRef(Json j) : id = str(j['id']), match = str(j['match']), rank = intOr(j['rank'], 9), via = strs(j['via']);
+  final String id, match;
+  final int rank;
   final List<String> via;
-
-  /// 0 = strongest relevance. Mirrors MATCH order in tools/build_index.py.
-  int get rank => switch (match) {
-        'DET公式監視ポート一致' => 0,
-        'DETサービス名から推定' => 1,
-        '攻撃手法経由' => 2,
-        _ => 3,
-      };
 }
 
 class Risk {
-  Risk.fromJson(Map<String, dynamic> j)
-      : level = _s(j['risk_level']),
-        reason = _s(j['reason_targeted']),
-        indicators = _s(j['suspicious_indicators']),
-        focus = _s(j['investigation_focus']),
-        mitigation = _s(j['mitigation_controls']);
+  Risk(Json j)
+      : level = str(j['level']), reason = str(j['reason']), indicators = str(j['indicators']),
+        focus = str(j['focus']), mitigation = str(j['mitigation']);
   final String level, reason, indicators, focus, mitigation;
+  int get order => riskOrder[level] ?? 0;
+}
+
+/// Detailed knowledge for a port (absent for IANA-only entries).
+class Detail {
+  Detail(Json j)
+      : name = str(j['name']), category = str(j['category']), purpose = str(j['purpose']), technical = str(j['technical']),
+        normal = str(j['normal']), malicious = str(j['malicious']), suspicious = str(j['suspicious']),
+        checkpoints = str(j['checkpoints']), defenses = str(j['defenses']), certainty = str(j['certainty']),
+        notes = str(j['notes']), verified = str(j['verified']),
+        risk = j['risk'] is Json ? Risk(j['risk'] as Json) : null,
+        attacks = strs(j['attacks']), techniques = strs(j['techniques']), tools = strs(j['tools']),
+        logs = maps(j['logs']).map(LogRef.new).toList(), sources = strs(j['sources']), gaps = strs(j['gaps']);
+  final String name, category, purpose, technical, normal, malicious, suspicious, checkpoints, defenses, certainty, notes, verified;
+  final Risk? risk;
+  final List<String> attacks, techniques, tools, sources, gaps;
+  final List<LogRef> logs;
 }
 
 class PortEntry {
-  PortEntry.fromJson(Map<String, dynamic> j)
-      : id = _s(j['id']),
-        number = j['port_number'] is int ? j['port_number'] as int : -1,
-        transport = _s(j['transport_protocol']),
-        service = _s(j['service_name']),
-        formalName = _s(j['formal_name']),
-        purpose = _s(j['purpose']),
-        technical = _s(j['technical_description']),
-        normalUse = _s(j['normal_usage_examples']),
-        malicious = _s(j['malicious_exploitation_cases']),
-        suspicious = _s(j['suspicious_traffic_features']),
-        checkpoints = _s(j['investigation_checkpoints']),
-        defenses = _s(j['recommended_defenses']),
-        certainty = _s(j['certainty']),
-        notes = _s(j['unconfirmed_notes']),
-        verifiedDate = _s(j['verified_date']),
-        risk = j['risk'] is Map<String, dynamic> ? Risk.fromJson(j['risk'] as Map<String, dynamic>) : null,
-        attacks = _maps(j['attack_patterns']).map(AttackRef.fromJson).toList(),
-        techniques = _maps(j['techniques']).map(Technique.fromJson).toList(),
-        logs = _maps(j['logs']).map(LogRef.fromJson).toList(),
-        sources = _maps(j['sources']).map(NamedLink.fromJson).toList(),
-        gaps = _strs(j['gaps']);
-
-  final String id, transport, service, formalName, purpose, technical, normalUse,
-      malicious, suspicious, checkpoints, defenses, certainty, notes, verifiedDate;
+  PortEntry({required this.number, required this.transport, required this.service, this.iana = '', this.unauthorized = '', this.detail});
   final int number;
-  final Risk? risk;
-  final List<AttackRef> attacks;
-  final List<Technique> techniques;
-  final List<LogRef> logs;
-  final List<NamedLink> sources;
-  final List<String> gaps;
+  final String transport, service, iana, unauthorized;
+  final Detail? detail;
 
-  String get label => '$number/$transport';
+  String get label => '$number/${transport.toLowerCase()}';
+  String get title => detail?.name.isNotEmpty == true ? detail!.name : (iana.isNotEmpty ? iana : service);
+  String get portClass => number < 1024 ? 'well-known' : (number < 49152 ? 'registered' : 'dynamic');
 
-  /// Port-specific text (ranked higher in search).
-  late final String ownText = [
-    id, service, formalName, purpose, technical, malicious, suspicious, checkpoints, defenses,
-    risk?.level, risk?.reason, risk?.indicators, risk?.focus,
-    for (final t in techniques) ...[t.id, t.name, ...t.tactics, for (final d in t.detections) ...[d.id, d.name]],
-  ].whereType<String>().map(normalizeText).join('\n');
-
-  /// Everything searchable, including shared attack-pattern and log text.
-  late final String searchText = [
-    ownText,
-    for (final a in attacks) ...[a.id, a.name, a.features, a.detection],
-    for (final l in logs) ...[l.id, l.platform, l.analytics],
-  ].map(normalizeText).join('\n');
-
-  late final String nameText = normalizeText('$service $formalName');
+  late final String nameText = normalizeText('$service $title');
+  late final String ownText = normalizeText([
+    service, iana, unauthorized,
+    if (detail != null) ...[detail!.name, detail!.category, detail!.purpose, detail!.malicious, detail!.suspicious,
+      detail!.checkpoints, detail!.defenses, detail!.risk?.level ?? '', ...detail!.techniques],
+  ].join('\n'));
 }

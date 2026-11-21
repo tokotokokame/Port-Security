@@ -1,0 +1,811 @@
+[
+  {
+    "id": "TOOL-IMPACKET",
+    "name": "Impacket",
+    "category": "横展開・資格情報",
+    "mitre_software_id": "S0357",
+    "summary": "ネットワークプロトコルを扱う Python ライブラリ群。psexec/smbexec/wmiexec/secretsdump 等のスクリプトが攻撃で多用される。",
+    "ports": [
+      [
+        445,
+        "TCP"
+      ],
+      [
+        135,
+        "TCP"
+      ],
+      [
+        139,
+        "TCP"
+      ],
+      [
+        88,
+        "TCP"
+      ],
+      [
+        389,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "wmiexec/dcomexec/smbexec: 親が wmiprvse.exe・mmc.exe・services.exe 等で cmd.exe /Q /c を起動し、出力を \\\\127.0.0.1\\ADMIN$\\__<数字> 等へリダイレクト",
+      "smbexec: 7045 で ImagePath に '__output 2^>^&1 >' や '.bat & del ' を含むサービス登録",
+      "secretsdump (DCSync 利用時): 4662 に複製権限 GUID"
+    ],
+    "detection": [
+      "Sysmon 1 / 4688 の親子プロセスとコマンドライン",
+      "System 7045 のサービス名・ImagePath",
+      "Security 4662"
+    ],
+    "attack_pattern_ids": [
+      "ATK-REMOTE-EXEC",
+      "ATK-LATERAL-MOVE",
+      "ATK-DCSYNC",
+      "ATK-KERBEROAST",
+      "ATK-NAME-POISON"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0357",
+      "SRC-SIGMA-IMPACKET-LM",
+      "SRC-SIGMA-SMBEXEC",
+      "SRC-SIGMA-DCSYNC"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-MIMIKATZ",
+    "name": "Mimikatz",
+    "category": "資格情報",
+    "mitre_software_id": "S0002",
+    "summary": "Windows の資格情報 (ハッシュ・チケット・平文) を取得・操作するツール。",
+    "ports": [
+      [
+        135,
+        "TCP"
+      ],
+      [
+        445,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "LSASS へのプロセスアクセス (GrantedAccess 0x1038/0x1438/0x143a/0x1fffff 等、dbghelp/dbgcore を含む CallTrace)",
+      "DCSync 実行時の 4662 複製権限 GUID"
+    ],
+    "detection": [
+      "Sysmon 10 (ProcessAccess) の対象 lsass.exe",
+      "Security 4662"
+    ],
+    "attack_pattern_ids": [
+      "ATK-CRED-THEFT",
+      "ATK-DCSYNC",
+      "ATK-PASS-THE-HASH"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0002",
+      "SRC-SIGMA-LSASS",
+      "SRC-SIGMA-DCSYNC"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-CRACKMAPEXEC",
+    "name": "CrackMapExec / NetExec",
+    "category": "横展開・認証攻撃",
+    "mitre_software_id": "S0488",
+    "summary": "SMB・WinRM・MSSQL・LDAP 等に対し認証試行や実行を一括で行うツール。後継は NetExec。",
+    "ports": [
+      [
+        445,
+        "TCP"
+      ],
+      [
+        5985,
+        "TCP"
+      ],
+      [
+        5986,
+        "TCP"
+      ],
+      [
+        1433,
+        "TCP"
+      ],
+      [
+        389,
+        "TCP"
+      ],
+      [
+        22,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "多数ホストへの短時間の認証 (4624/4625 LogonType 3 の急増)",
+      "SMB 実行モードでのサービス登録 (7045)"
+    ],
+    "detection": [
+      "Security 4624/4625 の送信元集計",
+      "System 7045"
+    ],
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-REMOTE-EXEC",
+      "ATK-LATERAL-MOVE"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0488"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "NetExec は ATT&CK 未収録のため CrackMapExec (S0488) として登録。痕跡は認証イベントの一般的な傾向。"
+  },
+  {
+    "id": "TOOL-RESPONDER",
+    "name": "Responder",
+    "category": "資格情報 (中間者)",
+    "mitre_software_id": "S0174",
+    "summary": "LLMNR・NBT-NS・mDNS に偽応答し、SMB/HTTP 等の認証情報を取得するツール。",
+    "ports": [
+      [
+        5355,
+        "UDP"
+      ],
+      [
+        137,
+        "UDP"
+      ],
+      [
+        5353,
+        "UDP"
+      ],
+      [
+        445,
+        "TCP"
+      ],
+      [
+        80,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "DNS サーバー以外のホストが LLMNR/NBT-NS に応答",
+      "偽の SMB/HTTP サーバーへの認証"
+    ],
+    "detection": [
+      "ネットワークでの LLMNR/NBT-NS 応答元の監視",
+      "4624/4648 の想定外の宛先"
+    ],
+    "attack_pattern_ids": [
+      "ATK-NAME-POISON",
+      "ATK-CRED-THEFT"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY",
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0174"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "痕跡は名前解決ポイズニングの一般的な特徴。専用 Sigma ルールは未確認。"
+  },
+  {
+    "id": "TOOL-RUBEUS",
+    "name": "Rubeus",
+    "category": "資格情報 (Kerberos)",
+    "mitre_software_id": "S1071",
+    "summary": "Kerberos チケットの要求・取得・注入を行うツール。",
+    "ports": [
+      [
+        88,
+        "TCP"
+      ],
+      [
+        88,
+        "UDP"
+      ]
+    ],
+    "artifacts": [
+      "Rubeus.exe の実行、または asreproast/kerberoast/ptt/asktgt/s4u 等の引数",
+      "4769 の RC4 (0x17) 要求の急増"
+    ],
+    "detection": [
+      "Sysmon 1 / 4688 のコマンドライン",
+      "Security 4768/4769"
+    ],
+    "attack_pattern_ids": [
+      "ATK-KERBEROAST",
+      "ATK-PASS-THE-HASH"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S1071",
+      "SRC-SIGMA-RUBEUS",
+      "SRC-SIGMA-KERBEROAST"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-BLOODHOUND",
+    "name": "BloodHound / SharpHound",
+    "category": "探索 (AD)",
+    "mitre_software_id": "S0521",
+    "summary": "AD の権限関係を収集・可視化し攻撃経路を探すツール。SharpHound が収集を担う。",
+    "ports": [
+      [
+        389,
+        "TCP"
+      ],
+      [
+        636,
+        "TCP"
+      ],
+      [
+        3268,
+        "TCP"
+      ],
+      [
+        445,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "大量の LDAP 検索",
+      "srvsvc 等の RPC によるセッション・ローカルグループ列挙 (RPC Firewall 3: Interface 4b324fc8-…, OpNum 12)"
+    ],
+    "detection": [
+      "LDAP クエリ量",
+      "RPC Firewall ログ",
+      "5145 の srvsvc/samr パイプ"
+    ],
+    "attack_pattern_ids": [
+      "ATK-AD-RECON"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0521",
+      "SRC-SIGMA-SHARPHOUND"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-PSEXEC",
+    "name": "PsExec (Sysinternals)",
+    "category": "横展開・実行",
+    "mitre_software_id": "S0029",
+    "summary": "Microsoft 製のリモート実行ツール。正規管理でも使われる。",
+    "ports": [
+      [
+        445,
+        "TCP"
+      ],
+      [
+        139,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "対象側で C:\\Windows\\PSEXESVC.exe の起動 (PSEXESVC サービス)",
+      "ADMIN$ への書込みとサービス登録"
+    ],
+    "detection": [
+      "Sysmon 1 / 4688 の Image=PSEXESVC.exe",
+      "System 7045",
+      "Security 5145 (ADMIN$)"
+    ],
+    "attack_pattern_ids": [
+      "ATK-REMOTE-EXEC",
+      "ATK-LATERAL-MOVE"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0029",
+      "SRC-SIGMA-PSEXESVC"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-COBALTSTRIKE",
+    "name": "Cobalt Strike",
+    "category": "C2",
+    "mitre_software_id": "S0154",
+    "summary": "商用の攻撃シミュレーション基盤。不正利用が多い。HTTP/HTTPS/DNS/SMB で通信する。",
+    "ports": [
+      [
+        80,
+        "TCP"
+      ],
+      [
+        443,
+        "TCP"
+      ],
+      [
+        53,
+        "UDP"
+      ],
+      [
+        445,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "既定の名前付きパイプ (\\msagent_、\\MSSE-…-server、\\postex_、\\status_ 等)",
+      "一定間隔の外向き通信 (ビーコン)"
+    ],
+    "detection": [
+      "Sysmon 17/18 (PipeEvent)",
+      "プロキシ/FW の外向き通信の周期性"
+    ],
+    "attack_pattern_ids": [
+      "ATK-C2-PORT",
+      "ATK-LATERAL-MOVE"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY",
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0154",
+      "SRC-SIGMA-CS-PIPE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-ADFIND",
+    "name": "AdFind",
+    "category": "探索 (AD)",
+    "mitre_software_id": "S0552",
+    "summary": "AD を LDAP で検索するコマンドラインツール。ランサムウェア前段の偵察で多用される。",
+    "ports": [
+      [
+        389,
+        "TCP"
+      ],
+      [
+        636,
+        "TCP"
+      ],
+      [
+        3268,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "adfind の実行と trustdmp・dclist・objectcategory= 等の引数"
+    ],
+    "detection": [
+      "Sysmon 1 / 4688 のコマンドライン"
+    ],
+    "attack_pattern_ids": [
+      "ATK-AD-RECON"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0552",
+      "SRC-SIGMA-ADFIND"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-NBTSCAN",
+    "name": "NBTscan",
+    "category": "探索",
+    "mitre_software_id": "S0590",
+    "summary": "NetBIOS 名前サービスに問い合わせ、ホスト名や MAC を列挙するツール。",
+    "ports": [
+      [
+        137,
+        "UDP"
+      ]
+    ],
+    "artifacts": [
+      "多数アドレスへの NBNS ステータス要求"
+    ],
+    "detection": [
+      "FW/IDS の 137/udp スイープ検知"
+    ],
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0590"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "痕跡はスキャンの一般的な特徴。"
+  },
+  {
+    "id": "TOOL-NGROK",
+    "name": "ngrok",
+    "category": "トンネル",
+    "mitre_software_id": "S0508",
+    "summary": "ローカルのサービスを外部公開するトンネルサービス。正規開発でも使われる。",
+    "ports": [
+      [
+        443,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "*.ngrok.io / *.ngrok-free.app / *.ngrok.app 等への外向き接続"
+    ],
+    "detection": [
+      "Sysmon 3 / DNS ログの宛先ドメイン"
+    ],
+    "attack_pattern_ids": [
+      "ATK-TUNNEL"
+    ],
+    "technique_ids": [],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY",
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-S0508",
+      "SRC-SIGMA-NGROK"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-CHISEL",
+    "name": "Chisel",
+    "category": "トンネル",
+    "mitre_software_id": null,
+    "summary": "HTTP 上で TCP/UDP をトンネルするツール。サーバーの既定待受は 8080。",
+    "ports": [
+      [
+        8080,
+        "TCP"
+      ],
+      [
+        443,
+        "TCP"
+      ],
+      [
+        80,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "chisel.exe の実行、client/server と -socks5・-reverse・R: 等の引数"
+    ],
+    "detection": [
+      "Sysmon 1 / 4688 のコマンドライン",
+      "長時間の HTTP/WebSocket セッション"
+    ],
+    "attack_pattern_ids": [
+      "ATK-TUNNEL"
+    ],
+    "technique_ids": [
+      "T1572",
+      "T1090"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY",
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-CHISEL",
+      "SRC-SIGMA-CHISEL"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-NMAP",
+    "name": "Nmap",
+    "category": "探索・スキャン",
+    "mitre_software_id": null,
+    "summary": "ポートスキャン・サービス識別ツール。正規の診断でも使われる。",
+    "ports": [
+      [
+        80,
+        "TCP"
+      ],
+      [
+        443,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "NSE の HTTP 要求で User-Agent に 'Nmap Scripting Engine'",
+      "短時間に多数ポート・多数ホストへの接続"
+    ],
+    "detection": [
+      "Web アクセスログの User-Agent",
+      "FW の拒否ログ急増"
+    ],
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "technique_ids": [
+      "T1046",
+      "T1595"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-SIGMA-UA-RECON",
+      "SRC-NMAP"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-METASPLOIT",
+    "name": "Metasploit Framework",
+    "category": "エクスプロイト・C2",
+    "mitre_software_id": null,
+    "summary": "脆弱性検証フレームワーク。公式ドキュメントのリスナー例では 4444/tcp を使用。",
+    "ports": [
+      [
+        4444,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "既定例と同じ 4444/tcp への外向き接続",
+      "エクスプロイト後のシェル通信"
+    ],
+    "detection": [
+      "FW の外向き宛先ポート集計",
+      "IPS のシグネチャ検知"
+    ],
+    "attack_pattern_ids": [
+      "ATK-PUBLIC-EXPLOIT",
+      "ATK-C2-PORT"
+    ],
+    "technique_ids": [
+      "T1190",
+      "T1571",
+      "T1210"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-METASPLOIT-REVSHELL"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-HYDRA",
+    "name": "THC-Hydra",
+    "category": "認証攻撃",
+    "mitre_software_id": null,
+    "summary": "多数のプロトコルに対しオンラインでパスワード試行を行うツール。",
+    "ports": [
+      [
+        22,
+        "TCP"
+      ],
+      [
+        21,
+        "TCP"
+      ],
+      [
+        23,
+        "TCP"
+      ],
+      [
+        3389,
+        "TCP"
+      ],
+      [
+        445,
+        "TCP"
+      ],
+      [
+        80,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "単一送信元からの短時間の認証失敗の連続"
+    ],
+    "detection": [
+      "Security 4625、auth.log の Failed password、サービスの認証失敗ログ"
+    ],
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE"
+    ],
+    "technique_ids": [
+      "T1110.001",
+      "T1110.003"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY",
+      "LOG-LIN-AN0328",
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-HYDRA"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "出典ページ本文は未再検証。痕跡は総当たりの一般的な特徴。"
+  },
+  {
+    "id": "TOOL-SMBCLIENT",
+    "name": "smbclient (Samba)",
+    "category": "探索・ファイル共有",
+    "mitre_software_id": null,
+    "summary": "SMB 共有へ接続するクライアント。正規利用も多い。",
+    "ports": [
+      [
+        445,
+        "TCP"
+      ],
+      [
+        139,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "共有の列挙と接続 (IPC$/C$ 等)",
+      "匿名・ゲストでの接続試行"
+    ],
+    "detection": [
+      "Security 5140/5145 の共有名と送信元",
+      "4624 LogonType 3"
+    ],
+    "attack_pattern_ids": [
+      "ATK-LATERAL-MOVE",
+      "ATK-EXFIL-ALT"
+    ],
+    "technique_ids": [
+      "T1021.002",
+      "T1135",
+      "T1039"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-SAMBA-SMBCLIENT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "出典ページ本文は未再検証。"
+  },
+  {
+    "id": "TOOL-EVILWINRM",
+    "name": "Evil-WinRM",
+    "category": "横展開・実行",
+    "mitre_software_id": null,
+    "summary": "WinRM を使うリモートシェル。",
+    "ports": [
+      [
+        5985,
+        "TCP"
+      ],
+      [
+        5986,
+        "TCP"
+      ]
+    ],
+    "artifacts": [
+      "wsmprovhost.exe 上での特徴的な PowerShell (Invoke-Binary、Bypass-4MSI 等)",
+      "wsmprovhost.exe からの cmd/powershell 起動"
+    ],
+    "detection": [
+      "PowerShell モジュールログ (4103)",
+      "Sysmon 1 / 4688 の親プロセス"
+    ],
+    "attack_pattern_ids": [
+      "ATK-REMOTE-EXEC",
+      "ATK-LATERAL-MOVE"
+    ],
+    "technique_ids": [
+      "T1021.006"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-EVILWINRM",
+      "SRC-SIGMA-EVILWINRM",
+      "SRC-SIGMA-WINRM-CHILD"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "TOOL-KERBRUTE",
+    "name": "Kerbrute",
+    "category": "認証攻撃 (Kerberos)",
+    "mitre_software_id": null,
+    "summary": "Kerberos 事前認証でユーザー列挙やパスワード試行を行うツール。",
+    "ports": [
+      [
+        88,
+        "TCP"
+      ],
+      [
+        88,
+        "UDP"
+      ]
+    ],
+    "artifacts": [
+      "4625 ではなく 4768 / 4771 (事前認証失敗) が大量に発生",
+      "ユーザー列挙は事前認証なしの TGT 要求"
+    ],
+    "detection": [
+      "Security 4768/4771 の送信元集計"
+    ],
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-AD-RECON"
+    ],
+    "technique_ids": [
+      "T1110.003",
+      "T1087.002"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-KERBRUTE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  }
+]

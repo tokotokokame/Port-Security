@@ -8,9 +8,16 @@
 
 [Releases](https://github.com/tokotokokame/Port-Security/releases/latest) から `port-security-*-arm64.apk` をダウンロードしてインストールします（古い32bit端末は `armv7` 版）。通信は行わず、データはすべてアプリに同梱されています。
 
-- ポート番号・通信方式（`445/tcp` など）・サービス名・MITRE ID・イベントIDで検索
-- ポート詳細で「攻撃の特徴 → 攻撃手法 → MITRE ATT&CK → 検知・ログ調査 → 推奨対策 → 根拠資料」を表示
-- 攻撃手法・ログ調査から対象ポートを逆引き
+- **収録範囲**: IANA 登録の全ポートと、セキュリティ上重要なポート160件の詳細
+- **検索**: ポート番号、通信方式（`445/tcp` など）、サービス名、MITRE ID、イベントID、ツール名
+- **詳細検索設定**:
+  - 基本: 通信方式・区分・番号範囲・詳細ありのみ
+  - 脅威: リスク・攻撃手法・攻撃ツール・MITRE 戦術
+  - 調査: ログ基盤・確度
+  - 並び替え
+- **ポート詳細**: `概要 / 攻撃 / tools / att&ck / logs / src` のタブで、ATT&CK の検知戦略が指定するログ源（例: `WinEventLog:Security EventCode=4769`）まで表示
+- **逆引き**: 攻撃手法・攻撃ツール・ログ基盤（Windows / Linux / macOS / ESXi / Hyper-V / VirtualBox / FortiGate / NEC IX）から対象ポートを引ける
+- **攻撃ツール**: Impacket・Mimikatz・smbclient など18件を、検知に使う痕跡だけで収録
 
 ソースは `app/` にあります。セキュリティ方針と点検内容は [SECURITY.md](SECURITY.md) を参照してください。
 

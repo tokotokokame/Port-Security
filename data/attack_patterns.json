@@ -18,14 +18,16 @@
     "technique_ids": [
       "T1110",
       "T1110.001",
-      "T1110.003"
+      "T1110.003",
+      "T1110.002"
     ],
     "log_investigation_ids": [
       "LOG-WIN-AN0327",
       "LOG-LIN-AN0328",
       "LOG-FORTIGATE-VENDOR",
       "LOG-NECIX-VENDOR"
-    ]
+    ],
+    "category": ""
   },
   {
     "id": "ATK-REMOTE-EXPLOIT",
@@ -51,7 +53,8 @@
       "LOG-LIN-AN0328",
       "LOG-ESXI-AN0329",
       "LOG-MAC-AN0330"
-    ]
+    ],
+    "category": ""
   },
   {
     "id": "ATK-LATERAL-MOVE",
@@ -72,11 +75,13 @@
       "T1021",
       "T1021.001",
       "T1021.002",
-      "T1021.004"
+      "T1021.004",
+      "T1021.006"
     ],
     "log_investigation_ids": [
       "LOG-WIN-AN0327"
-    ]
+    ],
+    "category": ""
   },
   {
     "id": "ATK-CRED-THEFT",
@@ -104,7 +109,8 @@
     ],
     "log_investigation_ids": [
       "LOG-WIN-AN0327"
-    ]
+    ],
+    "category": ""
   },
   {
     "id": "ATK-DATA-EXFIL",
@@ -129,7 +135,8 @@
     "log_investigation_ids": [
       "LOG-WIN-AN0327",
       "LOG-FORTIGATE-VENDOR"
-    ]
+    ],
+    "category": ""
   },
   {
     "id": "ATK-VULN-SCAN",
@@ -141,19 +148,22 @@
     "source_ids": [
       "SRC-MITRE-ATTACK",
       "SRC-CISA-HYGIENE",
-      "SRC-MITRE-T1595"
+      "SRC-MITRE-T1595",
+      "SRC-MITRE-T1046"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
     "unconfirmed_notes": "T1595 (Active Scanning) および T1595.002 (Vulnerability Scanning) に対応。",
     "technique_ids": [
       "T1595",
-      "T1595.002"
+      "T1595.002",
+      "T1046"
     ],
     "log_investigation_ids": [
       "LOG-FORTIGATE-VENDOR",
       "LOG-NECIX-VENDOR"
-    ]
+    ],
+    "category": ""
   },
   {
     "id": "ATK-RANSOMWARE",
@@ -179,6 +189,417 @@
     "log_investigation_ids": [
       "LOG-WIN-AN0327",
       "LOG-ESXI-AN0329"
-    ]
+    ],
+    "category": ""
+  },
+  {
+    "id": "ATK-KERBEROAST",
+    "attack_name": "Kerberoasting / AS-REP Roasting",
+    "category": "資格情報",
+    "description": "SPN を持つアカウントのサービスチケットや事前認証不要アカウントの応答を取得し、オフラインでパスワードを解析する。",
+    "attack_features": "短時間に多数の SPN へ TGS 要求、RC4(0x17) 暗号の要求、事前認証なしの TGT 要求。",
+    "detection_methods": "4769 で TicketEncryptionType=0x17 かつ成功 (krbtgt・コンピューターアカウント除く)。4768 で PreAuthType=0 かつ 0x17。",
+    "recommended_defenses": "サービスアカウントは gMSA か長大なパスワード、AES 強制、事前認証の必須化。",
+    "technique_ids": [
+      "T1558.003",
+      "T1558.004"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-SIGMA-KERBEROAST",
+      "SRC-SIGMA-ASREP",
+      "SRC-MS-EVT-4769",
+      "SRC-MITRE-T1558"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-NAME-POISON",
+    "attack_name": "名前解決ポイズニング / NTLM リレー",
+    "category": "資格情報",
+    "description": "LLMNR・NBT-NS・mDNS の問い合わせに偽応答し、認証を横取り・中継する。",
+    "attack_features": "DNS サーバー以外のホストが LLMNR(5355/udp)・NBT-NS(137/udp) に応答、署名なし SMB への中継。",
+    "detection_methods": "非 DNS ホストからの名前解決応答、想定外ホストからの NTLM ログオン (4624 LogonType 3)。",
+    "recommended_defenses": "LLMNR/NBT-NS の無効化、SMB 署名の必須化、LDAP 署名とチャネルバインディング。",
+    "technique_ids": [
+      "T1557.001",
+      "T1557"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY",
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1557"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-PASS-THE-HASH",
+    "attack_name": "Pass-the-Hash / Pass-the-Ticket",
+    "category": "横展開",
+    "description": "窃取したハッシュやチケットで平文パスワードなしに認証する。",
+    "attack_features": "同一アカウントが短時間に多数ホストへ NTLM ログオン、通常と異なる端末からの管理者ログオン。",
+    "detection_methods": "4624 (LogonType 3/9) と 4648 の相関、4776 の送信元の偏り。",
+    "recommended_defenses": "LAPS によるローカル管理者の一意化、特権アカウントの階層分離、Credential Guard。",
+    "technique_ids": [
+      "T1550.002",
+      "T1550.003"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1550"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-DCSYNC",
+    "attack_name": "DCSync (ディレクトリ複製の悪用)",
+    "category": "資格情報",
+    "description": "ドメインコントローラーの複製機能を装って資格情報を取得する。",
+    "attack_features": "コンピューターアカウント以外による複製権限 (DS-Replication-Get-Changes 等) の行使。",
+    "detection_methods": "4662 の Properties に複製権限 GUID (1131f6aa-… / 1131f6ad-… 等) を含み、SubjectUserName が $ で終わらない。",
+    "recommended_defenses": "複製権限の棚卸し、DC 以外からの DRSUAPI 通信の監視。",
+    "technique_ids": [
+      "T1003.006"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-SIGMA-DCSYNC",
+      "SRC-MITRE-T1003"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-REMOTE-EXEC",
+    "attack_name": "リモート実行 (SMB サービス / WMI / WinRM)",
+    "category": "横展開",
+    "description": "管理用プロトコルで遠隔ホストにコマンドやサービスを実行させる。",
+    "attack_features": "ADMIN$ への書込みとサービス登録、wmiprvse.exe や wsmprovhost.exe からのシェル起動。",
+    "detection_methods": "7045/4697 のサービス登録、services.exe・wmiprvse.exe・wsmprovhost.exe を親とする cmd/powershell の起動。",
+    "recommended_defenses": "管理共有とリモート管理の送信元制限、ローカル管理者権限の最小化。",
+    "technique_ids": [
+      "T1569.002",
+      "T1047",
+      "T1021.006"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-SIGMA-IMPACKET-LM",
+      "SRC-SIGMA-SMBEXEC",
+      "SRC-SIGMA-WINRM-CHILD",
+      "SRC-MITRE-T1569",
+      "SRC-MITRE-T1047",
+      "SRC-MITRE-T1021"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-AD-RECON",
+    "attack_name": "Active Directory 偵察",
+    "category": "探索",
+    "description": "LDAP・RPC で利用者・グループ・セッション・信頼関係を大量に列挙し攻撃経路を探す。",
+    "attack_features": "短時間の大量 LDAP 検索、多数ホストへのセッション列挙 (SMB/RPC)、ドメイン信頼の列挙。",
+    "detection_methods": "LDAP クエリ量の急増、RPC インターフェース経由のセッション列挙、列挙ツールのプロセス起動。",
+    "recommended_defenses": "一般ユーザーによるセッション列挙の制限、LDAP 監視、階層化。",
+    "technique_ids": [
+      "T1087.002",
+      "T1069.002",
+      "T1482",
+      "T1018"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY"
+    ],
+    "source_ids": [
+      "SRC-SIGMA-SHARPHOUND",
+      "SRC-SIGMA-ADFIND",
+      "SRC-MITRE-T1087",
+      "SRC-MITRE-T1069",
+      "SRC-MITRE-T1482",
+      "SRC-MITRE-T1018"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-AMPLIFICATION",
+    "attack_name": "UDP 反射型 DDoS (増幅攻撃)",
+    "category": "影響",
+    "description": "送信元を偽装した小さな要求で、公開 UDP サービスから大きな応答を被害者に送らせる。",
+    "attack_features": "公開 DNS・NTP・SNMP・SSDP・Memcached・CLDAP 等への偽装要求と、応答トラフィックの急増。",
+    "detection_methods": "UDP サービスの応答量の急増、特定宛先への応答集中、外部からの monlist/GetBulk 等の要求。",
+    "recommended_defenses": "不要な UDP サービスの外部公開停止、送信元検証 (BCP38)、レート制限。",
+    "technique_ids": [
+      "T1498.002"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-CISA-AMP",
+      "SRC-MITRE-T1498"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-PUBLIC-EXPLOIT",
+    "attack_name": "公開アプリケーションの脆弱性悪用",
+    "category": "初期侵入",
+    "description": "インターネット公開の Web アプリ・VPN・メール等の脆弱性を突いて侵入する。",
+    "attack_features": "既知脆弱性パスへのリクエスト、Web サーバープロセスからのシェル起動、異常なエラー応答。",
+    "detection_methods": "WAF/IPS のシグネチャ検知、Web サーバー配下の子プロセス監視、アクセスログの異常。",
+    "recommended_defenses": "迅速なパッチ適用、公開範囲の最小化、WAF。",
+    "technique_ids": [
+      "T1190"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1190"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-EXTERNAL-REMOTE",
+    "attack_name": "外部リモートサービスの悪用",
+    "category": "初期侵入",
+    "description": "VPN・RDP・リモートアクセス基盤を正規アカウントで悪用して侵入・維持する。",
+    "attack_features": "通常と異なる地域・時間帯からのログイン、多要素認証の回避、休眠アカウントの利用。",
+    "detection_methods": "VPN/RDP の認証ログの地理・時間の異常、4624 LogonType 10 の送信元。",
+    "recommended_defenses": "多要素認証、接続元制限、アカウントの定期棚卸し。",
+    "technique_ids": [
+      "T1133",
+      "T1078"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-SECURITY",
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1133",
+      "SRC-MITRE-T1078"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-C2-PORT",
+    "attack_name": "C2 通信 (既定ポート・非標準ポート)",
+    "category": "C2",
+    "description": "攻撃基盤との指令通信に、ツール既定のポートや業務で使わないポートを使う。",
+    "attack_features": "既定リスナーポートへの外向き接続、一定間隔の通信 (ビーコン)、既定の名前付きパイプ。",
+    "detection_methods": "外向き通信の宛先ポート集計、周期性の検知、名前付きパイプ作成の監視。",
+    "recommended_defenses": "外向き通信の許可リスト化、プロキシ経由の強制。",
+    "technique_ids": [
+      "T1571",
+      "T1071.001"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-SIGMA-CS-PIPE",
+      "SRC-METASPLOIT-REVSHELL",
+      "SRC-MITRE-T1571",
+      "SRC-MITRE-T1071"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-TUNNEL",
+    "attack_name": "プロトコルトンネリング / プロキシ",
+    "category": "C2",
+    "description": "HTTP・SSH・DNS などの許可された通信の中に別の通信を通し、境界の制御を回避する。",
+    "attack_features": "長時間維持される HTTP/WebSocket セッション、SOCKS 指定のトンネルツール、外部トンネルサービスへの接続。",
+    "detection_methods": "トンネルツールのプロセス起動、トンネルサービスのドメインへの接続、長時間セッションの監視。",
+    "recommended_defenses": "外向き通信の制限、未承認ツールの実行制御。",
+    "technique_ids": [
+      "T1572",
+      "T1090"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-SIGMA-CHISEL",
+      "SRC-SIGMA-NGROK",
+      "SRC-MITRE-T1572",
+      "SRC-MITRE-T1090"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-REMOTE-ACCESS-SW",
+    "attack_name": "正規リモートアクセスソフトの悪用",
+    "category": "C2",
+    "description": "業務でも使われるリモート操作ソフトを無断で導入し、遠隔操作の足場にする。",
+    "attack_features": "未承認のリモート操作ソフトの導入、ベンダー中継サーバーへの外向き通信。",
+    "detection_methods": "ソフトウェア導入の監視、既知の中継先・ポートへの通信。",
+    "recommended_defenses": "承認済みツールの許可リスト化、導入権限の制限。",
+    "technique_ids": [
+      "T1219"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1219"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-EXFIL-ALT",
+    "attack_name": "代替プロトコルでの持ち出し",
+    "category": "持ち出し",
+    "description": "C2 とは別の FTP・SSH・DNS 等の通信路でデータを外部に送る。",
+    "attack_features": "業務外の宛先への大容量アップロード、平文 FTP の外向き利用。",
+    "detection_methods": "外向き転送量の急増、宛先・プロトコルの異常。",
+    "recommended_defenses": "外向き通信の制限、DLP。",
+    "technique_ids": [
+      "T1048"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1048"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-UNAUTH-SERVICE",
+    "attack_name": "認証なし・既定設定サービスへの不正アクセス",
+    "category": "初期侵入",
+    "description": "認証が無効または既定のままの管理・データサービスに直接アクセスする。",
+    "attack_features": "インターネットからの DB・キャッシュ・管理 API・制御系プロトコルへの接続。",
+    "detection_methods": "公開スキャン結果との突合、想定外の送信元からの接続、管理 API の操作ログ。",
+    "recommended_defenses": "認証の有効化、外部公開の停止、既定アカウントの変更。",
+    "technique_ids": [
+      "T1078.001",
+      "T1190"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1078",
+      "SRC-MITRE-T1190"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-CONTAINER-API",
+    "attack_name": "コンテナ・オーケストレーション API の悪用",
+    "category": "実行",
+    "description": "公開された Docker API や Kubernetes API からコンテナを起動・探索する。",
+    "attack_features": "認証なし Docker API (2375) へのアクセス、想定外のコンテナ作成、kubelet API への直接アクセス。",
+    "detection_methods": "Docker デーモンのログ、Kubernetes 監査ログ、コンテナ作成イベント。",
+    "recommended_defenses": "API の TLS と認証、外部公開の停止、RBAC。",
+    "technique_ids": [
+      "T1610",
+      "T1613"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1610",
+      "SRC-MITRE-T1613"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-MAIL-ABUSE",
+    "attack_name": "メールサービスの悪用",
+    "category": "初期侵入",
+    "description": "フィッシング送信、アカウント乗っ取り後の大量送信、メールの収集に使う。",
+    "attack_features": "送信ドメイン認証の失敗、短時間の大量送信、IMAP/POP への想定外ログイン。",
+    "detection_methods": "SPF/DKIM/DMARC 結果、送信量の急増、メール認証の失敗ログ。",
+    "recommended_defenses": "送信ドメイン認証、多要素認証、レガシー認証の無効化。",
+    "technique_ids": [
+      "T1566",
+      "T1114.002"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR"
+    ],
+    "source_ids": [
+      "SRC-MITRE-T1566",
+      "SRC-MITRE-T1114"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "ATK-HYPERVISOR",
+    "attack_name": "仮想化基盤の管理面の悪用",
+    "category": "影響",
+    "description": "Hyper-V・ESXi・VirtualBox 等の管理ポートや API を悪用し、VM の停止・暗号化・取得を行う。",
+    "attack_features": "管理ポート (2179/902/18083/427 等) への想定外の接続、VM の一斉停止・移行。",
+    "detection_methods": "ハイパーバイザーの管理ログ、管理ポートへの接続元の確認。",
+    "recommended_defenses": "管理ネットワークの分離、管理サービスの最小化、パッチ適用。",
+    "technique_ids": [
+      "T1210",
+      "T1078",
+      "T1486"
+    ],
+    "log_investigation_ids": [
+      "LOG-HYPERV",
+      "LOG-VIRTUALBOX",
+      "LOG-ESXI-AN0329"
+    ],
+    "source_ids": [
+      "SRC-MS-HYPERV-CONN",
+      "SRC-ORACLE-VBOX-WEB",
+      "SRC-MITRE-T1210",
+      "SRC-MITRE-T1078",
+      "SRC-MITRE-T1486"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
   }
 ]

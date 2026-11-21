@@ -80,7 +80,8 @@
     "analytics_ids": [
       "AN0327"
     ],
-    "port_scope": "analytics"
+    "port_scope": "analytics",
+    "ports": []
   },
   {
     "id": "LOG-LIN-AN0328",
@@ -133,7 +134,8 @@
     "analytics_ids": [
       "AN0328"
     ],
-    "port_scope": "analytics"
+    "port_scope": "analytics",
+    "ports": []
   },
   {
     "id": "LOG-ESXI-AN0329",
@@ -176,7 +178,8 @@
     "analytics_ids": [
       "AN0329"
     ],
-    "port_scope": "analytics"
+    "port_scope": "analytics",
+    "ports": []
   },
   {
     "id": "LOG-MAC-AN0330",
@@ -219,7 +222,8 @@
     "analytics_ids": [
       "AN0330"
     ],
-    "port_scope": "analytics"
+    "port_scope": "analytics",
+    "ports": []
   },
   {
     "id": "LOG-FORTIGATE-VENDOR",
@@ -276,7 +280,8 @@
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
     "analytics_ids": [],
-    "port_scope": "any"
+    "port_scope": "any",
+    "ports": []
   },
   {
     "id": "LOG-NECIX-VENDOR",
@@ -324,6 +329,219 @@
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
     "analytics_ids": [],
-    "port_scope": "any"
+    "port_scope": "any",
+    "ports": []
+  },
+  {
+    "id": "LOG-WIN-SECURITY",
+    "platform": "Windows Security / System イベントログ",
+    "log_sources": [
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4624,
+        "description": "An account was successfully logged on"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4625,
+        "description": "An account failed to log on"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4648,
+        "description": "A logon was attempted using explicit credentials"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4662,
+        "description": "An operation was performed on an object"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4697,
+        "description": "A service was installed in the system"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4768,
+        "description": "A Kerberos authentication ticket (TGT) was requested"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4769,
+        "description": "A Kerberos service ticket was requested"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4771,
+        "description": "Kerberos pre-authentication failed"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4776,
+        "description": "The computer attempted to validate the credentials for an account"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 5140,
+        "description": "A network share object was accessed"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 5145,
+        "description": "A network share object was checked to see whether client can be granted desired access"
+      },
+      {
+        "channel": "WinEventLog:System",
+        "event_code": 7045,
+        "description": "サービスの新規インストール (Service Control Manager)"
+      }
+    ],
+    "common_fields": [
+      "TimeCreated",
+      "SubjectUserName",
+      "TargetUserName",
+      "IpAddress",
+      "IpPort",
+      "LogonType"
+    ],
+    "vendor_specific_fields": [
+      "TicketEncryptionType",
+      "PreAuthType",
+      "ServiceName",
+      "ShareName",
+      "RelativeTargetName",
+      "Properties",
+      "ImagePath"
+    ],
+    "detection_analytics": "認証(4624/4625/4648/4776)、Kerberos(4768/4769/4771)、共有アクセス(5140/5145)、サービス登録(4697/7045)、ディレクトリ複製(4662)を相関する。",
+    "investigation_procedure": "1. 対象時間帯の 4624/4625 を送信元IP・LogonType で集計\n2. 4769 の TicketEncryptionType=0x17 と 4768 の PreAuthType=0 を抽出\n3. 5145 の共有名(ADMIN$/C$/IPC$)と 7045 のサービス名・ImagePath を突き合わせ\n4. 4662 で複製権限GUIDを持つ非コンピューターアカウント操作を確認",
+    "analytics_ids": [],
+    "port_scope": "any_windows",
+    "ports": [],
+    "source_ids": [
+      "SRC-MS-EVT-4769",
+      "SRC-MS-EVT-4624",
+      "SRC-MS-EVT-4625",
+      "SRC-MS-EVT-4648",
+      "SRC-MS-EVT-4662",
+      "SRC-MS-EVT-4697",
+      "SRC-MS-EVT-4768",
+      "SRC-MS-EVT-4771",
+      "SRC-MS-EVT-4776",
+      "SRC-MS-EVT-5140",
+      "SRC-MS-EVT-5145",
+      "SRC-SIGMA-SMBEXEC",
+      "SRC-SIGMA-KERBEROAST",
+      "SRC-SIGMA-ASREP",
+      "SRC-SIGMA-DCSYNC"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "LOG-HYPERV",
+    "platform": "Hyper-V (Windows Server / Windows)",
+    "log_sources": [
+      {
+        "channel": "Microsoft-Windows-Hyper-V-VMMS-Admin",
+        "event_code": null,
+        "description": "仮想マシン管理サービス(VMMS)。障害・管理操作の起点"
+      },
+      {
+        "channel": "Microsoft-Windows-Hyper-V-Worker-Admin",
+        "event_code": 18502,
+        "description": "仮想マシンワーカープロセス。18502=VM の電源断"
+      },
+      {
+        "channel": "Microsoft-Windows-Hyper-V-VmSwitch",
+        "event_code": null,
+        "description": "仮想スイッチのイベント"
+      }
+    ],
+    "common_fields": [
+      "TimeCreated",
+      "Computer",
+      "VmName",
+      "VmId"
+    ],
+    "vendor_specific_fields": [
+      "イベントログ: アプリケーションとサービス > Microsoft > Windows > Hyper-V-*"
+    ],
+    "detection_analytics": "VMConnect(2179)・ライブマイグレーション(6600)・クラスタ(3343)への想定外の接続と、VMMS/Worker の管理操作(停止・移行)を時系列で突き合わせる。",
+    "investigation_procedure": "1. Hyper-V-VMMS-Admin と Hyper-V-Worker-Admin から対象 VM の操作を時系列で抽出\n2. 同時刻の Security 4624 (管理者ログオン) と送信元を確認\n3. 2179/6600/3343 への接続元が管理端末・クラスタノードかを確認\n4. 移行関連は送信元・送信先ノード双方のログを確認",
+    "analytics_ids": [],
+    "port_scope": "listed",
+    "ports": [
+      [
+        2179,
+        "TCP"
+      ],
+      [
+        6600,
+        "TCP"
+      ],
+      [
+        3343,
+        "TCP"
+      ]
+    ],
+    "source_ids": [
+      "SRC-MS-HYPERV-EVTLOG",
+      "SRC-MS-HYPERV-TS",
+      "SRC-MS-HYPERV-CONN",
+      "SRC-MS-HYPERV-LM"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "VmSwitch チャネルは公式ブログ記載。個別イベントIDは 18502 以外未収録。"
+  },
+  {
+    "id": "LOG-VIRTUALBOX",
+    "platform": "Oracle VirtualBox",
+    "log_sources": [
+      {
+        "channel": "VBox.log",
+        "event_code": null,
+        "description": "VM ごとのログ。既定は $HOME/VirtualBox VMs/<VM名>/Logs。起動時に .1〜.3 へローテーション"
+      },
+      {
+        "channel": "VBoxSVC.log",
+        "event_code": null,
+        "description": "グローバル設定を管理する VBoxSVC のログ (VBoxSVC.log.1〜.10)"
+      }
+    ],
+    "common_fields": [
+      "タイムスタンプ(起動からの経過時間)",
+      "VM名",
+      "ホストOS/バージョン"
+    ],
+    "vendor_specific_fields": [
+      "VRDE/VRDP 設定 (既定 TCP 3389)",
+      "vboxwebsrv (既定 18083, localhost)"
+    ],
+    "detection_analytics": "VRDP(既定3389)や vboxwebsrv(18083)を外部に公開していないか、想定外の VM 起動・設定変更がないかを VBox.log と通信記録で確認する。",
+    "investigation_procedure": "1. 対象 VM の Logs フォルダで VBox.log とローテーション分を取得\n2. VRDE の有効化・待受ポートの記録を確認\n3. VBoxSVC.log で同時刻の設定変更を確認\n4. ホスト側の 3389/18083 への接続元を FW ログで確認",
+    "analytics_ids": [],
+    "port_scope": "listed",
+    "ports": [
+      [
+        3389,
+        "TCP"
+      ],
+      [
+        18083,
+        "TCP"
+      ]
+    ],
+    "source_ids": [
+      "SRC-ORACLE-VBOX-TS",
+      "SRC-ORACLE-VBOX-VRDP",
+      "SRC-ORACLE-VBOX-WEB"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "VBoxHardening.log 等は公式トラブルシュート章に記載がないため未収録。"
   }
 ]

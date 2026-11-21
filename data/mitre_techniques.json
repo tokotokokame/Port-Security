@@ -1,22 +1,192 @@
 [
   {
+    "id": "T1001",
+    "name": "Data Obfuscation",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "1.2",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0053"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1001.003",
+        "name": "Protocol or Service Impersonation",
+        "detection_strategy_ids": [
+          "DET0470"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1001/",
+    "source_ids": [
+      "SRC-MITRE-T1001"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
     "id": "T1003",
     "name": "OS Credential Dumping",
     "tactics": [
-      "Credential Access"
+      "credential-access"
     ],
     "version": "2.2",
-    "created_date": null,
+    "created_date": "2017-05-31",
     "last_modified": "2026-06-13",
     "detection_strategy_ids": [
       "DET0234"
     ],
-    "subtechniques": [],
+    "subtechniques": [
+      {
+        "id": "T1003.001",
+        "name": "LSASS Memory",
+        "detection_strategy_ids": [
+          "DET0363"
+        ]
+      },
+      {
+        "id": "T1003.002",
+        "name": "Security Account Manager",
+        "detection_strategy_ids": [
+          "DET0085"
+        ]
+      },
+      {
+        "id": "T1003.003",
+        "name": "NTDS",
+        "detection_strategy_ids": [
+          "DET0586"
+        ]
+      },
+      {
+        "id": "T1003.004",
+        "name": "LSA Secrets",
+        "detection_strategy_ids": [
+          "DET0437"
+        ]
+      },
+      {
+        "id": "T1003.006",
+        "name": "DCSync",
+        "detection_strategy_ids": [
+          "DET0594"
+        ]
+      }
+    ],
     "url": "https://attack.mitre.org/techniques/T1003/",
     "source_ids": [
       "SRC-MITRE-T1003"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1005",
+    "name": "Data from Local System",
+    "tactics": [
+      "collection"
+    ],
+    "version": "1.8",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0380"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1005/",
+    "source_ids": [
+      "SRC-MITRE-T1005"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1007",
+    "name": "System Service Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0483"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1007/",
+    "source_ids": [
+      "SRC-MITRE-T1007"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1012",
+    "name": "Query Registry",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.3",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0209"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1012/",
+    "source_ids": [
+      "SRC-MITRE-T1012"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1016",
+    "name": "System Network Configuration Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.7",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0195"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1016/",
+    "source_ids": [
+      "SRC-MITRE-T1016"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1018",
+    "name": "Remote System Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "3.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0574"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1018/",
+    "source_ids": [
+      "SRC-MITRE-T1018"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -24,10 +194,10 @@
     "id": "T1021",
     "name": "Remote Services",
     "tactics": [
-      "Lateral Movement"
+      "lateral-movement"
     ],
     "version": "1.6",
-    "created_date": null,
+    "created_date": "2017-05-31",
     "last_modified": "2026-11-03",
     "detection_strategy_ids": [
       "DET0269"
@@ -35,30 +205,165 @@
     "subtechniques": [
       {
         "id": "T1021.001",
-        "name": "Remote Desktop Protocol"
+        "name": "Remote Desktop Protocol",
+        "detection_strategy_ids": [
+          "DET0327"
+        ]
       },
       {
         "id": "T1021.002",
-        "name": "SMB/Windows Admin Shares"
+        "name": "SMB/Windows Admin Shares",
+        "detection_strategy_ids": [
+          "DET0530"
+        ]
+      },
+      {
+        "id": "T1021.003",
+        "name": "Distributed Component Object Model",
+        "detection_strategy_ids": [
+          "DET0285"
+        ]
       },
       {
         "id": "T1021.004",
-        "name": "SSH"
+        "name": "SSH",
+        "detection_strategy_ids": [
+          "DET0596"
+        ]
       },
       {
         "id": "T1021.005",
-        "name": "VNC"
+        "name": "VNC",
+        "detection_strategy_ids": [
+          "DET0178"
+        ]
       },
       {
         "id": "T1021.006",
-        "name": "Windows Remote Management"
+        "name": "Windows Remote Management",
+        "detection_strategy_ids": [
+          "DET0477"
+        ]
       }
     ],
     "url": "https://attack.mitre.org/techniques/T1021/",
     "source_ids": [
       "SRC-MITRE-T1021"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information",
+    "tactics": [
+      "stealth"
+    ],
+    "version": "2.0",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0378"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1027.005",
+        "name": "Indicator Removal from Tools",
+        "detection_strategy_ids": [
+          "DET0189"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1027/",
+    "source_ids": [
+      "SRC-MITRE-T1027"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1029",
+    "name": "Scheduled Transfer",
+    "tactics": [
+      "exfiltration"
+    ],
+    "version": "1.2",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0399"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1029/",
+    "source_ids": [
+      "SRC-MITRE-T1029"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1030",
+    "name": "Data Transfer Size Limits",
+    "tactics": [
+      "exfiltration"
+    ],
+    "version": "1.2",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-16",
+    "detection_strategy_ids": [
+      "DET0213"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1030/",
+    "source_ids": [
+      "SRC-MITRE-T1030"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1033",
+    "name": "System Owner/User Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0093"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1033/",
+    "source_ids": [
+      "SRC-MITRE-T1033"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1039",
+    "name": "Data from Network Shared Drive",
+    "tactics": [
+      "collection"
+    ],
+    "version": "1.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-02",
+    "detection_strategy_ids": [
+      "DET0410"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1039/",
+    "source_ids": [
+      "SRC-MITRE-T1039"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -66,11 +371,11 @@
     "id": "T1040",
     "name": "Network Sniffing",
     "tactics": [
-      "Credential Access",
-      "Discovery"
+      "credential-access",
+      "discovery"
     ],
     "version": "1.7",
-    "created_date": null,
+    "created_date": "2017-05-31",
     "last_modified": "2026-05-12",
     "detection_strategy_ids": [
       "DET0314"
@@ -80,7 +385,7 @@
     "source_ids": [
       "SRC-MITRE-T1040"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -88,10 +393,10 @@
     "id": "T1041",
     "name": "Exfiltration Over C2 Channel",
     "tactics": [
-      "Exfiltration"
+      "exfiltration"
     ],
     "version": "2.4",
-    "created_date": null,
+    "created_date": "2017-05-31",
     "last_modified": "2026-09-11",
     "detection_strategy_ids": [
       "DET0348"
@@ -101,7 +406,353 @@
     "source_ids": [
       "SRC-MITRE-T1041"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1046",
+    "name": "Network Service Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "3.2",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0376"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1046/",
+    "source_ids": [
+      "SRC-MITRE-T1046"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1047",
+    "name": "Windows Management Instrumentation",
+    "tactics": [
+      "execution"
+    ],
+    "version": "1.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0364"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1047/",
+    "source_ids": [
+      "SRC-MITRE-T1047"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1048",
+    "name": "Exfiltration Over Alternative Protocol",
+    "tactics": [
+      "exfiltration"
+    ],
+    "version": "1.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0131"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1048/",
+    "source_ids": [
+      "SRC-MITRE-T1048"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1049",
+    "name": "System Network Connections Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "2.5",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0320"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1049/",
+    "source_ids": [
+      "SRC-MITRE-T1049"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1053",
+    "name": "Scheduled Task/Job",
+    "tactics": [
+      "execution",
+      "persistence",
+      "privilege-escalation"
+    ],
+    "version": "2.5",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0094"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1053.002",
+        "name": "At",
+        "detection_strategy_ids": [
+          "DET0333"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1053/",
+    "source_ids": [
+      "SRC-MITRE-T1053"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1055",
+    "name": "Process Injection",
+    "tactics": [
+      "stealth",
+      "privilege-escalation"
+    ],
+    "version": "2.0",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0508"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1055.001",
+        "name": "Dynamic-link Library Injection",
+        "detection_strategy_ids": [
+          "DET0389"
+        ]
+      },
+      {
+        "id": "T1055.012",
+        "name": "Process Hollowing",
+        "detection_strategy_ids": [
+          "DET0382"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1055/",
+    "source_ids": [
+      "SRC-MITRE-T1055"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1056",
+    "name": "Input Capture",
+    "tactics": [
+      "collection",
+      "credential-access"
+    ],
+    "version": "1.4",
+    "created_date": "2017-05-31",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0102"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1056.001",
+        "name": "Keylogging",
+        "detection_strategy_ids": [
+          "DET0089"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1056/",
+    "source_ids": [
+      "SRC-MITRE-T1056"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1057",
+    "name": "Process Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0034"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1057/",
+    "source_ids": [
+      "SRC-MITRE-T1057"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1059",
+    "name": "Command and Scripting Interpreter",
+    "tactics": [
+      "execution"
+    ],
+    "version": "2.7",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0516"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1059.001",
+        "name": "PowerShell",
+        "detection_strategy_ids": [
+          "DET0455"
+        ]
+      },
+      {
+        "id": "T1059.003",
+        "name": "Windows Command Shell",
+        "detection_strategy_ids": [
+          "DET0202"
+        ]
+      },
+      {
+        "id": "T1059.005",
+        "name": "Visual Basic",
+        "detection_strategy_ids": [
+          "DET0076"
+        ]
+      },
+      {
+        "id": "T1059.006",
+        "name": "Python",
+        "detection_strategy_ids": [
+          "DET0063"
+        ]
+      },
+      {
+        "id": "T1059.007",
+        "name": "JavaScript",
+        "detection_strategy_ids": [
+          "DET0264"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1059/",
+    "source_ids": [
+      "SRC-MITRE-T1059"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1068",
+    "name": "Exploitation for Privilege Escalation",
+    "tactics": [
+      "privilege-escalation"
+    ],
+    "version": "1.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0514"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1068/",
+    "source_ids": [
+      "SRC-MITRE-T1068"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1069",
+    "name": "Permission Groups Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "2.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0179"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1069.001",
+        "name": "Local Groups",
+        "detection_strategy_ids": [
+          "DET0114"
+        ]
+      },
+      {
+        "id": "T1069.002",
+        "name": "Domain Groups",
+        "detection_strategy_ids": [
+          "DET0360"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1069/",
+    "source_ids": [
+      "SRC-MITRE-T1069"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1070",
+    "name": "Indicator Removal",
+    "tactics": [
+      "stealth"
+    ],
+    "version": "3.0",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0184"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1070.006",
+        "name": "Timestomp",
+        "detection_strategy_ids": [
+          "DET0591"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1070/",
+    "source_ids": [
+      "SRC-MITRE-T1070"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -109,10 +760,10 @@
     "id": "T1071",
     "name": "Application Layer Protocol",
     "tactics": [
-      "Command and Control"
+      "command-and-control"
     ],
     "version": "2.4",
-    "created_date": null,
+    "created_date": "2017-05-31",
     "last_modified": "2026-09-03",
     "detection_strategy_ids": [
       "DET0444"
@@ -120,18 +771,276 @@
     "subtechniques": [
       {
         "id": "T1071.001",
-        "name": "Web Protocols"
+        "name": "Web Protocols",
+        "detection_strategy_ids": [
+          "DET0027"
+        ]
+      },
+      {
+        "id": "T1071.002",
+        "name": "File Transfer Protocols",
+        "detection_strategy_ids": [
+          "DET0416"
+        ]
       },
       {
         "id": "T1071.004",
-        "name": "DNS"
+        "name": "DNS",
+        "detection_strategy_ids": [
+          "DET0400"
+        ]
       }
     ],
     "url": "https://attack.mitre.org/techniques/T1071/",
     "source_ids": [
       "SRC-MITRE-T1071"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1078",
+    "name": "Valid Accounts",
+    "tactics": [
+      "stealth",
+      "persistence",
+      "privilege-escalation",
+      "initial-access"
+    ],
+    "version": "3.0",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0560"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1078.001",
+        "name": "Default Accounts",
+        "detection_strategy_ids": [
+          "DET0465"
+        ]
+      },
+      {
+        "id": "T1078.002",
+        "name": "Domain Accounts",
+        "detection_strategy_ids": [
+          "DET0210"
+        ]
+      },
+      {
+        "id": "T1078.003",
+        "name": "Local Accounts",
+        "detection_strategy_ids": [
+          "DET0407"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1078/",
+    "source_ids": [
+      "SRC-MITRE-T1078"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1083",
+    "name": "File and Directory Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.7",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0370"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1083/",
+    "source_ids": [
+      "SRC-MITRE-T1083"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1087",
+    "name": "Account Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "2.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0587"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1087.001",
+        "name": "Local Account",
+        "detection_strategy_ids": [
+          "DET0303"
+        ]
+      },
+      {
+        "id": "T1087.002",
+        "name": "Domain Account",
+        "detection_strategy_ids": [
+          "DET0129"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1087/",
+    "source_ids": [
+      "SRC-MITRE-T1087"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1090",
+    "name": "Proxy",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "3.2",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-08",
+    "detection_strategy_ids": [
+      "DET0445"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1090.001",
+        "name": "Internal Proxy",
+        "detection_strategy_ids": [
+          "DET0075"
+        ]
+      },
+      {
+        "id": "T1090.004",
+        "name": "Domain Fronting",
+        "detection_strategy_ids": [
+          "DET0196"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1090/",
+    "source_ids": [
+      "SRC-MITRE-T1090"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1095",
+    "name": "Non-Application Layer Protocol",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "2.4",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0457"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1095/",
+    "source_ids": [
+      "SRC-MITRE-T1095"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1098",
+    "name": "Account Manipulation",
+    "tactics": [
+      "persistence",
+      "privilege-escalation"
+    ],
+    "version": "2.8",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0096"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1098/",
+    "source_ids": [
+      "SRC-MITRE-T1098"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1102",
+    "name": "Web Service",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "1.3",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0425"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1102/",
+    "source_ids": [
+      "SRC-MITRE-T1102"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1105",
+    "name": "Ingress Tool Transfer",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "2.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0060"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1105/",
+    "source_ids": [
+      "SRC-MITRE-T1105"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1106",
+    "name": "Native API",
+    "tactics": [
+      "execution"
+    ],
+    "version": "2.3",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0529"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1106/",
+    "source_ids": [
+      "SRC-MITRE-T1106"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -139,7 +1048,7 @@
     "id": "T1110",
     "name": "Brute Force",
     "tactics": [
-      "Credential Access"
+      "credential-access"
     ],
     "version": "2.8",
     "created_date": "2017-05-31",
@@ -150,22 +1059,433 @@
     "subtechniques": [
       {
         "id": "T1110.001",
-        "name": "Password Guessing"
+        "name": "Password Guessing",
+        "detection_strategy_ids": [
+          "DET0551"
+        ]
       },
       {
         "id": "T1110.002",
-        "name": "Password Cracking"
+        "name": "Password Cracking",
+        "detection_strategy_ids": [
+          "DET0105"
+        ]
       },
       {
         "id": "T1110.003",
-        "name": "Password Spraying"
+        "name": "Password Spraying",
+        "detection_strategy_ids": [
+          "DET0487"
+        ]
       }
     ],
     "url": "https://attack.mitre.org/techniques/T1110/",
     "source_ids": [
       "SRC-MITRE-T1110"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1112",
+    "name": "Modify Registry",
+    "tactics": [
+      "defense-impairment",
+      "persistence"
+    ],
+    "version": "3.0",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0280"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1112/",
+    "source_ids": [
+      "SRC-MITRE-T1112"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1113",
+    "name": "Screen Capture",
+    "tactics": [
+      "collection"
+    ],
+    "version": "1.1",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0346"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1113/",
+    "source_ids": [
+      "SRC-MITRE-T1113"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1114",
+    "name": "Email Collection",
+    "tactics": [
+      "collection"
+    ],
+    "version": "2.6",
+    "created_date": "2017-05-31",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0476"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1114.002",
+        "name": "Remote Email Collection",
+        "detection_strategy_ids": [
+          "DET0048"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1114/",
+    "source_ids": [
+      "SRC-MITRE-T1114"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1132",
+    "name": "Data Encoding",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "1.3",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-09-08",
+    "detection_strategy_ids": [
+      "DET0108"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1132.001",
+        "name": "Standard Encoding",
+        "detection_strategy_ids": [
+          "DET0124"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1132/",
+    "source_ids": [
+      "SRC-MITRE-T1132"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1133",
+    "name": "External Remote Services",
+    "tactics": [
+      "persistence",
+      "initial-access"
+    ],
+    "version": "2.5",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0354"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1133/",
+    "source_ids": [
+      "SRC-MITRE-T1133"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1134",
+    "name": "Access Token Manipulation",
+    "tactics": [
+      "stealth",
+      "privilege-escalation"
+    ],
+    "version": "3.0",
+    "created_date": "2017-12-14",
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0283"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1134.001",
+        "name": "Token Impersonation/Theft",
+        "detection_strategy_ids": [
+          "DET0482"
+        ]
+      },
+      {
+        "id": "T1134.003",
+        "name": "Make and Impersonate Token",
+        "detection_strategy_ids": [
+          "DET0498"
+        ]
+      },
+      {
+        "id": "T1134.004",
+        "name": "Parent PID Spoofing",
+        "detection_strategy_ids": [
+          "DET0489"
+        ]
+      },
+      {
+        "id": "T1134.005",
+        "name": "SID-History Injection",
+        "detection_strategy_ids": [
+          "DET0136"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1134/",
+    "source_ids": [
+      "SRC-MITRE-T1134"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1135",
+    "name": "Network Share Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "3.2",
+    "created_date": "2017-12-14",
+    "last_modified": "2026-11-04",
+    "detection_strategy_ids": [
+      "DET0182"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1135/",
+    "source_ids": [
+      "SRC-MITRE-T1135"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1136",
+    "name": "Create Account",
+    "tactics": [
+      "persistence"
+    ],
+    "version": "2.6",
+    "created_date": "2017-12-14",
+    "last_modified": "2026-11-04",
+    "detection_strategy_ids": [
+      "DET0583"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1136.002",
+        "name": "Domain Account",
+        "detection_strategy_ids": [
+          "DET0003"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1136/",
+    "source_ids": [
+      "SRC-MITRE-T1136"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1137",
+    "name": "Office Application Startup",
+    "tactics": [
+      "persistence"
+    ],
+    "version": "1.4",
+    "created_date": "2017-12-14",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0398"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1137.001",
+        "name": "Office Template Macros",
+        "detection_strategy_ids": [
+          "DET0519"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1137/",
+    "source_ids": [
+      "SRC-MITRE-T1137"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1140",
+    "name": "Deobfuscate/Decode Files or Information",
+    "tactics": [
+      "stealth"
+    ],
+    "version": "2.0",
+    "created_date": "2017-12-14",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0275"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1140/",
+    "source_ids": [
+      "SRC-MITRE-T1140"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1185",
+    "name": "Browser Session Hijacking",
+    "tactics": [
+      "collection"
+    ],
+    "version": "2.1",
+    "created_date": "2018-01-16",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0507"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1185/",
+    "source_ids": [
+      "SRC-MITRE-T1185"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1190",
+    "name": "Exploit Public-Facing Application",
+    "tactics": [
+      "initial-access"
+    ],
+    "version": "2.8",
+    "created_date": "2018-04-18",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0080"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1190/",
+    "source_ids": [
+      "SRC-MITRE-T1190"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1197",
+    "name": "BITS Jobs",
+    "tactics": [
+      "stealth",
+      "persistence",
+      "execution"
+    ],
+    "version": "2.0",
+    "created_date": "2018-04-18",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0098"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1197/",
+    "source_ids": [
+      "SRC-MITRE-T1197"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1201",
+    "name": "Password Policy Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.7",
+    "created_date": "2018-04-18",
+    "last_modified": "2026-11-04",
+    "detection_strategy_ids": [
+      "DET0161"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1201/",
+    "source_ids": [
+      "SRC-MITRE-T1201"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1203",
+    "name": "Exploitation for Client Execution",
+    "tactics": [
+      "execution"
+    ],
+    "version": "1.5",
+    "created_date": "2018-04-18",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0287"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1203/",
+    "source_ids": [
+      "SRC-MITRE-T1203"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1207",
+    "name": "Rogue Domain Controller",
+    "tactics": [
+      "defense-impairment"
+    ],
+    "version": "3.0",
+    "created_date": "2018-04-18",
+    "last_modified": "2026-11-04",
+    "detection_strategy_ids": [
+      "DET0276"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1207/",
+    "source_ids": [
+      "SRC-MITRE-T1207"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -173,7 +1493,7 @@
     "id": "T1210",
     "name": "Exploitation of Remote Services",
     "tactics": [
-      "Lateral Movement"
+      "lateral-movement"
     ],
     "version": "1.2",
     "created_date": "2018-04-18",
@@ -186,7 +1506,78 @@
     "source_ids": [
       "SRC-MITRE-T1210"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1218",
+    "name": "System Binary Proxy Execution",
+    "tactics": [
+      "stealth"
+    ],
+    "version": "4.0",
+    "created_date": "2018-04-18",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0081"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1218.011",
+        "name": "Rundll32",
+        "detection_strategy_ids": [
+          "DET0475"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1218/",
+    "source_ids": [
+      "SRC-MITRE-T1218"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1219",
+    "name": "Remote Access Tools",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "3.0",
+    "created_date": "2018-04-18",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0496"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1219/",
+    "source_ids": [
+      "SRC-MITRE-T1219"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1482",
+    "name": "Domain Trust Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.2",
+    "created_date": "2019-02-14",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0007"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1482/",
+    "source_ids": [
+      "SRC-MITRE-T1482"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -194,10 +1585,10 @@
     "id": "T1486",
     "name": "Data Encrypted for Impact",
     "tactics": [
-      "Impact"
+      "impact"
     ],
     "version": "1.5",
-    "created_date": null,
+    "created_date": "2019-03-15",
     "last_modified": "2026-05-12",
     "detection_strategy_ids": [
       "DET0215"
@@ -207,7 +1598,219 @@
     "source_ids": [
       "SRC-MITRE-T1486"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1497",
+    "name": "Virtualization/Sandbox Evasion",
+    "tactics": [
+      "stealth",
+      "discovery"
+    ],
+    "version": "2.0",
+    "created_date": "2019-04-17",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0046"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1497.002",
+        "name": "User Activity Based Checks",
+        "detection_strategy_ids": [
+          "DET0420"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1497/",
+    "source_ids": [
+      "SRC-MITRE-T1497"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1498",
+    "name": "Network Denial of Service",
+    "tactics": [
+      "impact"
+    ],
+    "version": "1.2",
+    "created_date": "2019-04-17",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0518"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1498.002",
+        "name": "Reflection Amplification",
+        "detection_strategy_ids": [
+          "DET0408"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1498/",
+    "source_ids": [
+      "SRC-MITRE-T1498"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1518",
+    "name": "Software Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.5",
+    "created_date": "2019-09-16",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0392"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1518/",
+    "source_ids": [
+      "SRC-MITRE-T1518"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1543",
+    "name": "Create or Modify System Process",
+    "tactics": [
+      "persistence",
+      "privilege-escalation"
+    ],
+    "version": "1.2",
+    "created_date": "2020-01-10",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0571"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1543.003",
+        "name": "Windows Service",
+        "detection_strategy_ids": [
+          "DET0552"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1543/",
+    "source_ids": [
+      "SRC-MITRE-T1543"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1547",
+    "name": "Boot or Logon Autostart Execution",
+    "tactics": [
+      "persistence",
+      "privilege-escalation"
+    ],
+    "version": "1.3",
+    "created_date": "2020-01-23",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0274"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1547.005",
+        "name": "Security Support Provider",
+        "detection_strategy_ids": [
+          "DET0542"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1547/",
+    "source_ids": [
+      "SRC-MITRE-T1547"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1548",
+    "name": "Abuse Elevation Control Mechanism",
+    "tactics": [
+      "privilege-escalation"
+    ],
+    "version": "2.0",
+    "created_date": "2020-01-30",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0345"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1548.002",
+        "name": "Bypass User Account Control",
+        "detection_strategy_ids": [
+          "DET0388"
+        ]
+      },
+      {
+        "id": "T1548.003",
+        "name": "Sudo and Sudo Caching",
+        "detection_strategy_ids": [
+          "DET0052"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1548/",
+    "source_ids": [
+      "SRC-MITRE-T1548"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1550",
+    "name": "Use Alternate Authentication Material",
+    "tactics": [
+      "lateral-movement"
+    ],
+    "version": "2.0",
+    "created_date": "2020-01-30",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0338"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1550.002",
+        "name": "Pass the Hash",
+        "detection_strategy_ids": [
+          "DET0409"
+        ]
+      },
+      {
+        "id": "T1550.003",
+        "name": "Pass the Ticket",
+        "detection_strategy_ids": [
+          "DET0352"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1550/",
+    "source_ids": [
+      "SRC-MITRE-T1550"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -215,23 +1818,100 @@
     "id": "T1552",
     "name": "Unsecured Credentials",
     "tactics": [
-      "Credential Access"
+      "credential-access"
     ],
     "version": "1.5",
-    "created_date": null,
+    "created_date": "2020-02-04",
     "last_modified": "2025-10-24",
-    "detection_strategy_ids": [],
+    "detection_strategy_ids": [
+      "DET0412"
+    ],
     "subtechniques": [
       {
         "id": "T1552.001",
-        "name": "Credentials In Files"
+        "name": "Credentials In Files",
+        "detection_strategy_ids": [
+          "DET0307"
+        ]
+      },
+      {
+        "id": "T1552.004",
+        "name": "Private Keys",
+        "detection_strategy_ids": [
+          "DET0549"
+        ]
       }
     ],
     "url": "https://attack.mitre.org/techniques/T1552/",
     "source_ids": [
       "SRC-MITRE-T1552"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1553",
+    "name": "Subvert Trust Controls",
+    "tactics": [
+      "defense-impairment"
+    ],
+    "version": "2.0",
+    "created_date": "2020-02-05",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0452"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1553.002",
+        "name": "Code Signing",
+        "detection_strategy_ids": [
+          "DET0230"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1553/",
+    "source_ids": [
+      "SRC-MITRE-T1553"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1555",
+    "name": "Credentials from Password Stores",
+    "tactics": [
+      "credential-access"
+    ],
+    "version": "1.2",
+    "created_date": "2020-02-11",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0430"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1555.003",
+        "name": "Credentials from Web Browsers",
+        "detection_strategy_ids": [
+          "DET0037"
+        ]
+      },
+      {
+        "id": "T1555.004",
+        "name": "Windows Credential Manager",
+        "detection_strategy_ids": [
+          "DET0134"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1555/",
+    "source_ids": [
+      "SRC-MITRE-T1555"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -239,11 +1919,11 @@
     "id": "T1557",
     "name": "Adversary-in-the-Middle",
     "tactics": [
-      "Credential Access",
-      "Collection"
+      "credential-access",
+      "collection"
     ],
     "version": "2.5",
-    "created_date": null,
+    "created_date": "2020-02-11",
     "last_modified": "2026-11-03",
     "detection_strategy_ids": [
       "DET0296"
@@ -251,14 +1931,24 @@
     "subtechniques": [
       {
         "id": "T1557.001",
-        "name": "Name Resolution Poisoning and SMB Relay"
+        "name": "Name Resolution Poisoning and SMB Relay",
+        "detection_strategy_ids": [
+          "DET0462"
+        ]
+      },
+      {
+        "id": "T1557.003",
+        "name": "DHCP Spoofing",
+        "detection_strategy_ids": [
+          "DET0468"
+        ]
       }
     ],
     "url": "https://attack.mitre.org/techniques/T1557/",
     "source_ids": [
       "SRC-MITRE-T1557"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -266,29 +1956,305 @@
     "id": "T1558",
     "name": "Steal or Forge Kerberos Tickets",
     "tactics": [
-      "Credential Access"
+      "credential-access"
     ],
     "version": "1.7",
-    "created_date": null,
+    "created_date": "2020-02-11",
     "last_modified": "2026-05-12",
     "detection_strategy_ids": [
       "DET0522"
     ],
     "subtechniques": [
       {
+        "id": "T1558.001",
+        "name": "Golden Ticket",
+        "detection_strategy_ids": [
+          "DET0144"
+        ]
+      },
+      {
+        "id": "T1558.002",
+        "name": "Silver Ticket",
+        "detection_strategy_ids": [
+          "DET0241"
+        ]
+      },
+      {
         "id": "T1558.003",
-        "name": "Kerberoasting"
+        "name": "Kerberoasting",
+        "detection_strategy_ids": [
+          "DET0157"
+        ]
       },
       {
         "id": "T1558.004",
-        "name": "AS-REP Roasting"
+        "name": "AS-REP Roasting",
+        "detection_strategy_ids": [
+          "DET0113"
+        ]
+      },
+      {
+        "id": "T1558.005",
+        "name": "Ccache Files",
+        "detection_strategy_ids": [
+          "DET0024"
+        ]
       }
     ],
     "url": "https://attack.mitre.org/techniques/T1558/",
     "source_ids": [
       "SRC-MITRE-T1558"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1560",
+    "name": "Archive Collected Data",
+    "tactics": [
+      "collection"
+    ],
+    "version": "1.0",
+    "created_date": "2020-02-20",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0526"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1560/",
+    "source_ids": [
+      "SRC-MITRE-T1560"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1564",
+    "name": "Hide Artifacts",
+    "tactics": [
+      "stealth"
+    ],
+    "version": "2.0",
+    "created_date": "2020-02-26",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0502"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1564.010",
+        "name": "Process Argument Spoofing",
+        "detection_strategy_ids": [
+          "DET0045"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1564/",
+    "source_ids": [
+      "SRC-MITRE-T1564"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1566",
+    "name": "Phishing",
+    "tactics": [
+      "initial-access"
+    ],
+    "version": "2.8",
+    "created_date": "2020-03-02",
+    "last_modified": "2026-09-18",
+    "detection_strategy_ids": [
+      "DET0070"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1566/",
+    "source_ids": [
+      "SRC-MITRE-T1566"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1567",
+    "name": "Exfiltration Over Web Service",
+    "tactics": [
+      "exfiltration"
+    ],
+    "version": "1.5",
+    "created_date": "2020-03-09",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0548"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1567/",
+    "source_ids": [
+      "SRC-MITRE-T1567"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1568",
+    "name": "Dynamic Resolution",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "1.1",
+    "created_date": "2020-03-10",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0039"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1568.002",
+        "name": "Domain Generation Algorithms",
+        "detection_strategy_ids": [
+          "DET0419"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1568/",
+    "source_ids": [
+      "SRC-MITRE-T1568"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1569",
+    "name": "System Services",
+    "tactics": [
+      "execution"
+    ],
+    "version": "1.4",
+    "created_date": "2020-03-10",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0279"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1569.002",
+        "name": "Service Execution",
+        "detection_strategy_ids": [
+          "DET0421"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1569/",
+    "source_ids": [
+      "SRC-MITRE-T1569"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1570",
+    "name": "Lateral Tool Transfer",
+    "tactics": [
+      "lateral-movement"
+    ],
+    "version": "1.4",
+    "created_date": "2020-03-11",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0183"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1570/",
+    "source_ids": [
+      "SRC-MITRE-T1570"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1571",
+    "name": "Non-Standard Port",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "1.3",
+    "created_date": "2020-03-14",
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0227"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1571/",
+    "source_ids": [
+      "SRC-MITRE-T1571"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1572",
+    "name": "Protocol Tunneling",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "1.1",
+    "created_date": "2020-03-15",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0538"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1572/",
+    "source_ids": [
+      "SRC-MITRE-T1572"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1573",
+    "name": "Encrypted Channel",
+    "tactics": [
+      "command-and-control"
+    ],
+    "version": "1.2",
+    "created_date": "2020-03-16",
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0273"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1573.001",
+        "name": "Symmetric Cryptography",
+        "detection_strategy_ids": [
+          "DET0143"
+        ]
+      },
+      {
+        "id": "T1573.002",
+        "name": "Asymmetric Cryptography",
+        "detection_strategy_ids": [
+          "DET0543"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1573/",
+    "source_ids": [
+      "SRC-MITRE-T1573"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   },
@@ -296,10 +2262,10 @@
     "id": "T1595",
     "name": "Active Scanning",
     "tactics": [
-      "Reconnaissance"
+      "reconnaissance"
     ],
     "version": "1.0",
-    "created_date": null,
+    "created_date": "2020-10-02",
     "last_modified": "2025-10-24",
     "detection_strategy_ids": [
       "DET0830"
@@ -307,14 +2273,193 @@
     "subtechniques": [
       {
         "id": "T1595.002",
-        "name": "Vulnerability Scanning"
+        "name": "Vulnerability Scanning",
+        "detection_strategy_ids": [
+          "DET0867"
+        ]
       }
     ],
     "url": "https://attack.mitre.org/techniques/T1595/",
     "source_ids": [
       "SRC-MITRE-T1595"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1602",
+    "name": "Data from Configuration Repository",
+    "tactics": [
+      "collection"
+    ],
+    "version": "1.1",
+    "created_date": "2020-10-19",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0592"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1602.001",
+        "name": "SNMP (MIB Dump)",
+        "detection_strategy_ids": [
+          "DET0453"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1602/",
+    "source_ids": [
+      "SRC-MITRE-T1602"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1610",
+    "name": "Deploy Container",
+    "tactics": [
+      "execution"
+    ],
+    "version": "2.0",
+    "created_date": "2021-03-29",
+    "last_modified": "2026-07-22",
+    "detection_strategy_ids": [
+      "DET0249"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1610/",
+    "source_ids": [
+      "SRC-MITRE-T1610"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1613",
+    "name": "Container and Resource Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.1",
+    "created_date": "2021-03-31",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0490"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1613/",
+    "source_ids": [
+      "SRC-MITRE-T1613"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1615",
+    "name": "Group Policy Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.1",
+    "created_date": "2021-08-06",
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0055"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1615/",
+    "source_ids": [
+      "SRC-MITRE-T1615"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1620",
+    "name": "Reflective Code Loading",
+    "tactics": [
+      "stealth"
+    ],
+    "version": "2.0",
+    "created_date": "2021-10-05",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0300"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1620/",
+    "source_ids": [
+      "SRC-MITRE-T1620"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1649",
+    "name": "Steal or Forge Authentication Certificates",
+    "tactics": [
+      "credential-access"
+    ],
+    "version": "1.2",
+    "created_date": "2022-08-03",
+    "last_modified": "2026-08-04",
+    "detection_strategy_ids": [
+      "DET0240"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1649/",
+    "source_ids": [
+      "SRC-MITRE-T1649"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1680",
+    "name": "Local Storage Discovery",
+    "tactics": [
+      "discovery"
+    ],
+    "version": "1.0",
+    "created_date": "2025-09-25",
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0188"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1680/",
+    "source_ids": [
+      "SRC-MITRE-T1680"
+    ],
+    "verified_date": "2026-11-05",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1685",
+    "name": "Disable or Modify Tools",
+    "tactics": [
+      "defense-impairment"
+    ],
+    "version": "1.0",
+    "created_date": "2026-04-14",
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0497"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1685/",
+    "source_ids": [
+      "SRC-MITRE-T1685"
+    ],
+    "verified_date": "2026-11-05",
     "certainty": "確認済み",
     "unconfirmed_notes": ""
   }
