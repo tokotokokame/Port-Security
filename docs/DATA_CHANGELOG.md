@@ -31,3 +31,14 @@ Phase 0 基準（`docs/baseline/DATA_INVENTORY.json`）にある ID を削除・
 - protocols: `ip_protocol_number` / `layer` / `has_port_numbers` を追加し、IP プロトコル番号と通信方式を分離
 - ports / port_risks: service_name を IANA 登録名に統一（慣用名は formal_name に残す）
   - 443/udp http-3→https、514/tcp syslog-conn→shell（syslog-conn は 601/tcp）、5900/tcp vnc→rfb、6000/tcp (未登録)→x11、6667/tcp (未登録)→ircu、8443/tcp https-alt→pcsync-https
+  - 同じ番号に複数の登録がある 4 件をレコード内容に合う登録名へ: 465/tcp urd→submissions、1701/udp l2f→l2tp、2049/tcp・udp shilp→nfs
+  - iana_description は IANA CSV の記載をそのまま使用（6000/tcp・6667/tcp は空欄だったものを補完）
+- protocols: IANA Protocol Numbers 台帳（CI で取得、`data/raw/iana/protocol-numbers-1.csv`）と 7 件の番号・キーワードが一致することを確認
+
+### Phase 1（スキーマ）
+- `data/schemas/*.schema.json`（12 ファイル、JSON Schema 2020-12）と `docs/DATA_SCHEMA_SPEC.md` を `tools/make_schemas.py` で生成。全レコードがスキーマに適合
+
+### Phase 3（ATT&CK 関連付け）— `tools/apply_v11.py` phase3
+- ports に `technique_basis`（技術ごとの関連区分 direct / attack_pattern / service / reference と経路）を追加。271 件中 direct 57 / attack_pattern 204 / service 5 / reference 5
+- 経路がなかった 10 件は内容を確認し、ファイル共有系の T1039（548・873・2049）と VMConnect の T1021（2179）を service、残り 5 件を reference（一次資料未付与と明記）に分類
+- ATT&CK v20.1 公式 STIX との照合: 存在しない・廃止・名称不一致 0 件（`docs/MITRE_VALIDATION_REPORT.md`）

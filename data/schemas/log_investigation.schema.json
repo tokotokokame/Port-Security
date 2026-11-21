@@ -1,0 +1,157 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "port-security/log_investigation.schema.json",
+ "title": "ログ調査の基盤",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "platform",
+   "log_sources",
+   "common_fields",
+   "vendor_specific_fields",
+   "detection_analytics",
+   "investigation_procedure",
+   "analytics_ids",
+   "port_scope",
+   "ports",
+   "source_ids",
+   "verified_date",
+   "certainty",
+   "unconfirmed_notes"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^LOG-[A-Z0-9-]+$"
+   },
+   "platform": {
+    "type": "string",
+    "minLength": 1,
+    "description": "基盤"
+   },
+   "log_sources": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "channel",
+      "event_code",
+      "description"
+     ],
+     "properties": {
+      "channel": {
+       "type": "string",
+       "minLength": 1
+      },
+      "event_code": {
+       "type": [
+        "integer",
+        "null"
+       ]
+      },
+      "description": {
+       "type": "string"
+      }
+     }
+    },
+    "minItems": 1,
+    "description": "ログ源（チャネル・イベント ID）"
+   },
+   "common_fields": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    },
+    "description": "共通フィールド"
+   },
+   "vendor_specific_fields": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    },
+    "description": "製品固有フィールド"
+   },
+   "detection_analytics": {
+    "type": "string",
+    "description": "検知ロジック"
+   },
+   "investigation_procedure": {
+    "type": "string",
+    "minLength": 1,
+    "description": "調査手順"
+   },
+   "analytics_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^AN\\d{4}$"
+    },
+    "description": "対応する ATT&CK analytic"
+   },
+   "port_scope": {
+    "enum": [
+     "analytics",
+     "any",
+     "any_windows",
+     "listed"
+    ],
+    "description": "ポートとの対応方法"
+   },
+   "ports": {
+    "type": "array",
+    "items": {
+     "type": "array",
+     "prefixItems": [
+      {
+       "type": "integer",
+       "minimum": 0,
+       "maximum": 65535
+      },
+      {
+       "enum": [
+        "TCP",
+        "UDP",
+        "SCTP",
+        "DCCP"
+       ]
+      }
+     ],
+     "minItems": 2,
+     "maxItems": 2
+    },
+    "description": "port_scope=listed のときの (番号, 通信方式)"
+   },
+   "source_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^SRC-[A-Z0-9-]+$"
+    },
+    "minItems": 1,
+    "uniqueItems": true,
+    "description": "根拠資料 ID（sources.source_id）"
+   },
+   "verified_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "最終確認日（YYYY-MM-DD）"
+   },
+   "certainty": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "確度。確認済みには再検証済みの脅威系出典が必要"
+   },
+   "unconfirmed_notes": {
+    "type": "string",
+    "description": "未確認事項。確認済み以外では必須（空不可）"
+   }
+  }
+ }
+}

@@ -10,6 +10,7 @@ import csv, json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from validate import load_all, validate
+import reports
 
 ROOT = Path(__file__).parent.parent
 MATCH = ["DET公式監視ポート一致", "公式文書のポート指定", "DETサービス名から推定", "ATT&CK検知戦略(プラットフォーム)",
@@ -141,6 +142,8 @@ if __name__ == "__main__":
                   "attack_version": db["sources"][[s["source_id"] for s in db["sources"]].index(f"SRC-MITRE-{db['mitre_techniques'][0]['id']}")]["document_type"],
                   "iana_fetched": (ROOT / "data/raw/iana/FETCHED_AT").read_text().strip(), "detailed": len(ports), "iana": len(iana)}
     (ROOT / "docs/VALIDATION_REPORT.md").write_text(report(db, ports, iana, errors, warnings), encoding="utf-8")
+    cat = json.loads((ROOT / "data/raw/mitre/attack_catalog.json").read_text(encoding="utf-8"))
+    (ROOT / "docs/MITRE_VALIDATION_REPORT.md").write_text(reports.mitre_report(db, cat), encoding="utf-8")
     for out in (ROOT / "dist", ROOT / "app/assets/data"):
         out.mkdir(parents=True, exist_ok=True)
         for name, data in [("ports", ports), ("kb", kb), ("iana", iana)]:

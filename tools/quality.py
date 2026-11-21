@@ -201,18 +201,28 @@ def check_cve(db):
     return out
 
 
+def _fam(a, b): return a == b or a.split(".")[0] == b or b.split(".")[0] == a
+
+
 def check_association(db):
-    """Q-ASSOC: a port→technique link must be explained by an attack pattern, port evidence, or a service."""
+    """Q-ASSOC: every port→technique link has exactly one technique_basis whose route is true in the data.
+    direct = port evidence names the technique / attack_pattern = a linked attack pattern contains it (or parent/sub)
+    service = the linked service lists it, or a note explains the service nature / reference = note required."""
     out = []
-    atk = {a["id"]: set(a["technique_ids"]) for a in db["attack_patterns"]}
+    atk = {a["id"]: a["technique_ids"] for a in db["attack_patterns"]}
+    svc = {s["id"]: s["technique_ids"] for s in db["services"]}
     for p in db["ports"]:
-        via = set().union(*[atk.get(a, set()) for a in p["attack_pattern_ids"]]) if p["attack_pattern_ids"] else set()
-        ev = {e["technique"] for e in p.get("evidence", []) if e.get("technique")}
-        basis = {b["technique"] for b in p.get("technique_basis", [])}
-        for t in p["technique_ids"]:
-            parent = t.split(".")[0]
-            if not ({t, parent} & (via | ev | basis) or any(x.startswith(parent + ".") for x in via)):
-                out.append(F("Q-ASSOC", f"ports:{p['id']}", f"{t} の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"))
+        w, basis = f"ports:{p['id']}", p.get("technique_basis")
+        if basis is None: out.append(F("Q-ASSOC", w, "technique_basis（関連区分）がない")); continue
+        got = [b["technique"] for b in basis]
+        if sorted(got) != sorted(p["technique_ids"]): out.append(F("Q-ASSOC", w, f"technique_basis {got} が technique_ids と一致しない"))
+        for b in basis:
+            t, rel, via = b["technique"], b["relation"], b["via"]
+            ok = {"direct": lambda: via and all(any(e["source_id"] == v and e.get("technique") == t for e in p.get("evidence", [])) for v in via),
+                  "attack_pattern": lambda: via and all(v in p["attack_pattern_ids"] and any(_fam(t, x) for x in atk.get(v, [])) for v in via),
+                  "service": lambda: (via == [p["service_id"]] and any(_fam(t, x) for x in svc.get(p["service_id"], []))) or bool(b.get("note")),
+                  "reference": lambda: bool(b.get("note"))}.get(rel, lambda: False)()
+            if not ok: out.append(F("Q-ASSOC", w, f"{t} の関連区分 {rel} の経路 {via} がデータと一致しない"))
     return out
 
 

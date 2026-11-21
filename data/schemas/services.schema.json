@@ -1,0 +1,157 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "port-security/services.schema.json",
+ "title": "サービス（プロトコル）",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "service_name",
+   "formal_name",
+   "ports",
+   "purpose",
+   "technical_description",
+   "normal_usage_examples",
+   "malicious_exploitation_cases",
+   "suspicious_traffic_features",
+   "investigation_checkpoints",
+   "recommended_defenses",
+   "attack_pattern_ids",
+   "technique_ids",
+   "source_ids",
+   "verified_date",
+   "certainty",
+   "unconfirmed_notes"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^SRV-[A-Z0-9-]+$"
+   },
+   "service_name": {
+    "type": "string",
+    "minLength": 1,
+    "description": "サービス名"
+   },
+   "formal_name": {
+    "type": "string",
+    "description": "正式名"
+   },
+   "ports": {
+    "type": "array",
+    "items": {
+     "type": "array",
+     "prefixItems": [
+      {
+       "type": "integer",
+       "minimum": 0,
+       "maximum": 65535
+      },
+      {
+       "enum": [
+        "TCP",
+        "UDP",
+        "SCTP",
+        "DCCP"
+       ]
+      }
+     ],
+     "minItems": 2,
+     "maxItems": 2
+    },
+    "minItems": 1,
+    "uniqueItems": true,
+    "description": "(番号, 通信方式)。参照元ポートと一致"
+   },
+   "port_number": {
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 65535,
+    "description": "非推奨（v3 互換）。ports を使う"
+   },
+   "transport_protocol": {
+    "type": "string",
+    "description": "非推奨（v3 互換の文字列）"
+   },
+   "protocol_number": {
+    "type": "integer",
+    "description": "非推奨（v3 互換）"
+   },
+   "purpose": {
+    "type": "string",
+    "description": "用途"
+   },
+   "technical_description": {
+    "type": "string",
+    "description": "技術説明"
+   },
+   "normal_usage_examples": {
+    "type": "string",
+    "description": "正常利用例"
+   },
+   "malicious_exploitation_cases": {
+    "type": "string",
+    "description": "悪用例"
+   },
+   "suspicious_traffic_features": {
+    "type": "string",
+    "description": "不審な通信の特徴"
+   },
+   "investigation_checkpoints": {
+    "type": "string",
+    "description": "調査観点"
+   },
+   "recommended_defenses": {
+    "type": "string",
+    "description": "対策"
+   },
+   "attack_pattern_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^ATK-[A-Z0-9-]+$"
+    },
+    "uniqueItems": true,
+    "description": "攻撃手法 ID"
+   },
+   "technique_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^T\\d{4}(\\.\\d{3})?$"
+    },
+    "uniqueItems": true,
+    "description": "ATT&CK 技術 ID"
+   },
+   "source_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^SRC-[A-Z0-9-]+$"
+    },
+    "minItems": 1,
+    "uniqueItems": true,
+    "description": "根拠資料 ID（sources.source_id）"
+   },
+   "verified_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "最終確認日（YYYY-MM-DD）"
+   },
+   "certainty": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "確度。確認済みには再検証済みの脅威系出典が必要"
+   },
+   "unconfirmed_notes": {
+    "type": "string",
+    "description": "未確認事項。確認済み以外では必須（空不可）"
+   }
+  }
+ }
+}

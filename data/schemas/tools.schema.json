@@ -1,0 +1,154 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "port-security/tools.schema.json",
+ "title": "攻撃ツール（検知の痕跡のみ）",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "name",
+   "category",
+   "mitre_software_id",
+   "summary",
+   "ports",
+   "artifacts",
+   "detection",
+   "attack_pattern_ids",
+   "technique_ids",
+   "log_investigation_ids",
+   "source_ids",
+   "verified_date",
+   "certainty",
+   "unconfirmed_notes"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^TOOL-[A-Z0-9-]+$"
+   },
+   "name": {
+    "type": "string",
+    "minLength": 1,
+    "description": "名称"
+   },
+   "category": {
+    "type": "string",
+    "description": "区分"
+   },
+   "mitre_software_id": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^S\\d{4}$"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "description": "ATT&CK Software ID"
+   },
+   "summary": {
+    "type": "string",
+    "minLength": 1,
+    "description": "概要"
+   },
+   "ports": {
+    "type": "array",
+    "items": {
+     "type": "array",
+     "prefixItems": [
+      {
+       "type": "integer",
+       "minimum": 0,
+       "maximum": 65535
+      },
+      {
+       "enum": [
+        "TCP",
+        "UDP",
+        "SCTP",
+        "DCCP"
+       ]
+      }
+     ],
+     "minItems": 2,
+     "maxItems": 2
+    },
+    "uniqueItems": true,
+    "description": "主なポート (番号, 通信方式)"
+   },
+   "artifacts": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "minLength": 1
+    },
+    "description": "検知に使う痕跡"
+   },
+   "detection": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "minLength": 1
+    },
+    "description": "検知方法"
+   },
+   "attack_pattern_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^ATK-[A-Z0-9-]+$"
+    },
+    "uniqueItems": true,
+    "description": "攻撃手法 ID"
+   },
+   "technique_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^T\\d{4}(\\.\\d{3})?$"
+    },
+    "uniqueItems": true,
+    "description": "追加の ATT&CK 技術 ID"
+   },
+   "log_investigation_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^LOG-[A-Z0-9-]+$"
+    },
+    "uniqueItems": true,
+    "description": "ログ調査 ID"
+   },
+   "source_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^SRC-[A-Z0-9-]+$"
+    },
+    "minItems": 1,
+    "uniqueItems": true,
+    "description": "根拠資料 ID（sources.source_id）"
+   },
+   "verified_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "最終確認日（YYYY-MM-DD）"
+   },
+   "certainty": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "確度。確認済みには再検証済みの脅威系出典が必要"
+   },
+   "unconfirmed_notes": {
+    "type": "string",
+    "description": "未確認事項。確認済み以外では必須（空不可）"
+   }
+  }
+ }
+}

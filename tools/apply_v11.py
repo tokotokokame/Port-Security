@@ -3,8 +3,9 @@
 
 Usage: python3 tools/apply_v11.py   (then: validate.py / quality.py / build_index.py)
 """
-import json
+import json, sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
 
 ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data"
@@ -126,6 +127,11 @@ IANA_NAME = {
     "PORT-06000-TCP": ("x11", "X11", "X Window System", None),
     "PORT-06667-TCP": ("ircu", "IRC", "IRCU", None),
     "PORT-08443-TCP": ("pcsync-https", "HTTPS Alternate（慣用。IANA 登録名は pcsync-https）", None, None),
+    # 同じ番号に複数の登録がある場合、レコードの内容に対応する登録名を選ぶ
+    "PORT-00465-TCP": ("submissions", "SMTP over TLS (submissions)", None, None),
+    "PORT-01701-UDP": ("l2tp", "L2TP / Layer 2 Tunneling Protocol", None, None),
+    "PORT-02049-TCP": ("nfs", "NFS", None, None),
+    "PORT-02049-UDP": ("nfs", "NFS", None, None),
 }
 
 
@@ -133,9 +139,11 @@ def phase2():
     """services: ports as (number, transport) derived from the port records that reference them.
     protocols: separate the IP protocol number from the layer description; flag which ones carry port numbers."""
     ports = load("ports"); P = by_id(ports)
-    for pid, (name, formal, desc, note) in IANA_NAME.items():
+    from quality import iana_ports
+    reg = iana_ports(ROOT)
+    for pid, (name, formal, _, note) in IANA_NAME.items():
         p = P[pid]; p.update(service_name=name, formal_name=formal)
-        if desc: p["iana_description"] = desc
+        p["iana_description"] = reg[(p["port_number"], p["transport_protocol"])][name]
         if note and note not in p["unconfirmed_notes"]:
             p["unconfirmed_notes"] = (p["unconfirmed_notes"] + " " + note).strip()
     save("ports", ports)
@@ -155,6 +163,46 @@ def phase2():
     save("protocols", protos)
 
 
+# ---------------------------------------------------------------- Phase 3: ポート→ATT&CK 技術の関連区分
+# 攻撃手法・ポート固有根拠・サービスのいずれの経路もない紐付けは、内容を確認して service か reference に分類する
+MANUAL_BASIS = {
+    ("PORT-00548-TCP", "T1039"): ("service", "T1039 はネットワーク共有上のデータ取得。AFP はファイル共有プロトコル"),
+    ("PORT-00873-TCP", "T1039"): ("service", "T1039 はネットワーク共有上のデータ取得。rsync のモジュールはファイル共有として公開される"),
+    ("PORT-02049-TCP", "T1039"): ("service", "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル"),
+    ("PORT-02049-UDP", "T1039"): ("service", "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル"),
+    ("PORT-02179-TCP", "T1021"): ("service", "VMConnect は Hyper-V の VM コンソールへのリモート接続を受け付けるサービス"),
+    ("PORT-00069-TCP", "T1552.001"): ("reference", "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）"),
+    ("PORT-00069-UDP", "T1552.001"): ("reference", "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）"),
+    ("PORT-00593-TCP", "T1046"): ("reference", "RPC over HTTP のエンドポイントマッパーは RPC インターフェースの列挙に使われうる（一次資料未付与）"),
+    ("PORT-02483-TCP", "T1078.001"): ("reference", "Oracle の既定アカウント悪用の可能性（一次資料未付与）"),
+    ("PORT-03283-TCP", "T1021.005"): ("reference", "Apple Remote Desktop は画面共有に VNC 系の仕組みを使う（3283/tcp との対応は一次資料未付与）"),
+}
+
+
+def family(a, b): return a == b or a.split(".")[0] == b or b.split(".")[0] == a
+
+
+def phase3():
+    atk = {a["id"]: a["technique_ids"] for a in load("attack_patterns")}
+    svc = {s["id"]: s["technique_ids"] for s in load("services")}
+    ports = load("ports")
+    for p in ports:
+        basis = []
+        for t in p["technique_ids"]:
+            ev = sorted({e["source_id"] for e in p.get("evidence", []) if e.get("technique") == t})
+            aps = [a for a in p["attack_pattern_ids"] if any(family(t, x) for x in atk[a])]
+            if ev: b = {"technique": t, "relation": "direct", "via": ev}
+            elif aps: b = {"technique": t, "relation": "attack_pattern", "via": aps}
+            elif p["service_id"] and any(family(t, x) for x in svc[p["service_id"]]): b = {"technique": t, "relation": "service", "via": [p["service_id"]]}
+            elif (p["id"], t) in MANUAL_BASIS:
+                rel, note = MANUAL_BASIS[(p["id"], t)]
+                b = {"technique": t, "relation": rel, "via": [p["service_name"]] if rel == "service" else [], "note": note}
+            else: raise SystemExit(f"{p['id']} {t}: 関連区分を決められない")
+            basis.append(b)
+        p["technique_basis"] = basis
+    save("ports", ports)
+
+
 if __name__ == "__main__":
-    phase1(); phase2()
-    print("applied: phase1, phase2")
+    phase1(); phase2(); phase3()
+    print("applied: phase1, phase2, phase3")

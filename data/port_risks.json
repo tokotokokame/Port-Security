@@ -1032,7 +1032,7 @@
     "id": "RISK-00465-TCP",
     "port_number": 465,
     "transport_protocol": "TCP",
-    "service_name": "urd",
+    "service_name": "submissions",
     "risk_level": "Medium",
     "reason_targeted": "乗っ取りアカウントからの大量送信",
     "evaluation_factors": {
@@ -2228,7 +2228,7 @@
     "id": "RISK-02049-TCP",
     "port_number": 2049,
     "transport_protocol": "TCP",
-    "service_name": "shilp",
+    "service_name": "nfs",
     "risk_level": "High",
     "reason_targeted": "誤った export 設定によるファイル取得",
     "evaluation_factors": {
@@ -2253,7 +2253,7 @@
     "id": "RISK-02049-UDP",
     "port_number": 2049,
     "transport_protocol": "UDP",
-    "service_name": "shilp",
+    "service_name": "nfs",
     "risk_level": "Medium",
     "reason_targeted": "誤った export 設定によるファイル取得",
     "evaluation_factors": {
@@ -3748,7 +3748,7 @@
     "id": "RISK-01701-UDP",
     "port_number": 1701,
     "transport_protocol": "UDP",
-    "service_name": "l2f",
+    "service_name": "l2tp",
     "risk_level": "Medium",
     "reason_targeted": "VPN認証突破狙い, IPsec非併用時の平文情報漏洩",
     "evaluation_factors": {

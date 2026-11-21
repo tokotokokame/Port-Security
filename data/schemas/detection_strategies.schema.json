@@ -1,0 +1,198 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "port-security/detection_strategies.schema.json",
+ "title": "ATT&CK 検知戦略（公式 STIX から生成）",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "name",
+   "technique_ids",
+   "version",
+   "created_date",
+   "last_modified",
+   "analytics",
+   "url",
+   "source_ids",
+   "verified_date",
+   "certainty",
+   "unconfirmed_notes"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^DET\\d{4}$"
+   },
+   "name": {
+    "type": "string",
+    "minLength": 1,
+    "description": "名称"
+   },
+   "technique_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^T\\d{4}(\\.\\d{3})?$"
+    },
+    "uniqueItems": true,
+    "description": "対象技術"
+   },
+   "version": {
+    "type": "string",
+    "description": "版"
+   },
+   "created_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "作成日"
+   },
+   "last_modified": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "更新日"
+   },
+   "analytics": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "platforms",
+      "description",
+      "log_sources",
+      "monitored_ports",
+      "port_basis",
+      "transport_basis",
+      "service_names",
+      "log_investigation_ids"
+     ],
+     "properties": {
+      "id": {
+       "type": "string",
+       "pattern": "^AN\\d{4}$"
+      },
+      "platforms": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "description": {
+       "type": "string"
+      },
+      "log_sources": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "name",
+         "channel"
+        ],
+        "properties": {
+         "name": {
+          "type": [
+           "string",
+           "null"
+          ]
+         },
+         "channel": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        }
+       }
+      },
+      "monitored_ports": {
+       "type": "array",
+       "items": {
+        "type": "array",
+        "prefixItems": [
+         {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+         },
+         {
+          "enum": [
+           "TCP",
+           "UDP",
+           "SCTP",
+           "DCCP"
+          ]
+         }
+        ],
+        "minItems": 2,
+        "maxItems": 2
+       }
+      },
+      "port_basis": {
+       "enum": [
+        "official",
+        "inferred",
+        "none"
+       ]
+      },
+      "transport_basis": {
+       "enum": [
+        "stated",
+        "service_default",
+        "none"
+       ]
+      },
+      "service_names": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "log_investigation_ids": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^LOG-[A-Z0-9-]+$"
+       }
+      }
+     }
+    },
+    "description": "analytic"
+   },
+   "url": {
+    "type": "string",
+    "pattern": "^https://attack\\.mitre\\.org/",
+    "description": "公式ページ"
+   },
+   "source_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^SRC-[A-Z0-9-]+$"
+    },
+    "uniqueItems": true,
+    "description": "根拠資料 ID"
+   },
+   "verified_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "確認日"
+   },
+   "certainty": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "確度"
+   },
+   "unconfirmed_notes": {
+    "type": "string",
+    "description": "未確認事項"
+   }
+  }
+ }
+}
