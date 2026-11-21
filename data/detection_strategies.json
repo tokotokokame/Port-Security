@@ -3415,7 +3415,8 @@
           [
             5989,
             "TCP"
-          ]
+          ],
+          443
         ],
         "port_basis": "official",
         "transport_basis": "stated",

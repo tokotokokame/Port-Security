@@ -659,7 +659,7 @@
     "publication_date": null,
     "last_updated": null,
     "access_date": "2026-11-22",
-    "verification_status": "確認済み",
+    "verification_status": "未再検証",
     "notes": "公式 man page: 'Network exploration tool and security / port scanner'。サービス・バージョン・OS の識別機能を記載。",
     "scope": [
       "service"
