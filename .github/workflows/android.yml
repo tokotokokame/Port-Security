@@ -73,25 +73,23 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: flutter build apk --release --build-number=${{ github.run_number }}
+        run: flutter build apk --release --split-per-abi --build-number=${{ github.run_number }}
 
       - name: Security check of the built APK
         run: |
-          APK=build/app/outputs/flutter-apk/app-release.apk
+          APK=build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
           AAPT2=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)aapt2
           echo "== permissions"; "$AAPT2" dump permissions "$APK" | tee perms.txt
           "$AAPT2" dump xmltree --file AndroidManifest.xml "$APK" > manifest.txt
-          grep -E "allowBackup|exported|usesCleartextTraffic|debuggable|<activity|<service|<receiver|<provider" -n manifest.txt || true
-          if grep -q "android.permission.INTERNET" perms.txt; then echo "::error::INTERNET permission found"; exit 1; fi
-          if grep -q "debuggable.*=true" manifest.txt; then echo "::error::debuggable release"; exit 1; fi
-          if grep -A3 "allowBackup" manifest.txt | grep -q "(type 0x12)0xffffffff"; then echo "::error::allowBackup=true"; exit 1; fi
-          ls -la "$APK"; sha256sum "$APK" | tee apk.sha256
+          python3 ../tools/check_manifest.py manifest.txt perms.txt
+          for f in build/app/outputs/flutter-apk/*-release.apk; do ls -la "$f"; done
+          (cd build/app/outputs/flutter-apk && sha256sum *-release.apk) | tee apk.sha256
 
       - uses: actions/upload-artifact@v4
         with:
           name: port-security-apk
           path: |
-            app/build/app/outputs/flutter-apk/app-release.apk
+            app/build/app/outputs/flutter-apk/*-release.apk
             app/apk.sha256
 
       - name: Publish release (main only)
@@ -101,7 +99,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: v1.0.${{ github.run_number }}
         run: |
-          cp app/build/app/outputs/flutter-apk/app-release.apk "port-security-$TAG.apk"
-          gh release create "$TAG" "port-security-$TAG.apk" --target "$GITHUB_SHA" --latest \
-            --title "Port Security $TAG" \
-            --notes "Android用APK。SHA-256: $(cut -d' ' -f1 app/apk.sha256)"
+          OUT=app/build/app/outputs/flutter-apk
+          cp $OUT/app-arm64-v8a-release.apk "port-security-$TAG-arm64.apk"
+          cp $OUT/app-armeabi-v7a-release.apk "port-security-$TAG-armv7.apk"
+          sha256sum port-security-$TAG-*.apk > SHA256SUMS.txt
+          printf '%s\n\n%s\n\n```\n%s\n```\n' \
+            "通常のスマホは **arm64** 版をダウンロードしてください（古い32bit端末のみ armv7 版）。" \
+            "提供元不明のアプリのインストール許可が必要です。" "$(cat SHA256SUMS.txt)" > notes.md
+          gh release create "$TAG" port-security-$TAG-*.apk SHA256SUMS.txt --target "$GITHUB_SHA" --latest \
+            --title "Port Security $TAG" --notes-file notes.md

@@ -14,7 +14,7 @@ class PortDetailScreen extends StatelessWidget {
     final t = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(title: Text('${e.label}  ${e.service}')),
-      body: ListView(padding: const EdgeInsets.only(bottom: 24), children: [
+      body: ListView(padding: EdgeInsets.only(bottom: 24 + MediaQuery.paddingOf(context).bottom), children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

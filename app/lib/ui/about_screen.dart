@@ -14,7 +14,7 @@ class AboutScreen extends StatelessWidget {
     final confirmed = ports.where((p) => p.certainty == '確認済み').length;
     return Scaffold(
       appBar: AppBar(title: const Text('このアプリについて')),
-      body: ListView(padding: const EdgeInsets.only(bottom: 24), children: [
+      body: ListView(padding: EdgeInsets.only(bottom: 24 + MediaQuery.paddingOf(context).bottom), children: [
         const Section('ご利用にあたって', icon: Icons.gavel_outlined, children: [
           Text('本アプリは教育・防御目的の参照ツールです。攻撃手順や攻撃コードは含みません。'
               '記載内容は調査の手がかりであり、実環境での判断は一次資料と自組織の手順に従ってください。'),

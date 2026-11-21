@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:port_security/data/repository.dart';
 import 'package:port_security/main.dart';
+import 'package:port_security/ui/port_detail_screen.dart';
 
 void main() {
   late PortRepository repo;
@@ -47,6 +48,17 @@ void main() {
     await tester.tap(find.textContaining('ブルートフォース').first);
     await tester.pumpAndSettle();
     expect(find.textContaining('対象ポート'), findsOneWidget);
+  });
+
+  testWidgets('detail list keeps clear of the system navigation bar', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: MediaQuery(
+        data: const MediaQueryData(padding: EdgeInsets.only(bottom: 40)),
+        child: PortDetailScreen(entry: repo.ports.first),
+      ),
+    ));
+    final list = tester.widget<ListView>(find.byType(ListView).first);
+    expect((list.padding as EdgeInsets).bottom, 64);
   });
 
   testWidgets('about screen opens', (tester) async {

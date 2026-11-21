@@ -52,7 +52,7 @@ class GroupDetailScreen extends StatelessWidget {
     final log = first == null ? null : _log(first);
     return Scaffold(
       appBar: AppBar(title: Text(group.title)),
-      body: ListView(padding: const EdgeInsets.only(bottom: 24), children: [
+      body: ListView(padding: EdgeInsets.only(bottom: 24 + MediaQuery.paddingOf(context).bottom), children: [
         if (atk != null)
           Section(atk.id, icon: Icons.gpp_maybe_outlined, children: [
             Field('特徴', atk.features),
