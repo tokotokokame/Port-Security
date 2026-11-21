@@ -1,0 +1,251 @@
+[
+  {
+    "id": "RISK-03389-TCP",
+    "port_number": 3389,
+    "transport_protocol": "TCP",
+    "service_name": "RDP",
+    "risk_level": "Critical",
+    "reason_targeted": "Windowsのグラフィカルデスクトップへのフルアクセスを提供するため、ランサムウェアグループや侵入者にとって最大の侵入・制御目標となる。",
+    "evaluation_factors": {
+      "external_exposure": "インターネットからの直接露出時は極めて危険 (CISA Bad Practice)",
+      "authentication": "NLA無効化や弱固パスワード運用時にブルートフォース突破が容易",
+      "encryption": "TLS/RDP固有暗号化が適用されるが中間者攻撃や認証前脆弱性(BlueKeep等)が存在",
+      "known_vulnerabilities": "CVE-2019-0708 (BlueKeep RCE), CVE-2022-21893 等多数の歴史的・現代的既知脆弱性"
+    },
+    "suspicious_indicators": "インターネット直接アクセス, 短時間での異様な数の認証失敗ログ(Event 4625), 接続成功直後のプロセスクラッシュや不審子プロセス生成",
+    "investigation_focus": "Windows Security Event 4624/4625, Sysmon Event 1/3/7/10/11, 接続維持時間, 送信元IPアドレス",
+    "mitigation_controls": "インターネット露出の完全禁止, VPN/RD Gateway経由の強制, NLA有効化, 多要素認証(MFA)導入",
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-MITRE-DET0118",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "technique_ids": [
+      "T1110",
+      "T1210",
+      "T1021.001"
+    ]
+  },
+  {
+    "id": "RISK-00445-TCP",
+    "port_number": 445,
+    "transport_protocol": "TCP",
+    "service_name": "SMB",
+    "risk_level": "Critical",
+    "reason_targeted": "未認証でのリモートコード実行やネットワーク全域への即時横展開(ワーム型拡散)が可能な歴史的・現代的脆弱性が集中するため。(CISA最優先遮断勧告)",
+    "evaluation_factors": {
+      "external_exposure": "インターネットへの露出は例外なく即時無条件遮断対象 (CISA緊急勧告)",
+      "authentication": "SMB v1/v2におけるNTLMハッシュ奪取やPass-the-Hash攻撃の標的",
+      "encryption": "SMB 3.xでの暗号化が推奨されるが過去の平文・弱暗号構成の残存リスク",
+      "known_vulnerabilities": "MS17-010 (EternalBlue), CVE-2020-0796 (SMBGhost RCE) 等の高高評価CVE"
+    },
+    "suspicious_indicators": "境界FWでの外部からのTCP 445接続試行, 内部ネットワークにおける短時間での多端末IPC$/C$/ADMIN$共有アクセス",
+    "investigation_focus": "Sysmon Event 3(ネットワーク接続)/11(ファイル生成), 認証ログ 4624, SMBエラー率",
+    "mitigation_controls": "境界でのTCP 445完全遮断, SMB v1無効化, SMB Signing/Encryptionの強制, 端末間直接通信(P2P)遮断",
+    "source_ids": [
+      "SRC-MITRE-DET0118",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "technique_ids": [
+      "T1210",
+      "T1021.002"
+    ]
+  },
+  {
+    "id": "RISK-00022-TCP",
+    "port_number": 22,
+    "transport_protocol": "TCP",
+    "service_name": "SSH",
+    "risk_level": "High",
+    "reason_targeted": "Linux/Unixサーバーのルートシェル権限奪取および暗号化SOCKSプロキシトンネルによるC2通信隠蔽に多用されるため。",
+    "evaluation_factors": {
+      "external_exposure": "適切な鍵認証なしの外部公開は辞書攻撃の常時標的",
+      "authentication": "パスワード認証許可時にブルートフォース攻撃に対する脆弱性が急増",
+      "encryption": "SSH-2暗号化が標準であるが古い暗号スイート(CBCモード等)の悪用リスク",
+      "known_vulnerabilities": "OpenSSH脆弱性 (CVE-2024-6387 regreSSHion RCE等)"
+    },
+    "suspicious_indicators": "auth.logにおける大量のFailed password, sshdプロセスのSignal 11クラッシュ直後の/bin/bash起動(AN0328)",
+    "investigation_focus": "Linux auth.log, auditd execve, SSHトンネル確立ログ, 送信元IPアドレス",
+    "mitigation_controls": "パスワード認証の全廃・公開鍵認証/証明書認証の強制, Fail2ban自動ブロック, IPアドレス制限, MFA導入",
+    "source_ids": [
+      "SRC-MITRE-DET0118",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "technique_ids": [
+      "T1110",
+      "T1210",
+      "T1021.004"
+    ]
+  },
+  {
+    "id": "RISK-00427-TCP",
+    "port_number": 427,
+    "transport_protocol": "TCP",
+    "service_name": "OpenSLP",
+    "risk_level": "Critical",
+    "reason_targeted": "ESXiハイパーバイザーにおける未認証リモートコード実行を引き起こし、全仮想マシンの一括暗号化(ESXiArgs等)をもたらすため。",
+    "evaluation_factors": {
+      "external_exposure": "ESXi管理ポートの外部露出は極めて致命的",
+      "authentication": "OpenSLPデーモン自体に認証機構が存在しない",
+      "encryption": "暗号化非対応のテキストサービス発見プロトコル",
+      "known_vulnerabilities": "CVE-2021-21974 (ESXi OpenSLP Heap Overflow RCE)"
+    },
+    "suspicious_indicators": "外部からのポート427アクセス, vmkernel.logにおけるslpd Signal 11 / Backtrace発生",
+    "investigation_focus": "ESXi hostd.log, vmkernel.log, syslog.log, NSM Flow 427接続",
+    "mitigation_controls": "ESXi上のOpenSLPサービス(slpd)の停止, 外部からの427アクセス遮断",
+    "source_ids": [
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "DET0118/AN0329で427監視は確認。CVE-2021-21974/ESXiArgsの記述は個別出典未付与。",
+    "technique_ids": [
+      "T1210"
+    ]
+  },
+  {
+    "id": "RISK-05985-TCP",
+    "port_number": 5985,
+    "transport_protocol": "TCP",
+    "service_name": "WinRM HTTP",
+    "risk_level": "High",
+    "reason_targeted": "PowerShell Remotingによるスクリプト実行やPass-the-Hash攻撃による非暗号化トランスポート上での内部横展開に悪用されるため。",
+    "evaluation_factors": {
+      "external_exposure": "HTTP平文通信のため外部露出は極めて高リスク",
+      "authentication": "Kerberos/NTLM認証が行われるが通信自体はHTTP",
+      "encryption": "WinRMメッセージレベル暗号化はあるがTLS証明書保護なし",
+      "known_vulnerabilities": "WinRM / WSMAN 権限昇格・遠隔コード実行脆弱性"
+    },
+    "suspicious_indicators": "非管理端末からの5985アクセス, wsmprovhost.exeプロセスによる不審コマンドライン実行",
+    "investigation_focus": "WinRM Operationalログ, Sysmon Event 1/3, プロセス親子関係",
+    "mitigation_controls": "管理IPアドレス限定フィルタリング(AllowedAdminCIDRs), HTTPS 5986への移行",
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "technique_ids": [
+      "T1210",
+      "T1021.006"
+    ]
+  },
+  {
+    "id": "RISK-00023-TCP",
+    "port_number": 23,
+    "transport_protocol": "TCP",
+    "service_name": "Telnet",
+    "risk_level": "High",
+    "reason_targeted": "ID・パスワードを含む全ての通信が完全に平文で送信され、パケット盗聴や認証奪取が容易なため。(CISA Bad Practice)",
+    "evaluation_factors": {
+      "external_exposure": "インターネット露出時は即座に自動化ボットネットの標的",
+      "authentication": "単一プレーンテキストパスワード認証",
+      "encryption": "暗号化一切なし",
+      "known_vulnerabilities": "Miraiボットネット等によるデフォルトパスワードの乱用"
+    },
+    "suspicious_indicators": "Telnetポートへの自動スキャン接続, 平文認証文字列のネットワークパケット内検知",
+    "investigation_focus": "ネットワークキャプチャ, 境界FWアクセスログ",
+    "mitigation_controls": "Telnetサービスの全廃およびSSH(TCP 22)への完全移行",
+    "source_ids": [
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1040",
+      "T1595"
+    ]
+  },
+  {
+    "id": "RISK-00080-TCP",
+    "port_number": 80,
+    "transport_protocol": "TCP",
+    "service_name": "HTTP",
+    "risk_level": "Medium",
+    "reason_targeted": "Webアプリケーション脆弱性(SQLi, XSS, RCE)の探索および非暗号化通信でのセッションハイジャックの標的となるため。",
+    "evaluation_factors": {
+      "external_exposure": "Webサーバーとして広範に外部公開される",
+      "authentication": "Webアプリに依存 (Basic認証は平文)",
+      "encryption": "暗号化なし (HTTP)",
+      "known_vulnerabilities": "Webアプリケーションレイヤーの脆弱性に依存"
+    },
+    "suspicious_indicators": "WAFアラート発生, Webアクセスログでの特殊記号(' OR 1=1 等)スパイク",
+    "investigation_focus": "Webサーバーアクセスログ, WAFログ, プロキシログ",
+    "mitigation_controls": "HTTPS(TCP 443)へのリダイレクト強制, WAFの導入",
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1071.001",
+      "T1595.002"
+    ]
+  },
+  {
+    "id": "RISK-00443-TCP",
+    "port_number": 443,
+    "transport_protocol": "TCP",
+    "service_name": "HTTPS",
+    "risk_level": "Medium",
+    "reason_targeted": "通信が暗号化されるためセキュリティ監視(DPI)を回避しやすく、悪意あるC2通信やデータ外導の隠蔽チャネルとして悪用されるため。",
+    "evaluation_factors": {
+      "external_exposure": "広範に外部公開される標準セキュリティポート",
+      "authentication": "TLS証明書およびWebアプリ認証",
+      "encryption": "TLS 1.2/1.3による強固な暗号化",
+      "known_vulnerabilities": "TLSライブラリ脆弱性 (Heartbleed等) やWebアプリケーションの脆弱性"
+    },
+    "suspicious_indicators": "自己署名証明書や不審SNIドメインへの大量暗号化通信, 定期的なビーコンパケット",
+    "investigation_focus": "プロキシログ(SSL復号化検査), JA3/JA4指紋, SNIドメイン解析",
+    "mitigation_controls": "SSL/TLS可視化プロキシの導入, 不審ドメインのURLフィルタリング",
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1071.001",
+      "T1041"
+    ]
+  },
+  {
+    "id": "RISK-00053-UDP",
+    "port_number": 53,
+    "transport_protocol": "UDP",
+    "service_name": "DNS",
+    "risk_level": "Medium",
+    "reason_targeted": "DNSリフレクションDDoS攻撃のアンプとして悪用されるほか、DNSトンネリングによるデータ流出チャネルに利用されるため。",
+    "evaluation_factors": {
+      "external_exposure": "オープンDNSリゾルバとしての外部露出時に危険",
+      "authentication": "認証機構なし",
+      "encryption": "暗号化なし (DoH/DoT非適用時)",
+      "known_vulnerabilities": "DNSキャッシュポイズニング, オープンリフレクション"
+    },
+    "suspicious_indicators": "異常に長いサブドメインクエリの多発, 外部未承認DNSサーバーへの直接UDP 53通信",
+    "investigation_focus": "DNSサーバークエリログ, パケットキャプチャ, エントロピー解析",
+    "mitigation_controls": "オープンリゾルバの廃止, 内部DNSクエリの指定DNSサーバーへの限定, DNSSEC導入",
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1071.004",
+      "T1041"
+    ]
+  }
+]

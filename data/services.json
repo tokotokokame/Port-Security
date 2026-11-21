@@ -1,0 +1,188 @@
+[
+  {
+    "id": "SRV-RDP",
+    "service_name": "ms-wbt-server",
+    "formal_name": "Remote Desktop Protocol (RDP)",
+    "port_number": 3389,
+    "protocol_number": 6,
+    "transport_protocol": "TCP / UDP",
+    "purpose": "Windows Server/Workstationの完全なグラフィカルデスクトップ画面を遠隔操作する。",
+    "technical_description": "RDPスタックにより画面表示データとマウス・キーボード操作を暗号化伝送。TCP 3389が標準。UDP 3389はストリーミング高速化。",
+    "normal_usage_examples": "Windowsシステムの遠隔保守管理, リモートワーク環境での社内PC操作",
+    "malicious_exploitation_cases": "パスワードブルートフォース, BlueKeep等の脆弱性悪用, ランサムウェア侵入後の内部横展開",
+    "suspicious_traffic_features": "外部からの直接接続, 短時間での大量のログイン失敗 (Event 4625), 接続直後の不審子プロセス起動",
+    "investigation_checkpoints": "Windows Security Event 4624/4625, Sysmon Event 1/3/7/11, RDPログ",
+    "recommended_defenses": "外部非公開, RD Gateway/VPN経由強制, NLA有効化, MFA導入",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-LATERAL-MOVE",
+      "ATK-RANSOMWARE"
+    ],
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-MITRE-DET0118",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "technique_ids": [
+      "T1110",
+      "T1210",
+      "T1021.001"
+    ]
+  },
+  {
+    "id": "SRV-SMB",
+    "service_name": "microsoft-ds",
+    "formal_name": "Server Message Block (SMB)",
+    "port_number": 445,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "purpose": "Windowsネットワークにおけるファイル共有・プリンタ共有・Named Pipe経由RPCを実行する。",
+    "technical_description": "TCP 445上で直接SMB2/SMB3プロトコルを駆動。共有フォルダアクセスやリモート管理手順を提供。",
+    "normal_usage_examples": "社内NASファイルアクセス, Windowsドメインポリシー適用",
+    "malicious_exploitation_cases": "EternalBlue等の未認証RCE悪用, Pass-the-Hashによる端末間横展開, ワーム型ランサムウェア感染",
+    "suspicious_traffic_features": "境界での外部アクセス, 内部端末間での連続ADMIN$/IPC$アクセス",
+    "investigation_checkpoints": "Sysmon Event 3/11, Windows Event 4624, SMBセッションエラー率",
+    "recommended_defenses": "境界でのTCP 445完全遮断, SMB v1廃止, SMB Signing/Encryption強制",
+    "attack_pattern_ids": [
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-LATERAL-MOVE",
+      "ATK-RANSOMWARE"
+    ],
+    "source_ids": [
+      "SRC-MITRE-DET0118",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "technique_ids": [
+      "T1210",
+      "T1021.002",
+      "T1486"
+    ]
+  },
+  {
+    "id": "SRV-SSH",
+    "service_name": "ssh",
+    "formal_name": "Secure Shell (SSH)",
+    "port_number": 22,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "purpose": "暗号化されたリモートシェル接続およびSFTPファイル転送を提供する。",
+    "technical_description": "暗号化チャネル上で安全なターミナル操作およびポートフォワーディングを実行。",
+    "normal_usage_examples": "Linux/Unixサーバー管理, SFTP安全ファイル転送",
+    "malicious_exploitation_cases": "パスワードブルートフォース, SSH鍵奪取による横展開, 暗号化SOCKSトンネル悪用",
+    "suspicious_traffic_features": "Failed passwordログ多発, 接続直後の不審シェル起動",
+    "investigation_checkpoints": "Linux auth.log, auditd execve, SSHトンネル確立ログ",
+    "recommended_defenses": "公開鍵認証強制, パスワード認証廃止, IP制限, Fail2ban",
+    "attack_pattern_ids": [
+      "ATK-BRUTE-FORCE",
+      "ATK-REMOTE-EXPLOIT",
+      "ATK-LATERAL-MOVE"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "",
+    "technique_ids": [
+      "T1110",
+      "T1210",
+      "T1021.004"
+    ]
+  },
+  {
+    "id": "SRV-HTTP",
+    "service_name": "http",
+    "formal_name": "Hypertext Transfer Protocol (HTTP)",
+    "port_number": 80,
+    "protocol_number": 6,
+    "transport_protocol": "TCP",
+    "purpose": "非暗号化テキストによるWebコンテンツ伝送を行う。",
+    "technical_description": "HTTPリクエスト/レスポンスによるHTML・画像・データの伝送。",
+    "normal_usage_examples": "一般Webページの閲覧",
+    "malicious_exploitation_cases": "Web脆弱性悪用 (SQLi, XSS, RCE), 平文盗聴, C2通信",
+    "suspicious_traffic_features": "WAFアラート多発, 特殊攻撃文字列を含むアクセス",
+    "investigation_checkpoints": "Webサーバーアクセスログ, WAFログ",
+    "recommended_defenses": "HTTPS (443) へのリダイレクト強制, WAF導入",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN",
+      "ATK-CRED-THEFT",
+      "ATK-DATA-EXFIL"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1595.002",
+      "T1071.001"
+    ]
+  },
+  {
+    "id": "SRV-HTTPS",
+    "service_name": "https",
+    "formal_name": "Hypertext Transfer Protocol Secure (HTTPS)",
+    "port_number": 443,
+    "protocol_number": 6,
+    "transport_protocol": "TCP / UDP",
+    "purpose": "TLS/SSLにより暗号化された安全なWebコンテンツ伝送およびHTTP/3通信を行う。",
+    "technical_description": "TLSハンドシェイクにより証明書認証と暗号化チャネルを形成。UDP 443ではQUICプロトコルを駆動。",
+    "normal_usage_examples": "安全なWeb閲覧, ネットバンキング, クラウドWeb API",
+    "malicious_exploitation_cases": "暗号化チャネルによるC2通信隠蔽, HTTPSデータ外導",
+    "suspicious_traffic_features": "自己署名証明書使用, 不審SNIドメインへの頻繁な短パケット",
+    "investigation_checkpoints": "プロキシSSL復号化ログ, JA3/JA4指紋, SNIドメイン",
+    "recommended_defenses": "SSL/TLS可視化プロキシ導入, 不審ドメイン遮断, TLS 1.3強制",
+    "attack_pattern_ids": [
+      "ATK-DATA-EXFIL",
+      "ATK-REMOTE-EXPLOIT"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1071.001",
+      "T1041"
+    ]
+  },
+  {
+    "id": "SRV-DNS",
+    "service_name": "domain",
+    "formal_name": "Domain Name System (DNS)",
+    "port_number": 53,
+    "protocol_number": 17,
+    "transport_protocol": "UDP / TCP",
+    "purpose": "ホスト名とIPアドレスの相互変換およびドメイン制御情報を管理する。",
+    "technical_description": "UDP 53で単一クエリ高速処理、TCP 53でゾーン転送(AXFR)および大型応答を処理。",
+    "normal_usage_examples": "インターネット通信全般における名前解決",
+    "malicious_exploitation_cases": "DNSトンネリング(データ流出), DNSアンプ攻撃(DDoS), 未承認ゾーン転送",
+    "suspicious_traffic_features": "異様に長いサブドメインクエリ多発, AXFRリクエスト",
+    "investigation_checkpoints": "DNSクエリログ, エントロピー解析, パケットサイズ",
+    "recommended_defenses": "オープンリゾルバ廃止, DNSSEC導入, ゾーン転送制限",
+    "attack_pattern_ids": [
+      "ATK-DATA-EXFIL",
+      "ATK-VULN-SCAN"
+    ],
+    "source_ids": [
+      "SRC-IANA-PORT"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1071.004",
+      "T1041"
+    ]
+  }
+]

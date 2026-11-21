@@ -1,0 +1,329 @@
+[
+  {
+    "id": "LOG-WIN-AN0327",
+    "platform": "Windows (Server / Workstation)",
+    "log_sources": [
+      {
+        "channel": "WinEventLog:System",
+        "event_code": 1000,
+        "description": "アプリケーションエラー (サービス/プロセス異常終了・クラッシュ)"
+      },
+      {
+        "channel": "WinEventLog:Sysmon",
+        "event_code": 1,
+        "description": "プロセス生成 (不審な親プロセス・子プロセス実行)"
+      },
+      {
+        "channel": "WinEventLog:Sysmon",
+        "event_code": 3,
+        "description": "ネットワーク接続確立 (送信元/宛先IP・ポート)"
+      },
+      {
+        "channel": "WinEventLog:Sysmon",
+        "event_code": 7,
+        "description": "モジュールロード (不審なDLLロード)"
+      },
+      {
+        "channel": "WinEventLog:Sysmon",
+        "event_code": 10,
+        "description": "プロセスアクセス (メモリ割り当て・注入)"
+      },
+      {
+        "channel": "WinEventLog:Sysmon",
+        "event_code": 11,
+        "description": "ファイル生成 (ドロップされたマルウェア/スクリプト)"
+      },
+      {
+        "channel": "WinEventLog:Sysmon",
+        "event_code": 22,
+        "description": "DNSクエリ発信"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4624,
+        "description": "アカウントログオン成功 (LogonType 3: Network, 10: RemoteInteractive)"
+      },
+      {
+        "channel": "WinEventLog:Security",
+        "event_code": 4625,
+        "description": "アカウントログオン失敗"
+      }
+    ],
+    "common_fields": [
+      "Timestamp",
+      "Source IP (SrcIP)",
+      "Source Port (SrcPort)",
+      "Destination IP (DestIP)",
+      "Destination Port (DestPort)",
+      "Protocol",
+      "Action (ALLOW/DENY)"
+    ],
+    "vendor_specific_fields": [
+      "EventID",
+      "Image",
+      "ParentImage",
+      "CommandLine",
+      "User",
+      "ProcessGuid",
+      "LogonType",
+      "TargetUserName"
+    ],
+    "detection_analytics": "AN0327: 監視ポート(445, 135, 3389, 5985, 5986)へのインバウンド接続と、相関ウィンドウ内(既定10分)でのサービスクラッシュ(EventCode 1000)および不審子プロセス(EventCode 1)を相関検知。",
+    "investigation_procedure": "1. NSM Flowで高エラー率のインバウンド接続を特定\n2. 対象ホストのSystemログでEvent 1000を検索\n3. 同時刻帯のSysmon Event 1で親プロセスがサービス(spoolsv, svchost, wsmprovhost)である不審子プロセス(cmd, powershell)を特定",
+    "unconfirmed_notes": "AN0327公式のログ源はSystem 1000/Sysmon 1,3,7,10,11,22。Security 4624/4625は本DB独自の追記。",
+    "source_ids": [
+      "SRC-MS-RDS",
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "analytics_ids": [
+      "AN0327"
+    ],
+    "port_scope": "analytics"
+  },
+  {
+    "id": "LOG-LIN-AN0328",
+    "platform": "Linux (RHEL / Ubuntu / Debian)",
+    "log_sources": [
+      {
+        "channel": "linux:syslog / journalctl",
+        "event_code": null,
+        "description": "kernel/systemdメッセージ ('segmentation fault', 'core dumped', 'service terminated unexpectedly')"
+      },
+      {
+        "channel": "auditd:SYSCALL",
+        "event_code": null,
+        "description": "execveシステムコール (サービスアカウントからの/bin/sh, /bin/bash, /usr/bin/curl起動)"
+      },
+      {
+        "channel": "linux:auth.log / secure",
+        "event_code": null,
+        "description": "SSH認証成功・失敗ログ ('Failed password', 'Accepted publickey')"
+      }
+    ],
+    "common_fields": [
+      "Timestamp",
+      "Source IP",
+      "Source Port",
+      "Destination IP",
+      "Destination Port",
+      "Protocol",
+      "Action"
+    ],
+    "vendor_specific_fields": [
+      "syslog_message",
+      "exe",
+      "auid",
+      "uid",
+      "gid",
+      "pid",
+      "ppid",
+      "comm",
+      "terminal"
+    ],
+    "detection_analytics": "AN0328: sshd, smbd, nfsd, httpd, mysqld等のデーモンのクラッシュ/コアダンプと、サービスコンテキストからのシェル実行を相関検知。",
+    "investigation_procedure": "1. /var/log/syslog または journalctl で 'segmentation fault' を検索\n2. ausearch -m SYSCALL -ts recent で execve ログを抽出\n3. サービスアカウント(apache, mysql, nobody)が起動したコマンドラインを検証",
+    "unconfirmed_notes": "AN0328公式のログ源はsyslog/auditd/NSM Flow。auth.log/secureは本DB独自の追記。",
+    "source_ids": [
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "analytics_ids": [
+      "AN0328"
+    ],
+    "port_scope": "analytics"
+  },
+  {
+    "id": "LOG-ESXI-AN0329",
+    "platform": "VMware ESXi / vCenter",
+    "log_sources": [
+      {
+        "channel": "esxi:hostd",
+        "event_code": null,
+        "description": "/var/log/hostd.log, /var/log/vmkernel.log ('Backtrace', 'Signal 11', 'PANIC', 'hostd restarted')"
+      },
+      {
+        "channel": "esxi:vpxa",
+        "event_code": null,
+        "description": "/var/log/vpxa.log (vCenterエージェント通信およびタスクログ)"
+      }
+    ],
+    "common_fields": [
+      "Timestamp",
+      "Source IP",
+      "Source Port",
+      "Destination IP",
+      "Destination Port",
+      "Protocol",
+      "Action"
+    ],
+    "vendor_specific_fields": [
+      "vmsyslog_message",
+      "opID",
+      "user",
+      "hostd_pid"
+    ],
+    "detection_analytics": "AN0329: ポート427 (OpenSLP), 443 (vSphere API), 902, 5989 へのインバウンド接続と hostd/vpxa デーモンのクラッシュ・再起動を相関検知。",
+    "investigation_procedure": "1. /var/log/vmkernel.log で 'Signal 11' や 'PANIC' を抽出\n2. /var/log/hostd.log で再起動ログを確認\n3. ESXiホストからの不審な内部アクセス(横展開)の有無をフローログで検証",
+    "unconfirmed_notes": "AN0329公式のログ源はesxi:hostd(hostd.log/vmkernel.log/syslog.log)。vpxaは本DB独自の追記。",
+    "source_ids": [
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "analytics_ids": [
+      "AN0329"
+    ],
+    "port_scope": "analytics"
+  },
+  {
+    "id": "LOG-MAC-AN0330",
+    "platform": "macOS",
+    "log_sources": [
+      {
+        "channel": "macos:unifiedlog",
+        "event_code": null,
+        "description": "process 'crashed' | 'EXC_BAD_ACCESS' (sshd, screensharingd, httpd)"
+      },
+      {
+        "channel": "macos:osquery",
+        "event_code": null,
+        "description": "parent_name in ('sshd','screensharingd') spawning shells"
+      }
+    ],
+    "common_fields": [
+      "Timestamp",
+      "Source IP",
+      "Source Port",
+      "Destination IP",
+      "Destination Port",
+      "Protocol",
+      "Action"
+    ],
+    "vendor_specific_fields": [
+      "process_name",
+      "crash_reason",
+      "subsystem",
+      "sender_image_path"
+    ],
+    "detection_analytics": "AN0330: 暴露サービス(22, 5900, 8080)へのインバウンドアクセスと unifiedlog でのプロセス障害およびシェル起動を相関検知。",
+    "investigation_procedure": "1. log show --predicate 'eventMessage contains \"EXC_BAD_ACCESS\"' を実行\n2. osquery等で親プロセスがscreensharingd/sshdである子プロセスを調査",
+    "unconfirmed_notes": "",
+    "source_ids": [
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "analytics_ids": [
+      "AN0330"
+    ],
+    "port_scope": "analytics"
+  },
+  {
+    "id": "LOG-FORTIGATE-VENDOR",
+    "platform": "FortiGate (Fortinet Firewall / FortiOS 7.x)",
+    "log_sources": [
+      {
+        "channel": "FortiGate Traffic Log",
+        "event_code": null,
+        "description": "ファイアウォールパケットセッションログ (Forward Traffic / Local Traffic)"
+      },
+      {
+        "channel": "FortiGate UTM / Security Log",
+        "event_code": null,
+        "description": "IPS, WAF, Web Filter, Antivirus 検知ログ"
+      },
+      {
+        "channel": "FortiGate Event Log",
+        "event_code": null,
+        "description": "SSL-VPNログイン、IPsec VPN SA確立・切断、システムイベントログ"
+      }
+    ],
+    "common_fields": [
+      "送信元IP (srcip)",
+      "送信元ポート (srcport)",
+      "宛先IP (dstip)",
+      "宛先ポート (dstport)",
+      "通信プロトコル (proto)",
+      "通信方向",
+      "接続時間 (duration)",
+      "送信バイト数 (sentbyte)",
+      "受信バイト数 (rcvdbyte)",
+      "許可・拒否 (action=accept/deny)",
+      "接続時刻 (timestamp)"
+    ],
+    "vendor_specific_fields": [
+      "vd (Virtual Domain)",
+      "policyid",
+      "sessionid",
+      "app (Application Name)",
+      "trandisp (SNAT/DNAT)",
+      "transip",
+      "transport",
+      "vpn",
+      "user",
+      "group"
+    ],
+    "detection_analytics": "境界FWにおける非許可ポートへのDenyログ急増検知, SSL-VPNログイン失敗(action=ssl-login-fail)スパイク, IPSシグネチャ相関検知。",
+    "investigation_procedure": "1. srcip/dstip/dstportによるTraffic Logフィルタリング (`execute log filter device 0`, `execute log filter category 0`)\n2. action=deny のパケット発生頻度と同一セッションIDのイベント追跡\n3. SSL-VPNイベントログにおける認証成否および割り当て仮想IPの検証",
+    "unconfirmed_notes": "FortiOS 7.x公式ドキュメント準拠。高度なカスタマイズログオプション構文は環境により異なり「一部確認」として記録。",
+    "source_ids": [
+      "SRC-FORTINET-DOCS",
+      "SRC-CISA-HYGIENE"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "analytics_ids": [],
+    "port_scope": "any"
+  },
+  {
+    "id": "LOG-NECIX-VENDOR",
+    "platform": "NEC UNIVERGE IX Series Router",
+    "log_sources": [
+      {
+        "channel": "NEC IX Packet Filter Log",
+        "event_code": null,
+        "description": "IPアクセスリスト適用によるパケット通過(pass)および拒否(block) Syslog"
+      },
+      {
+        "channel": "NEC IX IPsec / VPN Log",
+        "event_code": null,
+        "description": "IPsec IKEフェーズ1/2ネゴシエーションおよびSA確立・切断ログ"
+      },
+      {
+        "channel": "NEC IX System Log",
+        "event_code": null,
+        "description": "インターフェースリンク状態変更, ログイン試行ログ"
+      }
+    ],
+    "common_fields": [
+      "送信元IP (src-ip)",
+      "送信元ポート (src-port)",
+      "宛先IP (dst-ip)",
+      "宛先ポート (dst-port)",
+      "通信プロトコル (protocol: tcp/udp/icmp)",
+      "許可・拒否 (action: pass/block)",
+      "接続時刻 (timestamp)"
+    ],
+    "vendor_specific_fields": [
+      "ident/tag (FLT, IPSEC, SYS)",
+      "in-interface",
+      "out-interface",
+      "filter-id",
+      "seq-num",
+      "router-name"
+    ],
+    "detection_analytics": "パケットフィルタ(FLT)による未許可ポート(TCP 3389, 445, 22等)へのブロック(block)ログの監視。IPsec SA切断異常の検知。",
+    "investigation_procedure": "1. Syslogサーバーで `ident=FLT` かつ `action=block` のログエントリを抽出\n2. 宛先IP/宛先ポートごとの集計によりポートスキャン元IPを特定\n3. `ident=IPSEC` でPhase-1 SA確立失敗ログの発生時刻と相関検証",
+    "unconfirmed_notes": "NEC UNIVERGE IX公式マニュアル準拠。ファームウェアバージョン(IX2000/IX3000系)による記述スタイルの違いを考慮し「一部確認」として記録。",
+    "source_ids": [
+      "SRC-NEC-IX"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "analytics_ids": [],
+    "port_scope": "any"
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "id": "PROTO-TCP",
+    "protocol_number": 6,
+    "service_name": "tcp",
+    "formal_name": "Transmission Control Protocol",
+    "transport_protocol": "L4 Transport Protocol",
+    "purpose": "信頼性の高いいコネクション型データ転送を提供し、順序制御・流量制御・エラー再送を実施する。",
+    "technical_description": "3-wayハンドシェイク(SYN -> SYN-ACK -> ACK)により接続を確立。シーケンス番号と確認応答番号で確実な到達を保証。",
+    "normal_usage_examples": "Web閲覧(HTTP/HTTPS), SSHリモート管理, ファイル転送(FTP/SFTP/SMB), メール送信(SMTP)",
+    "malicious_exploitation_cases": "SYN Flood攻撃(DoS), TCPポートスキャン(SYNスキャン, FINスキャン), 悪意あるセッションハイジャック",
+    "suspicious_traffic_features": "短時間での大量のSYN送信(応答なし), 不整合なTCPフラグ組合せ(NULL/Xmasスキャン), 急激なリセットパケット(RST)発生",
+    "investigation_checkpoints": "送信元/宛先IP・ポート, TCP flags (SYN, ACK, RST, FIN), ウィンドウサイズ, 接続継続時間",
+    "recommended_defenses": "SYN Cookie有効化, ステートフルファイアウォールによる接続状態監視, TCPタイムアウト短縮",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN",
+      "ATK-BRUTE-FORCE",
+      "ATK-REMOTE-EXPLOIT"
+    ],
+    "source_ids": [
+      "SRC-IANA-PROTO",
+      "SRC-IETF-RFC"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "プロトコル番号はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1595",
+      "T1210"
+    ]
+  },
+  {
+    "id": "PROTO-UDP",
+    "protocol_number": 17,
+    "service_name": "udp",
+    "formal_name": "User Datagram Protocol",
+    "transport_protocol": "L4 Transport Protocol",
+    "purpose": "コネクションレス型の高速データ送信を提供し、オーバーヘッドを最小限に抑える。",
+    "technical_description": "事前ハンドシェイクなしでパケット(データグラム)を直接送信。到達保証や順序制御を行わないため低遅延。",
+    "normal_usage_examples": "DNS名前解決(UDP 53), NTP時刻同期(UDP 123), DHCP IP取得(UDP 67/68), VoIP/ストリーミング, QUIC (UDP 443)",
+    "malicious_exploitation_cases": "UDPアンプ攻撃(DNS/NTP/SNMPリフレクションDDoS), 送信元IPスプーフィング, UDPポートスキャン",
+    "suspicious_traffic_features": "送信元IP偽装による非対称トラフィック急増, UDP 53/123/161へ向けた小型リクエストに対する超大型応答パケット多発",
+    "investigation_checkpoints": "送信元/宛先IP・ポート, 応答パケット増幅率, ICMP Port Unreachable発生率",
+    "recommended_defenses": "BCP 38 (Ingress/Egress IPスプーフィング防止フィルタリング), オープンリフレクター(オープンDNS/NTP)の閉鎖",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN",
+      "ATK-DATA-EXFIL"
+    ],
+    "source_ids": [
+      "SRC-IANA-PROTO",
+      "SRC-IETF-RFC"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "プロトコル番号はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "technique_ids": [
+      "T1595",
+      "T1071.004"
+    ]
+  },
+  {
+    "id": "PROTO-ICMP",
+    "protocol_number": 1,
+    "service_name": "icmp",
+    "formal_name": "Internet Control Message Protocol",
+    "transport_protocol": "L3 Control Protocol (IP Protocol 1)",
+    "purpose": "ネットワークエラー通知および診断・導通確認(ping)を行うための制御用プロトコル。",
+    "technical_description": "IPパケットの配送エラー(Destination Unreachable)や制御メッセージ(Echo Request/Reply)を通知。ポート番号概念は存在せずType/Codeで種別判別。",
+    "normal_usage_examples": "ping導通テスト (Type 8 Echo Request / Type 0 Echo Reply), traceroute (Type 11 Time Exceeded)",
+    "malicious_exploitation_cases": "Ping Flood (DDoS), ICMPトンネリング (データ隠蔽流出), ICMP Redirect攻撃 (Man-in-the-Middle), ICMP Sweep (ネットワーク探索)",
+    "suspicious_traffic_features": "ICMP Echo Requestパケットのペイロード内に不正暗号化データやコマンド文字列の格納, 異様なパケットサイズのICMP通信",
+    "investigation_checkpoints": "ICMP Type, ICMP Code, ペイロードデータパターン, 単位時間あたりメッセージ発生数",
+    "recommended_defenses": "境界FWでの不要なICMP Type(Redirect等)のブロック, ICMPレートリミット設定, DPIによるICMPペイロード検査",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN",
+      "ATK-DATA-EXFIL"
+    ],
+    "source_ids": [
+      "SRC-IANA-PROTO"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "ポート番号概念を持たないL3制御プロトコルとして管理。",
+    "technique_ids": [
+      "T1595",
+      "T1071"
+    ]
+  },
+  {
+    "id": "PROTO-GRE",
+    "protocol_number": 47,
+    "service_name": "gre",
+    "formal_name": "Generic Routing Encapsulation",
+    "transport_protocol": "L3 Tunneling Protocol (IP Protocol 47)",
+    "purpose": "任意のネットワーク層プロトコルパケットをIPパケット内にカプセル化してトンネリング伝送する。",
+    "technical_description": "乗せ換えるパケット(マルチプロトコル/マルチキャスト)をGREヘッダーで包み、外側IPパケットで送信。暗号化機能単体では非保持。",
+    "normal_usage_examples": "拠点間PPTP VPN接続, ルータ間マルチキャストルーティングカプセル化",
+    "malicious_exploitation_cases": "C2通信および検知回避のための外部トンネリング, セキュリティ監視のバイパス",
+    "suspicious_traffic_features": "許可されたVPNエンドポイント以外からの非認証GREカプセル化トラフィック発生",
+    "investigation_checkpoints": "外側送信元/宛先IP, GRE Headerキー情報, 内部パケットのプロトコル種別",
+    "recommended_defenses": "IPsecによるGRE通信の暗号化(GRE over IPsec), 未承認拠点からのProtocol 47ブロック",
+    "attack_pattern_ids": [
+      "ATK-DATA-EXFIL"
+    ],
+    "source_ids": [
+      "SRC-IANA-PROTO"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IPプロトコル番号47としてカプセル化管理。",
+    "technique_ids": [
+      "T1071"
+    ]
+  },
+  {
+    "id": "PROTO-ESP",
+    "protocol_number": 50,
+    "service_name": "esp",
+    "formal_name": "IPsec Encapsulating Security Payload",
+    "transport_protocol": "L3 Security Protocol (IP Protocol 50)",
+    "purpose": "IPsecにおいてデータパケットの暗号化、データ送信元の認証、完全性検証を提供する。",
+    "technical_description": "IPペイロードを対称鍵(AES等)で暗号化し、HMACにより完全性を検証。トランスポートモードおよびトンネルモードで動作。",
+    "normal_usage_examples": "IPsec VPN (拠点間・リモートアクセスVPN通信の暗号化データ伝送)",
+    "malicious_exploitation_cases": "不正なVPNトンネル確立試行, 許可されていないIP暗号通信によるC2チャネル隠蔽",
+    "suspicious_traffic_features": "SPI (Security Parameter Index) 不整合による大量エラー, 認証失敗ログの急増",
+    "investigation_checkpoints": "送信元/宛先IP, SPI値, シーケンス番号, 暗号化アルゴリズム適合性",
+    "recommended_defenses": "厳格なIKE/IPsecフェーズ1/2暗号ポリシー設定, 未承認IPからのProtocol 50遮断",
+    "attack_pattern_ids": [
+      "ATK-DATA-EXFIL"
+    ],
+    "source_ids": [
+      "SRC-IANA-PROTO"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IPプロトコル番号50として暗号化データパケットを管理。",
+    "technique_ids": [
+      "T1071"
+    ]
+  },
+  {
+    "id": "PROTO-AH",
+    "protocol_number": 51,
+    "service_name": "ah",
+    "formal_name": "IPsec Authentication Header",
+    "transport_protocol": "L3 Security Protocol (IP Protocol 51)",
+    "purpose": "IPパケットの改ざん防止(完全性保証)および送信元認証を提供する(暗号化は非提供)。",
+    "technical_description": "IPヘッダーの特定フィールドおよびペイロード全体に対するHMACハッシュを計算し、送信中の改ざんを検知。NAT環境(IP書き換え)とは非互換。",
+    "normal_usage_examples": "暗号化を要しない高信頼ネットワークにおけるデータ完全性検証・改ざん防止通信",
+    "malicious_exploitation_cases": "改ざん検知メッセージ多発によるDoS, 攻撃者による偽造ハッシュ検証試行",
+    "suspicious_traffic_features": "AHハッシュ検証エラーの多発(中間者改ざんまたはNAT構成ミス)",
+    "investigation_checkpoints": "送信元/宛先IP, SPI値, HMAC検証ステータス",
+    "recommended_defenses": "NAT環境ではESP(Protocol 50)およびNAT-T(UDP 4500)の使用を推奨",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "source_ids": [
+      "SRC-IANA-PROTO"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "IPプロトコル番号51として認証ヘッダーを管理。",
+    "technique_ids": [
+      "T1595"
+    ]
+  },
+  {
+    "id": "PROTO-SCTP",
+    "protocol_number": 132,
+    "service_name": "sctp",
+    "formal_name": "Stream Control Transmission Protocol",
+    "transport_protocol": "L4 Transport Protocol (IP Protocol 132)",
+    "purpose": "マルチホーミングおよびマルチストリーミングをサポートする高信頼トランスポートプロトコル。",
+    "technical_description": "4-wayハンドシェイク(INIT, INIT-ACK, COOKIE-ECHO, COOKIE-ACK)によりSYN Flood耐性を向上。複数の独立したメッセージストリームを並列伝送。",
+    "normal_usage_examples": "通信事業者コアネットワーク(SS7/SIGTRAN, 4G/5G Diameter, GTPシグナリング), WebRTCマルチストリーム",
+    "malicious_exploitation_cases": "SCTP INIT Chunk Flood (DoS攻撃), キャリアシグナリング網への不正メッセージ注入",
+    "suspicious_traffic_features": "大規模INITメッセージ送信とCookie検証未完了によるセッションリソース枯渇",
+    "investigation_checkpoints": "SCTP Port番号, Chunk Type (INIT, ABORT, SHUTDOWN), Verification Tag",
+    "recommended_defenses": "SCTP対応ステートフルFWによるCookie検証強制, 境界での不要なSCTPトラフィック遮断",
+    "attack_pattern_ids": [
+      "ATK-VULN-SCAN"
+    ],
+    "source_ids": [
+      "SRC-IANA-PROTO",
+      "SRC-IETF-RFC"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "L4トランスポートプロトコルとしてポート番号概念を保持。",
+    "technique_ids": [
+      "T1595"
+    ]
+  }
+]

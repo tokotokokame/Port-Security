@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Android signing material must never be committed
+*.jks
+*.keystore
+key.properties

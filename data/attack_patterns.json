@@ -1,0 +1,184 @@
+[
+  {
+    "id": "ATK-BRUTE-FORCE",
+    "attack_name": "ブルートフォース・パスワードスプレー・辞書攻撃",
+    "description": "RDP, SSH, WinRM, VNC等の認証サービスに対し、自動化ツールを用いて多数のパスワード候補を試行、または単一パスワードを多数のアカウントに試行(スプレー)して認証突破を狙う手法。",
+    "attack_features": "同一または分散IPアドレスからの大量の認証失敗ログ発生。特定アカウントに対する短時間でのロックアウト頻発、または多数アカウントに対する均一な試行。",
+    "detection_methods": "Windows Event ID 4625 (認証失敗), Linux auth.log Failed password, OpenSSH logの失敗しきい値監視。単位時間あたりの認証失敗率スパイク検知。",
+    "recommended_defenses": "多要素認証(MFA)の必須化, 段階的アカウントロックアウトポリシー, 接続元IP制限(IPsec/VPN必須化), Fail2ban/自動ブロック設定",
+    "source_ids": [
+      "SRC-MITRE-ATTACK",
+      "SRC-MS-RDS",
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-T1110"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "T1110 (Brute Force), T1110.001 (Password Guessing), T1110.003 (Password Spraying) に正しく分類。",
+    "technique_ids": [
+      "T1110",
+      "T1110.001",
+      "T1110.003"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-AN0327",
+      "LOG-LIN-AN0328",
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ]
+  },
+  {
+    "id": "ATK-REMOTE-EXPLOIT",
+    "attack_name": "リモートサービスの脆弱性悪用 (Exploitation of Remote Services)",
+    "description": "ネットワーク上で露出しているリモートサービス(SMB, RDP, WinRM, SSH, OpenSLP, vSphere API等)の未修正脆弱性(バッファオーバーフロー, 未認証RCE等)を悪用し、不正コード実行や権限奪取を行う手法。",
+    "attack_features": "外部または内部ネットワークからの接続確立直後に、ターゲットサービスデーモンのクラッシュ/再起動が発生し、サービス権限下で不審シェル(cmd.exe, powershell.exe, /bin/bash)が生成される。",
+    "detection_methods": "インバウンドアクセスとサービス障害(Windows System Event 1000, Linux syslog Signal 11, ESXi hostd/vmkernel Backtrace)および不審プロセス生成(Sysmon Event 1, auditd execve)の相関分析(MITRE DET0118 / AN0327-AN0330)。",
+    "recommended_defenses": "不要なリモートサービスの停止・境界遮断, セキュリティパッチの迅速適用(CISA KEV優先対応), ネットワークセグメンテーションによる内部隔離",
+    "source_ids": [
+      "SRC-MITRE-DET0118",
+      "SRC-MITRE-ATTACK",
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-T1210"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "T1210 (Exploitation of Remote Services) および DET0118 アナリティクスと完全合致。",
+    "technique_ids": [
+      "T1210"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-AN0327",
+      "LOG-LIN-AN0328",
+      "LOG-ESXI-AN0329",
+      "LOG-MAC-AN0330"
+    ]
+  },
+  {
+    "id": "ATK-LATERAL-MOVE",
+    "attack_name": "ラテラルムーブメント (横展開・内部移動)",
+    "description": "初期侵入に成功した攻撃者が、ネットワーク内部の他サーバーや端末へ感染を拡大するため、奪取した資格情報や標準リモート管理機能(RDP, SMB/Admin Shares, WinRM, SSH)を悪用して移動する手法。",
+    "attack_features": "単一の侵入端末から内部ネットワーク内の複数資産へ向けた短時間での新規リモートセッション確立。Pass-the-HashやPsExec類似動作の検出。",
+    "detection_methods": "ネットワークフロー(NSM Flow)における内部端末間接続スパイク検知, WinRM/SMB経由での管理者アカウント認証ログ(Event 4624 Type 3/10)の追跡。",
+    "recommended_defenses": "端末間通信(Peer-to-Peer)のパーソナルFW遮断, Privileged Access Management (PAM), LAPS (Local Administrator Password Solution) 導入",
+    "source_ids": [
+      "SRC-MITRE-ATTACK",
+      "SRC-MITRE-DET0118",
+      "SRC-MITRE-T1021"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "Sub-technique T1021.001(RDP), T1021.002(SMB), T1021.004(SSH) を明記。",
+    "technique_ids": [
+      "T1021",
+      "T1021.001",
+      "T1021.002",
+      "T1021.004"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-AN0327"
+    ]
+  },
+  {
+    "id": "ATK-CRED-THEFT",
+    "attack_name": "資格情報盗聴・メモリダンプ・認証情報窃取",
+    "description": "非暗号化通信プロトコル(HTTP, FTP, Telnet, LDAP, NetBIOS)のパケット盗聴、または侵入先メモリ(LSASS)からの認証トークン・ハッシュ抽出により資格情報を奪取する手法。",
+    "attack_features": "平文認証通信のネットワークキャプチャ、Kerberoasting試行(TGS要求多発)、Active Directoryに対する大量のLDAPクエリ発信。",
+    "detection_methods": "暗号化されていない管理プロトコルの検知, Active Directoryでの不審なTGS要求ログ(Event 4769), LSASSプロセスへのメモリダンプアクセス(Sysmon Event 10)。",
+    "recommended_defenses": "平文プロトコルの完全禁止(HTTPS, SFTP, SSH, LDAPSへ移行), Kerberos AES暗号化強制, Credential Guard有効化",
+    "source_ids": [
+      "SRC-MITRE-ATTACK",
+      "SRC-MS-RDS",
+      "SRC-MITRE-T1003",
+      "SRC-MITRE-T1040",
+      "SRC-MITRE-T1557",
+      "SRC-MITRE-T1558"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "欠損していた参照ID `ATK-CRED-THEFT` を正式定義。",
+    "technique_ids": [
+      "T1003",
+      "T1040",
+      "T1557.001",
+      "T1558.003"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-AN0327"
+    ]
+  },
+  {
+    "id": "ATK-DATA-EXFIL",
+    "attack_name": "データ流出・C2トンネリング・プロトコル偽装",
+    "description": "DNSトンネリング, ICMPトンネリング, HTTP/HTTPS C2チャネルを悪用し、セキュリティ監視を迂回して機密データを外部へ不正送信・流出させる手法。",
+    "attack_features": "サブドメイン長が異様に長い高頻度DNSクエリ(DNSトンネリング), ICMP/HTTPパケットペイロード内の不審エンコードデータ, 外部既知C2 IPへの継続接続。",
+    "detection_methods": "DNSログにおけるエントロピー解析およびクエリ長スパイク検知, プロキシログでのTLS/HTTP不審ユーザーエージェント・ビーコン周期検知。",
+    "recommended_defenses": "DNS Sinkhole / DNSSEC導入, プロキシでのSSL/TLS可視化・DPI検査, 外部未承認IPへのアウトバウンド制限",
+    "source_ids": [
+      "SRC-MITRE-ATTACK",
+      "SRC-MITRE-T1041",
+      "SRC-MITRE-T1071"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "欠損していた参照ID `ATK-DATA-EXFIL` を正式定義。",
+    "technique_ids": [
+      "T1041",
+      "T1071.001",
+      "T1071.004"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-AN0327",
+      "LOG-FORTIGATE-VENDOR"
+    ]
+  },
+  {
+    "id": "ATK-VULN-SCAN",
+    "attack_name": "アクティブスキャン・ポート/サービス探索 (Reconnaissance)",
+    "description": "攻撃対象のネットワークに対し、アクティブなIPアドレス、開いているポート、稼働サービス・OSバージョンを特定するために探索パケット(SYN, UDP, ICMP)を送信する予備調査手法。",
+    "attack_features": "短時間に単一または分散IPから特定IPの複数ポートへの連続SYNパケット送信。CISA分析によればCVE公表後15分以内に無差別探索スキャンが発生。",
+    "detection_methods": "IDS/IPSおよびFWログでの未許可ポート接続拒否(DENY/BLOCK)パケットの急増検知。複数ポートへの接続リセット発生率上昇の監視。",
+    "recommended_defenses": "不要なポートの完全閉じ(ステルス化), ポートスキャン自動検知による一時的IPブロック, 外部露出面の最小化",
+    "source_ids": [
+      "SRC-MITRE-ATTACK",
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-T1595"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "T1595 (Active Scanning) および T1595.002 (Vulnerability Scanning) に対応。",
+    "technique_ids": [
+      "T1595",
+      "T1595.002"
+    ],
+    "log_investigation_ids": [
+      "LOG-FORTIGATE-VENDOR",
+      "LOG-NECIX-VENDOR"
+    ]
+  },
+  {
+    "id": "ATK-RANSOMWARE",
+    "attack_name": "ランサムウェア展開・データ暗号化・二重脅迫",
+    "description": "露出したリモートサービス(RDP/SMB/OpenSLP)から侵入し、組織内の共有ファイルやバックアップを暗号化して金銭を要求する重度攻撃行為。",
+    "attack_features": "大量のファイル変更・拡張子変更(Sysmon Event 11), シャドウコピー削除コマンド(vssadmin/bcdedit)実行, VNC/RDP経由の直接悪用。",
+    "detection_methods": "EDRによる大量ファイル改ざん・暗号化動作検知, SMB共有アクセス急増ログ, サービス異常停止と不審子プロセス生成の相関。",
+    "recommended_defenses": "オフラインバックアップの確保, 境界でのRDP/SMB露出禁止, 最小権限原則の徹底, EDRによる暗号化プロセスの自動強制隔離",
+    "source_ids": [
+      "SRC-MITRE-ATTACK",
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-DET0118",
+      "SRC-MITRE-T1486",
+      "SRC-MITRE-T1210"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "T1486 (Data Encrypted for Impact) を割り当て。",
+    "technique_ids": [
+      "T1486",
+      "T1210"
+    ],
+    "log_investigation_ids": [
+      "LOG-WIN-AN0327",
+      "LOG-ESXI-AN0329"
+    ]
+  }
+]

@@ -1,0 +1,500 @@
+[
+  {
+    "id": "DET0118",
+    "name": "Exploitation of Remote Services – multi-platform lateral movement detection",
+    "technique_ids": [
+      "T1210"
+    ],
+    "version": "1.0",
+    "created_date": "2025-10-21",
+    "last_modified": "2026-05-12",
+    "analytics": [
+      {
+        "id": "AN0327",
+        "platform": "Windows",
+        "monitored_ports": [
+          445,
+          135,
+          3389,
+          5985,
+          5986,
+          1433,
+          3306
+        ],
+        "port_basis": "official",
+        "service_names": [],
+        "log_investigation_ids": [
+          "LOG-WIN-AN0327"
+        ]
+      },
+      {
+        "id": "AN0328",
+        "platform": "Linux",
+        "monitored_ports": [
+          22,
+          445,
+          2049,
+          80,
+          443,
+          3306,
+          5432,
+          6379,
+          21
+        ],
+        "port_basis": "inferred",
+        "service_names": [
+          "sshd",
+          "smbd",
+          "nfsd",
+          "httpd/nginx",
+          "mysqld",
+          "postgres",
+          "redis",
+          "vsftpd"
+        ],
+        "log_investigation_ids": [
+          "LOG-LIN-AN0328"
+        ]
+      },
+      {
+        "id": "AN0329",
+        "platform": "ESXi",
+        "monitored_ports": [
+          427,
+          443,
+          902,
+          5989
+        ],
+        "port_basis": "official",
+        "service_names": [],
+        "log_investigation_ids": [
+          "LOG-ESXI-AN0329"
+        ]
+      },
+      {
+        "id": "AN0330",
+        "platform": "macOS",
+        "monitored_ports": [
+          22,
+          5900,
+          8080,
+          8443
+        ],
+        "port_basis": "official",
+        "service_names": [],
+        "log_investigation_ids": [
+          "LOG-MAC-AN0330"
+        ]
+      }
+    ],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0118/",
+    "source_ids": [
+      "SRC-MITRE-DET0118"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": "AN0328の監視ポートは公式未記載。service_namesから標準ポートを推定(port_basis=inferred)。"
+  },
+  {
+    "id": "DET0234",
+    "name": "Credential Dumping via Sensitive Memory and Registry Access Correlation",
+    "technique_ids": [
+      "T1003"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [
+      {
+        "id": "AN0648",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0649",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0650",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      }
+    ],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0234/",
+    "source_ids": [
+      "SRC-MITRE-T1003"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0269",
+    "name": "Behavioral Detection Strategy for Remote Service Logins and Post-Access Activity",
+    "technique_ids": [
+      "T1021"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0269/",
+    "source_ids": [
+      "SRC-MITRE-T1021"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0314",
+    "name": "Detection Strategy for Network Sniffing Across Platforms",
+    "technique_ids": [
+      "T1040"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [
+      {
+        "id": "AN0875",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0876",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0877",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0878",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0879",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      }
+    ],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0314/",
+    "source_ids": [
+      "SRC-MITRE-DET0314"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0348",
+    "name": "Detection Strategy for Exfiltration Over C2 Channel",
+    "technique_ids": [
+      "T1041"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [
+      {
+        "id": "AN0988",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0989",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0990",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0991",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      }
+    ],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0348/",
+    "source_ids": [
+      "SRC-MITRE-DET0348"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0444",
+    "name": "Detection of Command and Control Over Application Layer Protocols",
+    "technique_ids": [
+      "T1071"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0444/",
+    "source_ids": [
+      "SRC-MITRE-T1071"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0463",
+    "name": "Brute Force Authentication Failures with Multi-Platform Log Correlation",
+    "technique_ids": [
+      "T1110"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [
+      {
+        "id": "AN1275",
+        "platform": null,
+        "description": "High volume of failed logon attempts followed by a successful one from a suspicious user, host, or timeframe",
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN1276",
+        "platform": null,
+        "description": "Multiple authentication failures for valid or invalid users followed by success from same IP/user",
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN1277",
+        "platform": null,
+        "description": "Password spraying or brute force attempts across user pool within short time intervals",
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN1278",
+        "platform": null,
+        "description": "Multiple failed authentications in unified logs (e.g., loginwindow or sshd)",
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN1279",
+        "platform": null,
+        "description": "Excessive login attempts followed by success from SaaS apps like O365, Dropbox, etc.",
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      }
+    ],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0463/",
+    "source_ids": [
+      "SRC-MITRE-T1110"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0215",
+    "name": "Detection of Multi-Platform File Encryption for Impact",
+    "technique_ids": [
+      "T1486"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0215/",
+    "source_ids": [
+      "SRC-MITRE-T1486"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0296",
+    "name": "Detect Adversary-in-the-Middle via Network and Configuration Anomalies",
+    "technique_ids": [
+      "T1557"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [
+      {
+        "id": "AN0823",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0824",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0825",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN0826",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      }
+    ],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0296/",
+    "source_ids": [
+      "SRC-MITRE-T1557"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0522",
+    "name": "Detect Kerberos Ticket Theft or Forgery",
+    "technique_ids": [
+      "T1558"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [
+      {
+        "id": "AN1443",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN1444",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      },
+      {
+        "id": "AN1445",
+        "platform": null,
+        "description": null,
+        "monitored_ports": [],
+        "port_basis": "none",
+        "service_names": [],
+        "log_investigation_ids": []
+      }
+    ],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0522/",
+    "source_ids": [
+      "SRC-MITRE-T1558"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  },
+  {
+    "id": "DET0830",
+    "name": "Detection of Active Scanning",
+    "technique_ids": [
+      "T1595"
+    ],
+    "version": null,
+    "created_date": null,
+    "last_modified": null,
+    "analytics": [],
+    "url": "https://attack.mitre.org/detectionstrategies/DET0830/",
+    "source_ids": [
+      "SRC-MITRE-T1595"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "名称・対象技術は公式ページで確認。analyticの対象プラットフォームとログ源は未収録。"
+  }
+]

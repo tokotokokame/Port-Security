@@ -1,0 +1,321 @@
+[
+  {
+    "id": "T1003",
+    "name": "OS Credential Dumping",
+    "tactics": [
+      "Credential Access"
+    ],
+    "version": "2.2",
+    "created_date": null,
+    "last_modified": "2026-06-13",
+    "detection_strategy_ids": [
+      "DET0234"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1003/",
+    "source_ids": [
+      "SRC-MITRE-T1003"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1021",
+    "name": "Remote Services",
+    "tactics": [
+      "Lateral Movement"
+    ],
+    "version": "1.6",
+    "created_date": null,
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0269"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1021.001",
+        "name": "Remote Desktop Protocol"
+      },
+      {
+        "id": "T1021.002",
+        "name": "SMB/Windows Admin Shares"
+      },
+      {
+        "id": "T1021.004",
+        "name": "SSH"
+      },
+      {
+        "id": "T1021.005",
+        "name": "VNC"
+      },
+      {
+        "id": "T1021.006",
+        "name": "Windows Remote Management"
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1021/",
+    "source_ids": [
+      "SRC-MITRE-T1021"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1040",
+    "name": "Network Sniffing",
+    "tactics": [
+      "Credential Access",
+      "Discovery"
+    ],
+    "version": "1.7",
+    "created_date": null,
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0314"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1040/",
+    "source_ids": [
+      "SRC-MITRE-T1040"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1041",
+    "name": "Exfiltration Over C2 Channel",
+    "tactics": [
+      "Exfiltration"
+    ],
+    "version": "2.4",
+    "created_date": null,
+    "last_modified": "2026-09-11",
+    "detection_strategy_ids": [
+      "DET0348"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1041/",
+    "source_ids": [
+      "SRC-MITRE-T1041"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1071",
+    "name": "Application Layer Protocol",
+    "tactics": [
+      "Command and Control"
+    ],
+    "version": "2.4",
+    "created_date": null,
+    "last_modified": "2026-09-03",
+    "detection_strategy_ids": [
+      "DET0444"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1071.001",
+        "name": "Web Protocols"
+      },
+      {
+        "id": "T1071.004",
+        "name": "DNS"
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1071/",
+    "source_ids": [
+      "SRC-MITRE-T1071"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1110",
+    "name": "Brute Force",
+    "tactics": [
+      "Credential Access"
+    ],
+    "version": "2.8",
+    "created_date": "2017-05-31",
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0463"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1110.001",
+        "name": "Password Guessing"
+      },
+      {
+        "id": "T1110.002",
+        "name": "Password Cracking"
+      },
+      {
+        "id": "T1110.003",
+        "name": "Password Spraying"
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1110/",
+    "source_ids": [
+      "SRC-MITRE-T1110"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1210",
+    "name": "Exploitation of Remote Services",
+    "tactics": [
+      "Lateral Movement"
+    ],
+    "version": "1.2",
+    "created_date": "2018-04-18",
+    "last_modified": "2026-08-04",
+    "detection_strategy_ids": [
+      "DET0118"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1210/",
+    "source_ids": [
+      "SRC-MITRE-T1210"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1486",
+    "name": "Data Encrypted for Impact",
+    "tactics": [
+      "Impact"
+    ],
+    "version": "1.5",
+    "created_date": null,
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0215"
+    ],
+    "subtechniques": [],
+    "url": "https://attack.mitre.org/techniques/T1486/",
+    "source_ids": [
+      "SRC-MITRE-T1486"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1552",
+    "name": "Unsecured Credentials",
+    "tactics": [
+      "Credential Access"
+    ],
+    "version": "1.5",
+    "created_date": null,
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [],
+    "subtechniques": [
+      {
+        "id": "T1552.001",
+        "name": "Credentials In Files"
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1552/",
+    "source_ids": [
+      "SRC-MITRE-T1552"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1557",
+    "name": "Adversary-in-the-Middle",
+    "tactics": [
+      "Credential Access",
+      "Collection"
+    ],
+    "version": "2.5",
+    "created_date": null,
+    "last_modified": "2026-11-03",
+    "detection_strategy_ids": [
+      "DET0296"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1557.001",
+        "name": "Name Resolution Poisoning and SMB Relay"
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1557/",
+    "source_ids": [
+      "SRC-MITRE-T1557"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1558",
+    "name": "Steal or Forge Kerberos Tickets",
+    "tactics": [
+      "Credential Access"
+    ],
+    "version": "1.7",
+    "created_date": null,
+    "last_modified": "2026-05-12",
+    "detection_strategy_ids": [
+      "DET0522"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1558.003",
+        "name": "Kerberoasting"
+      },
+      {
+        "id": "T1558.004",
+        "name": "AS-REP Roasting"
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1558/",
+    "source_ids": [
+      "SRC-MITRE-T1558"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  },
+  {
+    "id": "T1595",
+    "name": "Active Scanning",
+    "tactics": [
+      "Reconnaissance"
+    ],
+    "version": "1.0",
+    "created_date": null,
+    "last_modified": "2025-10-24",
+    "detection_strategy_ids": [
+      "DET0830"
+    ],
+    "subtechniques": [
+      {
+        "id": "T1595.002",
+        "name": "Vulnerability Scanning"
+      }
+    ],
+    "url": "https://attack.mitre.org/techniques/T1595/",
+    "source_ids": [
+      "SRC-MITRE-T1595"
+    ],
+    "verified_date": "2026-11-21",
+    "certainty": "確認済み",
+    "unconfirmed_notes": ""
+  }
+]
