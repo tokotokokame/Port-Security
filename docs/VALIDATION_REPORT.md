@@ -137,3 +137,25 @@
 ## エラー・警告
 
 - なし
+
+## 品質基準（tools/quality.py / docs/DATA_QUALITY_STANDARD.md）
+
+| コード | error |
+|---|---|
+| Q-JSON | 0 |
+| Q-SCHEMA | 0 |
+| Q-DUP | 0 |
+| Q-ATTACK | 0 |
+| Q-TRANSPORT | 0 |
+| Q-IPPROTO | 0 |
+| Q-IANA | 0 |
+| Q-VERIFIED | 0 |
+| Q-SRC | 0 |
+| Q-HIDDEN | 0 |
+| Q-ASSOC | 0 |
+| Q-CVE | 0 |
+| Q-COUNT | 0 |
+
+対象外（記録のみ）:
+- log_investigation:LOG-FORTIGATE-VENDOR: 確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）
+- log_investigation:LOG-NECIX-VENDOR: 確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）

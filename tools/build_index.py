@@ -147,6 +147,19 @@ def report(db, ports, iana, errors, warnings):
     return "\n".join(L) + "\n"
 
 
+def quality_section(db):
+    import quality
+    from collections import Counter
+    res = quality.run(db)
+    c = Counter((r["code"], r["level"]) for r in res)
+    codes = ["Q-JSON", "Q-SCHEMA", "Q-DUP", "Q-ATTACK", "Q-TRANSPORT", "Q-IPPROTO", "Q-IANA", "Q-VERIFIED", "Q-SRC", "Q-HIDDEN",
+             "Q-ASSOC", "Q-CVE", "Q-COUNT"]
+    L = ["", "## 品質基準（tools/quality.py / docs/DATA_QUALITY_STANDARD.md）", "", "| コード | error |", "|---|---|"]
+    L += [f"| {k} | {c[(k, 'error')]} |" for k in codes]
+    L += ["", "対象外（記録のみ）:"] + [f"- {r['where']}: {r['msg']}" for r in res if r["level"] == "info"]
+    return "\n".join(L) + "\n"
+
+
 if __name__ == "__main__":
     db = load_all(ROOT / "data")
     errors, warnings = validate(db)
@@ -159,12 +172,12 @@ if __name__ == "__main__":
                   "iana_fetched": (ROOT / "data/raw/iana/FETCHED_AT").read_text().strip(), "detailed": len(ports), "iana": len(iana),
                   "data_version": DATA_VERSION, "cve_fetched": (ROOT / "data/raw/cve/FETCHED_AT").read_text().strip(),
                   "kev_catalog": json.loads((ROOT / "data/raw/kev/kev_subset.json").read_text(encoding="utf-8"))["catalogVersion"]}
-    (ROOT / "docs/VALIDATION_REPORT.md").write_text(report(db, ports, iana, errors, warnings), encoding="utf-8")
-    cat = json.loads((ROOT / "data/raw/mitre/attack_catalog.json").read_text(encoding="utf-8"))
-    (ROOT / "docs/MITRE_VALIDATION_REPORT.md").write_text(reports.mitre_report(db, cat), encoding="utf-8")
-    (ROOT / "docs/CVE_VALIDATION_REPORT.md").write_text(reports.cve_report(db), encoding="utf-8")
     for out in (ROOT / "dist", ROOT / "app/assets/data"):
         out.mkdir(parents=True, exist_ok=True)
         for name, data in [("ports", ports), ("kb", kb), ("iana", iana)]:
             (out / f"{name}.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (ROOT / "docs/VALIDATION_REPORT.md").write_text(report(db, ports, iana, errors, warnings) + quality_section(db), encoding="utf-8")
+    cat = json.loads((ROOT / "data/raw/mitre/attack_catalog.json").read_text(encoding="utf-8"))
+    (ROOT / "docs/MITRE_VALIDATION_REPORT.md").write_text(reports.mitre_report(db, cat), encoding="utf-8")
+    (ROOT / "docs/CVE_VALIDATION_REPORT.md").write_text(reports.cve_report(db), encoding="utf-8")
     print(f"assets: ports {len(ports)} / iana {len(iana)} / techniques {len(kb['techniques'])} / dets {len(kb['dets'])}")

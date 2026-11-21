@@ -1,12 +1,14 @@
-# DATA_DICTIONARY（v5）
+# DATA_DICTIONARY（v1.1）
+
+フィールド単位の必須・型・制約は自動生成の [DATA_SCHEMA_SPEC.md](DATA_SCHEMA_SPEC.md)（JSON Schema 本体は `data/schemas/`）を正とする。
 
 ## ファイルと主キー
 
 | ファイル | 主キー形式 | 内容 |
 |---|---|---|
-| `ports.json` | `PORT-{5桁}-{TCP\|UDP\|SCTP}` | ポート単位のマスター |
+| `ports.json` | `PORT-{5桁}-{TCP\|UDP\|SCTP\|DCCP}` | ポート単位のマスター（番号 + 通信方式で 1 レコード） |
 | `services.json` | `SRV-{略称}` | サービス辞書 |
-| `protocols.json` | `PROTO-{名前}` | IPプロトコル辞書 |
+| `protocols.json` | `PROTO-{名前}` | IP プロトコル辞書（`ip_protocol_number` と `layer` を分離） |
 | `attack_patterns.json` | `ATK-{略称}` | 攻撃手法・検知方法 |
 | `port_risks.json` | `RISK-{5桁}-{通信方式}` | ポート別リスク評価 |
 | `log_investigation.json` | `LOG-{基盤}-{識別子}` | ログ調査手順 |
@@ -14,8 +16,13 @@
 | `detection_strategies.json` | `DET####` | ATT&CK 検知戦略と analytic |
 | `tools.json` | `TOOL-{名前}` | 攻撃ツール（検知の痕跡のみ。使い方は含まない） |
 | `mitre_software.json` | `S####` | ATT&CK に収録されたツール情報（公式 STIX から生成） |
+| `vulnerabilities.json` | `CVE-YYYY-NNNN` | CVE（製品・バージョン経由。ポートに直接紐付けない） |
 | `sources.json` | `SRC-{略称}` | 根拠資料 |
-| `raw/iana/service-names-port-numbers.csv` | — | IANA 公式台帳（CI の `refresh-iana` が取得） |
+| `raw/iana/service-names-port-numbers.csv` | — | IANA ポート台帳（CI の `refresh-iana` が取得） |
+| `raw/iana/protocol-numbers-1.csv` | — | IANA Protocol Numbers 台帳（同上） |
+| `raw/mitre/attack_catalog.json` | — | ATT&CK 公式 STIX の ID・名称・廃止状態（`tools/mitre_ids.py`） |
+| `raw/cve/*.json` / `raw/kev/kev_subset.json` | — | CVE 公式レコードと CISA KEV（`tools/fetch_cve.py`） |
+| `schemas/*.schema.json` | — | JSON Schema（`tools/make_schemas.py`） |
 
 ## 生成の流れ
 
@@ -32,7 +39,21 @@
 - `kind`:
   - `技術説明`: ATT&CK の技術の説明文にサービス名がある
   - `手順例`: ATT&CK の実際の使用例にある
-  - `公式文書`: ベンダーや政府の文書にある
+  - `ATT&CK検知戦略`: ATT&CK の analytic がポートを監視対象に挙げている（`examples` に analytic ID）
+  - `公式文書`: ベンダーの文書にある
+  - `政府勧告`: 政府機関の勧告にある
+- 確認済みのポートは evidence が必須（quality.py Q-VERIFIED）
+
+## ports の `technique_basis`（ATT&CK 技術との関連区分）
+
+`[{technique, relation, via, note}]`。ポート番号と技術を直接結び付けず、経路を持たせる。quality.py がデータと突き合わせて検証する（Q-ASSOC）。
+
+| relation | via | 条件 |
+|---|---|---|
+| `direct` | 出典 ID | evidence がその技術を名指ししている |
+| `attack_pattern` | 攻撃手法 ID | 紐付く攻撃手法がその技術（親・サブ技術を含む）を持つ |
+| `service` | サービス ID / 名 | サービスの性質から対象になる（`note` で説明） |
+| `reference` | — | 参考。`note` 必須（一次資料未付与と明記） |
 - `examples`: 手順例を記載した攻撃グループやマルウェア
 - `keyword`: 一致した語、または確認した要点
 
@@ -44,7 +65,7 @@
 
 | rank | 意味 |
 |---|---|
-| 0 | DET の公式監視ポートに一致 |
+| 0 | DET の公式監視ポートに (番号, 通信方式) で一致 |
 | 1 | 公式文書でポートが指定されている（Hyper-V / VirtualBox など） |
 | 2 | DET のサービス名から推定したポート |
 | 3 | 技術 → 検知戦略 → analytic のプラットフォームで対応 |
@@ -74,6 +95,22 @@ ports ──service_id──▶ services
 | `official` | 公式ページにポート番号が明記されている |
 | `inferred` | 公式はサービス名のみ。標準ポートを推定（例: DET0118/AN0328） |
 | `none` | ポート情報なし |
+
+## analytic の `monitored_ports` と `transport_basis`
+
+`monitored_ports` は `[[番号, 通信方式], …]`。ポートとの照合は (番号, 通信方式) の一致のみで、番号だけでは紐付けない。
+
+| transport_basis | 意味 |
+|---|---|
+| `stated` | analytic 本文に通信方式がある（例: AN0329 の `tcp/427`） |
+| `service_default` | 番号のみの記載。挙げられたサービスの標準通信方式（SMB・RDP・WinRM・SSH・VNC → TCP） |
+| `none` | 監視ポートなし |
+
+## vulnerabilities（CVE）
+
+- `affected` / `cvss` / `published` / `updated` / `kev` は `data/raw/` の公式レコードから `tools/import_cve.py` が生成する。手編集すると quality.py が検出する（Q-CVE）
+- `condition`（該当条件）と `risk_ids` だけを `tools/cve_catalog.py` で管理する
+- ポート番号のフィールドは持たない
 
 ## log_investigation の `port_scope`
 

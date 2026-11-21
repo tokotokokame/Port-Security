@@ -12,22 +12,39 @@
 | `docs/RISK_RUBRIC.md` | リスク評価の基準 |
 | `docs/DATA_UPDATE_GUIDE.md` | データ追加・更新の手順 |
 | `docs/VALIDATION_REPORT.md` | 整合性検証と到達率・不足リスト（自動生成） |
+| `data/schemas/` | JSON Schema（生成物。仕様は `docs/DATA_SCHEMA_SPEC.md`） |
+| `data/raw/mitre/` `data/raw/cve/` `data/raw/kev/` | ATT&CK・CVE・KEV の公式データ |
+| `docs/DATA_QUALITY_STANDARD.md` | 品質の合格基準 |
+| `docs/DATA_CHANGELOG.md` | データ変更履歴（ID の削除・改名は必須記載） |
+| `docs/baseline/` | v1.1 開始時点の基準（全 ID・件数・検査結果） |
+| `docs/MITRE_VALIDATION_REPORT.md` / `docs/CVE_VALIDATION_REPORT.md` | 照合レポート（自動生成） |
+| `docs/TEST_REPORT.md` / `docs/RELEASE_CHECKLIST.md` | 試験結果・リリース手順 |
 | `tools/validate.py` | 参照整合性・根拠ルールの検証（標準ライブラリのみ） |
-| `tools/test_validate.py` | 検証器の自己テスト（壊したデータを確実に検出するか） |
+| `tools/quality.py` | 品質基準の検査（Q-JSON〜Q-COUNT） |
+| `tools/test_validate.py` / `tools/test_quality.py` | 不正データ注入テスト（壊したデータを確実に検出するか） |
 | `tools/build_index.py` | `dist/`・アプリ同梱データ・レポートの生成 |
-| `tools/import_mitre.py` | MITRE ATT&CK STIX からの技術・検知戦略の取り込み |
+| `tools/make_schemas.py` | JSON Schema と DATA_SCHEMA_SPEC.md の生成 |
+| `tools/import_mitre.py` / `tools/mitre_ids.py` | MITRE ATT&CK STIX からの取り込み・ID カタログ |
+| `tools/fetch_cve.py` / `tools/import_cve.py` / `tools/cve_catalog.py` | CVE・KEV の取得・生成・該当条件 |
+| `tools/freshness.py` | 一次データの鮮度チェック（週次 CI） |
+| `tools/apply_v11.py` | v1.1 のデータ修正（再実行しても同じ結果） |
 | `tools/check_manifest.py` | リリース APK のセキュリティ点検 |
 | `tools/make_icon.py` | アプリアイコン（ドット絵）の生成 |
 
 ## データの検証と生成
 
 ```bash
+pip install -r tools/requirements.txt   # jsonschema（バージョン固定）
 python3 tools/validate.py data          # 整合性検証（エラーがあれば exit 1）
-python3 -m unittest discover -s tools   # 検証器の自己テスト
-python3 tools/build_index.py            # dist/・app/assets/data/・docs/VALIDATION_REPORT.md を再生成
+python3 tools/quality.py                # 品質基準（エラーがあれば exit 1）
+python3 -m unittest discover -s tools   # 不正データ注入テスト
+python3 tools/make_schemas.py           # スキーマと仕様書
+python3 tools/build_index.py            # dist/・app/assets/data/・各レポートを再生成
 ```
 
-`.github/workflows/validate.yml` が push / PR ごとに上記を実行し、生成物のコミット漏れも検出します。
+- `validate.yml`（PR / main）: 上記をすべて実行し、生成物のコミット漏れも検出します。
+- `android.yml`: 同じ品質ゲートを通らないとビルド・リリースしません。
+- `freshness.yml`（毎週月曜）: IANA・ATT&CK・CVE・KEV が更新されていたら失敗して知らせます（自動コミットはしません）。
 
 ## アプリのビルド
 
