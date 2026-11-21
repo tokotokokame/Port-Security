@@ -204,8 +204,8 @@ def check_cve(db):
     for v in db.get("vulnerabilities", []):
         w = f"vulnerabilities:{v['id']}"
         if rebuilt and rebuilt.get(v["id"]) != v: out.append(F("Q-CVE", w, "data/raw の公式レコードから再生成した内容と一致しない（手編集の疑い）"))
-        for rid in v["risk_ids"]:
-            if v["id"] not in risks.get(rid, ""): out.append(F("Q-CVE", w, f"{rid}（または対応ポート）の本文に {v['id']} の記載がない"))
+        for risk_id in v["risk_ids"]:
+            if v["id"] not in risks.get(risk_id, ""): out.append(F("Q-CVE", w, f"{risk_id}（または対応ポート）の本文に {v['id']} の記載がない"))
         if not CVE_RE.fullmatch(v["id"]): out.append(F("Q-CVE", w, "CVE ID 形式不正"))
         if not v.get("affected"): out.append(F("Q-CVE", w, "影響製品・バージョンがない"))
         if "port_number" in v or "ports" in v: out.append(F("Q-CVE", w, "CVE をポート番号に直接紐付けている"))
@@ -254,6 +254,17 @@ def check_display(root):
     return out
 
 
+def check_count(db, root):
+    """Q-COUNT: an ID from the Phase 0 baseline may disappear only if DATA_CHANGELOG.md names it (no silent deletion)."""
+    inv = root / "docs/baseline/DATA_INVENTORY.json"
+    if not inv.exists(): return [F("Q-COUNT", "docs/baseline", "基準スナップショットがない")]
+    base = json.loads(inv.read_text(encoding="utf-8"))["ids"]
+    log = (root / "docs/DATA_CHANGELOG.md").read_text(encoding="utf-8")
+    now = {f: {rid(r) for r in recs} for f, recs in db.items()}
+    return [F("Q-COUNT", f"{f}:{i}", "基準にあった ID が消えたが DATA_CHANGELOG.md に記載がない")
+            for f, ids in base.items() for i in ids if i not in now.get(f, set()) and i not in log]
+
+
 def check_vendor_logs(db):
     """Phase 4 対象外: FortiGate / NEC IX のフィールドは記録のみ。"""
     return [F("Q-VENDOR", f"log_investigation:{l['id']}", f"確度={l['certainty']}（Phase 4 で実機・公式マニュアル照合予定）", "info")
@@ -265,7 +276,7 @@ def run(db, root=ROOT, catalog=None):
     out, _ = load_json_files(root)
     for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db), lambda: check_iana(db, root),
                lambda: check_sources(db), lambda: check_verified(db), lambda: check_cve(db), lambda: check_association(db),
-               lambda: check_display(root), lambda: check_vendor_logs(db)):
+               lambda: check_display(root), lambda: check_count(db, root), lambda: check_vendor_logs(db)):
         out += fn()
     return out
 

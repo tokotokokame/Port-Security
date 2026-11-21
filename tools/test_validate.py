@@ -54,6 +54,18 @@ class Defects(unittest.TestCase):
     def test_evidence_source_must_be_cited(self):
         self.assertCaught(lambda d: port(d, "PORT-02375-TCP")["source_ids"].remove("SRC-DOCKER-REMOTE"), "evidence の出典")
 
+    def test_service_ports_must_match_referrers(self):
+        self.assertCaught(lambda d: next(s for s in d["services"] if s["id"] == "SRV-DNS")["ports"].pop(), "参照元ポート")
+
+    def test_det_transport_basis(self):
+        def m(d):
+            a = next(a for x in d["detection_strategies"] if x["id"] == "DET0118" for a in x["analytics"] if a["id"] == "AN0329")
+            a["transport_basis"] = "none"
+        self.assertCaught(m, "transport_basis")
+
+    def test_vulnerability_risk_ref(self):
+        self.assertCaught(lambda d: d["vulnerabilities"][0]["risk_ids"].append("RISK-99999-TCP"), "参照切れ")
+
     def test_unknown_software(self):
         self.assertCaught(lambda d: d["tools"][0].update(mitre_software_id="S9999"), "参照切れ")
 
