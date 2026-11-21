@@ -4,7 +4,7 @@
 level: error = 合格基準違反 / info = 記録のみ（対象外フェーズなど）
 Usage: python3 tools/quality.py [--all]   -> exit 1 if any error
 """
-import json, re, sys
+import json, os, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -287,5 +287,7 @@ if __name__ == "__main__":
     res = run(load_all(ROOT / "data"))
     errs = [r for r in res if r["level"] == "error"]
     for r in res if "--all" in sys.argv else errs: print(f"{r['level'].upper():5} {r['code']:<12} {r['where']}: {r['msg']}")
+    if os.environ.get("GITHUB_ACTIONS"):  # PR 画面に注釈として表示
+        for r in errs[:50]: print(f"::error title={r['code']}::{r['where']}: {r['msg']}")
     print(f"quality: errors={len(errs)} info={len(res) - len(errs)} -> {'FAIL' if errs else 'PASS'}")
     sys.exit(1 if errs else 0)
