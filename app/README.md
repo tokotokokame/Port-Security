@@ -1,6 +1,6 @@
 # Port Security（Android アプリ）
 
-`assets/data/port_index.json`（リポジトリ直下の `tools/build_index.py` が生成）を同梱した、オフラインのポート検索アプリです。
+`assets/data/` の `ports.json` / `kb.json` / `iana.json`（リポジトリ直下の `tools/build_index.py` が生成）を同梱した、オフラインのポート検索アプリです。
 
 ## 開発
 
