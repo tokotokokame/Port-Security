@@ -47,7 +47,8 @@ void main() {
     await tester.scrollUntilVisible(find.textContaining('160 hits'), 200, scrollable: find.byType(Scrollable).first);
     expect(find.textContaining('160 hits'), findsOneWidget);
     expect(find.byKey(const Key('filter-count')), findsOneWidget);
-    await tester.scrollUntilVisible(find.text('reset'), -200, scrollable: find.byType(Scrollable).first);
+    await tester.ensureVisible(find.text('reset')); // built but scrolled off-screen
+    await tester.pumpAndSettle();
     await tester.tap(find.text('reset'));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('filter-count')), findsNothing);
