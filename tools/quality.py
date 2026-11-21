@@ -114,8 +114,45 @@ def check_transport(db):
                 if not (isinstance(mp, list) and len(mp) == 2): out.append(F("Q-TRANSPORT", f"{d['id']}/{a['id']}", f"監視ポート {mp} に通信方式がない（番号のみで照合される）"))
                 else: out += _tp(f"{d['id']}/{a['id']}", mp[1])
     for p in db["protocols"]:
-        if "ip_protocol_number" not in p and "layer" not in p:
-            out.append(F("Q-IPPROTO", f"protocols:{p['id']}", f"transport_protocol に階層の説明 '{p['transport_protocol']}' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"))
+        w = f"protocols:{p['id']}"
+        if "ip_protocol_number" not in p or "layer" not in p:
+            out.append(F("Q-IPPROTO", w, f"transport_protocol に階層の説明 '{p['transport_protocol']}' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"))
+        elif p["has_port_numbers"] != (p["service_name"].upper() in TRANSPORT) or TRANSPORT.get(p["service_name"].upper(), p["ip_protocol_number"]) != p["ip_protocol_number"]:
+            out.append(F("Q-IPPROTO", w, "ポート番号を持つ通信方式の判定または番号が不一致"))
+    return out
+
+
+def iana_ports(root):
+    """(port, TRANSPORT) -> {service name: description} from the official IANA CSV (ranges expanded)."""
+    import csv
+    out = {}
+    for r in csv.DictReader(open(root / "data/raw/iana/service-names-port-numbers.csv", encoding="utf-8", newline="")):
+        name, num, tp = r["Service Name"].strip(), r["Port Number"].strip(), r["Transport Protocol"].upper()
+        if not name or not num or tp not in TRANSPORT: continue
+        lo, _, hi = num.partition("-")
+        for n in range(int(lo), int(hi or lo) + 1): out.setdefault((n, tp), {}).setdefault(name, r["Description"].strip())
+    return out
+
+
+def check_iana(db, root):
+    """Q-IANA: service_name / iana_description are the IANA registration of (number, transport); '(未登録)' only when IANA has none.
+    Q-IPPROTO: protocol numbers and keywords match the IANA Protocol Numbers registry."""
+    out, reg = [], iana_ports(root)
+    for p in db["ports"]:
+        w, names = f"ports:{p['id']}", reg.get((p["port_number"], p["transport_protocol"]))
+        if names is None:
+            if p["service_name"] != "(未登録)": out.append(F("Q-IANA", w, f"IANA 未登録なのに service_name='{p['service_name']}'"))
+        elif p["service_name"] not in names:
+            out.append(F("Q-IANA", w, f"service_name '{p['service_name']}' が IANA 登録名 {sorted(names)} にない"))
+        elif p.get("iana_description", "") != names[p["service_name"]]:
+            out.append(F("Q-IANA", w, f"iana_description が IANA の記載 '{names[p['service_name']]}' と不一致"))
+    pcsv = root / "data/raw/iana/protocol-numbers-1.csv"
+    if not pcsv.exists(): return out + [F("Q-IPPROTO", "data/raw/iana", "IANA Protocol Numbers 台帳が未取得（iana.yml で取得）")]
+    import csv
+    kw = {r["Decimal"].strip(): r["Keyword"].strip().upper() for r in csv.DictReader(open(pcsv, encoding="utf-8", newline=""))}
+    for p in db["protocols"]:
+        n = str(p.get("ip_protocol_number", p["protocol_number"]))
+        if kw.get(n) != p["service_name"].upper(): out.append(F("Q-IPPROTO", f"protocols:{p['id']}", f"IANA では {n} = {kw.get(n)}（データは {p['service_name']}）"))
     return out
 
 
@@ -128,6 +165,7 @@ def check_sources(db):
         if not re.fullmatch(r"https://[^\s/]+\.[^\s]+", str(s.get("url"))): out.append(F("Q-SRC", w, f"URL 不正: {s.get('url')}"))
         if s.get("reverified_v4") and s.get("verification_status") not in ("確認済み",): out.append(F("Q-SRC", w, "再検証済みなのに確認状態が確認済みでない"))
         if s.get("verification_status") == "確認済み" and not s.get("access_date"): out.append(F("Q-SRC", w, "確認済みなのに確認日(access_date)がない"))
+        if s.get("verification_status") == "確認済み" and not s.get("reverified_v4"): out.append(F("Q-SRC", w, "確認済みだが内容の再確認記録がない（v3 からの継承値）"))
     return out
 
 
@@ -204,7 +242,7 @@ def check_vendor_logs(db):
 def run(db, root=ROOT, catalog=None):
     cat = catalog or json.loads((root / "data/raw/mitre/attack_catalog.json").read_text(encoding="utf-8"))
     out, _ = load_json_files(root)
-    for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db),
+    for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db), lambda: check_iana(db, root),
                lambda: check_sources(db), lambda: check_verified(db), lambda: check_cve(db), lambda: check_association(db),
                lambda: check_display(root), lambda: check_vendor_logs(db)):
         out += fn()

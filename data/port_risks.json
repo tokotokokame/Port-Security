@@ -2740,7 +2740,7 @@
     "id": "RISK-06667-TCP",
     "port_number": 6667,
     "transport_protocol": "TCP",
-    "service_name": "(未登録)",
+    "service_name": "ircu",
     "risk_level": "Medium",
     "reason_targeted": "旧来のボットネットの指令通信",
     "evaluation_factors": {
@@ -2789,7 +2789,7 @@
     "id": "RISK-06000-TCP",
     "port_number": 6000,
     "transport_protocol": "TCP",
-    "service_name": "(未登録)",
+    "service_name": "x11",
     "risk_level": "High",
     "reason_targeted": "認証なし X サーバーからの画面取得・入力",
     "evaluation_factors": {
@@ -3447,7 +3447,7 @@
     "id": "RISK-00443-UDP",
     "port_number": 443,
     "transport_protocol": "UDP",
-    "service_name": "http-3",
+    "service_name": "https",
     "risk_level": "Medium",
     "reason_targeted": "プロキシ(TCP 443前提)の監視回避目的でのC2通信悪用",
     "evaluation_factors": {
@@ -3497,7 +3497,7 @@
     "id": "RISK-00514-TCP",
     "port_number": 514,
     "transport_protocol": "TCP",
-    "service_name": "syslog-conn",
+    "service_name": "shell",
     "risk_level": "Medium",
     "reason_targeted": "Syslogセッション切断攻撃",
     "evaluation_factors": {
@@ -3899,7 +3899,7 @@
     "id": "RISK-05900-TCP",
     "port_number": 5900,
     "transport_protocol": "TCP",
-    "service_name": "vnc",
+    "service_name": "rfb",
     "risk_level": "High",
     "reason_targeted": "無防備なVNC認証パスワードに対する辞書攻撃, 暗号化なしパケットの盗聴",
     "evaluation_factors": {
@@ -3979,7 +3979,7 @@
     "id": "RISK-08443-TCP",
     "port_number": 8443,
     "transport_protocol": "TCP",
-    "service_name": "https-alt",
+    "service_name": "pcsync-https",
     "risk_level": "Medium",
     "reason_targeted": "管理UIへの認証突破狙い, 未修整Web RCE脆弱性悪用",
     "evaluation_factors": {

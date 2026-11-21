@@ -2,7 +2,7 @@
 
 - データ最終検証日: 2026-11-22
 - 収録: 詳細付きポート 160 件 / IANA 登録ポート 11625 件
-- レコード総数: ports 160, services 6, protocols 7, attack_patterns 24, port_risks 160, log_investigation 9, mitre_techniques 90, detection_strategies 164, mitre_software 11, tools 18, sources 176
+- レコード総数: ports 160, services 6, protocols 7, attack_patterns 24, port_risks 160, log_investigation 9, mitre_techniques 90, detection_strategies 164, mitre_software 11, tools 18, sources 177
 - 整合性検証: **PASS**（errors=0, warnings=0）
 
 ## 詳細付きポートの到達率
@@ -38,14 +38,14 @@
 | 179/TCP | bgp | 攻撃・検知記述の一次資料未付与 |
 | 389/TCP | ldap | 攻撃・検知記述の一次資料未付与 |
 | 389/UDP | ldap | 攻撃・検知記述の一次資料未付与 |
-| 443/UDP | http-3 | 攻撃・検知記述の一次資料未付与 |
+| 443/UDP | https | 攻撃・検知記述の一次資料未付与 |
 | 464/TCP | kpasswd | 攻撃・検知記述の一次資料未付与 |
 | 464/UDP | kpasswd | 攻撃・検知記述の一次資料未付与 |
 | 465/TCP | urd | 攻撃・検知記述の一次資料未付与 |
 | 500/UDP | isakmp | 攻撃・検知記述の一次資料未付与 |
 | 512/TCP | exec | 攻撃・検知記述の一次資料未付与 |
 | 513/TCP | login | 攻撃・検知記述の一次資料未付与 |
-| 514/TCP | syslog-conn | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
+| 514/TCP | shell | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
 | 514/UDP | syslog | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
 | 515/TCP | printer | 攻撃・検知記述の一次資料未付与 |
 | 548/TCP | afpovertcp | 攻撃・検知記述の一次資料未付与 |
@@ -99,7 +99,7 @@
 | 5671/TCP | amqps | 攻撃・検知記述の一次資料未付与 |
 | 5672/TCP | amqp | 攻撃・検知記述の一次資料未付与 |
 | 5984/TCP | couchdb | 攻撃・検知記述の一次資料未付与 |
-| 6000/TCP | (未登録) | 攻撃・検知記述の一次資料未付与 |
+| 6000/TCP | x11 | 攻撃・検知記述の一次資料未付与 |
 | 6343/UDP | sflow | 攻撃・検知記述の一次資料未付与 |
 | 6443/TCP | sun-sr-https | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
 | 6514/TCP | syslog-tls | 攻撃・検知記述の一次資料未付与 |
@@ -111,7 +111,7 @@
 | 8081/TCP | sunproxyadmin | 攻撃・検知記述の一次資料未付与 |
 | 8086/TCP | d-s-n | 攻撃・検知記述の一次資料未付与 |
 | 8088/TCP | radan-http | 攻撃・検知記述の一次資料未付与 |
-| 8443/TCP | https-alt | 攻撃・検知記述の一次資料未付与 |
+| 8443/TCP | pcsync-https | 攻撃・検知記述の一次資料未付与 |
 | 8883/TCP | secure-mqtt | 攻撃・検知記述の一次資料未付与 |
 | 8888/TCP | ddi-tcp-1 | 攻撃・検知記述の一次資料未付与 |
 | 9000/TCP | cslistener | 攻撃・検知記述の一次資料未付与 |

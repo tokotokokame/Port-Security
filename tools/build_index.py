@@ -33,7 +33,7 @@ def build(db):
             logs.setdefault(lid, set()).add(via); rank[lid] = min(rank.get(lid, 9), lv)
         for d in db["detection_strategies"]:
             for a in d["analytics"]:
-                if p["port_number"] in a["monitored_ports"]:
+                if list(key) in a["monitored_ports"]:  # (番号, 通信方式) で照合。番号だけの一致は使わない
                     for lid in a["log_investigation_ids"]: add(lid, f"{d['id']}/{a['id']}", 0 if a["port_basis"] == "official" else 2)
         for l in db["log_investigation"]:
             if l["port_scope"] == "listed" and list(key) in [list(x) for x in l["ports"]]: add(l["id"], "公式文書のポート指定", 1)

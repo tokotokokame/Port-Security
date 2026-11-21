@@ -30,7 +30,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00017-UDP"
+    "risk_id": "RISK-00017-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Quote of the Day (QOTD) を記載"
+      }
+    ]
   },
   {
     "id": "PORT-00019-UDP",
@@ -63,7 +72,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00019-UDP"
+    "risk_id": "RISK-00019-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Character Generator Protocol (CharGEN) を記載"
+      }
+    ]
   },
   {
     "id": "PORT-00020-TCP",
@@ -182,7 +200,18 @@
     "service_id": "SRV-SSH",
     "risk_id": "RISK-00022-TCP",
     "category": "REMOTE",
-    "iana_description": "The Secure Shell (SSH) Protocol"
+    "iana_description": "The Secure Shell (SSH) Protocol",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0330"
+        ],
+        "keyword": "ServicePortSet: 22, 5900, 8080/8443 by default"
+      }
+    ]
   },
   {
     "id": "PORT-00023-TCP",
@@ -684,9 +713,9 @@
       "ATK-KERBEROAST"
     ],
     "source_ids": [
-      "SRC-MS-RDS",
       "SRC-IANA-PORT",
-      "SRC-MITRE-T1558"
+      "SRC-MITRE-T1558",
+      "SRC-MS-SVC-PORTS"
     ],
     "verified_date": "2026-11-22",
     "certainty": "確認済み",
@@ -859,7 +888,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00111-UDP"
+    "risk_id": "RISK-00111-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Portmap/Remote Procedure Call (RPC) を記載"
+      }
+    ]
   },
   {
     "id": "PORT-00123-UDP",
@@ -943,7 +981,18 @@
     "service_id": null,
     "risk_id": "RISK-00135-TCP",
     "category": "REMOTE",
-    "iana_description": "DCE endpoint resolution"
+    "iana_description": "DCE endpoint resolution",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ]
   },
   {
     "id": "PORT-00137-UDP",
@@ -1366,7 +1415,18 @@
     "service_id": null,
     "risk_id": "RISK-00427-TCP",
     "category": "VIRT",
-    "iana_description": "Server Location"
+    "iana_description": "Server Location",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0329"
+        ],
+        "keyword": "NSM:Flow: Inbound to tcp/427, tcp/443, tcp/902, tcp/5989"
+      }
+    ]
   },
   {
     "id": "PORT-00443-TCP",
@@ -1440,8 +1500,8 @@
     "port_number": 443,
     "protocol_number": 17,
     "transport_protocol": "UDP",
-    "service_name": "http-3",
-    "formal_name": "HTTP/3 over QUIC (UDP 443)",
+    "service_name": "https",
+    "formal_name": "HTTP/3 over QUIC（IANA 登録名は https）",
     "purpose": "UDPベースのQUICプロトコルを用いて低遅延な暗号化Web通信を行う。",
     "technical_description": "UDP 443上でTLS 1.3が組み込まれたQUICトランスポートを確立。パケット損失時のヘッドオブラインブロッキングを回避。",
     "normal_usage_examples": "Google/Cloudflare等のHTTP/3対応Webサイト高速閲覧",
@@ -1507,7 +1567,18 @@
     "service_id": "SRV-SMB",
     "risk_id": "RISK-00445-TCP",
     "category": "FILE",
-    "iana_description": "Microsoft-DS"
+    "iana_description": "Microsoft-DS",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ]
   },
   {
     "id": "PORT-00464-TCP",
@@ -1774,8 +1845,8 @@
     "port_number": 514,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "syslog-conn",
-    "formal_name": "Syslog TCP",
+    "service_name": "shell",
+    "formal_name": "rsh（IANA 登録）/ Syslog over TCP（慣用）",
     "purpose": "信頼性のあるコネクション上でシステムログを送信する。",
     "technical_description": "TCP 514による到達保証付きログメッセージ送信。",
     "normal_usage_examples": "重要サーバーのログ損失防止集約",
@@ -1791,7 +1862,7 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。 IANA の 514/tcp は shell（rsh）。syslog の TCP 送信に 514 を使うのは慣用で IANA 登録ではない（RFC 3195 の syslog-conn は 601/tcp）。",
     "technique_ids": [
       "T1595"
     ],
@@ -1896,7 +1967,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00520-UDP"
+    "risk_id": "RISK-00520-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Routing Information Protocol version 1 (RIPv1) を記載"
+      }
+    ]
   },
   {
     "id": "PORT-00548-TCP",
@@ -2259,7 +2339,18 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00902-TCP"
+    "risk_id": "RISK-00902-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0329"
+        ],
+        "keyword": "NSM:Flow: Inbound to tcp/427, tcp/443, tcp/902, tcp/5989"
+      }
+    ]
   },
   {
     "id": "PORT-00989-TCP",
@@ -2555,7 +2646,18 @@
     "service_id": null,
     "risk_id": "RISK-01433-TCP",
     "category": "DB",
-    "iana_description": "Microsoft-SQL-Server"
+    "iana_description": "Microsoft-SQL-Server",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ]
   },
   {
     "id": "PORT-01434-UDP",
@@ -2822,7 +2924,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-01900-UDP"
+    "risk_id": "RISK-01900-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Simple Service Discovery Protocol (SSDP) を記載"
+      }
+    ]
   },
   {
     "id": "PORT-01985-UDP",
@@ -3566,7 +3677,18 @@
     "service_id": null,
     "risk_id": "RISK-03306-TCP",
     "category": "DB",
-    "iana_description": "MySQL"
+    "iana_description": "MySQL",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ]
   },
   {
     "id": "PORT-03343-TCP",
@@ -3659,8 +3781,7 @@
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MS-RDS",
-      "SRC-MITRE-DET0118",
-      "SRC-CISA-HYGIENE"
+      "SRC-MITRE-DET0118"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -3675,7 +3796,18 @@
     "service_id": "SRV-RDP",
     "risk_id": "RISK-03389-TCP",
     "category": "REMOTE",
-    "iana_description": "MS WBT Server"
+    "iana_description": "MS WBT Server",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ]
   },
   {
     "id": "PORT-03389-UDP",
@@ -3851,7 +3983,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-04444-TCP"
+    "risk_id": "RISK-04444-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-METASPLOIT-REVSHELL",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "公式ドキュメントのリバースシェル例で LPORT=4444 を使用（フレームワークの既定値ではない: Opt::LPORT default=nil）"
+      }
+    ]
   },
   {
     "id": "PORT-04500-UDP",
@@ -4237,7 +4378,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-05353-UDP"
+    "risk_id": "RISK-05353-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Multicast Domain Name System (mDNS) を記載"
+      }
+    ]
   },
   {
     "id": "PORT-05355-UDP",
@@ -4466,8 +4616,8 @@
     "port_number": 5900,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "vnc",
-    "formal_name": "Virtual Network Computing (VNC)",
+    "service_name": "rfb",
+    "formal_name": "Virtual Network Computing (VNC) / RFB",
     "purpose": "RFB (Remote Framebuffer) プロトコルにより画面のリモート操作を提供する。",
     "technical_description": "RFB仕様に従い、画面更新データおよびマウス/キーボード入力を伝送。",
     "normal_usage_examples": "Linux/Mac/Windowsの画面リモートサポート",
@@ -4497,7 +4647,18 @@
     "service_id": null,
     "risk_id": "RISK-05900-TCP",
     "category": "REMOTE",
-    "iana_description": "Remote Framebuffer"
+    "iana_description": "Remote Framebuffer",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0330"
+        ],
+        "keyword": "ServicePortSet: 22, 5900, 8080/8443 by default"
+      }
+    ]
   },
   {
     "id": "PORT-05938-TCP",
@@ -4612,7 +4773,18 @@
     "service_id": null,
     "risk_id": "RISK-05985-TCP",
     "category": "REMOTE",
-    "iana_description": "WBEM WS-Management HTTP"
+    "iana_description": "WBEM WS-Management HTTP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ]
   },
   {
     "id": "PORT-05986-TCP",
@@ -4635,8 +4807,8 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MS-RDS",
-      "SRC-MITRE-DET0118"
+      "SRC-MITRE-DET0118",
+      "SRC-MS-SVC-PORTS"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -4649,7 +4821,18 @@
     "service_id": null,
     "risk_id": "RISK-05986-TCP",
     "category": "REMOTE",
-    "iana_description": "WBEM WS-Management HTTP over TLS/SSL"
+    "iana_description": "WBEM WS-Management HTTP over TLS/SSL",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ]
   },
   {
     "id": "PORT-05989-TCP",
@@ -4683,16 +4866,27 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05989-TCP"
+    "risk_id": "RISK-05989-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0329"
+        ],
+        "keyword": "NSM:Flow: Inbound to tcp/427, tcp/443, tcp/902, tcp/5989"
+      }
+    ]
   },
   {
     "id": "PORT-06000-TCP",
     "port_number": 6000,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "(未登録)",
+    "service_name": "x11",
     "formal_name": "X11",
-    "iana_description": "",
+    "iana_description": "X Window System",
     "category": "REMOTE",
     "purpose": "X Window System の表示 (6000-6063)。",
     "technical_description": "",
@@ -4915,9 +5109,9 @@
     "port_number": 6667,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "(未登録)",
+    "service_name": "ircu",
     "formal_name": "IRC",
-    "iana_description": "",
+    "iana_description": "IRCU",
     "category": "CHAT",
     "purpose": "テキストチャット。",
     "technical_description": "",
@@ -5193,8 +5387,8 @@
     "port_number": 8443,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "https-alt",
-    "formal_name": "HTTPS Alternate",
+    "service_name": "pcsync-https",
+    "formal_name": "HTTPS Alternate（慣用。IANA 登録名は pcsync-https）",
     "purpose": "二次的な暗号化Web管理インターフェースポートとして使用される。",
     "technical_description": "TLS暗号化チャネル上でのHTTP管理通信。",
     "normal_usage_examples": "ルータ・FW・管理ツールのHTTPS Web管理UI",
@@ -5794,7 +5988,16 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-11211-UDP"
+    "risk_id": "RISK-11211-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Memcached（UDP/TCP 11211 の反射攻撃を記載） を記載"
+      }
+    ]
   },
   {
     "id": "PORT-18083-TCP",

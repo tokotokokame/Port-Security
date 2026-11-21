@@ -27,7 +27,10 @@
     "technique_ids": [
       "T1595",
       "T1210"
-    ]
+    ],
+    "ip_protocol_number": 6,
+    "layer": "L4",
+    "has_port_numbers": true
   },
   {
     "id": "PROTO-UDP",
@@ -56,7 +59,10 @@
     "technique_ids": [
       "T1595",
       "T1071.004"
-    ]
+    ],
+    "ip_protocol_number": 17,
+    "layer": "L4",
+    "has_port_numbers": true
   },
   {
     "id": "PROTO-ICMP",
@@ -84,7 +90,10 @@
     "technique_ids": [
       "T1595",
       "T1071"
-    ]
+    ],
+    "ip_protocol_number": 1,
+    "layer": "L3",
+    "has_port_numbers": false
   },
   {
     "id": "PROTO-GRE",
@@ -110,7 +119,10 @@
     "unconfirmed_notes": "IPプロトコル番号47としてカプセル化管理。",
     "technique_ids": [
       "T1071"
-    ]
+    ],
+    "ip_protocol_number": 47,
+    "layer": "L3",
+    "has_port_numbers": false
   },
   {
     "id": "PROTO-ESP",
@@ -136,7 +148,10 @@
     "unconfirmed_notes": "IPプロトコル番号50として暗号化データパケットを管理。",
     "technique_ids": [
       "T1071"
-    ]
+    ],
+    "ip_protocol_number": 50,
+    "layer": "L3",
+    "has_port_numbers": false
   },
   {
     "id": "PROTO-AH",
@@ -162,7 +177,10 @@
     "unconfirmed_notes": "IPプロトコル番号51として認証ヘッダーを管理。",
     "technique_ids": [
       "T1595"
-    ]
+    ],
+    "ip_protocol_number": 51,
+    "layer": "L3",
+    "has_port_numbers": false
   },
   {
     "id": "PROTO-SCTP",
@@ -189,6 +207,9 @@
     "unconfirmed_notes": "L4トランスポートプロトコルとしてポート番号概念を保持。",
     "technique_ids": [
       "T1595"
-    ]
+    ],
+    "ip_protocol_number": 132,
+    "layer": "L4",
+    "has_port_numbers": true
   }
 ]

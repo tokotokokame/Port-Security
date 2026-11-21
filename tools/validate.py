@@ -56,7 +56,7 @@ def validate(db):
     tech_ok = set(idx["mitre_techniques"]) | set(subs)
     port_keys = {(p["port_number"], p["transport_protocol"]) for p in db["ports"]}
     det0118 = idx["detection_strategies"].get("DET0118", {"analytics": []})
-    det0118_ports = {p for a in det0118["analytics"] if a["port_basis"] == "official" for p in a["monitored_ports"]}
+    det0118_ports = {tuple(p) for a in det0118["analytics"] if a["port_basis"] == "official" for p in a["monitored_ports"]}
 
     def fk(where, field, target, vals):
         for v in vals if isinstance(vals, list) else [vals]:
@@ -84,8 +84,8 @@ def validate(db):
         fk(w, "protocol_id", "protocols", p["protocol_id"]); fk(w, "service_id", "services", p["service_id"])
         fk(w, "risk_id", "port_risks", p["risk_id"])
         s = idx["services"].get(p["service_id"])
-        if s and s["port_number"] != p["port_number"]: E.append(f"{w}: service_id のポート番号不一致")
-        if "SRC-MITRE-DET0118" in p["source_ids"] and p["port_number"] not in det0118_ports:
+        if s and [p["port_number"], p["transport_protocol"]] not in s["ports"]: E.append(f"{w}: service_id の (番号, 通信方式) 不一致")
+        if "SRC-MITRE-DET0118" in p["source_ids"] and (p["port_number"], p["transport_protocol"]) not in det0118_ports:
             E.append(f"{w}: DET0118の公式監視ポート外なのに根拠に引用")
         if not p["technique_ids"]: W.append(f"{w}: technique_ids が空")
         for e in p.get("evidence", []):
@@ -97,7 +97,9 @@ def validate(db):
         if not p: E.append(f"port_risks:{r['id']}: 対応するポートレコードなし(孤立)")
         elif p["risk_id"] != r["id"]: E.append(f"port_risks:{r['id']}: ports側の risk_id と不一致")
     for s in db["services"]:
-        if not any(p["service_id"] == s["id"] for p in db["ports"]): E.append(f"services:{s['id']}: どのポートからも参照されない")
+        refs = sorted([p["port_number"], p["transport_protocol"]] for p in db["ports"] if p["service_id"] == s["id"])
+        if not refs: E.append(f"services:{s['id']}: どのポートからも参照されない")
+        elif sorted(s["ports"]) != refs: E.append(f"services:{s['id']}: ports が参照元ポート {refs} と不一致")
     for a in db["attack_patterns"]:
         fk(f"attack_patterns:{a['id']}", "log_investigation_ids", "log_investigation", a["log_investigation_ids"])
     for t in db["tools"]:
@@ -117,6 +119,8 @@ def validate(db):
         E += [f"detection_strategies:{d['id']}: technique_ids 未収録 -> {t}" for t in d["technique_ids"] if t not in tech_ok]
         for a in d["analytics"]:
             if a["port_basis"] not in {"official", "inferred", "none"}: E.append(f"{d['id']}/{a['id']}: port_basis 値不正")
+            if a["transport_basis"] not in {"stated", "service_default", "none"}: E.append(f"{d['id']}/{a['id']}: transport_basis 値不正")
+            if bool(a["monitored_ports"]) == (a["transport_basis"] == "none"): E.append(f"{d['id']}/{a['id']}: 監視ポートと transport_basis が矛盾")
             fk(f"{d['id']}/{a['id']}", "log_investigation_ids", "log_investigation", a["log_investigation_ids"])
             an_logs[a["id"]] = set(a["log_investigation_ids"])
     for l in db["log_investigation"]:
