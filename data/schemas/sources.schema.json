@@ -1,0 +1,124 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "port-security/sources.schema.json",
+ "title": "根拠資料",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "source_id",
+   "title",
+   "publisher",
+   "url",
+   "document_type",
+   "applicable_data",
+   "publication_date",
+   "last_updated",
+   "access_date",
+   "verification_status",
+   "notes",
+   "scope",
+   "reverified_v4"
+  ],
+  "properties": {
+   "source_id": {
+    "type": "string",
+    "pattern": "^SRC-[A-Z0-9-]+$"
+   },
+   "title": {
+    "type": "string",
+    "minLength": 1,
+    "description": "資料名"
+   },
+   "publisher": {
+    "type": "string",
+    "description": "発行者"
+   },
+   "url": {
+    "type": "string",
+    "pattern": "^https://",
+    "description": "URL（https のみ）"
+   },
+   "document_type": {
+    "type": "string",
+    "minLength": 1,
+    "description": "資料種別"
+   },
+   "applicable_data": {
+    "type": "string",
+    "description": "適用対象"
+   },
+   "publication_date": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "description": "公開日"
+   },
+   "last_updated": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "description": "更新日"
+   },
+   "access_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "確認日"
+   },
+   "verification_status": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "内容の確認状態"
+   },
+   "notes": {
+    "type": "string",
+    "description": "確認した内容"
+   },
+   "scope": {
+    "type": "array",
+    "items": {
+     "enum": [
+      "attack_technique",
+      "detection",
+      "threat_advisory",
+      "threat_guidance",
+      "log_format",
+      "service",
+      "port_assignment",
+      "protocol_assignment",
+      "reference",
+      "vulnerability"
+     ]
+    },
+    "minItems": 1,
+    "uniqueItems": true,
+    "description": "根拠として使える範囲"
+   },
+   "reverified_v4": {
+    "type": "boolean",
+    "description": "内容を再確認済みか（確認済みでは true 必須）"
+   },
+   "verified_via": {
+    "type": "string",
+    "minLength": 1,
+    "description": "実際に内容を確認した資料（公式リポジトリの原文など）"
+   }
+  }
+ }
+}

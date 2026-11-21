@@ -13,11 +13,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Integrity check
-        run: python3 tools/validate.py data
-      - name: Validator self-test (defects must be caught)
+      - name: Install pinned checker dependencies
+        run: pip install -r tools/requirements.txt
+      - name: Integrity check and quality standard (both always run)
+        run: |
+          rc=0
+          python3 tools/validate.py data || rc=1
+          python3 tools/quality.py --all || rc=1
+          exit $rc
+      - name: Validator self-test (injected defects must be caught)
         run: python3 -m unittest discover -s tools -v
-      - name: Rebuild index and report
-        run: python3 tools/build_index.py
+      - name: Rebuild schemas, index and reports
+        run: |
+          python3 tools/make_schemas.py
+          python3 tools/build_index.py
       - name: Generated files must be committed
-        run: git diff --exit-code -- dist docs/VALIDATION_REPORT.md app/assets/data
+        run: git diff --exit-code -- dist app/assets/data data/schemas docs/VALIDATION_REPORT.md docs/MITRE_VALIDATION_REPORT.md docs/CVE_VALIDATION_REPORT.md docs/DATA_SCHEMA_SPEC.md

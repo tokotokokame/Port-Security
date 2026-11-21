@@ -48,13 +48,20 @@ DET0118 = {
     "name": "Exploitation of Remote Services – multi-platform lateral movement detection",
     "version": "1.0", "created": "2025-10-21", "last_modified": "2026-05-12",
     "analytics": [
-        ("AN0327", "Windows", [445, 135, 3389, 5985, 5986, 1433, 3306], "official", [], "LOG-WIN-AN0327"),
-        ("AN0328", "Linux", [22, 445, 2049, 80, 443, 3306, 5432, 6379, 21], "inferred",
+        ("AN0327", "Windows", [[445, "TCP"], [135, "TCP"], [3389, "TCP"], [5985, "TCP"], [5986, "TCP"], [1433, "TCP"], [3306, "TCP"]],
+         "official", [], "LOG-WIN-AN0327"),
+        ("AN0328", "Linux", [[22, "TCP"], [445, "TCP"], [2049, "TCP"], [80, "TCP"], [443, "TCP"], [3306, "TCP"], [5432, "TCP"],
+                             [6379, "TCP"], [21, "TCP"]], "inferred",
          ["sshd", "smbd", "nfsd", "httpd/nginx", "mysqld", "postgres", "redis", "vsftpd"], "LOG-LIN-AN0328"),
-        ("AN0329", "ESXi", [427, 443, 902, 5989], "official", [], "LOG-ESXI-AN0329"),
-        ("AN0330", "macOS", [22, 5900, 8080, 8443], "official", [], "LOG-MAC-AN0330"),
+        ("AN0329", "ESXi", [[427, "TCP"], [443, "TCP"], [902, "TCP"], [5989, "TCP"]], "official", [], "LOG-ESXI-AN0329"),
+        ("AN0330", "macOS", [[22, "TCP"], [5900, "TCP"], [8080, "TCP"], [8443, "TCP"]], "official", [], "LOG-MAC-AN0330"),
     ],
 }
+
+# Where the transport of each monitored port comes from.
+#   stated          : the analytic itself writes "tcp/427" etc. (NSM:Flow channel)
+#   service_default : the analytic gives port numbers only; transport is the named service's standard one (SMB/RDP/WinRM/SSH/VNC = TCP)
+DET0118_TRANSPORT = {"AN0327": "service_default", "AN0328": "service_default", "AN0329": "stated", "AN0330": "service_default"}
 
 DET0463_DESC = {
     "AN1275": "High volume of failed logon attempts followed by a successful one from a suspicious user, host, or timeframe",

@@ -1,0 +1,222 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "port-security/vulnerabilities.schema.json",
+ "title": "CVE（製品・バージョン経由。ポートに直接紐付けない）",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "title",
+   "description",
+   "affected",
+   "cvss",
+   "published",
+   "updated",
+   "kev",
+   "risk_ids",
+   "condition",
+   "references",
+   "raw",
+   "source_ids",
+   "verified_date",
+   "certainty",
+   "unconfirmed_notes"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^CVE-\\d{4}-\\d{4,7}$"
+   },
+   "title": {
+    "type": "string",
+    "minLength": 1,
+    "description": "CVE レコードの題名"
+   },
+   "description": {
+    "type": "string",
+    "minLength": 1,
+    "description": "CNA の説明（英語原文の要約）"
+   },
+   "affected": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "vendor",
+      "product",
+      "versions"
+     ],
+     "properties": {
+      "vendor": {
+       "type": "string",
+       "minLength": 1
+      },
+      "product": {
+       "type": "string",
+       "minLength": 1
+      },
+      "versions": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "minItems": 1
+      },
+      "fixed": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "platforms": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "minItems": 1,
+    "description": "影響製品・バージョン（CVE レコードの affected）"
+   },
+   "cvss": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "version",
+      "score",
+      "vector",
+      "source"
+     ],
+     "properties": {
+      "version": {
+       "enum": [
+        "2.0",
+        "3.0",
+        "3.1",
+        "4.0"
+       ]
+      },
+      "score": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 10
+      },
+      "severity": {
+       "type": "string"
+      },
+      "vector": {
+       "type": "string",
+       "pattern": "^(CVSS:\\d\\.\\d/)?AV:"
+      },
+      "source": {
+       "type": "string",
+       "minLength": 1
+      }
+     }
+    },
+    "description": "CVSS（提供元を明記）"
+   },
+   "published": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "公開日"
+   },
+   "updated": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "更新日"
+   },
+   "kev": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "listed"
+    ],
+    "properties": {
+     "listed": {
+      "type": "boolean"
+     },
+     "date_added": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+     },
+     "ransomware": {
+      "type": "string"
+     }
+    },
+    "description": "CISA KEV 掲載状況"
+   },
+   "service_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^SRV-[A-Z0-9-]+$"
+    },
+    "uniqueItems": true,
+    "description": "関連サービス"
+   },
+   "risk_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^RISK-\\d{5}-(TCP|UDP|SCTP|DCCP)$"
+    },
+    "uniqueItems": true,
+    "description": "本文（リスク評価または対応ポート）で言及しているリスク評価。ポートとの関係は製品・構成に依存"
+   },
+   "condition": {
+    "type": "string",
+    "minLength": 1,
+    "description": "該当条件（製品・バージョン・構成）"
+   },
+   "references": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^https://"
+    },
+    "minItems": 1,
+    "description": "参照 URL"
+   },
+   "raw": {
+    "type": "string",
+    "pattern": "^data/raw/",
+    "description": "取込元の一次データ"
+   },
+   "source_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^SRC-[A-Z0-9-]+$"
+    },
+    "minItems": 1,
+    "uniqueItems": true,
+    "description": "根拠資料 ID（sources.source_id）"
+   },
+   "verified_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "最終確認日（YYYY-MM-DD）"
+   },
+   "certainty": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "確度。確認済みには再検証済みの脅威系出典が必要"
+   },
+   "unconfirmed_notes": {
+    "type": "string",
+    "description": "未確認事項。確認済み以外では必須（空不可）"
+   }
+  }
+ }
+}

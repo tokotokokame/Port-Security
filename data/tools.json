@@ -679,7 +679,7 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "出典ページ本文は未再検証。痕跡は総当たりの一般的な特徴。"
+    "unconfirmed_notes": "README で対応プロトコルを確認。ポートは各プロトコルの標準ポート（IANA）で、ツール固有の値ではない。痕跡は総当たりの一般的な特徴。"
   },
   {
     "id": "TOOL-SMBCLIENT",
@@ -722,7 +722,7 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "出典ページ本文は未再検証。"
+    "unconfirmed_notes": "man page では -p の既定は TCP 139。445/tcp は本資料に記載がなく、SMB over TCP の IANA 割当に基づく。"
   },
   {
     "id": "TOOL-EVILWINRM",

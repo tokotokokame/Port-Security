@@ -27,6 +27,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -50,6 +51,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -73,6 +75,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -127,6 +130,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -169,6 +173,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -192,6 +197,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -234,6 +240,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -257,6 +264,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -280,6 +288,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -303,6 +312,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -322,6 +332,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -365,6 +376,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -392,6 +404,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -415,6 +428,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -438,6 +452,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -461,6 +476,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -508,6 +524,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -531,6 +548,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -554,6 +572,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -596,6 +615,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -619,6 +639,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -642,6 +663,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -661,6 +683,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -703,6 +726,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -745,6 +769,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -768,6 +793,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -791,6 +817,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -841,6 +868,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -868,6 +896,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -908,6 +937,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -931,6 +961,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -969,6 +1000,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -988,6 +1020,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -1011,6 +1044,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -1061,6 +1095,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1107,6 +1142,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1134,6 +1170,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -1161,6 +1198,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -1184,6 +1222,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -1207,6 +1246,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -1250,6 +1290,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1277,6 +1318,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -1300,6 +1342,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -1323,6 +1366,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -1369,6 +1413,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1392,6 +1437,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -1415,6 +1461,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -1438,6 +1485,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -1455,6 +1503,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -1472,6 +1521,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -1516,6 +1566,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1543,6 +1594,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -1570,6 +1622,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -1597,6 +1650,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -1624,6 +1678,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -1667,6 +1722,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1694,6 +1750,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -1717,6 +1774,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -1767,6 +1825,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1794,6 +1853,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -1821,6 +1881,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -1848,6 +1909,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -1869,6 +1931,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -1890,6 +1953,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -1913,6 +1977,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -1960,6 +2025,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -1983,6 +2049,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2006,6 +2073,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2056,6 +2124,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2106,6 +2175,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2129,6 +2199,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2152,6 +2223,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2175,6 +2247,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -2218,6 +2291,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2237,6 +2311,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2260,6 +2335,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2283,6 +2359,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -2330,6 +2407,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2357,6 +2435,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2384,6 +2463,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2407,6 +2487,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -2432,6 +2513,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -2474,6 +2556,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2497,6 +2580,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2516,6 +2600,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2535,6 +2620,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -2552,6 +2638,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -2571,6 +2658,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -2619,6 +2707,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2661,6 +2750,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2688,6 +2778,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2711,6 +2802,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2734,6 +2826,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -2785,6 +2878,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2808,6 +2902,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2827,6 +2922,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2846,6 +2942,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -2863,6 +2960,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -2910,6 +3008,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -2937,6 +3036,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -2960,6 +3060,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -2987,6 +3088,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -3029,6 +3131,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3067,6 +3170,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3086,6 +3190,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -3105,6 +3210,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -3166,15 +3272,37 @@
           }
         ],
         "monitored_ports": [
-          445,
-          135,
-          3389,
-          5985,
-          5986,
-          1433,
-          3306
+          [
+            445,
+            "TCP"
+          ],
+          [
+            135,
+            "TCP"
+          ],
+          [
+            3389,
+            "TCP"
+          ],
+          [
+            5985,
+            "TCP"
+          ],
+          [
+            5986,
+            "TCP"
+          ],
+          [
+            1433,
+            "TCP"
+          ],
+          [
+            3306,
+            "TCP"
+          ]
         ],
         "port_basis": "official",
+        "transport_basis": "service_default",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-AN0327",
@@ -3202,17 +3330,45 @@
           }
         ],
         "monitored_ports": [
-          22,
-          445,
-          2049,
-          80,
-          443,
-          3306,
-          5432,
-          6379,
-          21
+          [
+            22,
+            "TCP"
+          ],
+          [
+            445,
+            "TCP"
+          ],
+          [
+            2049,
+            "TCP"
+          ],
+          [
+            80,
+            "TCP"
+          ],
+          [
+            443,
+            "TCP"
+          ],
+          [
+            3306,
+            "TCP"
+          ],
+          [
+            5432,
+            "TCP"
+          ],
+          [
+            6379,
+            "TCP"
+          ],
+          [
+            21,
+            "TCP"
+          ]
         ],
         "port_basis": "inferred",
+        "transport_basis": "service_default",
         "service_names": [
           "sshd",
           "smbd",
@@ -3244,12 +3400,25 @@
           }
         ],
         "monitored_ports": [
-          427,
-          443,
-          902,
-          5989
+          [
+            427,
+            "TCP"
+          ],
+          [
+            443,
+            "TCP"
+          ],
+          [
+            902,
+            "TCP"
+          ],
+          [
+            5989,
+            "TCP"
+          ]
         ],
         "port_basis": "official",
+        "transport_basis": "stated",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -3276,12 +3445,25 @@
           }
         ],
         "monitored_ports": [
-          22,
-          5900,
-          8080,
-          8443
+          [
+            22,
+            "TCP"
+          ],
+          [
+            5900,
+            "TCP"
+          ],
+          [
+            8080,
+            "TCP"
+          ],
+          [
+            8443,
+            "TCP"
+          ]
         ],
         "port_basis": "official",
+        "transport_basis": "service_default",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -3332,6 +3514,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3359,6 +3542,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -3386,6 +3570,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -3417,6 +3602,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -3463,6 +3649,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3490,6 +3677,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -3513,6 +3701,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -3559,6 +3748,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3594,6 +3784,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -3621,6 +3812,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -3644,6 +3836,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -3665,6 +3858,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -3711,6 +3905,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3757,6 +3952,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3799,6 +3995,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3826,6 +4023,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -3849,6 +4047,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -3872,6 +4071,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -3895,6 +4095,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -3942,6 +4143,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -3992,6 +4194,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4038,6 +4241,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4065,6 +4269,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4092,6 +4297,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4111,6 +4317,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -4128,6 +4335,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -4145,6 +4353,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -4162,6 +4371,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -4209,6 +4419,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4236,6 +4447,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4263,6 +4475,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4305,6 +4518,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4324,6 +4538,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4343,6 +4558,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4397,6 +4613,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4424,6 +4641,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4455,6 +4673,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4501,6 +4720,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4524,6 +4744,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4547,6 +4768,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4570,6 +4792,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -4616,6 +4839,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4639,6 +4863,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4666,6 +4891,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4689,6 +4915,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -4706,6 +4933,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -4729,6 +4957,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -4765,6 +4994,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4788,6 +5018,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4811,6 +5042,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4834,6 +5066,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -4880,6 +5113,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4911,6 +5145,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -4934,6 +5169,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -4976,6 +5212,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -4995,6 +5232,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5014,6 +5252,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5033,6 +5272,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -5052,6 +5292,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -5095,6 +5336,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5118,6 +5360,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5141,6 +5384,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5164,6 +5408,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -5210,6 +5455,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5256,6 +5502,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5302,6 +5549,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5325,6 +5573,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5344,6 +5593,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5367,6 +5617,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -5409,6 +5660,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5432,6 +5684,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5455,6 +5708,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5501,6 +5755,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5524,6 +5779,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5547,6 +5803,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5570,6 +5827,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -5589,6 +5847,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -5629,6 +5888,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5656,6 +5916,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5679,6 +5940,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5702,6 +5964,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -5744,6 +6007,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5767,6 +6031,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5817,6 +6082,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5844,6 +6110,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5871,6 +6138,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5913,6 +6181,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -5936,6 +6205,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -5959,6 +6229,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -5982,6 +6253,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -6026,6 +6298,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6076,6 +6349,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -6120,6 +6394,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6147,6 +6422,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -6170,6 +6446,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -6216,6 +6493,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6239,6 +6517,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -6262,6 +6541,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -6285,6 +6565,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -6306,6 +6587,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -6348,6 +6630,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6375,6 +6658,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -6398,6 +6682,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -6421,6 +6706,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -6444,6 +6730,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -6487,6 +6774,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6514,6 +6802,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -6541,6 +6830,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -6587,6 +6877,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6606,6 +6897,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -6625,6 +6917,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -6679,6 +6972,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6725,6 +7019,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6752,6 +7047,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -6775,6 +7071,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -6817,6 +7114,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6871,6 +7169,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6921,6 +7220,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -6971,6 +7271,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7010,6 +7311,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7041,6 +7343,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7083,6 +7386,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7106,6 +7410,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7129,6 +7434,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7152,6 +7458,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -7207,6 +7514,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7230,6 +7538,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7253,6 +7562,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7291,6 +7601,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7314,6 +7625,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7333,6 +7645,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7356,6 +7669,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -7402,6 +7716,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7429,6 +7744,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7456,6 +7772,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7483,6 +7800,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -7508,6 +7826,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -7548,6 +7867,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7575,6 +7895,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7602,6 +7923,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7621,6 +7943,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -7646,6 +7969,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -7689,6 +8013,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7712,6 +8037,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7731,6 +8057,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7750,6 +8077,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -7773,6 +8101,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -7797,6 +8126,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -7845,6 +8175,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7887,6 +8218,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -7910,6 +8242,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -7937,6 +8270,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -7979,6 +8313,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8002,6 +8337,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -8025,6 +8361,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -8046,6 +8383,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -8067,6 +8405,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -8084,6 +8423,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -8105,6 +8445,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -8149,6 +8490,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8176,6 +8518,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -8203,6 +8546,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -8222,6 +8566,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -8243,6 +8588,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -8283,6 +8629,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8302,6 +8649,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -8321,6 +8669,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -8371,6 +8720,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8402,6 +8752,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -8429,6 +8780,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -8456,6 +8808,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -8510,6 +8863,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8556,6 +8910,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8583,6 +8938,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -8610,6 +8966,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -8637,6 +8994,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -8677,6 +9035,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8704,6 +9063,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -8723,6 +9083,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -8777,6 +9138,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8823,6 +9185,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8865,6 +9228,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -8888,6 +9252,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -8911,6 +9276,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -8934,6 +9300,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -8953,6 +9320,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -8996,6 +9364,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9019,6 +9388,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -9042,6 +9412,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -9069,6 +9440,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -9113,6 +9485,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9140,6 +9513,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -9163,6 +9537,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -9182,6 +9557,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -9206,6 +9582,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -9248,6 +9625,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9271,6 +9649,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -9294,6 +9673,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -9313,6 +9693,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -9337,6 +9718,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -9387,6 +9769,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9441,6 +9824,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9491,6 +9875,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9533,6 +9918,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9556,6 +9942,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -9579,6 +9966,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -9602,6 +9990,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -9623,6 +10012,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -9673,6 +10063,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9696,6 +10087,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -9740,6 +10132,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9767,6 +10160,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -9794,6 +10188,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -9836,6 +10231,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9859,6 +10255,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -9878,6 +10275,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -9897,6 +10295,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -9921,6 +10320,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -9963,6 +10363,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -9986,6 +10387,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10005,6 +10407,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10047,6 +10450,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10074,6 +10478,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10097,6 +10502,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10124,6 +10530,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -10172,6 +10579,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10214,6 +10622,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10237,6 +10646,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10260,6 +10670,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10306,6 +10717,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10329,6 +10741,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10352,6 +10765,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10375,6 +10789,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -10396,6 +10811,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -10417,6 +10833,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -10438,6 +10855,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -10485,6 +10903,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10508,6 +10927,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10531,6 +10951,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10554,6 +10975,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -10573,6 +10995,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -10616,6 +11039,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10639,6 +11063,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10662,6 +11087,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10681,6 +11107,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -10727,6 +11154,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10750,6 +11178,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10773,6 +11202,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10823,6 +11253,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10865,6 +11296,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -10888,6 +11320,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -10911,6 +11344,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -10934,6 +11368,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -10980,6 +11415,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11003,6 +11439,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -11026,6 +11463,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -11049,6 +11487,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -11097,6 +11536,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11139,6 +11579,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11162,6 +11603,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -11185,6 +11627,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -11204,6 +11647,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -11251,6 +11695,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11274,6 +11719,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -11301,6 +11747,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -11328,6 +11775,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -11355,6 +11803,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -11402,6 +11851,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11425,6 +11875,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -11452,6 +11903,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -11498,6 +11950,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -11549,6 +12002,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11591,6 +12045,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11614,6 +12069,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -11637,6 +12093,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -11656,6 +12113,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -11679,6 +12137,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -11730,6 +12189,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11768,6 +12228,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11787,6 +12248,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -11806,6 +12268,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -11823,6 +12286,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -11842,6 +12306,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -11878,6 +12343,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -11897,6 +12363,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -11916,6 +12383,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -11933,6 +12401,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -11952,6 +12421,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -11995,6 +12465,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12018,6 +12489,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -12041,6 +12513,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -12083,6 +12556,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12106,6 +12580,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -12133,6 +12608,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -12156,6 +12632,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -12206,6 +12683,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12256,6 +12734,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12283,6 +12762,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -12306,6 +12786,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -12333,6 +12814,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -12381,6 +12863,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12427,6 +12910,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12469,6 +12953,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12488,6 +12973,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -12511,6 +12997,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -12549,6 +13036,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12568,6 +13056,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -12587,6 +13076,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -12606,6 +13096,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -12623,6 +13114,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -12643,6 +13135,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -12660,6 +13153,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -12677,6 +13171,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -12721,6 +13216,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12763,6 +13259,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -12819,6 +13316,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12846,6 +13344,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -12873,6 +13372,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -12919,6 +13419,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -12942,6 +13443,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -12965,6 +13467,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -12984,6 +13487,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -13001,6 +13505,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -13022,6 +13527,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -13046,6 +13552,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -13092,6 +13599,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13138,6 +13646,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13161,6 +13670,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -13184,6 +13694,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -13207,6 +13718,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -13226,6 +13738,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -13286,6 +13799,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13336,6 +13850,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13363,6 +13878,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -13390,6 +13906,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -13436,6 +13953,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13463,6 +13981,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -13486,6 +14005,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -13509,6 +14029,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -13545,6 +14066,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13564,6 +14086,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -13583,6 +14106,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -13602,6 +14126,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -13625,6 +14150,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -13668,6 +14194,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13691,6 +14218,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -13745,6 +14273,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13764,6 +14293,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -13804,6 +14334,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13827,6 +14358,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -13846,6 +14378,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -13892,6 +14425,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -13915,6 +14449,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -13938,6 +14473,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -13984,6 +14520,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14007,6 +14544,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -14030,6 +14568,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -14076,6 +14615,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14118,6 +14658,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14145,6 +14686,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -14168,6 +14710,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -14191,6 +14734,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -14237,6 +14781,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14279,6 +14824,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14306,6 +14852,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -14329,6 +14876,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -14352,6 +14900,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -14375,6 +14924,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -14422,6 +14972,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14449,6 +15000,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -14476,6 +15028,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -14499,6 +15052,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -14520,6 +15074,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -14566,6 +15121,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14589,6 +15145,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -14612,6 +15169,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -14631,6 +15189,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -14670,6 +15229,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14689,6 +15249,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -14708,6 +15269,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -14727,6 +15289,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -14744,6 +15307,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -14764,6 +15328,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -14812,6 +15377,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14858,6 +15424,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -14881,6 +15448,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -14904,6 +15472,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -14923,6 +15492,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -14940,6 +15510,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -14984,6 +15555,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -15007,6 +15579,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -15030,6 +15603,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -15053,6 +15627,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -15093,6 +15668,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -15116,6 +15692,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -15139,6 +15716,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -15158,6 +15736,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -15177,6 +15756,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -15220,6 +15800,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -15243,6 +15824,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -15266,6 +15848,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -15285,6 +15868,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -15306,6 +15890,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -15354,6 +15939,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -15400,6 +15986,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -15423,6 +16010,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -15446,6 +16034,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -15465,6 +16054,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -15486,6 +16076,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -15503,6 +16094,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -15522,6 +16114,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       },
@@ -15539,6 +16132,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -15583,6 +16177,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -15606,6 +16201,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -15629,6 +16225,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -15648,6 +16245,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -15690,6 +16288,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
@@ -15737,6 +16336,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
@@ -15783,6 +16383,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-LIN-AN0328"
@@ -15810,6 +16411,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-MAC-AN0330"
@@ -15837,6 +16439,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
           "LOG-ESXI-AN0329"
@@ -15879,6 +16482,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }
@@ -15919,6 +16523,7 @@
         ],
         "monitored_ports": [],
         "port_basis": "none",
+        "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": []
       }

@@ -3,11 +3,11 @@
 
 Usage: python3 tools/validate.py [data_dir]   -> exit 1 on any error
 """
-import json, re, sys
+import json, os, re, sys
 from pathlib import Path
 
 FILES = ["ports", "services", "protocols", "attack_patterns", "port_risks", "log_investigation",
-         "mitre_techniques", "detection_strategies", "mitre_software", "tools", "sources"]
+         "mitre_techniques", "detection_strategies", "mitre_software", "tools", "vulnerabilities", "sources"]
 COMMON = ["id", "source_ids", "verified_date", "certainty", "unconfirmed_notes"]
 REQUIRED = {
     "ports": COMMON + ["port_number", "transport_protocol", "service_name", "category", "protocol_id", "service_id", "risk_id",
@@ -23,15 +23,16 @@ REQUIRED = {
     "mitre_software": COMMON + ["name", "technique_ids", "url"],
     "tools": COMMON + ["name", "category", "mitre_software_id", "ports", "artifacts", "detection", "attack_pattern_ids",
                        "technique_ids", "log_investigation_ids"],
+    "vulnerabilities": COMMON + ["affected", "cvss", "kev", "risk_ids", "condition", "raw"],
     "sources": ["source_id", "title", "url", "scope", "reverified_v4", "verification_status"],
 }
 ID_RE = {"ports": r"PORT-\d{5}-(TCP|UDP|SCTP)", "services": r"SRV-[A-Z0-9-]+", "protocols": r"PROTO-[A-Z0-9]+",
          "attack_patterns": r"ATK-[A-Z0-9-]+", "port_risks": r"RISK-\d{5}-(TCP|UDP|SCTP)", "log_investigation": r"LOG-[A-Z0-9-]+",
          "mitre_techniques": r"T\d{4}", "detection_strategies": r"DET\d{4}", "mitre_software": r"S\d{4}",
-         "tools": r"TOOL-[A-Z0-9-]+", "sources": r"SRC-[A-Z0-9-]+"}
+         "tools": r"TOOL-[A-Z0-9-]+", "vulnerabilities": r"CVE-\d{4}-\d{4,7}", "sources": r"SRC-[A-Z0-9-]+"}
 CERTAINTY = {"確認済み", "一部確認", "未確認"}
 THREAT = {"attack_technique", "detection", "threat_advisory"}
-NEEDS = {"log_investigation": {"detection", "log_format"}}
+NEEDS = {"log_investigation": {"detection", "log_format"}, "vulnerabilities": {"vulnerability"}}
 SCOPES = {"analytics", "any", "any_windows", "listed"}
 
 
@@ -56,7 +57,15 @@ def validate(db):
     tech_ok = set(idx["mitre_techniques"]) | set(subs)
     port_keys = {(p["port_number"], p["transport_protocol"]) for p in db["ports"]}
     det0118 = idx["detection_strategies"].get("DET0118", {"analytics": []})
-    det0118_ports = {p for a in det0118["analytics"] if a["port_basis"] == "official" for p in a["monitored_ports"]}
+    pair = lambda x: isinstance(x, list) and len(x) == 2 and isinstance(x[0], int) and isinstance(x[1], str)
+    for d in db["detection_strategies"]:
+        for a in d["analytics"]:
+            E += [f"{d['id']}/{a['id']}: 監視ポート {x} が (番号, 通信方式) の形でない" for x in a["monitored_ports"] if not pair(x)]
+    for f in ("tools", "log_investigation", "services"):
+        for r in db[f]:
+            E += [f"{f}:{r['id']}: ports の要素 {x} が (番号, 通信方式) の形でない" for x in r.get("ports", []) if not pair(x)]
+    if E: return E, W
+    det0118_ports = {tuple(p) for a in det0118["analytics"] if a["port_basis"] == "official" for p in a["monitored_ports"]}
 
     def fk(where, field, target, vals):
         for v in vals if isinstance(vals, list) else [vals]:
@@ -84,8 +93,8 @@ def validate(db):
         fk(w, "protocol_id", "protocols", p["protocol_id"]); fk(w, "service_id", "services", p["service_id"])
         fk(w, "risk_id", "port_risks", p["risk_id"])
         s = idx["services"].get(p["service_id"])
-        if s and s["port_number"] != p["port_number"]: E.append(f"{w}: service_id のポート番号不一致")
-        if "SRC-MITRE-DET0118" in p["source_ids"] and p["port_number"] not in det0118_ports:
+        if s and [p["port_number"], p["transport_protocol"]] not in s["ports"]: E.append(f"{w}: service_id の (番号, 通信方式) 不一致")
+        if "SRC-MITRE-DET0118" in p["source_ids"] and (p["port_number"], p["transport_protocol"]) not in det0118_ports:
             E.append(f"{w}: DET0118の公式監視ポート外なのに根拠に引用")
         if not p["technique_ids"]: W.append(f"{w}: technique_ids が空")
         for e in p.get("evidence", []):
@@ -97,7 +106,9 @@ def validate(db):
         if not p: E.append(f"port_risks:{r['id']}: 対応するポートレコードなし(孤立)")
         elif p["risk_id"] != r["id"]: E.append(f"port_risks:{r['id']}: ports側の risk_id と不一致")
     for s in db["services"]:
-        if not any(p["service_id"] == s["id"] for p in db["ports"]): E.append(f"services:{s['id']}: どのポートからも参照されない")
+        refs = sorted([p["port_number"], p["transport_protocol"]] for p in db["ports"] if p["service_id"] == s["id"])
+        if not refs: E.append(f"services:{s['id']}: どのポートからも参照されない")
+        elif sorted(s["ports"]) != refs: E.append(f"services:{s['id']}: ports が参照元ポート {refs} と不一致")
     for a in db["attack_patterns"]:
         fk(f"attack_patterns:{a['id']}", "log_investigation_ids", "log_investigation", a["log_investigation_ids"])
     for t in db["tools"]:
@@ -106,6 +117,9 @@ def validate(db):
         fk(w, "mitre_software_id", "mitre_software", t["mitre_software_id"])
         E += [f"{w}: ports にない番号 -> {n}/{tp}" for n, tp in t["ports"] if (n, tp) not in port_keys]
         if not t["mitre_software_id"] and not t["technique_ids"]: E.append(f"{w}: ATT&CK 未収録ツールは technique_ids 必須")
+    for v in db["vulnerabilities"]:
+        w = f"vulnerabilities:{v['id']}"
+        fk(w, "risk_ids", "port_risks", v["risk_ids"]); fk(w, "service_ids", "services", v.get("service_ids", []))
     dets = idx["detection_strategies"]
     for t in db["mitre_techniques"]:
         for x in [t] + t["subtechniques"]:
@@ -117,6 +131,8 @@ def validate(db):
         E += [f"detection_strategies:{d['id']}: technique_ids 未収録 -> {t}" for t in d["technique_ids"] if t not in tech_ok]
         for a in d["analytics"]:
             if a["port_basis"] not in {"official", "inferred", "none"}: E.append(f"{d['id']}/{a['id']}: port_basis 値不正")
+            if a["transport_basis"] not in {"stated", "service_default", "none"}: E.append(f"{d['id']}/{a['id']}: transport_basis 値不正")
+            if bool(a["monitored_ports"]) == (a["transport_basis"] == "none"): E.append(f"{d['id']}/{a['id']}: 監視ポートと transport_basis が矛盾")
             fk(f"{d['id']}/{a['id']}", "log_investigation_ids", "log_investigation", a["log_investigation_ids"])
             an_logs[a["id"]] = set(a["log_investigation_ids"])
     for l in db["log_investigation"]:
@@ -133,5 +149,7 @@ if __name__ == "__main__":
     errors, warnings = validate(db)
     for w in warnings: print("WARN ", w)
     for e in errors: print("ERROR", e)
+    if os.environ.get("GITHUB_ACTIONS"):
+        for e in errors[:50]: print(f"::error title=validate::{e}")
     print(f"\n{sum(len(v) for v in db.values())} records / errors={len(errors)} warnings={len(warnings)} -> {'FAIL' if errors else 'PASS'}")
     sys.exit(1 if errors else 0)

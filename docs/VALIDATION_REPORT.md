@@ -2,7 +2,7 @@
 
 - データ最終検証日: 2026-11-22
 - 収録: 詳細付きポート 160 件 / IANA 登録ポート 11625 件
-- レコード総数: ports 160, services 6, protocols 7, attack_patterns 24, port_risks 160, log_investigation 9, mitre_techniques 90, detection_strategies 164, mitre_software 11, tools 18, sources 176
+- レコード総数: ports 160, services 6, protocols 7, attack_patterns 24, port_risks 160, log_investigation 9, mitre_techniques 90, detection_strategies 164, mitre_software 11, tools 18, vulnerabilities 7, sources 185
 - 整合性検証: **PASS**（errors=0, warnings=0）
 
 ## 詳細付きポートの到達率
@@ -38,14 +38,14 @@
 | 179/TCP | bgp | 攻撃・検知記述の一次資料未付与 |
 | 389/TCP | ldap | 攻撃・検知記述の一次資料未付与 |
 | 389/UDP | ldap | 攻撃・検知記述の一次資料未付与 |
-| 443/UDP | http-3 | 攻撃・検知記述の一次資料未付与 |
+| 443/UDP | https | 攻撃・検知記述の一次資料未付与 |
 | 464/TCP | kpasswd | 攻撃・検知記述の一次資料未付与 |
 | 464/UDP | kpasswd | 攻撃・検知記述の一次資料未付与 |
-| 465/TCP | urd | 攻撃・検知記述の一次資料未付与 |
+| 465/TCP | submissions | 攻撃・検知記述の一次資料未付与 |
 | 500/UDP | isakmp | 攻撃・検知記述の一次資料未付与 |
 | 512/TCP | exec | 攻撃・検知記述の一次資料未付与 |
 | 513/TCP | login | 攻撃・検知記述の一次資料未付与 |
-| 514/TCP | syslog-conn | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
+| 514/TCP | shell | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
 | 514/UDP | syslog | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
 | 515/TCP | printer | 攻撃・検知記述の一次資料未付与 |
 | 548/TCP | afpovertcp | 攻撃・検知記述の一次資料未付与 |
@@ -63,14 +63,14 @@
 | 1194/UDP | openvpn | 攻撃・検知記述の一次資料未付与 |
 | 1434/UDP | ms-sql-m | 攻撃・検知記述の一次資料未付与 |
 | 1521/TCP | ncube-lm | 攻撃・検知記述の一次資料未付与 |
-| 1701/UDP | l2f | 攻撃・検知記述の一次資料未付与 |
+| 1701/UDP | l2tp | 攻撃・検知記述の一次資料未付与 |
 | 1723/TCP | pptp | 攻撃・検知記述の一次資料未付与 |
 | 1812/UDP | radius | 攻撃・検知記述の一次資料未付与 |
 | 1813/UDP | radius-acct | 攻撃・検知記述の一次資料未付与 |
 | 1883/TCP | mqtt | 攻撃・検知記述の一次資料未付与 |
 | 1985/UDP | hsrp | 攻撃・検知記述の一次資料未付与 |
-| 2049/TCP | shilp | 攻撃・検知記述の一次資料未付与 |
-| 2049/UDP | shilp | 攻撃・検知記述の一次資料未付与 |
+| 2049/TCP | nfs | 攻撃・検知記述の一次資料未付与 |
+| 2049/UDP | nfs | 攻撃・検知記述の一次資料未付与 |
 | 2179/TCP | vmrdp | 攻撃・検知記述の一次資料未付与 |
 | 2376/TCP | docker-s | ポートに対応するホストログなし |
 | 2380/TCP | etcd-server | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
@@ -99,7 +99,7 @@
 | 5671/TCP | amqps | 攻撃・検知記述の一次資料未付与 |
 | 5672/TCP | amqp | 攻撃・検知記述の一次資料未付与 |
 | 5984/TCP | couchdb | 攻撃・検知記述の一次資料未付与 |
-| 6000/TCP | (未登録) | 攻撃・検知記述の一次資料未付与 |
+| 6000/TCP | x11 | 攻撃・検知記述の一次資料未付与 |
 | 6343/UDP | sflow | 攻撃・検知記述の一次資料未付与 |
 | 6443/TCP | sun-sr-https | 攻撃・検知記述の一次資料未付与、ポートに対応するホストログなし |
 | 6514/TCP | syslog-tls | 攻撃・検知記述の一次資料未付与 |
@@ -111,7 +111,7 @@
 | 8081/TCP | sunproxyadmin | 攻撃・検知記述の一次資料未付与 |
 | 8086/TCP | d-s-n | 攻撃・検知記述の一次資料未付与 |
 | 8088/TCP | radan-http | 攻撃・検知記述の一次資料未付与 |
-| 8443/TCP | https-alt | 攻撃・検知記述の一次資料未付与 |
+| 8443/TCP | pcsync-https | 攻撃・検知記述の一次資料未付与 |
 | 8883/TCP | secure-mqtt | 攻撃・検知記述の一次資料未付与 |
 | 8888/TCP | ddi-tcp-1 | 攻撃・検知記述の一次資料未付与 |
 | 9000/TCP | cslistener | 攻撃・検知記述の一次資料未付与 |
@@ -137,3 +137,25 @@
 ## エラー・警告
 
 - なし
+
+## 品質基準（tools/quality.py / docs/DATA_QUALITY_STANDARD.md）
+
+| コード | error |
+|---|---|
+| Q-JSON | 0 |
+| Q-SCHEMA | 0 |
+| Q-DUP | 0 |
+| Q-ATTACK | 0 |
+| Q-TRANSPORT | 0 |
+| Q-IPPROTO | 0 |
+| Q-IANA | 0 |
+| Q-VERIFIED | 0 |
+| Q-SRC | 0 |
+| Q-HIDDEN | 0 |
+| Q-ASSOC | 0 |
+| Q-CVE | 0 |
+| Q-COUNT | 0 |
+
+対象外（記録のみ）:
+- log_investigation:LOG-FORTIGATE-VENDOR: 確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）
+- log_investigation:LOG-NECIX-VENDOR: 確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）

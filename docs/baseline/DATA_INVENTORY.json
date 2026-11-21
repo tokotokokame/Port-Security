@@ -1,0 +1,2227 @@
+{
+ "generated": "Phase 0 baseline",
+ "git_head": "652af7707a6fef04ebd0c4e3f0e14b692981a5f6",
+ "record_counts": {
+  "ports": 160,
+  "services": 6,
+  "protocols": 7,
+  "attack_patterns": 24,
+  "port_risks": 160,
+  "log_investigation": 9,
+  "mitre_techniques": 90,
+  "detection_strategies": 164,
+  "mitre_software": 11,
+  "tools": 18,
+  "sources": 176
+ },
+ "ids": {
+  "ports": [
+   "PORT-00017-UDP",
+   "PORT-00019-UDP",
+   "PORT-00020-TCP",
+   "PORT-00021-TCP",
+   "PORT-00022-TCP",
+   "PORT-00023-TCP",
+   "PORT-00025-TCP",
+   "PORT-00049-TCP",
+   "PORT-00053-TCP",
+   "PORT-00053-UDP",
+   "PORT-00067-UDP",
+   "PORT-00068-UDP",
+   "PORT-00069-TCP",
+   "PORT-00069-UDP",
+   "PORT-00080-TCP",
+   "PORT-00088-TCP",
+   "PORT-00088-UDP",
+   "PORT-00102-TCP",
+   "PORT-00110-TCP",
+   "PORT-00111-TCP",
+   "PORT-00111-UDP",
+   "PORT-00123-UDP",
+   "PORT-00135-TCP",
+   "PORT-00137-UDP",
+   "PORT-00138-UDP",
+   "PORT-00139-TCP",
+   "PORT-00143-TCP",
+   "PORT-00161-UDP",
+   "PORT-00162-UDP",
+   "PORT-00179-TCP",
+   "PORT-00389-TCP",
+   "PORT-00389-UDP",
+   "PORT-00427-TCP",
+   "PORT-00443-TCP",
+   "PORT-00443-UDP",
+   "PORT-00445-TCP",
+   "PORT-00464-TCP",
+   "PORT-00464-UDP",
+   "PORT-00465-TCP",
+   "PORT-00500-UDP",
+   "PORT-00502-TCP",
+   "PORT-00512-TCP",
+   "PORT-00513-TCP",
+   "PORT-00514-TCP",
+   "PORT-00514-UDP",
+   "PORT-00515-TCP",
+   "PORT-00520-UDP",
+   "PORT-00548-TCP",
+   "PORT-00587-TCP",
+   "PORT-00593-TCP",
+   "PORT-00623-UDP",
+   "PORT-00631-TCP",
+   "PORT-00636-TCP",
+   "PORT-00830-TCP",
+   "PORT-00853-TCP",
+   "PORT-00873-TCP",
+   "PORT-00902-TCP",
+   "PORT-00989-TCP",
+   "PORT-00990-TCP",
+   "PORT-00993-TCP",
+   "PORT-00995-TCP",
+   "PORT-01080-TCP",
+   "PORT-01194-TCP",
+   "PORT-01194-UDP",
+   "PORT-01433-TCP",
+   "PORT-01434-UDP",
+   "PORT-01521-TCP",
+   "PORT-01701-UDP",
+   "PORT-01723-TCP",
+   "PORT-01812-UDP",
+   "PORT-01813-UDP",
+   "PORT-01883-TCP",
+   "PORT-01900-UDP",
+   "PORT-01985-UDP",
+   "PORT-02049-TCP",
+   "PORT-02049-UDP",
+   "PORT-02179-TCP",
+   "PORT-02375-TCP",
+   "PORT-02376-TCP",
+   "PORT-02379-TCP",
+   "PORT-02380-TCP",
+   "PORT-02404-TCP",
+   "PORT-02483-TCP",
+   "PORT-02484-TCP",
+   "PORT-03000-TCP",
+   "PORT-03128-TCP",
+   "PORT-03260-TCP",
+   "PORT-03268-TCP",
+   "PORT-03269-TCP",
+   "PORT-03283-TCP",
+   "PORT-03306-TCP",
+   "PORT-03343-TCP",
+   "PORT-03343-UDP",
+   "PORT-03389-TCP",
+   "PORT-03389-UDP",
+   "PORT-03478-UDP",
+   "PORT-03702-UDP",
+   "PORT-04369-TCP",
+   "PORT-04444-TCP",
+   "PORT-04500-UDP",
+   "PORT-04739-UDP",
+   "PORT-04786-TCP",
+   "PORT-04840-TCP",
+   "PORT-04899-TCP",
+   "PORT-05060-TCP",
+   "PORT-05060-UDP",
+   "PORT-05061-TCP",
+   "PORT-05222-TCP",
+   "PORT-05269-TCP",
+   "PORT-05353-UDP",
+   "PORT-05355-UDP",
+   "PORT-05432-TCP",
+   "PORT-05601-TCP",
+   "PORT-05671-TCP",
+   "PORT-05672-TCP",
+   "PORT-05800-TCP",
+   "PORT-05900-TCP",
+   "PORT-05938-TCP",
+   "PORT-05984-TCP",
+   "PORT-05985-TCP",
+   "PORT-05986-TCP",
+   "PORT-05989-TCP",
+   "PORT-06000-TCP",
+   "PORT-06343-UDP",
+   "PORT-06379-TCP",
+   "PORT-06443-TCP",
+   "PORT-06514-TCP",
+   "PORT-06600-TCP",
+   "PORT-06667-TCP",
+   "PORT-07547-TCP",
+   "PORT-08000-TCP",
+   "PORT-08008-TCP",
+   "PORT-08080-TCP",
+   "PORT-08081-TCP",
+   "PORT-08086-TCP",
+   "PORT-08088-TCP",
+   "PORT-08443-TCP",
+   "PORT-08883-TCP",
+   "PORT-08888-TCP",
+   "PORT-09000-TCP",
+   "PORT-09042-TCP",
+   "PORT-09090-TCP",
+   "PORT-09092-TCP",
+   "PORT-09100-TCP",
+   "PORT-09200-TCP",
+   "PORT-09300-TCP",
+   "PORT-09389-TCP",
+   "PORT-09418-TCP",
+   "PORT-09443-TCP",
+   "PORT-10050-TCP",
+   "PORT-10051-TCP",
+   "PORT-10250-TCP",
+   "PORT-11211-TCP",
+   "PORT-11211-UDP",
+   "PORT-18083-TCP",
+   "PORT-20000-TCP",
+   "PORT-27017-TCP",
+   "PORT-44818-TCP",
+   "PORT-47808-UDP",
+   "PORT-61616-TCP"
+  ],
+  "services": [
+   "SRV-DNS",
+   "SRV-HTTP",
+   "SRV-HTTPS",
+   "SRV-RDP",
+   "SRV-SMB",
+   "SRV-SSH"
+  ],
+  "protocols": [
+   "PROTO-AH",
+   "PROTO-ESP",
+   "PROTO-GRE",
+   "PROTO-ICMP",
+   "PROTO-SCTP",
+   "PROTO-TCP",
+   "PROTO-UDP"
+  ],
+  "attack_patterns": [
+   "ATK-AD-RECON",
+   "ATK-AMPLIFICATION",
+   "ATK-BRUTE-FORCE",
+   "ATK-C2-PORT",
+   "ATK-CONTAINER-API",
+   "ATK-CRED-THEFT",
+   "ATK-DATA-EXFIL",
+   "ATK-DCSYNC",
+   "ATK-EXFIL-ALT",
+   "ATK-EXTERNAL-REMOTE",
+   "ATK-HYPERVISOR",
+   "ATK-KERBEROAST",
+   "ATK-LATERAL-MOVE",
+   "ATK-MAIL-ABUSE",
+   "ATK-NAME-POISON",
+   "ATK-PASS-THE-HASH",
+   "ATK-PUBLIC-EXPLOIT",
+   "ATK-RANSOMWARE",
+   "ATK-REMOTE-ACCESS-SW",
+   "ATK-REMOTE-EXEC",
+   "ATK-REMOTE-EXPLOIT",
+   "ATK-TUNNEL",
+   "ATK-UNAUTH-SERVICE",
+   "ATK-VULN-SCAN"
+  ],
+  "port_risks": [
+   "RISK-00017-UDP",
+   "RISK-00019-UDP",
+   "RISK-00020-TCP",
+   "RISK-00021-TCP",
+   "RISK-00022-TCP",
+   "RISK-00023-TCP",
+   "RISK-00025-TCP",
+   "RISK-00049-TCP",
+   "RISK-00053-TCP",
+   "RISK-00053-UDP",
+   "RISK-00067-UDP",
+   "RISK-00068-UDP",
+   "RISK-00069-TCP",
+   "RISK-00069-UDP",
+   "RISK-00080-TCP",
+   "RISK-00088-TCP",
+   "RISK-00088-UDP",
+   "RISK-00102-TCP",
+   "RISK-00110-TCP",
+   "RISK-00111-TCP",
+   "RISK-00111-UDP",
+   "RISK-00123-UDP",
+   "RISK-00135-TCP",
+   "RISK-00137-UDP",
+   "RISK-00138-UDP",
+   "RISK-00139-TCP",
+   "RISK-00143-TCP",
+   "RISK-00161-UDP",
+   "RISK-00162-UDP",
+   "RISK-00179-TCP",
+   "RISK-00389-TCP",
+   "RISK-00389-UDP",
+   "RISK-00427-TCP",
+   "RISK-00443-TCP",
+   "RISK-00443-UDP",
+   "RISK-00445-TCP",
+   "RISK-00464-TCP",
+   "RISK-00464-UDP",
+   "RISK-00465-TCP",
+   "RISK-00500-UDP",
+   "RISK-00502-TCP",
+   "RISK-00512-TCP",
+   "RISK-00513-TCP",
+   "RISK-00514-TCP",
+   "RISK-00514-UDP",
+   "RISK-00515-TCP",
+   "RISK-00520-UDP",
+   "RISK-00548-TCP",
+   "RISK-00587-TCP",
+   "RISK-00593-TCP",
+   "RISK-00623-UDP",
+   "RISK-00631-TCP",
+   "RISK-00636-TCP",
+   "RISK-00830-TCP",
+   "RISK-00853-TCP",
+   "RISK-00873-TCP",
+   "RISK-00902-TCP",
+   "RISK-00989-TCP",
+   "RISK-00990-TCP",
+   "RISK-00993-TCP",
+   "RISK-00995-TCP",
+   "RISK-01080-TCP",
+   "RISK-01194-TCP",
+   "RISK-01194-UDP",
+   "RISK-01433-TCP",
+   "RISK-01434-UDP",
+   "RISK-01521-TCP",
+   "RISK-01701-UDP",
+   "RISK-01723-TCP",
+   "RISK-01812-UDP",
+   "RISK-01813-UDP",
+   "RISK-01883-TCP",
+   "RISK-01900-UDP",
+   "RISK-01985-UDP",
+   "RISK-02049-TCP",
+   "RISK-02049-UDP",
+   "RISK-02179-TCP",
+   "RISK-02375-TCP",
+   "RISK-02376-TCP",
+   "RISK-02379-TCP",
+   "RISK-02380-TCP",
+   "RISK-02404-TCP",
+   "RISK-02483-TCP",
+   "RISK-02484-TCP",
+   "RISK-03000-TCP",
+   "RISK-03128-TCP",
+   "RISK-03260-TCP",
+   "RISK-03268-TCP",
+   "RISK-03269-TCP",
+   "RISK-03283-TCP",
+   "RISK-03306-TCP",
+   "RISK-03343-TCP",
+   "RISK-03343-UDP",
+   "RISK-03389-TCP",
+   "RISK-03389-UDP",
+   "RISK-03478-UDP",
+   "RISK-03702-UDP",
+   "RISK-04369-TCP",
+   "RISK-04444-TCP",
+   "RISK-04500-UDP",
+   "RISK-04739-UDP",
+   "RISK-04786-TCP",
+   "RISK-04840-TCP",
+   "RISK-04899-TCP",
+   "RISK-05060-TCP",
+   "RISK-05060-UDP",
+   "RISK-05061-TCP",
+   "RISK-05222-TCP",
+   "RISK-05269-TCP",
+   "RISK-05353-UDP",
+   "RISK-05355-UDP",
+   "RISK-05432-TCP",
+   "RISK-05601-TCP",
+   "RISK-05671-TCP",
+   "RISK-05672-TCP",
+   "RISK-05800-TCP",
+   "RISK-05900-TCP",
+   "RISK-05938-TCP",
+   "RISK-05984-TCP",
+   "RISK-05985-TCP",
+   "RISK-05986-TCP",
+   "RISK-05989-TCP",
+   "RISK-06000-TCP",
+   "RISK-06343-UDP",
+   "RISK-06379-TCP",
+   "RISK-06443-TCP",
+   "RISK-06514-TCP",
+   "RISK-06600-TCP",
+   "RISK-06667-TCP",
+   "RISK-07547-TCP",
+   "RISK-08000-TCP",
+   "RISK-08008-TCP",
+   "RISK-08080-TCP",
+   "RISK-08081-TCP",
+   "RISK-08086-TCP",
+   "RISK-08088-TCP",
+   "RISK-08443-TCP",
+   "RISK-08883-TCP",
+   "RISK-08888-TCP",
+   "RISK-09000-TCP",
+   "RISK-09042-TCP",
+   "RISK-09090-TCP",
+   "RISK-09092-TCP",
+   "RISK-09100-TCP",
+   "RISK-09200-TCP",
+   "RISK-09300-TCP",
+   "RISK-09389-TCP",
+   "RISK-09418-TCP",
+   "RISK-09443-TCP",
+   "RISK-10050-TCP",
+   "RISK-10051-TCP",
+   "RISK-10250-TCP",
+   "RISK-11211-TCP",
+   "RISK-11211-UDP",
+   "RISK-18083-TCP",
+   "RISK-20000-TCP",
+   "RISK-27017-TCP",
+   "RISK-44818-TCP",
+   "RISK-47808-UDP",
+   "RISK-61616-TCP"
+  ],
+  "log_investigation": [
+   "LOG-ESXI-AN0329",
+   "LOG-FORTIGATE-VENDOR",
+   "LOG-HYPERV",
+   "LOG-LIN-AN0328",
+   "LOG-MAC-AN0330",
+   "LOG-NECIX-VENDOR",
+   "LOG-VIRTUALBOX",
+   "LOG-WIN-AN0327",
+   "LOG-WIN-SECURITY"
+  ],
+  "mitre_techniques": [
+   "T1001",
+   "T1003",
+   "T1005",
+   "T1007",
+   "T1012",
+   "T1016",
+   "T1018",
+   "T1021",
+   "T1027",
+   "T1029",
+   "T1030",
+   "T1033",
+   "T1039",
+   "T1040",
+   "T1041",
+   "T1046",
+   "T1047",
+   "T1048",
+   "T1049",
+   "T1053",
+   "T1055",
+   "T1056",
+   "T1057",
+   "T1059",
+   "T1068",
+   "T1069",
+   "T1070",
+   "T1071",
+   "T1078",
+   "T1083",
+   "T1087",
+   "T1090",
+   "T1095",
+   "T1098",
+   "T1102",
+   "T1105",
+   "T1106",
+   "T1110",
+   "T1112",
+   "T1113",
+   "T1114",
+   "T1132",
+   "T1133",
+   "T1134",
+   "T1135",
+   "T1136",
+   "T1137",
+   "T1140",
+   "T1185",
+   "T1190",
+   "T1197",
+   "T1201",
+   "T1203",
+   "T1207",
+   "T1210",
+   "T1218",
+   "T1219",
+   "T1482",
+   "T1486",
+   "T1497",
+   "T1498",
+   "T1518",
+   "T1543",
+   "T1547",
+   "T1548",
+   "T1550",
+   "T1552",
+   "T1553",
+   "T1555",
+   "T1557",
+   "T1558",
+   "T1560",
+   "T1564",
+   "T1566",
+   "T1567",
+   "T1568",
+   "T1569",
+   "T1570",
+   "T1571",
+   "T1572",
+   "T1573",
+   "T1595",
+   "T1602",
+   "T1610",
+   "T1613",
+   "T1615",
+   "T1620",
+   "T1649",
+   "T1680",
+   "T1685"
+  ],
+  "detection_strategies": [
+   "DET0003",
+   "DET0007",
+   "DET0024",
+   "DET0027",
+   "DET0034",
+   "DET0037",
+   "DET0039",
+   "DET0045",
+   "DET0046",
+   "DET0048",
+   "DET0052",
+   "DET0053",
+   "DET0055",
+   "DET0060",
+   "DET0063",
+   "DET0070",
+   "DET0075",
+   "DET0076",
+   "DET0080",
+   "DET0081",
+   "DET0085",
+   "DET0089",
+   "DET0093",
+   "DET0094",
+   "DET0096",
+   "DET0098",
+   "DET0102",
+   "DET0105",
+   "DET0108",
+   "DET0113",
+   "DET0114",
+   "DET0118",
+   "DET0124",
+   "DET0129",
+   "DET0131",
+   "DET0134",
+   "DET0136",
+   "DET0143",
+   "DET0144",
+   "DET0157",
+   "DET0161",
+   "DET0178",
+   "DET0179",
+   "DET0182",
+   "DET0183",
+   "DET0184",
+   "DET0188",
+   "DET0189",
+   "DET0195",
+   "DET0196",
+   "DET0202",
+   "DET0209",
+   "DET0210",
+   "DET0213",
+   "DET0215",
+   "DET0227",
+   "DET0230",
+   "DET0234",
+   "DET0240",
+   "DET0241",
+   "DET0249",
+   "DET0264",
+   "DET0269",
+   "DET0273",
+   "DET0274",
+   "DET0275",
+   "DET0276",
+   "DET0279",
+   "DET0280",
+   "DET0283",
+   "DET0285",
+   "DET0287",
+   "DET0296",
+   "DET0300",
+   "DET0303",
+   "DET0307",
+   "DET0314",
+   "DET0320",
+   "DET0327",
+   "DET0333",
+   "DET0338",
+   "DET0345",
+   "DET0346",
+   "DET0348",
+   "DET0352",
+   "DET0354",
+   "DET0360",
+   "DET0363",
+   "DET0364",
+   "DET0370",
+   "DET0376",
+   "DET0378",
+   "DET0380",
+   "DET0382",
+   "DET0388",
+   "DET0389",
+   "DET0392",
+   "DET0398",
+   "DET0399",
+   "DET0400",
+   "DET0407",
+   "DET0408",
+   "DET0409",
+   "DET0410",
+   "DET0412",
+   "DET0416",
+   "DET0419",
+   "DET0420",
+   "DET0421",
+   "DET0425",
+   "DET0430",
+   "DET0437",
+   "DET0444",
+   "DET0445",
+   "DET0452",
+   "DET0453",
+   "DET0455",
+   "DET0457",
+   "DET0462",
+   "DET0463",
+   "DET0465",
+   "DET0468",
+   "DET0470",
+   "DET0475",
+   "DET0476",
+   "DET0477",
+   "DET0482",
+   "DET0483",
+   "DET0487",
+   "DET0489",
+   "DET0490",
+   "DET0496",
+   "DET0497",
+   "DET0498",
+   "DET0502",
+   "DET0507",
+   "DET0508",
+   "DET0514",
+   "DET0516",
+   "DET0518",
+   "DET0519",
+   "DET0522",
+   "DET0526",
+   "DET0529",
+   "DET0530",
+   "DET0538",
+   "DET0542",
+   "DET0543",
+   "DET0548",
+   "DET0549",
+   "DET0551",
+   "DET0552",
+   "DET0560",
+   "DET0571",
+   "DET0574",
+   "DET0583",
+   "DET0586",
+   "DET0587",
+   "DET0591",
+   "DET0592",
+   "DET0594",
+   "DET0596",
+   "DET0830",
+   "DET0867"
+  ],
+  "mitre_software": [
+   "S0002",
+   "S0029",
+   "S0154",
+   "S0174",
+   "S0357",
+   "S0488",
+   "S0508",
+   "S0521",
+   "S0552",
+   "S0590",
+   "S1071"
+  ],
+  "tools": [
+   "TOOL-ADFIND",
+   "TOOL-BLOODHOUND",
+   "TOOL-CHISEL",
+   "TOOL-COBALTSTRIKE",
+   "TOOL-CRACKMAPEXEC",
+   "TOOL-EVILWINRM",
+   "TOOL-HYDRA",
+   "TOOL-IMPACKET",
+   "TOOL-KERBRUTE",
+   "TOOL-METASPLOIT",
+   "TOOL-MIMIKATZ",
+   "TOOL-NBTSCAN",
+   "TOOL-NGROK",
+   "TOOL-NMAP",
+   "TOOL-PSEXEC",
+   "TOOL-RESPONDER",
+   "TOOL-RUBEUS",
+   "TOOL-SMBCLIENT"
+  ],
+  "sources": [
+   "SRC-APACHE-CVE-2023-46604",
+   "SRC-CHISEL",
+   "SRC-CISA-AMP",
+   "SRC-CISA-HYGIENE",
+   "SRC-CISA-IPMI",
+   "SRC-CISA-TA18-106A",
+   "SRC-CISCO-TSA18-106A",
+   "SRC-DOCKER-PROTECT",
+   "SRC-DOCKER-REMOTE",
+   "SRC-ETCD-SECURITY",
+   "SRC-EVILWINRM",
+   "SRC-FORTINET-DOCS",
+   "SRC-HYDRA",
+   "SRC-IANA-PORT",
+   "SRC-IANA-PROTO",
+   "SRC-IETF-RFC",
+   "SRC-K8S-KUBELET",
+   "SRC-KERBRUTE",
+   "SRC-METASPLOIT-REVSHELL",
+   "SRC-MITRE-ATTACK",
+   "SRC-MITRE-DET0118",
+   "SRC-MITRE-DET0314",
+   "SRC-MITRE-DET0348",
+   "SRC-MITRE-ICS-T0806",
+   "SRC-MITRE-ICS-T0836",
+   "SRC-MITRE-ICS-T0846-001",
+   "SRC-MITRE-ICS-T0846-002",
+   "SRC-MITRE-ICS-T0869",
+   "SRC-MITRE-ICS-T0871",
+   "SRC-MITRE-ICS-T0883",
+   "SRC-MITRE-ICS-T0885",
+   "SRC-MITRE-ICS-T0888",
+   "SRC-MITRE-S0002",
+   "SRC-MITRE-S0029",
+   "SRC-MITRE-S0154",
+   "SRC-MITRE-S0174",
+   "SRC-MITRE-S0357",
+   "SRC-MITRE-S0488",
+   "SRC-MITRE-S0508",
+   "SRC-MITRE-S0521",
+   "SRC-MITRE-S0552",
+   "SRC-MITRE-S0590",
+   "SRC-MITRE-S1071",
+   "SRC-MITRE-T1001",
+   "SRC-MITRE-T1003",
+   "SRC-MITRE-T1005",
+   "SRC-MITRE-T1007",
+   "SRC-MITRE-T1012",
+   "SRC-MITRE-T1016",
+   "SRC-MITRE-T1018",
+   "SRC-MITRE-T1021",
+   "SRC-MITRE-T1027",
+   "SRC-MITRE-T1029",
+   "SRC-MITRE-T1030",
+   "SRC-MITRE-T1033",
+   "SRC-MITRE-T1039",
+   "SRC-MITRE-T1040",
+   "SRC-MITRE-T1041",
+   "SRC-MITRE-T1046",
+   "SRC-MITRE-T1047",
+   "SRC-MITRE-T1048",
+   "SRC-MITRE-T1049",
+   "SRC-MITRE-T1053",
+   "SRC-MITRE-T1055",
+   "SRC-MITRE-T1056",
+   "SRC-MITRE-T1057",
+   "SRC-MITRE-T1059",
+   "SRC-MITRE-T1068",
+   "SRC-MITRE-T1069",
+   "SRC-MITRE-T1070",
+   "SRC-MITRE-T1071",
+   "SRC-MITRE-T1078",
+   "SRC-MITRE-T1083",
+   "SRC-MITRE-T1087",
+   "SRC-MITRE-T1090",
+   "SRC-MITRE-T1095",
+   "SRC-MITRE-T1098",
+   "SRC-MITRE-T1102",
+   "SRC-MITRE-T1105",
+   "SRC-MITRE-T1106",
+   "SRC-MITRE-T1110",
+   "SRC-MITRE-T1112",
+   "SRC-MITRE-T1113",
+   "SRC-MITRE-T1114",
+   "SRC-MITRE-T1132",
+   "SRC-MITRE-T1133",
+   "SRC-MITRE-T1134",
+   "SRC-MITRE-T1135",
+   "SRC-MITRE-T1136",
+   "SRC-MITRE-T1137",
+   "SRC-MITRE-T1140",
+   "SRC-MITRE-T1185",
+   "SRC-MITRE-T1190",
+   "SRC-MITRE-T1197",
+   "SRC-MITRE-T1201",
+   "SRC-MITRE-T1203",
+   "SRC-MITRE-T1207",
+   "SRC-MITRE-T1210",
+   "SRC-MITRE-T1218",
+   "SRC-MITRE-T1219",
+   "SRC-MITRE-T1482",
+   "SRC-MITRE-T1486",
+   "SRC-MITRE-T1497",
+   "SRC-MITRE-T1498",
+   "SRC-MITRE-T1518",
+   "SRC-MITRE-T1543",
+   "SRC-MITRE-T1547",
+   "SRC-MITRE-T1548",
+   "SRC-MITRE-T1550",
+   "SRC-MITRE-T1552",
+   "SRC-MITRE-T1553",
+   "SRC-MITRE-T1555",
+   "SRC-MITRE-T1557",
+   "SRC-MITRE-T1558",
+   "SRC-MITRE-T1560",
+   "SRC-MITRE-T1564",
+   "SRC-MITRE-T1566",
+   "SRC-MITRE-T1567",
+   "SRC-MITRE-T1568",
+   "SRC-MITRE-T1569",
+   "SRC-MITRE-T1570",
+   "SRC-MITRE-T1571",
+   "SRC-MITRE-T1572",
+   "SRC-MITRE-T1573",
+   "SRC-MITRE-T1595",
+   "SRC-MITRE-T1602",
+   "SRC-MITRE-T1610",
+   "SRC-MITRE-T1613",
+   "SRC-MITRE-T1615",
+   "SRC-MITRE-T1620",
+   "SRC-MITRE-T1649",
+   "SRC-MITRE-T1680",
+   "SRC-MITRE-T1685",
+   "SRC-MONGODB-CHECKLIST",
+   "SRC-MS-EVT-4624",
+   "SRC-MS-EVT-4625",
+   "SRC-MS-EVT-4648",
+   "SRC-MS-EVT-4662",
+   "SRC-MS-EVT-4697",
+   "SRC-MS-EVT-4768",
+   "SRC-MS-EVT-4769",
+   "SRC-MS-EVT-4771",
+   "SRC-MS-EVT-4776",
+   "SRC-MS-EVT-5140",
+   "SRC-MS-EVT-5145",
+   "SRC-MS-HYPERV-CONN",
+   "SRC-MS-HYPERV-EVTLOG",
+   "SRC-MS-HYPERV-LM",
+   "SRC-MS-HYPERV-TS",
+   "SRC-MS-PORTS",
+   "SRC-MS-RDS",
+   "SRC-NEC-IX",
+   "SRC-NMAP",
+   "SRC-NVD-CVE-2023-46604",
+   "SRC-ORACLE-VBOX-TS",
+   "SRC-ORACLE-VBOX-VRDP",
+   "SRC-ORACLE-VBOX-WEB",
+   "SRC-REDIS-ANTIREZ",
+   "SRC-REDIS-SECURITY",
+   "SRC-SAMBA-SMBCLIENT",
+   "SRC-SIGMA-ADFIND",
+   "SRC-SIGMA-ASREP",
+   "SRC-SIGMA-CHISEL",
+   "SRC-SIGMA-CS-PIPE",
+   "SRC-SIGMA-DCSYNC",
+   "SRC-SIGMA-EVILWINRM",
+   "SRC-SIGMA-IMPACKET-LM",
+   "SRC-SIGMA-KERBEROAST",
+   "SRC-SIGMA-LSASS",
+   "SRC-SIGMA-NGROK",
+   "SRC-SIGMA-PSEXESVC",
+   "SRC-SIGMA-RUBEUS",
+   "SRC-SIGMA-SHARPHOUND",
+   "SRC-SIGMA-SMBEXEC",
+   "SRC-SIGMA-UA-RECON",
+   "SRC-SIGMA-WINRM-CHILD"
+  ]
+ },
+ "files": [
+  {
+   "path": ".github/workflows/android.yml",
+   "role": "CI",
+   "bytes": 4219,
+   "sha256": "6bec0ca9764376c4",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": ".github/workflows/iana.yml",
+   "role": "CI",
+   "bytes": 1444,
+   "sha256": "11022ec13ff4bf91",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": ".github/workflows/validate.yml",
+   "role": "CI",
+   "bytes": 646,
+   "sha256": "3f27383958d49e03",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "app/assets/data/iana.json",
+   "role": "生成物（アプリ同梱、dist と同一）",
+   "bytes": 593590,
+   "sha256": "4c04f0c76f5da95e",
+   "last_commit": "2026-11-21",
+   "records": 11625
+  },
+  {
+   "path": "app/assets/data/kb.json",
+   "role": "生成物（アプリ同梱、dist と同一）",
+   "bytes": 348555,
+   "sha256": "7cc7ddb64cc69295",
+   "last_commit": "2026-11-21",
+   "records": 8
+  },
+  {
+   "path": "app/assets/data/ports.json",
+   "role": "生成物（アプリ同梱、dist と同一）",
+   "bytes": 343232,
+   "sha256": "9a974bbd96a19417",
+   "last_commit": "2026-11-21",
+   "records": 160
+  },
+  {
+   "path": "data/attack_patterns.json",
+   "role": "正本データ",
+   "bytes": 27049,
+   "sha256": "a3f8bebc665c2d7e",
+   "last_commit": "2026-11-21",
+   "records": 24
+  },
+  {
+   "path": "data/detection_strategies.json",
+   "role": "正本データ",
+   "bytes": 504383,
+   "sha256": "5afafe005aac753c",
+   "last_commit": "2026-11-21",
+   "records": 164
+  },
+  {
+   "path": "data/log_investigation.json",
+   "role": "正本データ",
+   "bytes": 19472,
+   "sha256": "9479da0476cc454a",
+   "last_commit": "2026-11-21",
+   "records": 9
+  },
+  {
+   "path": "data/mitre_software.json",
+   "role": "正本データ",
+   "bytes": 10379,
+   "sha256": "eb67e35eaa0de0ee",
+   "last_commit": "2026-11-21",
+   "records": 11
+  },
+  {
+   "path": "data/mitre_techniques.json",
+   "role": "正本データ",
+   "bytes": 55367,
+   "sha256": "fd469c1fec09fdaf",
+   "last_commit": "2026-11-21",
+   "records": 90
+  },
+  {
+   "path": "data/port_risks.json",
+   "role": "正本データ",
+   "bytes": 146851,
+   "sha256": "f51823aa86220382",
+   "last_commit": "2026-11-21",
+   "records": 160
+  },
+  {
+   "path": "data/ports.json",
+   "role": "正本データ",
+   "bytes": 222874,
+   "sha256": "30d3fda9e3d5bd51",
+   "last_commit": "2026-11-21",
+   "records": 160
+  },
+  {
+   "path": "data/protocols.json",
+   "role": "正本データ",
+   "bytes": 11348,
+   "sha256": "eaf8d38f84582b64",
+   "last_commit": "2026-11-21",
+   "records": 7
+  },
+  {
+   "path": "data/raw/iana/FETCHED_AT",
+   "role": "一次データ（外部公式ソースの取得物）",
+   "bytes": 11,
+   "sha256": "9e179a4289d86783",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "data/raw/iana/service-names-port-numbers.csv",
+   "role": "一次データ（外部公式ソースの取得物）",
+   "bytes": 1159071,
+   "sha256": "79efcd64d4c5f86f",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "data/raw/mitre/attack_catalog.json",
+   "role": "一次データ（外部公式ソースの取得物）",
+   "bytes": 518885,
+   "sha256": "d5fd7d6d3132aab7",
+   "last_commit": null,
+   "records": 6
+  },
+  {
+   "path": "data/services.json",
+   "role": "正本データ",
+   "bytes": 8510,
+   "sha256": "cfa17c1b4195c6e5",
+   "last_commit": "2026-11-21",
+   "records": 6
+  },
+  {
+   "path": "data/sources.json",
+   "role": "正本データ",
+   "bytes": 103907,
+   "sha256": "cc2854b2ce52b583",
+   "last_commit": "2026-11-21",
+   "records": 176
+  },
+  {
+   "path": "data/tools.json",
+   "role": "正本データ",
+   "bytes": 18987,
+   "sha256": "c30e3ac117f607a7",
+   "last_commit": "2026-11-21",
+   "records": 18
+  },
+  {
+   "path": "dist/iana.json",
+   "role": "生成物（アプリ用インデックス）",
+   "bytes": 593590,
+   "sha256": "4c04f0c76f5da95e",
+   "last_commit": "2026-11-21",
+   "records": 11625
+  },
+  {
+   "path": "dist/kb.json",
+   "role": "生成物（アプリ用インデックス）",
+   "bytes": 348555,
+   "sha256": "7cc7ddb64cc69295",
+   "last_commit": "2026-11-21",
+   "records": 8
+  },
+  {
+   "path": "dist/ports.json",
+   "role": "生成物（アプリ用インデックス）",
+   "bytes": 343232,
+   "sha256": "9a974bbd96a19417",
+   "last_commit": "2026-11-21",
+   "records": 160
+  },
+  {
+   "path": "docs/DATA_DICTIONARY.md",
+   "role": "文書",
+   "bytes": 5521,
+   "sha256": "aad37914958041c2",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/DATA_UPDATE_GUIDE.md",
+   "role": "文書",
+   "bytes": 1937,
+   "sha256": "24bcf6160d915e15",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/DEVELOPMENT.md",
+   "role": "文書",
+   "bytes": 3167,
+   "sha256": "0ad82aa62e33dd33",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/RISK_RUBRIC.md",
+   "role": "文書",
+   "bytes": 1471,
+   "sha256": "fadb3bfe62b92827",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/VALIDATION_REPORT.md",
+   "role": "文書",
+   "bytes": 9425,
+   "sha256": "faccff25ab78205a",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/baseline/DATA_INVENTORY.json",
+   "role": "文書",
+   "bytes": 52271,
+   "sha256": "b031e84312ca02f6",
+   "last_commit": null,
+   "records": 9
+  },
+  {
+   "path": "docs/images/attack.png",
+   "role": "文書",
+   "bytes": 52172,
+   "sha256": "3f0b657f211034ab",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/images/log.png",
+   "role": "文書",
+   "bytes": 62961,
+   "sha256": "1b2e4280c23e5917",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/images/search.png",
+   "role": "文書",
+   "bytes": 26028,
+   "sha256": "817dbc16a00d9c93",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "docs/images/tool.png",
+   "role": "文書",
+   "bytes": 46507,
+   "sha256": "d09c2fc170919f60",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/__pycache__/mitre_catalog.cpython-313.pyc",
+   "role": "検証・生成スクリプト",
+   "bytes": 5021,
+   "sha256": "818146e7faf1f6d7",
+   "last_commit": null
+  },
+  {
+   "path": "tools/__pycache__/quality.cpython-313.pyc",
+   "role": "検証・生成スクリプト",
+   "bytes": 24054,
+   "sha256": "c623aaaa7cb161fa",
+   "last_commit": null
+  },
+  {
+   "path": "tools/__pycache__/test_validate.cpython-313.pyc",
+   "role": "検証・生成スクリプト",
+   "bytes": 8449,
+   "sha256": "fb81b3d95eadeceb",
+   "last_commit": null
+  },
+  {
+   "path": "tools/__pycache__/v5_catalog.cpython-313.pyc",
+   "role": "検証・生成スクリプト",
+   "bytes": 35797,
+   "sha256": "e5d165db61ea0ac6",
+   "last_commit": null
+  },
+  {
+   "path": "tools/__pycache__/v5_ports.cpython-313.pyc",
+   "role": "検証・生成スクリプト",
+   "bytes": 32507,
+   "sha256": "fdc360fd0206bef1",
+   "last_commit": null
+  },
+  {
+   "path": "tools/__pycache__/validate.cpython-313.pyc",
+   "role": "検証・生成スクリプト",
+   "bytes": 13456,
+   "sha256": "97e0a682ebdc37a0",
+   "last_commit": null
+  },
+  {
+   "path": "tools/apply_evidence.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 4205,
+   "sha256": "f92fbfc29508eea7",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/apply_evidence_docs.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 8925,
+   "sha256": "daf5cc4af589cec1",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/apply_v5.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 7373,
+   "sha256": "ee4728584b5aae40",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/baseline.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 6749,
+   "sha256": "35ea577285ddea60",
+   "last_commit": null
+  },
+  {
+   "path": "tools/build_index.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 11328,
+   "sha256": "33894af51d0a81bd",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/check_manifest.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 2963,
+   "sha256": "d109fe33c7c07f88",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/evidence_attack.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 5440,
+   "sha256": "6196768197f0d46d",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/import_mitre.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 7877,
+   "sha256": "ee3b51f829b2e9b5",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/make_icon.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 4731,
+   "sha256": "de0d2eea0c350665",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/migrate_v3_to_v4.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 11781,
+   "sha256": "977908bb494d6260",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/mitre_catalog.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 5121,
+   "sha256": "ff51605e2bba20d0",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/mitre_ids.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 2049,
+   "sha256": "44c0cff927e72a57",
+   "last_commit": null
+  },
+  {
+   "path": "tools/quality.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 12425,
+   "sha256": "45af96800b3a6ee7",
+   "last_commit": null
+  },
+  {
+   "path": "tools/test_validate.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 2744,
+   "sha256": "594cef8c1111944d",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/v5_catalog.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 34178,
+   "sha256": "cc5c6339d3607ed2",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/v5_ports.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 28088,
+   "sha256": "1763de9c3e93d399",
+   "last_commit": "2026-11-21"
+  },
+  {
+   "path": "tools/validate.py",
+   "role": "検証・生成スクリプト",
+   "bytes": 9099,
+   "sha256": "41006c10e3c8515e",
+   "last_commit": "2026-11-21"
+  }
+ ],
+ "relations": [
+  {
+   "from": "ports.service_id",
+   "to": "services",
+   "edges": 9,
+   "broken": []
+  },
+  {
+   "from": "ports.protocol_id",
+   "to": "protocols",
+   "edges": 160,
+   "broken": []
+  },
+  {
+   "from": "ports.risk_id",
+   "to": "port_risks",
+   "edges": 160,
+   "broken": []
+  },
+  {
+   "from": "ports.attack_pattern_ids",
+   "to": "attack_patterns",
+   "edges": 280,
+   "broken": []
+  },
+  {
+   "from": "ports.technique_ids",
+   "to": "techniques",
+   "edges": 271,
+   "broken": []
+  },
+  {
+   "from": "ports.source_ids",
+   "to": "sources",
+   "edges": 267,
+   "broken": []
+  },
+  {
+   "from": "port_risks.technique_ids",
+   "to": "techniques",
+   "edges": 261,
+   "broken": []
+  },
+  {
+   "from": "attack_patterns.technique_ids",
+   "to": "techniques",
+   "edges": 55,
+   "broken": []
+  },
+  {
+   "from": "attack_patterns.log_investigation_ids",
+   "to": "log_investigation",
+   "edges": 41,
+   "broken": []
+  },
+  {
+   "from": "tools.attack_pattern_ids",
+   "to": "attack_patterns",
+   "edges": 34,
+   "broken": []
+  },
+  {
+   "from": "tools.technique_ids",
+   "to": "techniques",
+   "edges": 15,
+   "broken": []
+  },
+  {
+   "from": "tools.log_investigation_ids",
+   "to": "log_investigation",
+   "edges": 27,
+   "broken": []
+  },
+  {
+   "from": "tools.mitre_software_id",
+   "to": "mitre_software",
+   "edges": 11,
+   "broken": []
+  },
+  {
+   "from": "mitre_techniques.detection_strategy_ids",
+   "to": "detection_strategies",
+   "edges": 90,
+   "broken": []
+  },
+  {
+   "from": "log_investigation.analytics_ids",
+   "to": "analytics",
+   "edges": 4,
+   "broken": []
+  }
+ ],
+ "commands": [
+  {
+   "cmd": "git status --porcelain -- data dist app/assets/data docs/VALIDATION_REPORT.md",
+   "exit": 0,
+   "tail": [
+    "?? data/raw/mitre/"
+   ]
+  },
+  {
+   "cmd": "python3 tools/validate.py data",
+   "exit": 0,
+   "tail": [
+    "825 records / errors=0 warnings=0 -> PASS"
+   ]
+  },
+  {
+   "cmd": "python3 -m unittest discover -s tools",
+   "exit": 0,
+   "tail": [
+    ".............",
+    "----------------------------------------------------------------------",
+    "Ran 13 tests in 0.203s",
+    "",
+    "OK"
+   ]
+  },
+  {
+   "cmd": "python3 tools/build_index.py",
+   "exit": 0,
+   "tail": [
+    "assets: ports 160 / iana 11625 / techniques 164 / dets 164"
+   ]
+  },
+  {
+   "cmd": "git diff --stat -- dist app/assets/data docs/VALIDATION_REPORT.md",
+   "exit": 0,
+   "tail": []
+  }
+ ],
+ "quality": [
+  {
+   "code": "Q-SCHEMA",
+   "level": "error",
+   "where": "data/schemas",
+   "msg": "JSON Schema 未整備"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "services:SRV-RDP",
+   "msg": "ポートが通信方式付きで定義されていない（transport_protocol='TCP / UDP'）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "services:SRV-SMB",
+   "msg": "ポートが通信方式付きで定義されていない（transport_protocol='TCP'）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "services:SRV-SSH",
+   "msg": "ポートが通信方式付きで定義されていない（transport_protocol='TCP'）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "services:SRV-HTTP",
+   "msg": "ポートが通信方式付きで定義されていない（transport_protocol='TCP'）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "services:SRV-HTTPS",
+   "msg": "ポートが通信方式付きで定義されていない（transport_protocol='TCP / UDP'）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "services:SRV-DNS",
+   "msg": "ポートが通信方式付きで定義されていない（transport_protocol='UDP / TCP'）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0327",
+   "msg": "監視ポート 445 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0327",
+   "msg": "監視ポート 135 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0327",
+   "msg": "監視ポート 3389 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0327",
+   "msg": "監視ポート 5985 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0327",
+   "msg": "監視ポート 5986 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0327",
+   "msg": "監視ポート 1433 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0327",
+   "msg": "監視ポート 3306 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 22 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 445 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 2049 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 80 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 443 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 3306 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 5432 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 6379 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0328",
+   "msg": "監視ポート 21 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0329",
+   "msg": "監視ポート 427 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0329",
+   "msg": "監視ポート 443 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0329",
+   "msg": "監視ポート 902 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0329",
+   "msg": "監視ポート 5989 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0330",
+   "msg": "監視ポート 22 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0330",
+   "msg": "監視ポート 5900 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0330",
+   "msg": "監視ポート 8080 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-TRANSPORT",
+   "level": "error",
+   "where": "DET0118/AN0330",
+   "msg": "監視ポート 8443 に通信方式がない（番号のみで照合される）"
+  },
+  {
+   "code": "Q-IPPROTO",
+   "level": "error",
+   "where": "protocols:PROTO-TCP",
+   "msg": "transport_protocol に階層の説明 'L4 Transport Protocol' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"
+  },
+  {
+   "code": "Q-IPPROTO",
+   "level": "error",
+   "where": "protocols:PROTO-UDP",
+   "msg": "transport_protocol に階層の説明 'L4 Transport Protocol' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"
+  },
+  {
+   "code": "Q-IPPROTO",
+   "level": "error",
+   "where": "protocols:PROTO-ICMP",
+   "msg": "transport_protocol に階層の説明 'L3 Control Protocol (IP Protocol 1)' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"
+  },
+  {
+   "code": "Q-IPPROTO",
+   "level": "error",
+   "where": "protocols:PROTO-GRE",
+   "msg": "transport_protocol に階層の説明 'L3 Tunneling Protocol (IP Protocol 47)' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"
+  },
+  {
+   "code": "Q-IPPROTO",
+   "level": "error",
+   "where": "protocols:PROTO-ESP",
+   "msg": "transport_protocol に階層の説明 'L3 Security Protocol (IP Protocol 50)' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"
+  },
+  {
+   "code": "Q-IPPROTO",
+   "level": "error",
+   "where": "protocols:PROTO-AH",
+   "msg": "transport_protocol に階層の説明 'L3 Security Protocol (IP Protocol 51)' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"
+  },
+  {
+   "code": "Q-IPPROTO",
+   "level": "error",
+   "where": "protocols:PROTO-SCTP",
+   "msg": "transport_protocol に階層の説明 'L4 Transport Protocol (IP Protocol 132)' が入っている（IP プロトコル番号と通信方式の区別が曖昧）"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-HYDRA",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-NMAP",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-SAMBA-SMBCLIENT",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4624",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4625",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4648",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4662",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4697",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4768",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4771",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-4776",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-5140",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-SRC",
+   "level": "error",
+   "where": "sources:SRC-MS-EVT-5145",
+   "msg": "確認状態 '未再検証' が未定義値"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00017-UDP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00019-UDP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00022-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00111-UDP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00135-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00427-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00445-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00520-UDP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-00902-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-01433-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-01900-UDP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-03306-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-03389-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-04444-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-05353-UDP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-05900-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-05985-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-05986-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-05989-TCP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-VERIFIED",
+   "level": "error",
+   "where": "ports:PORT-11211-UDP",
+   "msg": "確認済みだがポート固有の根拠(evidence)がない"
+  },
+  {
+   "code": "Q-CVE",
+   "level": "error",
+   "where": "ports:PORT-61616-TCP",
+   "msg": "CVE-2023-46604 が本文のみで、製品・影響バージョン付きの構造化データがない"
+  },
+  {
+   "code": "Q-CVE",
+   "level": "error",
+   "where": "port_risks:RISK-03389-TCP",
+   "msg": "CVE-2019-0708 が本文のみで、製品・影響バージョン付きの構造化データがない"
+  },
+  {
+   "code": "Q-CVE",
+   "level": "error",
+   "where": "port_risks:RISK-03389-TCP",
+   "msg": "CVE-2022-21893 が本文のみで、製品・影響バージョン付きの構造化データがない"
+  },
+  {
+   "code": "Q-CVE",
+   "level": "error",
+   "where": "port_risks:RISK-00445-TCP",
+   "msg": "CVE-2020-0796 が本文のみで、製品・影響バージョン付きの構造化データがない"
+  },
+  {
+   "code": "Q-CVE",
+   "level": "error",
+   "where": "port_risks:RISK-00022-TCP",
+   "msg": "CVE-2024-6387 が本文のみで、製品・影響バージョン付きの構造化データがない"
+  },
+  {
+   "code": "Q-CVE",
+   "level": "error",
+   "where": "port_risks:RISK-00427-TCP",
+   "msg": "CVE-2021-21974 が本文のみで、製品・影響バージョン付きの構造化データがない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-00069-TCP",
+   "msg": "T1552.001 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-00069-UDP",
+   "msg": "T1552.001 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-00548-TCP",
+   "msg": "T1039 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-00593-TCP",
+   "msg": "T1046 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-00873-TCP",
+   "msg": "T1039 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-02049-TCP",
+   "msg": "T1039 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-02049-UDP",
+   "msg": "T1039 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-02179-TCP",
+   "msg": "T1021 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-02483-TCP",
+   "msg": "T1078.001 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-ASSOC",
+   "level": "error",
+   "where": "ports:PORT-03283-TCP",
+   "msg": "T1021.005 の関連根拠（攻撃手法・ポート固有根拠・関連区分）がない"
+  },
+  {
+   "code": "Q-HIDDEN",
+   "level": "error",
+   "where": "kb.attacks",
+   "msg": "アプリ用データに certainty, notes, verified がない（画面に表示できない）"
+  },
+  {
+   "code": "Q-HIDDEN",
+   "level": "error",
+   "where": "kb.tools",
+   "msg": "アプリ用データに verified がない（画面に表示できない）"
+  },
+  {
+   "code": "Q-HIDDEN",
+   "level": "error",
+   "where": "kb.logs",
+   "msg": "アプリ用データに verified がない（画面に表示できない）"
+  },
+  {
+   "code": "Q-HIDDEN",
+   "level": "error",
+   "where": "ports.risk",
+   "msg": "リスク評価の未確認事項がアプリ用データにない"
+  },
+  {
+   "code": "Q-HIDDEN",
+   "level": "error",
+   "where": "kb.sources",
+   "msg": "出典の確認状態(3値)がアプリ用データにない"
+  },
+  {
+   "code": "Q-VENDOR",
+   "level": "info",
+   "where": "log_investigation:LOG-FORTIGATE-VENDOR",
+   "msg": "確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）"
+  },
+  {
+   "code": "Q-VENDOR",
+   "level": "info",
+   "where": "log_investigation:LOG-NECIX-VENDOR",
+   "msg": "確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）"
+  }
+ ],
+ "v3": {
+  "zip": "64abf3ed-cyber-security-database-v3.zip",
+  "files": 35,
+  "unique_contents": 20,
+  "rows": [
+   {
+    "v3_file": "data_update_guide.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "future_data_update_guide.md",
+    "duplicate_of": "data_update_guide.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "quality_verification.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "quality_verification_report.md",
+    "duplicate_of": "quality_verification.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "sources_list.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "source_references.md",
+    "duplicate_of": "sources_list.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "relation_spec.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "data_relationship_spec.md",
+    "duplicate_of": "relation_spec.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "schema_spec.md",
+    "duplicate_of": "relation_spec.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "json_schema_spec.md",
+    "duplicate_of": "relation_spec.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "mitre_attack_mapping.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "07_mitre_attack_mapping.md",
+    "duplicate_of": "mitre_attack_mapping.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "log_investigation_manual.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "06_log_investigation_manual.md",
+    "duplicate_of": "log_investigation_manual.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "port_risks.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "05_port_risks.md",
+    "duplicate_of": "port_risks.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "attack_dictionary.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "04_attack_patterns.md",
+    "duplicate_of": "attack_dictionary.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "protocol_dictionary.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "03_protocol_dictionary.md",
+    "duplicate_of": "protocol_dictionary.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "service_dictionary.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "02_service_dictionary.md",
+    "duplicate_of": "service_dictionary.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "port_list.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "01_port_list.md",
+    "duplicate_of": "port_list.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "DATA_DICTIONARY.md",
+    "duplicate_of": "relation_spec.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "VALIDATION_REPORT.md",
+    "duplicate_of": "quality_verification.md",
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "CHANGELOG.md",
+    "duplicate_of": null,
+    "current": "docs/（v4 で再構成。自動生成または DATA_DICTIONARY / DATA_UPDATE_GUIDE へ統合）"
+   },
+   {
+    "v3_file": "services.json",
+    "duplicate_of": null,
+    "changed_fields": {
+     "certainty": 3,
+     "mitre_attack_ids(削除/改名)": 6,
+     "source_urls(削除/改名)": 6,
+     "unconfirmed_notes": 3
+    },
+    "current": "data/services.json",
+    "v3_records": 6,
+    "kept": 6,
+    "missing": [],
+    "added": 0
+   },
+   {
+    "v3_file": "ports.json",
+    "duplicate_of": null,
+    "changed_fields": {
+     "attack_pattern_ids": 38,
+     "certainty": 30,
+     "mitre_attack_ids(削除/改名)": 50,
+     "source_ids": 24,
+     "source_urls(削除/改名)": 50,
+     "unconfirmed_notes": 30,
+     "verified_date": 16
+    },
+    "current": "data/ports.json",
+    "v3_records": 50,
+    "kept": 50,
+    "missing": [],
+    "added": 110
+   },
+   {
+    "v3_file": "log_investigation.json",
+    "duplicate_of": null,
+    "changed_fields": {
+     "certainty": 3,
+     "unconfirmed_notes": 3
+    },
+    "current": "data/log_investigation.json",
+    "v3_records": 6,
+    "kept": 6,
+    "missing": [],
+    "added": 3
+   },
+   {
+    "v3_file": "port_risks.json",
+    "duplicate_of": null,
+    "changed_fields": {
+     "certainty": 5,
+     "mitre_attack_ids(削除/改名)": 9,
+     "unconfirmed_notes": 5
+    },
+    "current": "data/port_risks.json",
+    "v3_records": 9,
+    "kept": 9,
+    "missing": [],
+    "added": 151
+   },
+   {
+    "v3_file": "mitre_attack.json",
+    "duplicate_of": null,
+    "current": "data/mitre_techniques.json + data/detection_strategies.json",
+    "v3_records": 3,
+    "kept": 4,
+    "missing": [],
+    "added": 250
+   },
+   {
+    "v3_file": "attack_patterns.json",
+    "duplicate_of": null,
+    "changed_fields": {
+     "mitre_attack_ids(削除/改名)": 7,
+     "source_ids": 7,
+     "source_urls(削除/改名)": 7,
+     "target_ports(削除/改名)": 7
+    },
+    "current": "data/attack_patterns.json",
+    "v3_records": 7,
+    "kept": 7,
+    "missing": [],
+    "added": 17
+   },
+   {
+    "v3_file": "protocols.json",
+    "duplicate_of": null,
+    "changed_fields": {
+     "certainty": 7,
+     "mitre_attack_ids(削除/改名)": 7,
+     "source_urls(削除/改名)": 7,
+     "unconfirmed_notes": 2
+    },
+    "current": "data/protocols.json",
+    "v3_records": 7,
+    "kept": 7,
+    "missing": [],
+    "added": 0
+   },
+   {
+    "v3_file": "sources.json",
+    "duplicate_of": null,
+    "changed_fields": {},
+    "current": "data/sources.json",
+    "v3_records": 9,
+    "kept": 9,
+    "missing": [],
+    "added": 167
+   }
+  ]
+ }
+}

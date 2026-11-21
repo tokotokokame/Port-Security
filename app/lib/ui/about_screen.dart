@@ -25,8 +25,12 @@ class AboutScreen extends StatelessWidget {
           KV('収録', '詳細付き ${repo.detailed.length} 件（確認済み $verified 件） / IANA 登録 ${str(m['iana'])} 件', mono: true),
           KV('最終検証日', str(m['verified']), mono: true),
           KV('ATT&CK', str(m['attack_version']), mono: true),
+          KV('データ版', str(m['data_version']), mono: true),
           KV('IANA 台帳取得日', str(m['iana_fetched']), mono: true),
-          const KV('確度', '確認済み: 攻撃・検知の記述に再検証済みの一次資料あり\n一部確認: ポート割当のみ一次資料で確認（不足は各ポートの src タブに表示）'),
+          KV('CVE / KEV', 'CVE レコード取得 ${str(m['cve_fetched'])} / KEV catalog ${str(m['kev_catalog'])}', mono: true),
+          const KV('確度', '確認済み: 攻撃・検知の記述に再検証済みの一次資料とポート固有の根拠あり\n一部確認: 一部のみ一次資料で確認（未確認の範囲は各画面の「未確認事項」に表示）'),
+          const KV('ATT&CK との関連', '直接: ポート固有の根拠が技術を名指し / 攻撃手法経由 / サービス経由 / 参考（一次資料未付与）'),
+          const KV('CVE', '製品・バージョン・構成を条件として表示します。ポート番号だけでは該当を判定できません。'),
         ]),
         TermSection('attribution', children: [
           const KV('MITRE ATT&CK®', '© 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation.'),

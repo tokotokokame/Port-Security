@@ -9,7 +9,7 @@ and mitre_software.json, and adds the matching SRC-MITRE-* sources.
 import json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
-from mitre_catalog import DET0118
+from mitre_catalog import DET0118, DET0118_TRANSPORT
 
 REFS = ["ports", "services", "protocols", "attack_patterns", "port_risks", "tools"]
 PLATFORM_LOGS = {"Windows": ["LOG-WIN-SECURITY"], "Linux": ["LOG-LIN-AN0328"], "macOS": ["LOG-MAC-AN0330"],
@@ -74,11 +74,11 @@ def main(stix, data):
             plats = a.get("x_mitre_platforms", [])
             row = {"id": aid, "platforms": plats, "description": a.get("description", ""),
                    "log_sources": [{"name": l.get("name"), "channel": l.get("channel")} for l in a.get("x_mitre_log_source_references", [])],
-                   "monitored_ports": [], "port_basis": "none", "service_names": [],
+                   "monitored_ports": [], "port_basis": "none", "transport_basis": "none", "service_names": [],
                    "log_investigation_ids": sorted({l for pf in plats for l in PLATFORM_LOGS.get(pf, [])})}
             if did == "DET0118" and aid in DET0118_AN:
                 _, _, ports, basis, svc, log = DET0118_AN[aid]
-                row.update(monitored_ports=ports, port_basis=basis, service_names=svc,
+                row.update(monitored_ports=ports, port_basis=basis, transport_basis=DET0118_TRANSPORT[aid], service_names=svc,
                            log_investigation_ids=sorted(set(row["log_investigation_ids"]) | {log}))
             analytics.append(row)
         det_rows[did] = {"id": did, "name": d["name"], "technique_ids": targets, "version": d.get("x_mitre_version"),

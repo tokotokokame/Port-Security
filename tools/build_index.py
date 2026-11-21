@@ -10,8 +10,10 @@ import csv, json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from validate import load_all, validate
+import reports
 
 ROOT = Path(__file__).parent.parent
+DATA_VERSION = "1.1"
 MATCH = ["DET公式監視ポート一致", "公式文書のポート指定", "DETサービス名から推定", "ATT&CK検知戦略(プラットフォーム)",
          "攻撃手法・ツール経由", "境界機器ログ(全ポート共通)"]
 
@@ -23,6 +25,9 @@ def build(db):
     det_of.update({s["id"]: s["detection_strategy_ids"] for t in db["mitre_techniques"] for s in t["subtechniques"]})
     soft_tech = {s["id"]: s["technique_ids"] for s in db["mitre_software"]}
     tool_techs = {t["id"]: sorted(set(t["technique_ids"]) | set(soft_tech.get(t["mitre_software_id"], []))) for t in db["tools"]}
+    vulns_of = {}
+    for v in db["vulnerabilities"]:
+        for r in v["risk_ids"]: vulns_of.setdefault(r, []).append(v["id"])
     tools_at = {}
     for t in db["tools"]:
         for n, tp in t["ports"]: tools_at.setdefault((n, tp), []).append(t["id"])
@@ -33,7 +38,7 @@ def build(db):
             logs.setdefault(lid, set()).add(via); rank[lid] = min(rank.get(lid, 9), lv)
         for d in db["detection_strategies"]:
             for a in d["analytics"]:
-                if p["port_number"] in a["monitored_ports"]:
+                if list(key) in a["monitored_ports"]:  # (番号, 通信方式) で照合。番号だけの一致は使わない
                     for lid in a["log_investigation_ids"]: add(lid, f"{d['id']}/{a['id']}", 0 if a["port_basis"] == "official" else 2)
         for l in db["log_investigation"]:
             if l["port_scope"] == "listed" and list(key) in [list(x) for x in l["ports"]]: add(l["id"], "公式文書のポート指定", 1)
@@ -61,7 +66,10 @@ def build(db):
             "certainty": p["certainty"], "notes": p["unconfirmed_notes"], "verified": p["verified_date"],
             "risk": None if not risk else {"level": risk["risk_level"], "reason": risk["reason_targeted"],
                                            "indicators": risk.get("suspicious_indicators", ""), "focus": risk.get("investigation_focus", ""),
-                                           "mitigation": risk.get("mitigation_controls", ""), "certainty": risk["certainty"]},
+                                           "mitigation": risk.get("mitigation_controls", ""), "certainty": risk["certainty"],
+                                           "notes": risk["unconfirmed_notes"], "verified": risk["verified_date"],
+                                           "vulns": vulns_of.get(risk["id"], [])},
+            "basis": {b["technique"]: {"relation": b["relation"], "via": b["via"], "note": b.get("note", "")} for b in p["technique_basis"]},
             "attacks": p["attack_pattern_ids"], "techniques": p["technique_ids"], "tools": tools,
             "logs": [{"id": l, "match": MATCH[rank[l]], "rank": rank[l], "via": sorted(v)} for l, v in sorted(logs.items(), key=lambda kv: (rank[kv[0]], kv[0]))],
             "sources": list(dict.fromkeys(p["source_ids"] + (risk or {}).get("source_ids", []) +
@@ -79,7 +87,8 @@ def build(db):
         "attacks": {a["id"]: {"name": a["attack_name"], "category": a.get("category", ""), "description": a.get("description", ""),
                               "features": a.get("attack_features", ""), "detection": a["detection_methods"],
                               "defenses": a.get("recommended_defenses", ""), "techniques": a["technique_ids"],
-                              "logs": a["log_investigation_ids"], "sources": a["source_ids"]} for a in db["attack_patterns"]},
+                              "logs": a["log_investigation_ids"], "sources": a["source_ids"], "certainty": a["certainty"],
+                              "notes": a["unconfirmed_notes"], "verified": a["verified_date"]} for a in db["attack_patterns"]},
         "techniques": techniques,
         "dets": {d["id"]: {"name": d["name"], "url": d["url"], "analytics": [
             {"id": a["id"], "platforms": a["platforms"], "description": a["description"],
@@ -87,12 +96,20 @@ def build(db):
         "tools": {t["id"]: {"name": t["name"], "category": t["category"], "sid": t["mitre_software_id"], "summary": t["summary"],
                             "ports": t["ports"], "artifacts": t["artifacts"], "detection": t["detection"], "attacks": t["attack_pattern_ids"],
                             "techniques": tool_techs[t["id"]], "logs": t["log_investigation_ids"], "sources": t["source_ids"],
-                            "certainty": t["certainty"], "notes": t["unconfirmed_notes"]} for t in db["tools"]},
+                            "certainty": t["certainty"], "notes": t["unconfirmed_notes"], "verified": t["verified_date"]} for t in db["tools"]},
         "logs": {l["id"]: {"platform": l["platform"], "sources": [[s["channel"], s["event_code"], s["description"]] for s in l["log_sources"]],
                            "analytics": l.get("detection_analytics", ""), "procedure": l["investigation_procedure"],
-                           "certainty": l["certainty"], "notes": l["unconfirmed_notes"], "refs": l["source_ids"]} for l in db["log_investigation"]},
+                           "certainty": l["certainty"], "notes": l["unconfirmed_notes"], "refs": l["source_ids"],
+                           "verified": l["verified_date"]} for l in db["log_investigation"]},
         "sources": {s["source_id"]: {"title": s["title"], "url": s["url"], "publisher": s.get("publisher", ""),
-                                     "scope": s["scope"], "verified": s["reverified_v4"]} for s in db["sources"]},
+                                     "scope": s["scope"], "verified": s["reverified_v4"], "certainty": s["verification_status"],
+                                     "checked": s.get("access_date") or ""} for s in db["sources"]},
+        "vulns": {v["id"]: {"title": v["title"], "condition": v["condition"], "published": v["published"], "updated": v["updated"],
+                            "cvss": [[c["score"], c["version"], c["source"], c["vector"]] for c in v["cvss"]],
+                            "kev": v["kev"]["listed"], "kev_added": v["kev"].get("date_added", ""),
+                            "affected": [[a["vendor"], a["product"], a["versions"], a.get("fixed", [])] for a in v["affected"]],
+                            "refs": v["references"], "sources": v["source_ids"], "notes": v["unconfirmed_notes"],
+                            "verified": v["verified_date"]} for v in db["vulnerabilities"]},
         "software": {s["id"]: {"name": s["name"], "description": s["description"], "url": s["url"]} for s in db["mitre_software"]},
     }
     return ports, kb
@@ -130,6 +147,19 @@ def report(db, ports, iana, errors, warnings):
     return "\n".join(L) + "\n"
 
 
+def quality_section(db):
+    import quality
+    from collections import Counter
+    res = quality.run(db)
+    c = Counter((r["code"], r["level"]) for r in res)
+    codes = ["Q-JSON", "Q-SCHEMA", "Q-DUP", "Q-ATTACK", "Q-TRANSPORT", "Q-IPPROTO", "Q-IANA", "Q-VERIFIED", "Q-SRC", "Q-HIDDEN",
+             "Q-ASSOC", "Q-CVE", "Q-COUNT"]
+    L = ["", "## 品質基準（tools/quality.py / docs/DATA_QUALITY_STANDARD.md）", "", "| コード | error |", "|---|---|"]
+    L += [f"| {k} | {c[(k, 'error')]} |" for k in codes]
+    L += ["", "対象外（記録のみ）:"] + [f"- {r['where']}: {r['msg']}" for r in res if r["level"] == "info"]
+    return "\n".join(L) + "\n"
+
+
 if __name__ == "__main__":
     db = load_all(ROOT / "data")
     errors, warnings = validate(db)
@@ -139,10 +169,15 @@ if __name__ == "__main__":
     iana = iana_rows()
     kb["meta"] = {"verified": max(r["verified_date"] for r in db["ports"]),
                   "attack_version": db["sources"][[s["source_id"] for s in db["sources"]].index(f"SRC-MITRE-{db['mitre_techniques'][0]['id']}")]["document_type"],
-                  "iana_fetched": (ROOT / "data/raw/iana/FETCHED_AT").read_text().strip(), "detailed": len(ports), "iana": len(iana)}
-    (ROOT / "docs/VALIDATION_REPORT.md").write_text(report(db, ports, iana, errors, warnings), encoding="utf-8")
+                  "iana_fetched": (ROOT / "data/raw/iana/FETCHED_AT").read_text().strip(), "detailed": len(ports), "iana": len(iana),
+                  "data_version": DATA_VERSION, "cve_fetched": (ROOT / "data/raw/cve/FETCHED_AT").read_text().strip(),
+                  "kev_catalog": json.loads((ROOT / "data/raw/kev/kev_subset.json").read_text(encoding="utf-8"))["catalogVersion"]}
     for out in (ROOT / "dist", ROOT / "app/assets/data"):
         out.mkdir(parents=True, exist_ok=True)
         for name, data in [("ports", ports), ("kb", kb), ("iana", iana)]:
             (out / f"{name}.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (ROOT / "docs/VALIDATION_REPORT.md").write_text(report(db, ports, iana, errors, warnings) + quality_section(db), encoding="utf-8")
+    cat = json.loads((ROOT / "data/raw/mitre/attack_catalog.json").read_text(encoding="utf-8"))
+    (ROOT / "docs/MITRE_VALIDATION_REPORT.md").write_text(reports.mitre_report(db, cat), encoding="utf-8")
+    (ROOT / "docs/CVE_VALIDATION_REPORT.md").write_text(reports.cve_report(db), encoding="utf-8")
     print(f"assets: ports {len(ports)} / iana {len(iana)} / techniques {len(kb['techniques'])} / dets {len(kb['dets'])}")

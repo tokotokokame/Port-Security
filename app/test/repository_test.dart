@@ -43,6 +43,37 @@ void main() {
       expect(docker.certainty, '確認済み');
       expect(docker.evidence.map((x) => x.source), contains('SRC-DOCKER-REMOTE'));
     });
+    test('v1.1: CVEs are tied to a risk with a condition, never to a port alone', () {
+      expect(repo.vulns.length, 7);
+      final smb = repo.detailed.firstWhere((e) => e.label == '445/tcp').detail!.risk!;
+      expect(smb.vulns, contains('CVE-2017-0144'));
+      for (final v in repo.vulns.values) {
+        expect(v.condition, isNotEmpty, reason: v.id);
+        expect(v.affected, isNotEmpty, reason: v.id);
+        expect(v.cvss.every((c) => c.$3.isNotEmpty), isTrue, reason: '${v.id}: CVSS provider');
+      }
+    });
+    test('v1.1: every port technique has a relation basis', () {
+      for (final e in repo.detailed) {
+        expect(e.detail!.basis.keys.toSet(), e.detail!.techniques.toSet(), reason: e.label);
+      }
+      expect(repo.detailed.firstWhere((e) => e.label == '3389/tcp').detail!.basis['T1210']!.relation, 'direct');
+    });
+    test('v1.1: certainty, review date and notes reach every entity', () {
+      for (final a in repo.attacks.values) {
+        expect([a.certainty, a.verified], everyElement(isNotEmpty), reason: a.id);
+        if (a.certainty != '確認済み') expect(a.notes, isNotEmpty, reason: a.id);
+      }
+      expect(repo.tools.values.every((t) => t.verified.isNotEmpty), isTrue);
+      expect(repo.logs.values.every((l) => l.verified.isNotEmpty), isTrue);
+      expect(repo.sources.values.every((s) => {'確認済み', '一部確認', '未確認'}.contains(s.certainty)), isTrue);
+    });
+    test('v1.1: UDP ports are not matched to TCP-only detection strategies', () {
+      for (final label in ['443/udp', '3389/udp', '2049/udp']) {
+        final logs = repo.detailed.firstWhere((e) => e.label == label).detail!.logs;
+        expect(logs.where((l) => l.rank <= 2), isEmpty, reason: label);
+      }
+    });
     test('all links are https', () {
       final urls = [...repo.sources.values.map((s) => s.url), ...repo.techniques.values.map((t) => t.url)];
       expect(urls.every((u) => Uri.parse(u).scheme == 'https'), isTrue);

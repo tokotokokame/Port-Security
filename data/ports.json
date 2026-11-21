@@ -30,7 +30,25 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00017-UDP"
+    "risk_id": "RISK-00017-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Quote of the Day (QOTD) を記載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-CISA-AMP"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00019-UDP",
@@ -63,7 +81,25 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00019-UDP"
+    "risk_id": "RISK-00019-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Character Generator Protocol (CharGEN) を記載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-CISA-AMP"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00020-TCP",
@@ -95,7 +131,16 @@
     "service_id": null,
     "risk_id": "RISK-00020-TCP",
     "category": "FILE",
-    "iana_description": "File Transfer [Default Data]"
+    "iana_description": "File Transfer [Default Data]",
+    "technique_basis": [
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00021-TCP",
@@ -141,6 +186,29 @@
         "examples": [],
         "keyword": "FTP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1048",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1048"
+        ]
+      }
     ]
   },
   {
@@ -182,7 +250,48 @@
     "service_id": "SRV-SSH",
     "risk_id": "RISK-00022-TCP",
     "category": "REMOTE",
-    "iana_description": "The Secure Shell (SSH) Protocol"
+    "iana_description": "The Secure Shell (SSH) Protocol",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0330"
+        ],
+        "keyword": "ServicePortSet: 22, 5900, 8080/8443 by default"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      },
+      {
+        "technique": "T1021.004",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-LATERAL-MOVE"
+        ]
+      },
+      {
+        "technique": "T1572",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-TUNNEL"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00023-TCP",
@@ -219,7 +328,30 @@
     "service_id": null,
     "risk_id": "RISK-00023-TCP",
     "category": "REMOTE",
-    "iana_description": "Telnet"
+    "iana_description": "Telnet",
+    "technique_basis": [
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00025-TCP",
@@ -253,7 +385,23 @@
     "service_id": null,
     "risk_id": "RISK-00025-TCP",
     "category": "MAIL",
-    "iana_description": "Simple Mail Transfer"
+    "iana_description": "Simple Mail Transfer",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1566",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-MAIL-ABUSE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00049-TCP",
@@ -297,6 +445,15 @@
         ],
         "keyword": "TACACS"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1040",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1040"
+        ]
+      }
     ]
   },
   {
@@ -330,7 +487,16 @@
     "service_id": "SRV-DNS",
     "risk_id": "RISK-00053-TCP",
     "category": "NAME",
-    "iana_description": "Domain Name Server"
+    "iana_description": "Domain Name Server",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00053-UDP",
@@ -400,6 +566,29 @@
         "examples": [],
         "keyword": "DNS"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1071.004",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1071"
+        ]
+      },
+      {
+        "technique": "T1041",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1041"
+        ]
+      },
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1498"
+        ]
+      }
     ]
   },
   {
@@ -444,6 +633,22 @@
         "examples": [],
         "keyword": "DHCP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1557.003",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1557"
+        ]
+      }
     ]
   },
   {
@@ -476,7 +681,16 @@
     "service_id": null,
     "risk_id": "RISK-00068-UDP",
     "category": "MGMT",
-    "iana_description": "Bootstrap Protocol Client"
+    "iana_description": "Bootstrap Protocol Client",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00069-TCP",
@@ -508,7 +722,15 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00069-TCP"
+    "risk_id": "RISK-00069-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1552.001",
+        "relation": "reference",
+        "via": [],
+        "note": "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）"
+      }
+    ]
   },
   {
     "id": "PORT-00069-UDP",
@@ -542,7 +764,22 @@
     "service_id": null,
     "risk_id": "RISK-00069-UDP",
     "category": "FILE",
-    "iana_description": "Trivial File Transfer"
+    "iana_description": "Trivial File Transfer",
+    "technique_basis": [
+      {
+        "technique": "T1552.001",
+        "relation": "reference",
+        "via": [],
+        "note": "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）"
+      },
+      {
+        "technique": "T1498.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AMPLIFICATION"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00080-TCP",
@@ -603,6 +840,29 @@
         ],
         "keyword": "HTTP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1595.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1071.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1071"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1190"
+        ]
+      }
     ]
   },
   {
@@ -662,6 +922,29 @@
         ],
         "keyword": "Kerberos"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1558.003",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1558"
+        ]
+      },
+      {
+        "technique": "T1558.004",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1558"
+        ]
+      }
     ]
   },
   {
@@ -684,9 +967,9 @@
       "ATK-KERBEROAST"
     ],
     "source_ids": [
-      "SRC-MS-RDS",
       "SRC-IANA-PORT",
-      "SRC-MITRE-T1558"
+      "SRC-MITRE-T1558",
+      "SRC-MS-SVC-PORTS"
     ],
     "verified_date": "2026-11-22",
     "certainty": "確認済み",
@@ -710,6 +993,22 @@
           "S1063 Brute Ratel C4"
         ],
         "keyword": "Kerberos"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1558.003",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1558"
+        ]
       }
     ]
   },
@@ -756,6 +1055,15 @@
         ],
         "keyword": "Industroyer・PLC-Blaster が 102 番を走査"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
     ]
   },
   {
@@ -792,7 +1100,30 @@
     "service_id": null,
     "risk_id": "RISK-00110-TCP",
     "category": "MAIL",
-    "iana_description": "Post Office Protocol - Version 3"
+    "iana_description": "Post Office Protocol - Version 3",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1114.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-MAIL-ABUSE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00111-TCP",
@@ -824,7 +1155,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00111-TCP"
+    "risk_id": "RISK-00111-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00111-UDP",
@@ -859,7 +1199,32 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00111-UDP"
+    "risk_id": "RISK-00111-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Portmap/Remote Procedure Call (RPC) を記載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-CISA-AMP"
+        ]
+      },
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00123-UDP",
@@ -903,6 +1268,22 @@
         "examples": [],
         "keyword": "NTP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1498"
+        ]
+      }
     ]
   },
   {
@@ -943,7 +1324,49 @@
     "service_id": null,
     "risk_id": "RISK-00135-TCP",
     "category": "REMOTE",
-    "iana_description": "DCE endpoint resolution"
+    "iana_description": "DCE endpoint resolution",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      },
+      {
+        "technique": "T1021",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-LATERAL-MOVE",
+          "ATK-REMOTE-EXEC"
+        ]
+      },
+      {
+        "technique": "T1047",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXEC"
+        ]
+      },
+      {
+        "technique": "T1003.006",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-DCSYNC"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00137-UDP",
@@ -989,6 +1412,22 @@
         "examples": [],
         "keyword": "NBT-NS"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1557.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1557"
+        ]
+      },
+      {
+        "technique": "T1498.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AMPLIFICATION"
+        ]
+      }
     ]
   },
   {
@@ -1022,7 +1461,16 @@
     "service_id": null,
     "risk_id": "RISK-00138-UDP",
     "category": "NAME",
-    "iana_description": "NETBIOS Datagram Service"
+    "iana_description": "NETBIOS Datagram Service",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00139-TCP",
@@ -1083,6 +1531,22 @@
         ],
         "keyword": "SMB"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1210"
+        ]
+      },
+      {
+        "technique": "T1021.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1021"
+        ]
+      }
     ]
   },
   {
@@ -1130,6 +1594,29 @@
           "G0094 Kimsuky"
         ],
         "keyword": "IMAP"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1114.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1114"
+        ]
       }
     ]
   },
@@ -1180,6 +1667,36 @@
         ],
         "keyword": "SNMP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1498.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AMPLIFICATION"
+        ]
+      },
+      {
+        "technique": "T1602.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1602"
+        ]
+      }
     ]
   },
   {
@@ -1212,7 +1729,16 @@
     "service_id": null,
     "risk_id": "RISK-00162-UDP",
     "category": "MGMT",
-    "iana_description": "SNMPTRAP"
+    "iana_description": "SNMPTRAP",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00179-TCP",
@@ -1244,7 +1770,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00179-TCP"
+    "risk_id": "RISK-00179-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00389-TCP",
@@ -1295,6 +1830,29 @@
         ],
         "keyword": "LDAP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1087.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1087"
+        ]
+      }
     ]
   },
   {
@@ -1330,7 +1888,23 @@
     "service_id": null,
     "risk_id": "RISK-00389-UDP",
     "category": "AUTH",
-    "iana_description": "Lightweight Directory Access Protocol"
+    "iana_description": "Lightweight Directory Access Protocol",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1498.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AMPLIFICATION"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00427-TCP",
@@ -1366,7 +1940,35 @@
     "service_id": null,
     "risk_id": "RISK-00427-TCP",
     "category": "VIRT",
-    "iana_description": "Server Location"
+    "iana_description": "Server Location",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0329"
+        ],
+        "keyword": "NSM:Flow: Inbound to tcp/427, tcp/443, tcp/902, tcp/5989"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      },
+      {
+        "technique": "T1486",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-RANSOMWARE",
+          "ATK-HYPERVISOR"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00443-TCP",
@@ -1433,6 +2035,36 @@
         ],
         "keyword": "HTTPS"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1071.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1071"
+        ]
+      },
+      {
+        "technique": "T1041",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1041"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
     ]
   },
   {
@@ -1440,8 +2072,8 @@
     "port_number": 443,
     "protocol_number": 17,
     "transport_protocol": "UDP",
-    "service_name": "http-3",
-    "formal_name": "HTTP/3 over QUIC (UDP 443)",
+    "service_name": "https",
+    "formal_name": "HTTP/3 over QUIC（IANA 登録名は https）",
     "purpose": "UDPベースのQUICプロトコルを用いて低遅延な暗号化Web通信を行う。",
     "technical_description": "UDP 443上でTLS 1.3が組み込まれたQUICトランスポートを確立。パケット損失時のヘッドオブラインブロッキングを回避。",
     "normal_usage_examples": "Google/Cloudflare等のHTTP/3対応Webサイト高速閲覧",
@@ -1465,7 +2097,16 @@
     "service_id": "SRV-HTTPS",
     "risk_id": "RISK-00443-UDP",
     "category": "WEB",
-    "iana_description": "http protocol over TLS/SSL"
+    "iana_description": "http protocol over TLS/SSL",
+    "technique_basis": [
+      {
+        "technique": "T1071.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-DATA-EXFIL"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00445-TCP",
@@ -1507,7 +2148,48 @@
     "service_id": "SRV-SMB",
     "risk_id": "RISK-00445-TCP",
     "category": "FILE",
-    "iana_description": "Microsoft-DS"
+    "iana_description": "Microsoft-DS",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      },
+      {
+        "technique": "T1021.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-LATERAL-MOVE"
+        ]
+      },
+      {
+        "technique": "T1486",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-RANSOMWARE"
+        ]
+      },
+      {
+        "technique": "T1569.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXEC"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00464-TCP",
@@ -1540,7 +2222,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00464-TCP"
+    "risk_id": "RISK-00464-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00464-UDP",
@@ -1573,16 +2264,25 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00464-UDP"
+    "risk_id": "RISK-00464-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00465-TCP",
     "port_number": 465,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "urd",
+    "service_name": "submissions",
     "formal_name": "SMTP over TLS (submissions)",
-    "iana_description": "URL Rendezvous Directory for SSM",
+    "iana_description": "Message Submission over TLS protocol",
     "category": "MAIL",
     "purpose": "TLS で保護したメール送信。",
     "technical_description": "",
@@ -1607,7 +2307,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00465-TCP"
+    "risk_id": "RISK-00465-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1566",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-MAIL-ABUSE"
+        ]
+      },
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00500-UDP",
@@ -1643,7 +2359,30 @@
     "service_id": null,
     "risk_id": "RISK-00500-UDP",
     "category": "VPN",
-    "iana_description": "isakmp"
+    "iana_description": "isakmp",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1110.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1133",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-EXTERNAL-REMOTE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00502-TCP",
@@ -1699,6 +2438,22 @@
         ],
         "keyword": "Modbus を指令通信に使用"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
     ]
   },
   {
@@ -1733,7 +2488,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00512-TCP"
+    "risk_id": "RISK-00512-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00513-TCP",
@@ -1767,15 +2538,31 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00513-TCP"
+    "risk_id": "RISK-00513-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00514-TCP",
     "port_number": 514,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "syslog-conn",
-    "formal_name": "Syslog TCP",
+    "service_name": "shell",
+    "formal_name": "rsh（IANA 登録）/ Syslog over TCP（慣用）",
     "purpose": "信頼性のあるコネクション上でシステムログを送信する。",
     "technical_description": "TCP 514による到達保証付きログメッセージ送信。",
     "normal_usage_examples": "重要サーバーのログ損失防止集約",
@@ -1791,7 +2578,7 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
+    "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。 IANA の 514/tcp は shell（rsh）。syslog の TCP 送信に 514 を使うのは慣用で IANA 登録ではない（RFC 3195 の syslog-conn は 601/tcp）。",
     "technique_ids": [
       "T1595"
     ],
@@ -1799,7 +2586,16 @@
     "service_id": null,
     "risk_id": "RISK-00514-TCP",
     "category": "MGMT",
-    "iana_description": "cmd like exec, but automatic authentication is performed as for login server"
+    "iana_description": "cmd like exec, but automatic authentication is performed as for login server",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00514-UDP",
@@ -1831,7 +2627,16 @@
     "service_id": null,
     "risk_id": "RISK-00514-UDP",
     "category": "MGMT",
-    "iana_description": ""
+    "iana_description": "",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00515-TCP",
@@ -1863,7 +2668,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00515-TCP"
+    "risk_id": "RISK-00515-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00520-UDP",
@@ -1896,7 +2710,25 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-00520-UDP"
+    "risk_id": "RISK-00520-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Routing Information Protocol version 1 (RIPv1) を記載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-CISA-AMP"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00548-TCP",
@@ -1929,7 +2761,24 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00548-TCP"
+    "risk_id": "RISK-00548-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1039",
+        "relation": "service",
+        "via": [
+          "afpovertcp"
+        ],
+        "note": "T1039 はネットワーク共有上のデータ取得。AFP はファイル共有プロトコル"
+      }
+    ]
   },
   {
     "id": "PORT-00587-TCP",
@@ -1964,7 +2813,23 @@
     "service_id": null,
     "risk_id": "RISK-00587-TCP",
     "category": "MAIL",
-    "iana_description": "Message Submission"
+    "iana_description": "Message Submission",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1566",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-MAIL-ABUSE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00593-TCP",
@@ -1999,7 +2864,22 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00593-TCP"
+    "risk_id": "RISK-00593-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      },
+      {
+        "technique": "T1046",
+        "relation": "reference",
+        "via": [],
+        "note": "RPC over HTTP のエンドポイントマッパーは RPC インターフェースの列挙に使われうる（一次資料未付与）"
+      }
+    ]
   },
   {
     "id": "PORT-00623-UDP",
@@ -2043,6 +2923,22 @@
         "examples": [],
         "keyword": "インターネット接続の IPMI は OS の制御を上書きできる低レベルアクセスを与える"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
     ]
   },
   {
@@ -2076,7 +2972,17 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00631-TCP"
+    "risk_id": "RISK-00631-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT",
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00636-TCP",
@@ -2125,6 +3031,22 @@
         ],
         "keyword": "LDAP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1087.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1087"
+        ]
+      }
     ]
   },
   {
@@ -2157,7 +3079,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00830-TCP"
+    "risk_id": "RISK-00830-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00853-TCP",
@@ -2191,7 +3122,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00853-TCP"
+    "risk_id": "RISK-00853-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1572",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-TUNNEL"
+        ]
+      },
+      {
+        "technique": "T1071.004",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-DATA-EXFIL"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00873-TCP",
@@ -2225,7 +3172,24 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00873-TCP"
+    "risk_id": "RISK-00873-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1039",
+        "relation": "service",
+        "via": [
+          "rsync"
+        ],
+        "note": "T1039 はネットワーク共有上のデータ取得。rsync のモジュールはファイル共有として公開される"
+      },
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00902-TCP",
@@ -2259,7 +3223,27 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00902-TCP"
+    "risk_id": "RISK-00902-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0329"
+        ],
+        "keyword": "NSM:Flow: Inbound to tcp/427, tcp/443, tcp/902, tcp/5989"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00989-TCP",
@@ -2291,7 +3275,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00989-TCP"
+    "risk_id": "RISK-00989-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1048",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-EXFIL-ALT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00990-TCP",
@@ -2323,7 +3316,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-00990-TCP"
+    "risk_id": "RISK-00990-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-00993-TCP",
@@ -2369,6 +3371,22 @@
         ],
         "keyword": "IMAP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1114.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1114"
+        ]
+      }
     ]
   },
   {
@@ -2403,7 +3421,23 @@
     "service_id": null,
     "risk_id": "RISK-00995-TCP",
     "category": "MAIL",
-    "iana_description": "POP3 over TLS protocol"
+    "iana_description": "POP3 over TLS protocol",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1114.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-MAIL-ABUSE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01080-TCP",
@@ -2449,6 +3483,15 @@
         ],
         "keyword": "SOCKS"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1090",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1090"
+        ]
+      }
     ]
   },
   {
@@ -2483,7 +3526,23 @@
     "service_id": null,
     "risk_id": "RISK-01194-TCP",
     "category": "VPN",
-    "iana_description": "OpenVPN"
+    "iana_description": "OpenVPN",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1133",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-EXTERNAL-REMOTE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01194-UDP",
@@ -2519,7 +3578,30 @@
     "service_id": null,
     "risk_id": "RISK-01194-UDP",
     "category": "VPN",
-    "iana_description": "OpenVPN"
+    "iana_description": "OpenVPN",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      },
+      {
+        "technique": "T1133",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-EXTERNAL-REMOTE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01433-TCP",
@@ -2555,7 +3637,34 @@
     "service_id": null,
     "risk_id": "RISK-01433-TCP",
     "category": "DB",
-    "iana_description": "Microsoft-SQL-Server"
+    "iana_description": "Microsoft-SQL-Server",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01434-UDP",
@@ -2588,7 +3697,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-01434-UDP"
+    "risk_id": "RISK-01434-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01521-TCP",
@@ -2622,14 +3740,30 @@
     "service_id": null,
     "risk_id": "RISK-01521-TCP",
     "category": "DB",
-    "iana_description": "nCube License Manager"
+    "iana_description": "nCube License Manager",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01701-UDP",
     "port_number": 1701,
     "protocol_number": 17,
     "transport_protocol": "UDP",
-    "service_name": "l2f",
+    "service_name": "l2tp",
     "formal_name": "L2TP / Layer 2 Tunneling Protocol",
     "purpose": "PPPフレームをIPネットワーク上でトンネリング送信する(VPN用)。",
     "technical_description": "UDP 1701によるL2TP制御およびデータカプセル化 (通常IPsecと併用)。",
@@ -2654,7 +3788,16 @@
     "service_id": null,
     "risk_id": "RISK-01701-UDP",
     "category": "VPN",
-    "iana_description": "l2f"
+    "iana_description": "l2tp",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01723-TCP",
@@ -2689,7 +3832,30 @@
     "service_id": null,
     "risk_id": "RISK-01723-TCP",
     "category": "VPN",
-    "iana_description": "pptp"
+    "iana_description": "pptp",
+    "technique_basis": [
+      {
+        "technique": "T1557",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1110.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01812-UDP",
@@ -2723,7 +3889,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-01812-UDP"
+    "risk_id": "RISK-01812-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01813-UDP",
@@ -2755,7 +3937,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-01813-UDP"
+    "risk_id": "RISK-01813-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01883-TCP",
@@ -2787,7 +3978,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-01883-TCP"
+    "risk_id": "RISK-01883-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01900-UDP",
@@ -2822,7 +4022,32 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-01900-UDP"
+    "risk_id": "RISK-01900-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Simple Service Discovery Protocol (SSDP) を記載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-CISA-AMP"
+        ]
+      },
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-01985-UDP",
@@ -2854,16 +4079,25 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-01985-UDP"
+    "risk_id": "RISK-01985-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1557",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-NAME-POISON"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-02049-TCP",
     "port_number": 2049,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "shilp",
+    "service_name": "nfs",
     "formal_name": "NFS",
-    "iana_description": "",
+    "iana_description": "Network File System - Sun Microsystems",
     "category": "FILE",
     "purpose": "Unix 系のネットワークファイル共有。",
     "technical_description": "",
@@ -2900,6 +4134,23 @@
         ],
         "keyword": "NFS"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1039",
+        "relation": "service",
+        "via": [
+          "nfs"
+        ],
+        "note": "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル"
+      },
+      {
+        "technique": "T1135",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1135"
+        ]
+      }
     ]
   },
   {
@@ -2907,9 +4158,9 @@
     "port_number": 2049,
     "protocol_number": 17,
     "transport_protocol": "UDP",
-    "service_name": "shilp",
+    "service_name": "nfs",
     "formal_name": "NFS",
-    "iana_description": "",
+    "iana_description": "Network File System - Sun Microsystems",
     "category": "FILE",
     "purpose": "Unix 系のネットワークファイル共有。",
     "technical_description": "",
@@ -2945,6 +4196,23 @@
         ],
         "keyword": "NFS"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1039",
+        "relation": "service",
+        "via": [
+          "nfs"
+        ],
+        "note": "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル"
+      },
+      {
+        "technique": "T1135",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1135"
+        ]
+      }
     ]
   },
   {
@@ -2979,7 +4247,24 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02179-TCP"
+    "risk_id": "RISK-02179-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-HYPERVISOR"
+        ]
+      },
+      {
+        "technique": "T1021",
+        "relation": "service",
+        "via": [
+          "vmrdp"
+        ],
+        "note": "VMConnect は Hyper-V の VM コンソールへのリモート接続を受け付けるサービス"
+      }
+    ]
   },
   {
     "id": "PORT-02375-TCP",
@@ -3032,6 +4317,29 @@
         "examples": [],
         "keyword": "保護せずネットワーク公開するとリモートの非 root ユーザーがホストの root 権限を得うる"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1610",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CONTAINER-API"
+        ]
+      },
+      {
+        "technique": "T1613",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1613"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
     ]
   },
   {
@@ -3083,6 +4391,22 @@
         "examples": [],
         "keyword": "鍵を持つ者はデーモンに任意の指示ができ root 権限に相当。TLS は 2376"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1610",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CONTAINER-API"
+        ]
+      },
+      {
+        "technique": "T1613",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1613"
+        ]
+      }
     ]
   },
   {
@@ -3127,6 +4451,22 @@
         "examples": [],
         "keyword": "既定では RBAC 認証も転送層の認証も無効"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1613",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CONTAINER-API"
+        ]
+      },
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
     ]
   },
   {
@@ -3159,7 +4499,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02380-TCP"
+    "risk_id": "RISK-02380-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1613",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CONTAINER-API"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-02404-TCP",
@@ -3213,6 +4562,15 @@
         ],
         "keyword": "IEC 104 で遠隔機器情報を探索"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
     ]
   },
   {
@@ -3246,7 +4604,22 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02483-TCP"
+    "risk_id": "RISK-02483-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1078.001",
+        "relation": "reference",
+        "via": [],
+        "note": "Oracle の既定アカウント悪用の可能性（一次資料未付与）"
+      }
+    ]
   },
   {
     "id": "PORT-02484-TCP",
@@ -3278,7 +4651,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-02484-TCP"
+    "risk_id": "RISK-02484-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03000-TCP",
@@ -3312,7 +4694,24 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-03000-TCP"
+    "risk_id": "RISK-03000-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE",
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03128-TCP",
@@ -3356,6 +4755,15 @@
         ],
         "keyword": "HTTP proxy"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1090",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1090"
+        ]
+      }
     ]
   },
   {
@@ -3388,7 +4796,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-03260-TCP"
+    "risk_id": "RISK-03260-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03268-TCP",
@@ -3448,6 +4865,29 @@
         ],
         "keyword": "LDAP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1087.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1087"
+        ]
+      },
+      {
+        "technique": "T1069.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AD-RECON"
+        ]
+      },
+      {
+        "technique": "T1482",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1482"
+        ]
+      }
     ]
   },
   {
@@ -3496,6 +4936,22 @@
         ],
         "keyword": "LDAP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1087.002",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1087"
+        ]
+      },
+      {
+        "technique": "T1069.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AD-RECON"
+        ]
+      }
     ]
   },
   {
@@ -3530,7 +4986,22 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-03283-TCP"
+    "risk_id": "RISK-03283-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1021.005",
+        "relation": "reference",
+        "via": [],
+        "note": "Apple Remote Desktop は画面共有に VNC 系の仕組みを使う（3283/tcp との対応は一次資料未付与）"
+      }
+    ]
   },
   {
     "id": "PORT-03306-TCP",
@@ -3566,7 +5037,34 @@
     "service_id": null,
     "risk_id": "RISK-03306-TCP",
     "category": "DB",
-    "iana_description": "MySQL"
+    "iana_description": "MySQL",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03343-TCP",
@@ -3599,7 +5097,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-03343-TCP"
+    "risk_id": "RISK-03343-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-HYPERVISOR"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03343-UDP",
@@ -3632,7 +5139,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-03343-UDP"
+    "risk_id": "RISK-03343-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1078",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-HYPERVISOR"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03389-TCP",
@@ -3659,8 +5175,7 @@
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MS-RDS",
-      "SRC-MITRE-DET0118",
-      "SRC-CISA-HYGIENE"
+      "SRC-MITRE-DET0118"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -3675,7 +5190,48 @@
     "service_id": "SRV-RDP",
     "risk_id": "RISK-03389-TCP",
     "category": "REMOTE",
-    "iana_description": "MS WBT Server"
+    "iana_description": "MS WBT Server",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      },
+      {
+        "technique": "T1021.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-LATERAL-MOVE"
+        ]
+      },
+      {
+        "technique": "T1133",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-EXTERNAL-REMOTE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03389-UDP",
@@ -3721,6 +5277,15 @@
         ],
         "keyword": "RDP"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1210"
+        ]
+      }
     ]
   },
   {
@@ -3753,7 +5318,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-03478-UDP"
+    "risk_id": "RISK-03478-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1090",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-TUNNEL"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-03702-UDP",
@@ -3785,7 +5359,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-03702-UDP"
+    "risk_id": "RISK-03702-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-04369-TCP",
@@ -3818,7 +5401,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-04369-TCP"
+    "risk_id": "RISK-04369-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-04444-TCP",
@@ -3851,7 +5443,25 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-04444-TCP"
+    "risk_id": "RISK-04444-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-METASPLOIT-REVSHELL",
+        "technique": null,
+        "kind": "公式文書",
+        "examples": [],
+        "keyword": "公式ドキュメントのリバースシェル例で LPORT=4444 を使用（フレームワークの既定値ではない: Opt::LPORT default=nil）"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1571",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-C2-PORT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-04500-UDP",
@@ -3885,7 +5495,23 @@
     "service_id": null,
     "risk_id": "RISK-04500-UDP",
     "category": "VPN",
-    "iana_description": "IPsec NAT-Traversal"
+    "iana_description": "IPsec NAT-Traversal",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      },
+      {
+        "technique": "T1133",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-EXTERNAL-REMOTE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-04739-UDP",
@@ -3917,7 +5543,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-04739-UDP"
+    "risk_id": "RISK-04739-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-04786-TCP",
@@ -3976,6 +5611,22 @@
         "examples": [],
         "keyword": "未使用なら Smart Install を無効化するよう推奨"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1190"
+        ]
+      }
     ]
   },
   {
@@ -4008,7 +5659,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-04840-TCP"
+    "risk_id": "RISK-04840-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-04899-TCP",
@@ -4040,7 +5700,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-04899-TCP"
+    "risk_id": "RISK-04899-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1219",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-ACCESS-SW"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05060-TCP",
@@ -4072,7 +5741,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05060-TCP"
+    "risk_id": "RISK-05060-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05060-UDP",
@@ -4106,7 +5784,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-05060-UDP"
+    "risk_id": "RISK-05060-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05061-TCP",
@@ -4138,7 +5832,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05061-TCP"
+    "risk_id": "RISK-05061-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05222-TCP",
@@ -4170,7 +5873,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05222-TCP"
+    "risk_id": "RISK-05222-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1071",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-C2-PORT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05269-TCP",
@@ -4202,7 +5914,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05269-TCP"
+    "risk_id": "RISK-05269-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1071",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-C2-PORT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05353-UDP",
@@ -4237,7 +5958,32 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-05353-UDP"
+    "risk_id": "RISK-05353-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Multicast Domain Name System (mDNS) を記載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1557.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-NAME-POISON"
+        ]
+      },
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-CISA-AMP"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05355-UDP",
@@ -4279,6 +6025,15 @@
         "examples": [],
         "keyword": "LLMNR"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1557.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1557"
+        ]
+      }
     ]
   },
   {
@@ -4314,7 +6069,23 @@
     "service_id": null,
     "risk_id": "RISK-05432-TCP",
     "category": "DB",
-    "iana_description": "PostgreSQL Database"
+    "iana_description": "PostgreSQL Database",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05601-TCP",
@@ -4347,7 +6118,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05601-TCP"
+    "risk_id": "RISK-05601-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05671-TCP",
@@ -4379,7 +6166,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05671-TCP"
+    "risk_id": "RISK-05671-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05672-TCP",
@@ -4411,7 +6207,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05672-TCP"
+    "risk_id": "RISK-05672-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05800-TCP",
@@ -4459,6 +6264,22 @@
         ],
         "keyword": "VNC"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1021.005",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1021"
+        ]
+      },
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
     ]
   },
   {
@@ -4466,8 +6287,8 @@
     "port_number": 5900,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "vnc",
-    "formal_name": "Virtual Network Computing (VNC)",
+    "service_name": "rfb",
+    "formal_name": "Virtual Network Computing (VNC) / RFB",
     "purpose": "RFB (Remote Framebuffer) プロトコルにより画面のリモート操作を提供する。",
     "technical_description": "RFB仕様に従い、画面更新データおよびマウス/キーボード入力を伝送。",
     "normal_usage_examples": "Linux/Mac/Windowsの画面リモートサポート",
@@ -4497,7 +6318,41 @@
     "service_id": null,
     "risk_id": "RISK-05900-TCP",
     "category": "REMOTE",
-    "iana_description": "Remote Framebuffer"
+    "iana_description": "Remote Framebuffer",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0330"
+        ],
+        "keyword": "ServicePortSet: 22, 5900, 8080/8443 by default"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1040",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CRED-THEFT"
+        ]
+      },
+      {
+        "technique": "T1021.005",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-LATERAL-MOVE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05938-TCP",
@@ -4541,6 +6396,15 @@
         ],
         "keyword": "TeamViewer"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1219",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1219"
+        ]
+      }
     ]
   },
   {
@@ -4574,7 +6438,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05984-TCP"
+    "risk_id": "RISK-05984-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05985-TCP",
@@ -4612,7 +6492,35 @@
     "service_id": null,
     "risk_id": "RISK-05985-TCP",
     "category": "REMOTE",
-    "iana_description": "WBEM WS-Management HTTP"
+    "iana_description": "WBEM WS-Management HTTP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      },
+      {
+        "technique": "T1021.006",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-LATERAL-MOVE",
+          "ATK-REMOTE-EXEC"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05986-TCP",
@@ -4635,8 +6543,8 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MS-RDS",
-      "SRC-MITRE-DET0118"
+      "SRC-MITRE-DET0118",
+      "SRC-MS-SVC-PORTS"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -4649,7 +6557,35 @@
     "service_id": null,
     "risk_id": "RISK-05986-TCP",
     "category": "REMOTE",
-    "iana_description": "WBEM WS-Management HTTP over TLS/SSL"
+    "iana_description": "WBEM WS-Management HTTP over TLS/SSL",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0327"
+        ],
+        "keyword": "ServicePortSet (default: 445,135,3389,5985,5986,1433,3306)"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      },
+      {
+        "technique": "T1021.006",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-LATERAL-MOVE",
+          "ATK-REMOTE-EXEC"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-05989-TCP",
@@ -4683,16 +6619,36 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-05989-TCP"
+    "risk_id": "RISK-05989-TCP",
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-DET0118",
+        "technique": "T1210",
+        "kind": "ATT&CK検知戦略",
+        "examples": [
+          "AN0329"
+        ],
+        "keyword": "NSM:Flow: Inbound to tcp/427, tcp/443, tcp/902, tcp/5989"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1210",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-DET0118"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-06000-TCP",
     "port_number": 6000,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "(未登録)",
+    "service_name": "x11",
     "formal_name": "X11",
-    "iana_description": "",
+    "iana_description": "X Window System",
     "category": "REMOTE",
     "purpose": "X Window System の表示 (6000-6063)。",
     "technical_description": "",
@@ -4715,7 +6671,16 @@
     "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-06000-TCP"
+    "risk_id": "RISK-06000-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-06343-UDP",
@@ -4747,7 +6712,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-06343-UDP"
+    "risk_id": "RISK-06343-UDP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-06379-TCP",
@@ -4800,6 +6774,29 @@
         "examples": [],
         "keyword": "外部公開された Redis への攻撃手法を作者が解説"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      }
     ]
   },
   {
@@ -4843,6 +6840,22 @@
         "examples": [],
         "keyword": "Kubernetes API"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1610",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CONTAINER-API"
+        ]
+      },
+      {
+        "technique": "T1613",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1613"
+        ]
+      }
     ]
   },
   {
@@ -4875,7 +6888,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-06514-TCP"
+    "risk_id": "RISK-06514-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-06600-TCP",
@@ -4908,16 +6930,25 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-06600-TCP"
+    "risk_id": "RISK-06600-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-HYPERVISOR"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-06667-TCP",
     "port_number": 6667,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "(未登録)",
+    "service_name": "ircu",
     "formal_name": "IRC",
-    "iana_description": "",
+    "iana_description": "IRCU",
     "category": "CHAT",
     "purpose": "テキストチャット。",
     "technical_description": "",
@@ -4954,6 +6985,15 @@
         ],
         "keyword": "IRC"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1071",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1071"
+        ]
+      }
     ]
   },
   {
@@ -4987,7 +7027,17 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-07547-TCP"
+    "risk_id": "RISK-07547-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT",
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08000-TCP",
@@ -5021,7 +7071,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-08000-TCP"
+    "risk_id": "RISK-08000-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      },
+      {
+        "technique": "T1595.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08008-TCP",
@@ -5053,7 +7119,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-08008-TCP"
+    "risk_id": "RISK-08008-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08080-TCP",
@@ -5090,7 +7165,30 @@
     "service_id": null,
     "risk_id": "RISK-08080-TCP",
     "category": "WEB",
-    "iana_description": "HTTP Alternate (see port 80)"
+    "iana_description": "HTTP Alternate (see port 80)",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08081-TCP",
@@ -5122,7 +7220,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-08081-TCP"
+    "risk_id": "RISK-08081-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08086-TCP",
@@ -5154,7 +7261,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-08086-TCP"
+    "risk_id": "RISK-08086-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08088-TCP",
@@ -5186,15 +7302,24 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-08088-TCP"
+    "risk_id": "RISK-08088-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08443-TCP",
     "port_number": 8443,
     "protocol_number": 6,
     "transport_protocol": "TCP",
-    "service_name": "https-alt",
-    "formal_name": "HTTPS Alternate",
+    "service_name": "pcsync-https",
+    "formal_name": "HTTPS Alternate（慣用。IANA 登録名は pcsync-https）",
     "purpose": "二次的な暗号化Web管理インターフェースポートとして使用される。",
     "technical_description": "TLS暗号化チャネル上でのHTTP管理通信。",
     "normal_usage_examples": "ルータ・FW・管理ツールのHTTPS Web管理UI",
@@ -5222,7 +7347,30 @@
     "service_id": null,
     "risk_id": "RISK-08443-TCP",
     "category": "WEB",
-    "iana_description": "PCsync HTTPS"
+    "iana_description": "PCsync HTTPS",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08883-TCP",
@@ -5254,7 +7402,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-08883-TCP"
+    "risk_id": "RISK-08883-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1110",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-BRUTE-FORCE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-08888-TCP",
@@ -5287,7 +7444,17 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-08888-TCP"
+    "risk_id": "RISK-08888-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT",
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09000-TCP",
@@ -5319,7 +7486,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09000-TCP"
+    "risk_id": "RISK-09000-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09042-TCP",
@@ -5352,7 +7528,16 @@
     "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09042-TCP"
+    "risk_id": "RISK-09042-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09090-TCP",
@@ -5384,7 +7569,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09090-TCP"
+    "risk_id": "RISK-09090-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09092-TCP",
@@ -5416,7 +7610,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09092-TCP"
+    "risk_id": "RISK-09092-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09100-TCP",
@@ -5448,7 +7651,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09100-TCP"
+    "risk_id": "RISK-09100-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09200-TCP",
@@ -5481,7 +7693,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09200-TCP"
+    "risk_id": "RISK-09200-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09300-TCP",
@@ -5513,7 +7741,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09300-TCP"
+    "risk_id": "RISK-09300-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09389-TCP",
@@ -5547,7 +7784,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09389-TCP"
+    "risk_id": "RISK-09389-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1087.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AD-RECON"
+        ]
+      },
+      {
+        "technique": "T1069.002",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-AD-RECON"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09418-TCP",
@@ -5579,7 +7832,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09418-TCP"
+    "risk_id": "RISK-09418-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1595",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-09443-TCP",
@@ -5611,7 +7873,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-09443-TCP"
+    "risk_id": "RISK-09443-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-10050-TCP",
@@ -5643,7 +7914,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-10050-TCP"
+    "risk_id": "RISK-10050-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-10051-TCP",
@@ -5675,7 +7955,16 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-10051-TCP"
+    "risk_id": "RISK-10051-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-10250-TCP",
@@ -5728,6 +8017,22 @@
         "examples": [],
         "keyword": "既定で匿名要求を受け付け、既定の認可は AlwaysAllow。nodes/proxy はコマンド実行 API に到達"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1610",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-CONTAINER-API"
+        ]
+      },
+      {
+        "technique": "T1613",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1613"
+        ]
+      }
     ]
   },
   {
@@ -5761,7 +8066,23 @@
     "unconfirmed_notes": "ポート番号・サービス名はIANAで確認済み。攻撃・検知記述に対応する一次資料は未付与(要追加)。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-11211-TCP"
+    "risk_id": "RISK-11211-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-11211-UDP",
@@ -5794,7 +8115,25 @@
     "unconfirmed_notes": "",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
-    "risk_id": "RISK-11211-UDP"
+    "risk_id": "RISK-11211-UDP",
+    "evidence": [
+      {
+        "source_id": "SRC-CISA-AMP",
+        "technique": "T1498.002",
+        "kind": "政府勧告",
+        "examples": [],
+        "keyword": "TA14-017A の Systems Affected に Memcached（UDP/TCP 11211 の反射攻撃を記載） を記載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1498.002",
+        "relation": "direct",
+        "via": [
+          "SRC-CISA-AMP"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-18083-TCP",
@@ -5829,7 +8168,24 @@
     "unconfirmed_notes": "IANA 未登録の番号。慣用的な用途として記載。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
-    "risk_id": "RISK-18083-TCP"
+    "risk_id": "RISK-18083-TCP",
+    "technique_basis": [
+      {
+        "technique": "T1078",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-HYPERVISOR",
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      }
+    ]
   },
   {
     "id": "PORT-20000-TCP",
@@ -5870,6 +8226,15 @@
         "kind": "技術説明",
         "examples": [],
         "keyword": "DNP3 が攻撃に使われうる標準プロトコルとして明記"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
       }
     ]
   },
@@ -5913,6 +8278,22 @@
         "kind": "公式文書",
         "examples": [],
         "keyword": "アクセス制御の有効化とネットワーク露出の制限を推奨"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
       }
     ]
   },
@@ -5958,6 +8339,22 @@
         "examples": [],
         "keyword": "インターネットから到達可能な機器の例として EtherNet/IP を明記"
       }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
+      }
     ]
   },
   {
@@ -6001,6 +8398,22 @@
         "kind": "技術説明",
         "examples": [],
         "keyword": "ブロードキャスト探索の対象として BACnet を明記"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1078.001",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-UNAUTH-SERVICE"
+        ]
+      },
+      {
+        "technique": "T1046",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-VULN-SCAN"
+        ]
       }
     ]
   },
@@ -6053,6 +8466,22 @@
         "kind": "公式文書",
         "examples": [],
         "keyword": "ネットワーク到達でブローカーに任意コマンド実行。CISA KEV 掲載"
+      }
+    ],
+    "technique_basis": [
+      {
+        "technique": "T1190",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-PUBLIC-EXPLOIT"
+        ]
+      },
+      {
+        "technique": "T1210",
+        "relation": "attack_pattern",
+        "via": [
+          "ATK-REMOTE-EXPLOIT"
+        ]
       }
     ]
   }

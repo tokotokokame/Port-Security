@@ -25,13 +25,14 @@
     "applicable_data": "IP Protocol Numbers (ICMP=1, IGMP=2, TCP=6, UDP=17, GRE=47, ESP=50, AH=51, SCTP=132)",
     "publication_date": "2026-10-20",
     "last_updated": "2026-11-01",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
-    "notes": "IPヘッダーのProtocolフィールド（IPv4）およびNext Headerフィールド（IPv6）で識別される割り当て番号。",
+    "notes": "IANA 公式 CSV（iana.yml で取得）と protocols.json の番号・キーワードを照合（Q-IPPROTO）。",
     "scope": [
       "protocol_assignment"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "data/raw/iana/protocol-numbers-1.csv"
   },
   {
     "source_id": "SRC-MITRE-ATTACK",
@@ -42,13 +43,14 @@
     "applicable_data": "Techniques & Sub-techniques (T1110, T1110.001-004, T1210, T1021.001-004, T1003, T1041, T1595, T1486)",
     "publication_date": "2026-10-01",
     "last_updated": "2026-10-30",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
-    "notes": "攻撃者の戦術・技術・手順(TTPs)に関する公式フレームワーク。Sub-technique階層および親Techniqueの体系。",
+    "notes": "公式 STIX v20.1（data/raw/mitre/attack_catalog.json に ID・名称・廃止状態を収録）。",
     "scope": [
       "reference"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "https://github.com/mitre-attack/attack-stix-data"
   },
   {
     "source_id": "SRC-MITRE-DET0118",
@@ -76,30 +78,32 @@
     "applicable_data": "Remote Desktop Services (RDP 3389/TCP/UDP, RD Gateway 3391/UDP, WinRM 5985/5986, Kerberos 88, LDAP 389/636)",
     "publication_date": "2024-09-15",
     "last_updated": "2026-01-10",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
-    "notes": "Microsoft Windows Server環境におけるRDS各種役割およびActive Directory関連の通信要件仕様。",
+    "notes": "RDS の役割別ポート: TCP 88 / TCP 135 / TCP・UDP 389 / TCP 636 / TCP 443 / TCP・UDP 3389 / TCP 5985 を記載。UDP 88・TCP 5986 は記載なし。",
     "scope": [
       "service"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/remote/ports-used-by-rds.md"
   },
   {
     "source_id": "SRC-CISA-HYGIENE",
-    "title": "Chemical Security Summit 2022 - Cyber Risk and Cyber Hygiene Services",
+    "title": "Cyber Risk and Cyber Hygiene Services (Chemical Security Summit 2022)",
     "publisher": "Cybersecurity and Infrastructure Security Agency (CISA)",
-    "url": "https://www.cisa.gov/resources-tools/services/cyber-hygiene-services",
+    "url": "https://www.cisa.gov/sites/default/files/2022-12/summit-2022-cyber-risks-cyber-hygiene-508.pdf",
     "document_type": "Security Advisory / Guidance",
     "applicable_data": "Bad Practices (外部非公開推奨ポート: SMB 445, RDP 3389, Telnet 23, NetBIOS 137-139, OpenSLP 427)",
     "publication_date": "2022-08-01",
     "last_updated": "2025-11-20",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
-    "notes": "インターネット上に直接露出させるべきでない危険なサービスおよびCISA Known Exploited Vulnerabilities (KEV) 基準。",
+    "notes": "本文: SMB, NetBIOS, Kerberos, LDAP, Telnet はインターネットに公開すべきでない（即時対処が必要）。RDP は確認した本文に記載なし。",
     "scope": [
       "threat_guidance"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "CISA 公式 PDF（検索結果に表示された本文）"
   },
   {
     "source_id": "SRC-FORTINET-DOCS",
@@ -137,20 +141,21 @@
   },
   {
     "source_id": "SRC-IETF-RFC",
-    "title": "RFC 6335: IANA Procedures for Service Name and Port Registry / RFC 8126",
+    "title": "RFC 6335: IANA Procedures for the Management of the Service Name and Transport Protocol Port Number Registry",
     "publisher": "Internet Engineering Task Force (IETF) / RFC Editor",
     "url": "https://www.rfc-editor.org/info/rfc6335",
     "document_type": "RFC Standard",
     "applicable_data": "Port Registry Guidelines, Transport Protocols (TCP, UDP, SCTP, DCCP), Registration Rules",
     "publication_date": "2011-08-01",
     "last_updated": "2017-06-01",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
-    "notes": "ポート番号およびサービス名の割り当て・管理手続に関するIETF技術標準規格。",
+    "notes": "6章: TCP / UDP / UDP-Lite / SCTP / DCCP は 16 bit のポート空間を持ち、System(0-1023) / User(1024-49151) / Dynamic(49152-65535) に区分。",
     "scope": [
       "port_assignment"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "https://www.rfc-editor.org/info/rfc6335"
   },
   {
     "source_id": "SRC-MITRE-T1003",
@@ -635,13 +640,14 @@
     "applicable_data": "THC-Hydra",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "README の対応プロトコル一覧に FTP / HTTP / RDP / SMB / SSH / Telnet などを記載。",
     "scope": [
       "service"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/vanhauser-thc/thc-hydra/master/README"
   },
   {
     "source_id": "SRC-NMAP",
@@ -652,13 +658,14 @@
     "applicable_data": "Nmap",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "公式 man page: 'Network exploration tool and security / port scanner'。サービス・バージョン・OS の識別機能を記載。",
     "scope": [
       "service"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/nmap/nmap/master/docs/nmap.1"
   },
   {
     "source_id": "SRC-SAMBA-SMBCLIENT",
@@ -669,13 +676,14 @@
     "applicable_data": "smbclient(1) manual",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "man page の -p オプション: SMB/CIFS サーバの標準 TCP ポートは 139（既定）。445/tcp は本資料に記載なし。",
     "scope": [
       "service"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/samba-team/samba/master/docs-xml/manpages/smbclient.1.xml"
   },
   {
     "source_id": "SRC-SIGMA-IMPACKET-LM",
@@ -958,13 +966,14 @@
     "applicable_data": "4624: An account was successfully logged on",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4624 の名称 'An account was successfully logged on' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-4625",
@@ -975,13 +984,14 @@
     "applicable_data": "4625: An account failed to log on",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4625 の名称 'An account failed to log on' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-4648",
@@ -992,13 +1002,14 @@
     "applicable_data": "4648: A logon was attempted using explicit credentials",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4648 の名称 'A logon was attempted using explicit credentials' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-4662",
@@ -1009,13 +1020,14 @@
     "applicable_data": "4662: An operation was performed on an object",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4662 の名称 'An operation was performed on an object' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-4697",
@@ -1026,13 +1038,14 @@
     "applicable_data": "4697: A service was installed in the system",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4697 の名称 'A service was installed in the system' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-4768",
@@ -1043,13 +1056,14 @@
     "applicable_data": "4768: A Kerberos authentication ticket (TGT) was requested",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4768 の名称 'A Kerberos authentication ticket (TGT) was requested' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-4769",
@@ -1077,13 +1091,14 @@
     "applicable_data": "4771: Kerberos pre-authentication failed",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4771 の名称 'Kerberos pre-authentication failed' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-4776",
@@ -1094,13 +1109,14 @@
     "applicable_data": "4776: The computer attempted to validate the credentials for an account",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 4776 の名称 'The computer attempted to validate the credentials for an account' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-5140",
@@ -1111,13 +1127,14 @@
     "applicable_data": "5140: A network share object was accessed",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 5140 の名称 'A network share object was accessed' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MS-EVT-5145",
@@ -1128,13 +1145,14 @@
     "applicable_data": "5145: A network share object was checked to see whether client can be granted desired access",
     "publication_date": null,
     "last_updated": null,
-    "access_date": "2026-11-21",
-    "verification_status": "未再検証",
-    "notes": "URL 形式は 4769 で確認。本文は未再検証",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "イベント 5145 の名称 'A network share object was checked to see whether client can be granted desired access' と説明を確認。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": true,
+    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
   },
   {
     "source_id": "SRC-MITRE-T1001",
@@ -3094,5 +3112,169 @@
       "threat_advisory"
     ],
     "reverified_v4": true
+  },
+  {
+    "source_id": "SRC-MS-SVC-PORTS",
+    "title": "Service overview and network port requirements for Windows",
+    "publisher": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/service-overview-and-network-port-requirements",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "Windows のサービス別ポート要件（Kerberos UDP 88、WinRM 2.0 TCP 5985/5986 など）",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "表に Kerberos TCP/UDP 88、WinRM 2.0 の既定 HTTP TCP 5985 / HTTPS TCP 5986 を記載。",
+    "scope": [
+      "service",
+      "port_assignment"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/networking/service-overview-and-network-port-requirements.md"
+  },
+  {
+    "source_id": "SRC-CVE-2017-0144",
+    "title": "CVE-2017-0144 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2017-0144",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2017-03-17",
+    "last_updated": "2026-08-14",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2017-0144.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2017/0xxx/CVE-2017-0144.json"
+  },
+  {
+    "source_id": "SRC-CVE-2019-0708",
+    "title": "CVE-2019-0708 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2019-0708",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2019-05-16",
+    "last_updated": "2025-10-21",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2019-0708.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2019/0xxx/CVE-2019-0708.json"
+  },
+  {
+    "source_id": "SRC-CVE-2020-0796",
+    "title": "CVE-2020-0796 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2020-0796",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2020-03-12",
+    "last_updated": "2026-10-01",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2020-0796.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2020/0xxx/CVE-2020-0796.json"
+  },
+  {
+    "source_id": "SRC-CVE-2021-21974",
+    "title": "CVE-2021-21974 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2021-21974",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2021-02-24",
+    "last_updated": "2026-06-02",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2021-21974.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/21xxx/CVE-2021-21974.json"
+  },
+  {
+    "source_id": "SRC-CVE-2022-21893",
+    "title": "CVE-2022-21893 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2022-21893",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2022-01-11",
+    "last_updated": "2025-01-02",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2022-21893.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2022/21xxx/CVE-2022-21893.json"
+  },
+  {
+    "source_id": "SRC-CVE-2023-46604",
+    "title": "CVE-2023-46604 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2023-46604",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2023-10-27",
+    "last_updated": "2025-11-03",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2023-46604.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2023/46xxx/CVE-2023-46604.json"
+  },
+  {
+    "source_id": "SRC-CVE-2024-6387",
+    "title": "CVE-2024-6387 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2024-6387",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2024-07-01",
+    "last_updated": "2026-11-06",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2024-6387.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2024/6xxx/CVE-2024-6387.json"
+  },
+  {
+    "source_id": "SRC-CISA-KEV",
+    "title": "Known Exploited Vulnerabilities Catalog",
+    "publisher": "CISA",
+    "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+    "document_type": "Government Catalog",
+    "applicable_data": "KEV 掲載状況・追加日・ランサムウェアでの利用",
+    "publication_date": null,
+    "last_updated": "2026-11-20",
+    "access_date": "2026-11-21",
+    "verification_status": "確認済み",
+    "notes": "cisagov/kev-data（CISA 公式の GitHub 配布）catalogVersion 2026.11.20",
+    "scope": [
+      "vulnerability",
+      "threat_advisory"
+    ],
+    "reverified_v4": true,
+    "verified_via": "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json"
   }
 ]

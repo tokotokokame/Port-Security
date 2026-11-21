@@ -46,6 +46,15 @@ jobs:
 
       - run: flutter pub get
 
+      - name: Data quality gate (no release on bad data)
+        working-directory: .
+        run: |
+          pip install -q -r tools/requirements.txt
+          rc=0
+          python3 tools/validate.py data || rc=1
+          python3 tools/quality.py || rc=1
+          exit $rc
+
       - name: Bundled data must match dist/
         working-directory: .
         run: |
