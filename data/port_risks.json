@@ -7,7 +7,7 @@
     "risk_level": "Critical",
     "reason_targeted": "Windowsのグラフィカルデスクトップへのフルアクセスを提供するため、ランサムウェアグループや侵入者にとって最大の侵入・制御目標となる。",
     "evaluation_factors": {
-      "external_exposure": "インターネットからの直接露出時は極めて危険 (CISA Bad Practice)",
+      "external_exposure": "インターネットからの直接露出時は極めて危険 (CISA は RDP を露出した脆弱なサービスの例に挙げる)",
       "authentication": "NLA無効化や弱固パスワード運用時にブルートフォース突破が容易",
       "encryption": "TLS/RDP固有暗号化が適用されるが中間者攻撃や認証前脆弱性(BlueKeep等)が存在",
       "known_vulnerabilities": "CVE-2019-0708 (BlueKeep RCE), CVE-2022-21893 等多数の歴史的・現代的既知脆弱性"
@@ -27,7 +27,36 @@
       "T1110",
       "T1210",
       "T1021.001"
-    ]
+    ],
+    "service_risk": {
+      "level": "Critical",
+      "factors": [
+        "known_exploited",
+        "attack_documented",
+        "government_guidance"
+      ],
+      "reason": "悪用が確認された脆弱性（CISA KEV）、ATT&CK がこのサービス・ポートへの攻撃を記載、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE",
+        "SRC-CISA-KEV",
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00445-TCP",
@@ -37,7 +66,7 @@
     "risk_level": "Critical",
     "reason_targeted": "未認証でのリモートコード実行やネットワーク全域への即時横展開(ワーム型拡散)が可能な歴史的・現代的脆弱性が集中するため。(CISA最優先遮断勧告)",
     "evaluation_factors": {
-      "external_exposure": "インターネットへの露出は例外なく即時無条件遮断対象 (CISA緊急勧告)",
+      "external_exposure": "インターネットへの露出は例外なく即時無条件遮断対象 (CISA: SMB はインターネットに公開すべきでない)",
       "authentication": "SMB v1/v2におけるNTLMハッシュ奪取やPass-the-Hash攻撃の標的",
       "encryption": "SMB 3.xでの暗号化が推奨されるが過去の平文・弱暗号構成の残存リスク",
       "known_vulnerabilities": "MS17-010 (EternalBlue, CVE-2017-0144), CVE-2020-0796 (SMBGhost RCE) 等の高高評価CVE"
@@ -55,7 +84,36 @@
     "technique_ids": [
       "T1210",
       "T1021.002"
-    ]
+    ],
+    "service_risk": {
+      "level": "Critical",
+      "factors": [
+        "known_exploited",
+        "attack_documented",
+        "government_guidance"
+      ],
+      "reason": "悪用が確認された脆弱性（CISA KEV）、ATT&CK がこのサービス・ポートへの攻撃を記載、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE",
+        "SRC-CISA-KEV",
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00022-TCP",
@@ -74,8 +132,7 @@
     "investigation_focus": "Linux auth.log, auditd execve, SSHトンネル確立ログ, 送信元IPアドレス",
     "mitigation_controls": "パスワード認証の全廃・公開鍵認証/証明書認証の強制, Fail2ban自動ブロック, IPアドレス制限, MFA導入",
     "source_ids": [
-      "SRC-MITRE-DET0118",
-      "SRC-CISA-HYGIENE"
+      "SRC-MITRE-DET0118"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -84,7 +141,32 @@
       "T1110",
       "T1210",
       "T1021.004"
-    ]
+    ],
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00427-TCP",
@@ -110,7 +192,32 @@
     "unconfirmed_notes": "DET0118/AN0329で427監視は確認。CVE-2021-21974/ESXiArgsの記述は個別出典未付与。",
     "technique_ids": [
       "T1210"
-    ]
+    ],
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05985-TCP",
@@ -138,7 +245,32 @@
     "technique_ids": [
       "T1210",
       "T1021.006"
-    ]
+    ],
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00023-TCP",
@@ -146,18 +278,19 @@
     "transport_protocol": "TCP",
     "service_name": "Telnet",
     "risk_level": "High",
-    "reason_targeted": "ID・パスワードを含む全ての通信が完全に平文で送信され、パケット盗聴や認証奪取が容易なため。(CISA Bad Practice)",
+    "reason_targeted": "ID・パスワードを含む全ての通信が完全に平文で送信され、パケット盗聴や認証奪取が容易なため。(CISA: Telnet はインターネットに公開すべきでない)",
     "evaluation_factors": {
       "external_exposure": "インターネット露出時は即座に自動化ボットネットの標的",
       "authentication": "単一プレーンテキストパスワード認証",
       "encryption": "暗号化一切なし",
-      "known_vulnerabilities": "Miraiボットネット等によるデフォルトパスワードの乱用"
+      "known_vulnerabilities": "既定・推測可能なパスワードの悪用（総当たりの主な対象: ATT&CK T1110.001）"
     },
     "suspicious_indicators": "Telnetポートへの自動スキャン接続, 平文認証文字列のネットワークパケット内検知",
     "investigation_focus": "ネットワークキャプチャ, 境界FWアクセスログ",
     "mitigation_controls": "Telnetサービスの全廃およびSSH(TCP 22)への完全移行",
     "source_ids": [
-      "SRC-CISA-HYGIENE"
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-T1110"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
@@ -165,7 +298,49 @@
     "technique_ids": [
       "T1040",
       "T1595"
-    ]
+    ],
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "T1110.001 の説明で Telnet (23/TCP) を総当たりの主な対象に列挙"
+        },
+        {
+          "source_id": "SRC-CISA-HYGIENE",
+          "note": "Telnet はインターネットに公開すべきでない"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "government_guidance"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE",
+        "SRC-MITRE-T1110"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00080-TCP",
@@ -192,7 +367,33 @@
     "technique_ids": [
       "T1071.001",
       "T1595.002"
-    ]
+    ],
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1071",
+        "SRC-MITRE-T1190"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00443-TCP",
@@ -219,7 +420,33 @@
     "technique_ids": [
       "T1071.001",
       "T1041"
-    ]
+    ],
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1041",
+        "SRC-MITRE-T1071"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00053-UDP",
@@ -246,7 +473,34 @@
     "technique_ids": [
       "T1071.004",
       "T1041"
-    ]
+    ],
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1041",
+        "SRC-MITRE-T1071",
+        "SRC-MITRE-T1498"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05355-UDP",
@@ -270,7 +524,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1557"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05353-UDP",
@@ -296,7 +575,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01900-UDP",
@@ -322,7 +622,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03702-UDP",
@@ -346,7 +667,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00019-UDP",
@@ -371,7 +713,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00017-UDP",
@@ -396,7 +759,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00111-UDP",
@@ -422,7 +806,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00111-TCP",
@@ -446,7 +851,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00520-UDP",
@@ -471,7 +897,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-11211-UDP",
@@ -492,18 +939,55 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-CISA-AMP"
+      "SRC-CISA-AMP",
+      "SRC-MITRE-T1498"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1498",
+          "note": "T1498.002 の説明で memcache プロトコルが最大 51,200 倍の増幅を示したと記載（ポート番号の記載はない）"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1498"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-11211-TCP",
     "port_number": 11211,
     "transport_protocol": "TCP",
     "service_name": "memcache",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なしでのキャッシュ内容の取得・改ざん",
     "evaluation_factors": {
       "category": "データベース・キャッシュ",
@@ -513,7 +997,6 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -521,7 +1004,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00464-TCP",
@@ -546,7 +1057,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00464-UDP",
@@ -571,7 +1103,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03268-TCP",
@@ -598,7 +1151,33 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1087",
+        "SRC-MITRE-T1482"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03269-TCP",
@@ -624,7 +1203,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1087"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00593-TCP",
@@ -650,7 +1254,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09389-TCP",
@@ -676,7 +1301,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01434-UDP",
@@ -701,14 +1347,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02179-TCP",
     "port_number": 2179,
     "transport_protocol": "TCP",
     "service_name": "vmrdp",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "管理者権限の悪用による VM の操作・画面取得",
     "evaluation_factors": {
       "category": "仮想化基盤",
@@ -727,14 +1394,42 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-06600-TCP",
     "port_number": 6600,
     "transport_protocol": "TCP",
     "service_name": "mshvlm",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "移行通信の盗聴・不正な移行",
     "evaluation_factors": {
       "category": "仮想化基盤",
@@ -752,7 +1447,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03343-TCP",
@@ -777,7 +1500,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03343-UDP",
@@ -802,14 +1546,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-18083-TCP",
     "port_number": 18083,
     "transport_protocol": "TCP",
     "service_name": "(未登録)",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "外部公開時の VM 操作",
     "evaluation_factors": {
       "category": "仮想化基盤",
@@ -828,7 +1593,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00902-TCP",
@@ -853,7 +1646,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05989-TCP",
@@ -878,7 +1696,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03283-TCP",
@@ -899,11 +1742,48 @@
       "T1021.005"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1021"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1021",
+          "note": "T1021 の説明に Apple Remote Desktop (ARD) をリモート管理の例として記載"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1021"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05800-TCP",
@@ -928,14 +1808,39 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1021"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00512-TCP",
     "port_number": 512,
     "transport_protocol": "TCP",
     "service_name": "exec",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "平文認証の盗聴、遠隔実行",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -953,14 +1858,42 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00513-TCP",
     "port_number": 513,
     "transport_protocol": "TCP",
     "service_name": "login",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "平文認証の盗聴、信頼関係の悪用",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -978,7 +1911,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05938-TCP",
@@ -1002,7 +1963,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1219"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-04899-TCP",
@@ -1026,7 +2012,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00465-TCP",
@@ -1051,7 +2058,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08000-TCP",
@@ -1076,7 +2104,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08008-TCP",
@@ -1100,7 +2149,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08081-TCP",
@@ -1124,7 +2194,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08088-TCP",
@@ -1148,7 +2239,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08888-TCP",
@@ -1172,7 +2284,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09000-TCP",
@@ -1196,7 +2329,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09443-TCP",
@@ -1220,7 +2374,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03128-TCP",
@@ -1244,7 +2419,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1090"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01080-TCP",
@@ -1268,7 +2468,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1090"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-27017-TCP",
@@ -1285,15 +2510,54 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-CISA-KEV",
+          "note": "CVE-2025-14847（MongoDB Server の未認証メモリ読み取り）が KEV に掲載"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "known_exploited",
+        "government_guidance",
+        "vendor_security_warning"
+      ],
+      "reason": "悪用が確認された脆弱性（CISA KEV）、政府機関が露出の危険を指摘、ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-CISA-KEV",
+        "SRC-MONGODB-CHECKLIST"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-06379-TCP",
@@ -1310,7 +2574,6 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190",
       "T1210"
     ],
@@ -1319,7 +2582,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "vendor_security_warning"
+      ],
+      "reason": "ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-REDIS-SECURITY"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09200-TCP",
@@ -1336,15 +2624,52 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-CISA-KEV",
+          "note": "Elasticsearch の CVE-2015-1427・CVE-2014-3120（リモートコード実行）が KEV に掲載"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "known_exploited",
+        "government_guidance"
+      ],
+      "reason": "悪用が確認された脆弱性（CISA KEV）、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-KEV"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09300-TCP",
@@ -1360,15 +2685,34 @@
     "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05984-TCP",
@@ -1385,15 +2729,52 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-CISA-KEV",
+          "note": "CVE-2022-24706（Apache CouchDB の安全でない既定の初期化）が KEV に掲載"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "known_exploited",
+        "government_guidance"
+      ],
+      "reason": "悪用が確認された脆弱性（CISA KEV）、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-KEV"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09042-TCP",
@@ -1409,15 +2790,34 @@
     "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08086-TCP",
@@ -1433,15 +2833,34 @@
     "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02483-TCP",
@@ -1466,7 +2885,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02484-TCP",
@@ -1490,7 +2930,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01883-TCP",
@@ -1506,15 +2967,34 @@
     "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
     "investigation_focus": "ブローカーのログ、接続元",
     "mitigation_controls": "認証とTLS、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08883-TCP",
@@ -1538,7 +3018,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05672-TCP",
@@ -1554,15 +3055,34 @@
     "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
     "investigation_focus": "ブローカーのログ、接続元",
     "mitigation_controls": "認証とTLS、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05671-TCP",
@@ -1586,7 +3106,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09092-TCP",
@@ -1602,15 +3143,34 @@
     "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
     "investigation_focus": "ブローカーのログ、接続元",
     "mitigation_controls": "認証とTLS、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-61616-TCP",
@@ -1635,7 +3195,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "known_exploited",
+        "government_guidance",
+        "vendor_security_warning"
+      ],
+      "reason": "悪用が確認された脆弱性（CISA KEV）、政府機関が露出の危険を指摘、ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-APACHE-CVE-2023-46604",
+        "SRC-CISA-KEV"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-04369-TCP",
@@ -1659,7 +3247,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02375-TCP",
@@ -1685,7 +3294,34 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "vendor_security_warning"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-DOCKER-REMOTE",
+        "SRC-MITRE-T1613"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02376-TCP",
@@ -1710,7 +3346,34 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "vendor_security_warning"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-DOCKER-PROTECT",
+        "SRC-MITRE-T1613"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-06443-TCP",
@@ -1731,11 +3394,54 @@
       "T1613"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1613",
+      "SRC-MITRE-T1552"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1613",
+          "note": "T1613 の説明に Kubernetes API での探索"
+        },
+        {
+          "source_id": "SRC-MITRE-T1552",
+          "note": "Peirates などが T1552.007（コンテナ API）を悪用する手続き例"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1552",
+        "SRC-MITRE-T1613"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-10250-TCP",
@@ -1760,7 +3466,34 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "vendor_security_warning"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-K8S-KUBELET",
+        "SRC-MITRE-T1613"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02379-TCP",
@@ -1777,15 +3510,39 @@
     "investigation_focus": "API監査ログ、コンテナ作成イベント",
     "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
     "technique_ids": [
-      "T1613",
-      "T1078.001"
+      "T1613"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "vendor_security_warning"
+      ],
+      "reason": "ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-ETCD-SECURITY"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02380-TCP",
@@ -1809,7 +3566,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03000-TCP",
@@ -1826,7 +3604,6 @@
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -1834,7 +3611,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05601-TCP",
@@ -1851,7 +3649,6 @@
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -1859,7 +3656,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09090-TCP",
@@ -1875,15 +3693,34 @@
     "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-10050-TCP",
@@ -1899,15 +3736,34 @@
     "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-10051-TCP",
@@ -1923,15 +3779,34 @@
     "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-06514-TCP",
@@ -1955,7 +3830,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-04739-UDP",
@@ -1979,7 +3875,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-06343-UDP",
@@ -2003,7 +3920,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00623-UDP",
@@ -2020,7 +3958,6 @@
     "investigation_focus": "機器のログ、要求元、設定変更履歴",
     "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
     "technique_ids": [
-      "T1078.001",
       "T1110"
     ],
     "source_ids": [
@@ -2028,7 +3965,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "government_guidance"
+      ],
+      "reason": "政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-IPMI"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00049-TCP",
@@ -2052,7 +4014,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1040"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01812-UDP",
@@ -2077,7 +4064,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01813-UDP",
@@ -2101,7 +4109,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00179-TCP",
@@ -2125,7 +4154,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01985-UDP",
@@ -2149,7 +4199,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00830-TCP",
@@ -2173,14 +4244,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-07547-TCP",
     "port_number": 7547,
     "transport_protocol": "TCP",
     "service_name": "cwmp",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "外部公開された管理機能の悪用",
     "evaluation_factors": {
       "category": "ネットワーク機器管理",
@@ -2197,7 +4289,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-04786-TCP",
@@ -2214,7 +4334,6 @@
     "investigation_focus": "機器のログ、要求元、設定変更履歴",
     "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -2222,14 +4341,41 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "vendor_security_warning"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、ベンダーが保護なしの公開の危険を記載",
+      "source_ids": [
+        "SRC-CISCO-TSA18-106A",
+        "SRC-MITRE-T1190"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02049-TCP",
     "port_number": 2049,
     "transport_protocol": "TCP",
     "service_name": "nfs",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "誤った export 設定によるファイル取得",
     "evaluation_factors": {
       "category": "ファイル共有・転送",
@@ -2247,7 +4393,39 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1135"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02049-UDP",
@@ -2272,14 +4450,39 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1135"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00873-TCP",
     "port_number": 873,
     "transport_protocol": "TCP",
     "service_name": "rsync",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なしモジュールからのファイル取得",
     "evaluation_factors": {
       "category": "ファイル共有・転送",
@@ -2289,15 +4492,42 @@
     "investigation_focus": "共有/転送ログ、転送量、接続元",
     "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
     "technique_ids": [
-      "T1039",
-      "T1078.001"
+      "T1039"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00548-TCP",
@@ -2322,7 +4552,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00989-TCP",
@@ -2346,7 +4597,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00990-TCP",
@@ -2370,14 +4642,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03260-TCP",
     "port_number": 3260,
     "transport_protocol": "TCP",
     "service_name": "iscsi-target",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なしでのボリュームへのアクセス",
     "evaluation_factors": {
       "category": "ファイル共有・転送",
@@ -2386,15 +4679,41 @@
     "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
     "investigation_focus": "共有/転送ログ、転送量、接続元",
     "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05060-UDP",
@@ -2419,7 +4738,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05060-TCP",
@@ -2443,7 +4783,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05061-TCP",
@@ -2467,7 +4828,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03478-UDP",
@@ -2491,7 +4873,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00515-TCP",
@@ -2507,15 +4910,34 @@
     "suspicious_indicators": "外部からの印刷ジョブ、設定変更",
     "investigation_focus": "プリンタ/スプーラのログ",
     "mitigation_controls": "外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00631-TCP",
@@ -2539,7 +4961,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09100-TCP",
@@ -2555,15 +4998,34 @@
     "suspicious_indicators": "外部からの印刷ジョブ、設定変更",
     "investigation_focus": "プリンタ/スプーラのログ",
     "mitigation_controls": "外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00502-TCP",
@@ -2580,7 +5042,6 @@
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -2588,7 +5049,33 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-ICS-T0836",
+        "SRC-MITRE-ICS-T0869"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00102-TCP",
@@ -2604,15 +5091,50 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0846-001"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-ICS-T0846-001",
+          "note": "PLC-Blaster（S1006）がネットワーク上の Siemens S7 PLC を探索して感染（T0846.001 の手続き例）"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-ICS-T0846-001"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-20000-TCP",
@@ -2628,15 +5150,50 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0869"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-ICS-T0869",
+          "note": "T0869 の説明に DNP3 を C2 に使われうるプロトコルとして記載"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-ICS-T0869"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-44818-TCP",
@@ -2653,22 +5210,59 @@
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0871"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-ICS-T0871",
+          "note": "CyberAv3ngers の手続き例（T0871）に EtherNet/IP CIP"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-ICS-T0871",
+        "SRC-MITRE-ICS-T0883"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-47808-UDP",
     "port_number": 47808,
     "transport_protocol": "UDP",
     "service_name": "bacnet",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "空調・照明等の制御",
     "evaluation_factors": {
       "category": "制御システム",
@@ -2678,7 +5272,6 @@
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -2686,7 +5279,39 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-ICS-T0846-002"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-02404-TCP",
@@ -2702,15 +5327,39 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-ICS-T0806",
+        "SRC-MITRE-ICS-T0888"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-04840-TCP",
@@ -2726,15 +5375,34 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-06667-TCP",
@@ -2758,7 +5426,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1071"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-04444-TCP",
@@ -2779,18 +5472,55 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-METASPLOIT-REVSHELL"
+      "SRC-METASPLOIT-REVSHELL",
+      "SRC-MITRE-T1571"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1571",
+          "note": "T1571 の手続き例で C0032（TEMP.Veles）と DarkVishnya が 4444 を C2 に使用"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1571"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-06000-TCP",
     "port_number": 6000,
     "transport_protocol": "TCP",
     "service_name": "x11",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なし X サーバーからの画面取得・入力",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -2799,15 +5529,41 @@
     "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
     "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
     "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00853-TCP",
@@ -2832,7 +5588,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-09418-TCP",
@@ -2856,7 +5633,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05222-TCP",
@@ -2880,7 +5678,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05269-TCP",
@@ -2904,7 +5723,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00069-TCP",
@@ -2928,7 +5768,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00020-TCP",
@@ -2952,7 +5813,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00021-TCP",
@@ -2974,11 +5856,54 @@
       "T1048"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1110",
+      "SRC-MITRE-T1048"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "T1110.001 の説明で FTP (21/TCP) を総当たりの主な対象に列挙"
+        },
+        {
+          "source_id": "SRC-MITRE-T1048",
+          "note": "T1048.003 の説明に FTP による持ち出し"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1048",
+        "SRC-MITRE-T1110"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00025-TCP",
@@ -3003,7 +5928,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00053-TCP",
@@ -3027,7 +5973,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00067-UDP",
@@ -3052,7 +6019,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1557"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00068-UDP",
@@ -3076,7 +6068,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00069-UDP",
@@ -3101,7 +6114,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00088-TCP",
@@ -3128,7 +6162,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1558"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00088-UDP",
@@ -3154,7 +6213,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1558"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00110-TCP",
@@ -3180,7 +6264,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00123-UDP",
@@ -3205,7 +6310,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1498"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00135-TCP",
@@ -3234,7 +6364,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00137-UDP",
@@ -3260,7 +6415,34 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "government_guidance"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE",
+        "SRC-MITRE-T1557"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00138-UDP",
@@ -3285,7 +6467,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "government_guidance"
+      ],
+      "reason": "政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00139-TCP",
@@ -3311,7 +6518,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "government_guidance"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE",
+        "SRC-MITRE-T1021",
+        "SRC-MITRE-T1210"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00143-TCP",
@@ -3337,7 +6572,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1114"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00161-UDP",
@@ -3364,7 +6624,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1602"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00162-UDP",
@@ -3388,7 +6673,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00389-TCP",
@@ -3411,11 +6717,56 @@
     ],
     "source_ids": [
       "SRC-MS-RDS",
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1110",
+      "SRC-CISA-HYGIENE"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "T1110.001 の説明で LDAP (389/TCP) を総当たりの主な対象に列挙"
+        },
+        {
+          "source_id": "SRC-CISA-HYGIENE",
+          "note": "LDAP はインターネットに公開すべきでない"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "High",
+      "factors": [
+        "attack_documented",
+        "government_guidance"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載、政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE",
+        "SRC-MITRE-T1087",
+        "SRC-MITRE-T1110"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00389-UDP",
@@ -3441,7 +6792,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "government_guidance"
+      ],
+      "reason": "政府機関が露出の危険を指摘",
+      "source_ids": [
+        "SRC-CISA-HYGIENE"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00443-UDP",
@@ -3465,7 +6841,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00500-UDP",
@@ -3491,7 +6888,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00514-TCP",
@@ -3515,7 +6933,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00514-UDP",
@@ -3539,7 +6978,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00587-TCP",
@@ -3564,7 +7024,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00636-TCP",
@@ -3590,7 +7071,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1087"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00993-TCP",
@@ -3615,7 +7121,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1114"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-00995-TCP",
@@ -3640,7 +7171,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01194-TCP",
@@ -3665,7 +7217,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01194-UDP",
@@ -3691,7 +7264,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01433-TCP",
@@ -3717,14 +7311,39 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01521-TCP",
     "port_number": 1521,
     "transport_protocol": "TCP",
     "service_name": "ncube-lm",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "TNS Listener脆弱性悪用, SYSTEM/SCOTTアカウントへの辞書攻撃",
     "evaluation_factors": {
       "category": "データベース・キャッシュ",
@@ -3742,7 +7361,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01701-UDP",
@@ -3766,14 +7413,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-01723-TCP",
     "port_number": 1723,
     "transport_protocol": "TCP",
     "service_name": "pptp",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "MS-CHAPv2の解読脆弱性を狙う中間者攻撃・認証奪取",
     "evaluation_factors": {
       "category": "VPN・トンネル",
@@ -3792,7 +7460,35 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03306-TCP",
@@ -3818,14 +7514,39 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-03389-UDP",
     "port_number": 3389,
     "transport_protocol": "UDP",
     "service_name": "ms-wbt-server",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "DoS攻撃, RDPセッション干渉試行",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -3843,7 +7564,39 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1210"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-04500-UDP",
@@ -3868,7 +7621,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05432-TCP",
@@ -3889,11 +7663,54 @@
       "T1210"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1110",
+      "SRC-MITRE-T1213"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "P.A.S. Webshell（S0598）が PostgreSQL などへの総当たりを行う（T1110.001 の手続き例）"
+        },
+        {
+          "source_id": "SRC-MITRE-T1213",
+          "note": "T1213.006 の説明に PostgreSQL"
+        }
+      ]
+    },
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-T1110",
+        "SRC-MITRE-T1213"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05900-TCP",
@@ -3920,7 +7737,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-05986-TCP",
@@ -3947,7 +7789,32 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "Medium",
+      "factors": [
+        "attack_documented"
+      ],
+      "reason": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+      "source_ids": [
+        "SRC-MITRE-DET0118"
+      ],
+      "status": "確認済み"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08080-TCP",
@@ -3973,7 +7840,28 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   },
   {
     "id": "RISK-08443-TCP",
@@ -3999,6 +7887,27 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "service_risk": {
+      "level": "未評価",
+      "factors": [],
+      "reason": "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）",
+      "source_ids": [],
+      "status": "未確認"
+    },
+    "exposure_condition": {
+      "assumed": "internet",
+      "raises": [
+        "internet",
+        "untrusted_network"
+      ],
+      "lowers": [
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+      ],
+      "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"
+    }
   }
 ]

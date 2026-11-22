@@ -1,4 +1,4 @@
-# DATA_DICTIONARY（v1.1）
+# DATA_DICTIONARY（v1.2）
 
 フィールド単位の必須・型・制約は自動生成の [DATA_SCHEMA_SPEC.md](DATA_SCHEMA_SPEC.md)（JSON Schema 本体は `data/schemas/`）を正とする。
 
@@ -46,14 +46,17 @@
 
 ## ports の `technique_basis`（ATT&CK 技術との関連区分）
 
-`[{technique, relation, via, note}]`。ポート番号と技術を直接結び付けず、経路を持たせる。quality.py がデータと突き合わせて検証する（Q-ASSOC）。
+`[{technique, relation, via, note, source_type}]`。ポート番号と技術を直接結び付けず、経路を持たせる。quality.py がデータと突き合わせて検証する（Q-ASSOC）。
 
-| relation | via | 条件 |
+| relation（v1.2） | via | 条件 |
 |---|---|---|
 | `direct` | 出典 ID | evidence がその技術を名指ししている |
-| `attack_pattern` | 攻撃手法 ID | 紐付く攻撃手法がその技術（親・サブ技術を含む）を持つ |
-| `service` | サービス ID / 名 | サービスの性質から対象になる（`note` で説明） |
-| `reference` | — | 参考。`note` 必須（一次資料未付与と明記） |
+| `generic` | 攻撃手法 ID | `port_relation=generic` の攻撃手法（どの公開サービスにも当てはまる）がその技術を持つ |
+| `inferred` | 攻撃手法 ID / サービス | `port_relation=service_specific` の攻撃手法がその技術を持つ、またはサービスの性質から対象になる（`note` で説明） |
+| `unverified` | — | 参考。`note` 必須（一次資料未付与と明記） |
+
+`source_type`: `stix`（ATT&CK 公式の記述）/ `document`（他の一次資料）/ `curation`（アプリ内の関連付け）。
+v1.1 の `attack_pattern` / `service` / `reference` は、それぞれ generic または inferred / inferred / unverified に移した。
 - `examples`: 手順例を記載した攻撃グループやマルウェア
 - `keyword`: 一致した語、または確認した要点
 
@@ -71,6 +74,13 @@
 | 3 | 技術 → 検知戦略 → analytic のプラットフォームで対応 |
 | 4 | 攻撃手法・ツールの経由 |
 | 5 | 境界機器ログ（全ポート共通） |
+
+`logs[].class`（v1.2）: rank 1 → A、rank 0・2 → B（DET0118 の analytic 専用ログのみ）、rank 3 → B'、rank 4・5 → C/D。
+同じ analytic でもプラットフォーム共通ログは B'。`log_class` はポートで最良の分類。「ポート固有のログなし」は A・B がないときだけ。
+
+## analytic の `log_links`（v1.2）
+
+`[{log_id, basis}]`。`basis=det0118_analytic` は DET0118 の analytic 専用ログ（LOG-*-AN03xx）、`platform_generic` はプラットフォーム共通ログ（LOG-WIN-SECURITY / LOG-LIN-GENERIC / LOG-MAC-GENERIC / LOG-ESXI-GENERIC / 境界機器）。`log_investigation_ids` は互換のため残す（log_links の log_id と一致）。
 
 ## リンク構造（すべて ID による外部キー）
 
@@ -114,14 +124,48 @@ ports ──service_id──▶ services
 
 ## log_investigation の `port_scope`
 
-- `analytics` … 検知戦略の analytic に紐づくホストログ（Windows/Linux/ESXi/macOS）
+- `analytics` … DET0118 の analytic 専用のホストログ（LOG-WIN-AN0327 など）
+- `platform` … プラットフォーム共通のログ（v1.2。旧 `any_windows` を含む）。ポートとは直接関連付けない
+- `listed` … 公式文書がポートを明示（`ports` に一覧）
 - `any` … 境界機器ログ（FortiGate / NEC IX）。全ポート共通で適用
+
+## log_investigation の `vendor_logs`（v1.2）
+
+`[{vendor, product, firmware_versions, log_type, log_subtype, log_id, message, fields, cli_commands, source_ids, verification_status, notes}]`。
+版ごとに別の項目にし、出典はページ単位。確認済みの fields・cli_commands・版は `data/raw/vendor/fortios_evidence.json`（CI で取得した公式ページの抽出結果）にあることを Q-VENDOR が検査する。`common_fields` / `vendor_specific_fields` には確認済みの vendor_logs にあるフィールドだけを書く。
+
+## port_risks の `service_risk` / `exposure_condition` / `review`（v1.2）
+
+- `risk_level`: 編集判断（互換のため残す。インターネット露出を前提）
+- `service_risk`: `{level, factors, reason, source_ids, status}`。一次資料で確認できた要素（KEV・ATT&CK・政府資料・ベンダー資料）だけで判定。要素がなければ `未評価`（低リスクという意味ではない）。規則は RISK_RUBRIC
+- `exposure_condition`: `{assumed, raises, lowers, notes}`
+- `review`: High 再検証の結果（`previous_level`・`result`・根拠 `evidence`・変更理由 `reason`）
+
+## attack_patterns の確認状態（v1.2）
+
+- `attack_mapping_status`: ATT&CK 技術への対応付け（公式 STIX と照合）
+- `content_verification_status`: 説明・特徴・検知・対策の本文
+- `content_source_ids`: 本文の根拠資料
+- `port_relation`: generic / service_specific
+- `certainty` は互換用の総合値（弱い方に合わせる）
 
 ## sources の `scope` と `reverified_v4`
 
-`scope`: `port_assignment` / `protocol_assignment` / `service` / `attack_technique` / `detection` / `threat_advisory` / `threat_guidance` / `log_format` / `reference`
+`scope`: `port_assignment` / `protocol_assignment` / `service` / `attack_technique` / `detection` / `threat_advisory` / `threat_guidance` / `log_format` / `reference` / `vulnerability`、v1.2 で追加: `vendor_security` / `tool_documentation` / `technical_documentation` / `government_guidance` / `research_report` / `attack_framework` / `vulnerability_database`
 
-`reverified_v4`: v4 作成時に実ページを再確認したか。
+`reverified_v4`: 確認状態が確認済みか（v1.2 では `verified_via` から決まる）。
+
+v1.2 の確認方法: `verified_via`（original_document / official_api / official_stix / official_repository / search_result / not_verified）、`verified_url`（実際に確認した原文の所在）、`verified_date`、`verified_by`（manual_review / automated_import）、`verified_notes`（確認した範囲）。
+参照状況: `usage_status`（使用中 / 未使用・将来利用予定 / 未使用・再確認待ち / 廃止）、`usage_notes`、統合した出典は `merged_into`。
+
+## 値がないことの表し方（v1.2）
+
+| 表記 | 意味 |
+|---|---|
+| `null` | その項目が存在しない・該当しない（例: `event_code` のないログ源、未登録の `service_id`） |
+| `""` | 文字列の項目で値を持たない（例: 根拠を確認できていない vendor_logs の `log_id`）。理由は同じレコードの notes / unconfirmed_notes に書く |
+| `[]` | 一覧が 0 件（確認済みの項目がない場合も含む。未確認の値を推測で埋めない） |
+| `未確認` / `未評価` | 確認・評価をしていない、または根拠がない。空とは区別する |
 
 ## certainty の判定ルール（validate.py が強制）
 

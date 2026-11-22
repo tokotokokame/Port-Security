@@ -4,7 +4,7 @@
 level: error = 合格基準違反 / info = 記録のみ（対象外フェーズなど）
 Usage: python3 tools/quality.py [--all]   -> exit 1 if any error
 """
-import json, os, re, sys
+import json, os, re, sys, urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -12,6 +12,17 @@ TRANSPORT = {"TCP": 6, "UDP": 17, "SCTP": 132, "DCCP": 33}
 SRC_STATUS = {"確認済み", "一部確認", "未確認"}
 CVE_RE = re.compile(r"\bCVE-\d{4}-\d{4,7}\b")
 TECH_RE = re.compile(r"\b(T\d{4}(?:\.\d{3})?)\b")
+VIA_STATUS = {"original_document": "確認済み", "official_api": "確認済み", "official_stix": "確認済み", "official_repository": "確認済み",
+              "search_result": "一部確認", "not_verified": "未確認"}  # 検索結果は原文確認として扱わない
+SCOPE_RULE = {"attack_technique": r"MITRE", "attack_framework": r"MITRE", "threat_advisory": r"CISA|US-CERT|JPCERT|NCSC|NSA|FBI",
+              "government_guidance": r"CISA|US-CERT|JPCERT|NCSC|NSA|FBI|NISC", "tool_documentation": r"Project Documentation",
+              "vulnerability_database": r"Vulnerability Database", "research_report": r"Research Report|Author Blog"}
+ATTRIB = {"CISA": r"CISA|Cybersecurity and Infrastructure", "US-CERT": r"CISA|US-CERT", "Palo Alto": r"Palo Alto", "Unit 42": r"Palo Alto",
+          "Mirai": r"Mirai", "JPCERT": r"JPCERT", "NSA": r"NSA", "FBI": r"FBI"}
+STAT_RE = re.compile(r"\d[\d,.]*\s*(%|％|分以内|分後|時間以内|万台|万件|万 ?IP|倍|割)")
+RISK_SCOPE = {"attack_technique", "detection", "threat_advisory", "government_guidance", "vulnerability", "vendor_security", "research_report"}
+STAT_SCOPE = {"research_report", "government_guidance", "threat_advisory"}
+NON_TEXT = {"source_ids", "content_source_ids", "evidence", "technique_basis", "review", "id"}
 SKIP_TEXT = {"detection_strategies", "mitre_techniques", "mitre_software"}  # MITRE 由来の原文
 
 
@@ -166,6 +177,70 @@ def check_sources(db):
         if s.get("reverified_v4") and s.get("verification_status") not in ("確認済み",): out.append(F("Q-SRC", w, "再検証済みなのに確認状態が確認済みでない"))
         if s.get("verification_status") == "確認済み" and not s.get("access_date"): out.append(F("Q-SRC", w, "確認済みなのに確認日(access_date)がない"))
         if s.get("verification_status") == "確認済み" and not s.get("reverified_v4"): out.append(F("Q-SRC", w, "確認済みだが内容の再確認記録がない（v3 からの継承値）"))
+        via = s.get("verified_via")
+        if via not in VIA_STATUS: out.append(F("Q-VIA", w, f"確認方法 verified_via='{via}' が未定義値")); continue
+        if VIA_STATUS[via] != s.get("verification_status"):
+            out.append(F("Q-VIA", w, f"確認方法 {via} では確認状態は {VIA_STATUS[via]}（データは {s.get('verification_status')}）"))
+        if via != "not_verified" and not (s.get("verified_url") and s.get("verified_date") and s.get("verified_notes")):
+            out.append(F("Q-VIA", w, "確認した原文の所在・日付・範囲（verified_url / verified_date / verified_notes）がない"))
+        for sc in s.get("scope", []):
+            rule = SCOPE_RULE.get(sc)
+            if rule and not re.search(rule, f"{s.get('publisher')} | {s.get('document_type')}"):
+                out.append(F("Q-SCOPE", w, f"scope '{sc}' が発行者・資料種別（{s.get('publisher')} / {s.get('document_type')}）と合わない"))
+    return out
+
+
+def _text(r): return json.dumps({k: v for k, v in r.items() if k not in NON_TEXT}, ensure_ascii=False)
+
+
+def check_attribution(db):
+    """Q-ATTR: 本文で組織名を挙げるなら、その組織の確認済み出典が必要。Q-STAT: 統計値には調査報告・政府資料の確認済み出典が必要。"""
+    out, src = [], {s["source_id"]: s for s in db["sources"]}
+    for f, recs in db.items():
+        if f in SKIP_TEXT or f in ("sources", "vulnerabilities"): continue
+        for r in recs:
+            w, t = f"{f}:{rid(r)}", _text(r)
+            ids = [s for s in r.get("source_ids", []) + r.get("content_source_ids", []) + r.get("service_risk", {}).get("source_ids", [])
+                   if src.get(s, {}).get("verification_status") == "確認済み"]
+            for org, pub in ATTRIB.items():
+                if org in t and not any(re.search(pub, src[s]["publisher"] + " " + src[s].get("verified_notes", "") + " " + src[s]["title"]) for s in ids):
+                    out.append(F("Q-ATTR", w, f"本文が「{org}」に帰属させているが、確認済みの該当出典がない"))
+            for m in STAT_RE.finditer(t):  # 数値が、調査報告・政府資料の確認済み出典の確認範囲（verified_notes）に記録されていること
+                num = re.match(r"[\d,.]+", m.group(0)).group(0)
+                if not any(set(src[s]["scope"]) & STAT_SCOPE and num in src[s].get("verified_notes", "") for s in ids):
+                    out.append(F("Q-STAT", w, f"統計値「{m.group(0)}」を確認した調査報告・政府資料の出典がない"))
+    return out
+
+
+def check_risk_split(db):
+    """Q-RISK: service_risk と exposure_condition を分けて持ち、service_risk は確認済みの根拠と判定規則に一致すること（F-14）。"""
+    sys.path.insert(0, str(Path(__file__).parent)); from apply_v12 import service_risk
+    out, S = [], {s["source_id"]: s for s in db["sources"]}
+    ports = {p["risk_id"]: p for p in db["ports"]}
+    kev = {rid for v in db["vulnerabilities"] if v["kev"]["listed"] for rid in v["risk_ids"]}
+    for r in db["port_risks"]:
+        w = f"port_risks:{r['id']}"
+        if "service_risk" not in r or "exposure_condition" not in r: out.append(F("Q-RISK", w, "service_risk / exposure_condition が未設定")); continue
+        sr = r["service_risk"]
+        if sr != service_risk(r, ports.get(r["id"]), S, kev): out.append(F("Q-RISK", w, "service_risk が根拠と判定規則から再計算した値と一致しない"))
+        if sr["factors"] and not sr["source_ids"]: out.append(F("Q-RISK", w, "service_risk の要素に根拠資料がない"))
+        if not sr["reason"].strip(): out.append(F("Q-RISK", w, "service_risk の理由が空"))
+    return out
+
+
+def check_review(db):
+    """Q-REVIEW: High は再検証の根拠が必須。判定を変えたものは理由が必須。"""
+    out, src = [], {s["source_id"]: s for s in db["sources"]}
+    port_src = {p["risk_id"]: p["source_ids"] + [e["source_id"] for e in p.get("evidence", [])] for p in db["ports"]}
+    for r in db["port_risks"]:
+        w, rv = f"port_risks:{r['id']}", r.get("review")
+        cand = r["source_ids"] + port_src.get(r["id"], [])
+        strong = any(src.get(x, {}).get("verification_status") == "確認済み" and set(src[x]["scope"]) & RISK_SCOPE for x in cand)
+        if r["risk_level"] in ("Critical", "High") and not (rv and rv["evidence"]) and not strong:
+            out.append(F("Q-REVIEW", w, f"{r['risk_level']} だが攻撃・脆弱性・政府資料の確認済み根拠も再検証の根拠（review.evidence）もない"))
+        if rv and rv["previous_level"] != r["risk_level"] and not rv.get("reason"): out.append(F("Q-REVIEW", w, "リスク判定を変更したが理由（review.reason）がない"))
+        for e in (rv or {}).get("evidence", []):
+            if e["source_id"] not in r["source_ids"]: out.append(F("Q-REVIEW", w, f"再検証の根拠 {e['source_id']} が source_ids にない"))
     return out
 
 
@@ -216,11 +291,11 @@ def _fam(a, b): return a == b or a.split(".")[0] == b or b.split(".")[0] == a
 
 
 def check_association(db):
-    """Q-ASSOC: every port→technique link has exactly one technique_basis whose route is true in the data.
-    direct = port evidence names the technique / attack_pattern = a linked attack pattern contains it (or parent/sub)
-    service = the linked service lists it, or a note explains the service nature / reference = note required."""
+    """Q-ASSOC: every port→technique link has exactly one technique_basis whose route is true in the data (F-10).
+    direct = port evidence names the technique / generic = linked attack patterns that apply to any exposed service contain it
+    inferred = linked service-specific attack patterns contain it, or the service lists it, or a note explains it / unverified = note required."""
     out = []
-    atk = {a["id"]: a["technique_ids"] for a in db["attack_patterns"]}
+    atk = {a["id"]: a for a in db["attack_patterns"]}
     svc = {s["id"]: s["technique_ids"] for s in db["services"]}
     for p in db["ports"]:
         w, basis = f"ports:{p['id']}", p.get("technique_basis")
@@ -229,11 +304,19 @@ def check_association(db):
         if sorted(got) != sorted(p["technique_ids"]): out.append(F("Q-ASSOC", w, f"technique_basis {got} が technique_ids と一致しない"))
         for b in basis:
             t, rel, via = b["technique"], b["relation"], b["via"]
+            pats = lambda kind: via and all(v in p["attack_pattern_ids"] and atk.get(v, {}).get("port_relation") == kind
+                                           and any(_fam(t, x) for x in atk[v]["technique_ids"]) for v in via)
             ok = {"direct": lambda: via and all(any(e["source_id"] == v and e.get("technique") == t for e in p.get("evidence", [])) for v in via),
-                  "attack_pattern": lambda: via and all(v in p["attack_pattern_ids"] and any(_fam(t, x) for x in atk.get(v, [])) for v in via),
-                  "service": lambda: (via == [p["service_id"]] and any(_fam(t, x) for x in svc.get(p["service_id"], []))) or bool(b.get("note")),
-                  "reference": lambda: bool(b.get("note"))}.get(rel, lambda: False)()
+                  "generic": lambda: pats("generic"),
+                  "inferred": lambda: pats("service_specific") or (via == [p["service_id"]] and any(_fam(t, x) for x in svc.get(p["service_id"], [])))
+                                      or bool(b.get("note")),
+                  "unverified": lambda: bool(b.get("note"))}.get(rel, lambda: False)()
             if not ok: out.append(F("Q-ASSOC", w, f"{t} の関連区分 {rel} の経路 {via} がデータと一致しない"))
+            want = ("stix" if via and all(v.startswith("SRC-MITRE-") for v in via) else "document") if rel == "direct" else "curation"
+            if b.get("source_type") != want: out.append(F("Q-ASSOC", w, f"{t} の根拠種別 source_type は {want}（ATT&CK 公式の記述か、アプリ内の関連付けかを区別）"))
+    for a in db["attack_patterns"]:
+        if "T1078.001" in a["technique_ids"] and a["id"] == "ATK-UNAUTH-SERVICE":
+            out.append(F("Q-ASSOC", f"attack_patterns:{a['id']}", "認証のないサービスに Default Accounts（T1078.001）を対応付けている"))
     return out
 
 
@@ -254,6 +337,43 @@ def check_display(root):
     return out
 
 
+def check_log_links(db):
+    """Q-LOGLINK: DET0118 専用のログは DET0118 の analytic にだけ付ける。共通ログを analytic 専用として付けない（F-06）。"""
+    out, scope = [], {l["id"]: l["port_scope"] for l in db["log_investigation"]}
+    for d in db["detection_strategies"]:
+        for a in d["analytics"]:
+            w, links = f"detection_strategies:{d['id']}/{a['id']}", a.get("log_links")
+            if links is None: out.append(F("Q-LOGLINK", w, "log_links（関連付けの根拠）がない")); continue
+            if sorted({x["log_id"] for x in links}) != sorted(a["log_investigation_ids"]):
+                out.append(F("Q-LOGLINK", w, "log_investigation_ids が log_links と一致しない"))
+            for x in links:
+                specific = scope.get(x["log_id"]) == "analytics"
+                if x["basis"] == "det0118_analytic" and (d["id"] != "DET0118" or not specific):
+                    out.append(F("Q-LOGLINK", w, f"{x['log_id']} を DET0118 の analytic 専用ログとして付けている"))
+                if x["basis"] == "platform_generic" and specific:
+                    out.append(F("Q-LOGLINK", w, f"DET0118 専用の {x['log_id']} をプラットフォーム共通ログとして付けている"))
+    return out
+
+
+LOG_CLASS = {0: "B", 1: "A", 2: "B", 3: "B'", 4: "C/D", 5: "C/D"}
+
+
+def check_log_class(root):
+    """Q-LOGCLASS: アプリ用データのログ分類が 5 章の定義どおりで、ポート固有ログの有無を A・B だけで判定していること（F-15）。"""
+    out, d = [], root / "dist"
+    if not (d / "ports.json").exists(): return [F("Q-LOGCLASS", "dist", "生成物がない")]
+    kb = json.loads((d / "kb.json").read_text(encoding="utf-8"))
+    generic = {i for i, l in kb["logs"].items() if l.get("scope") in ("platform", "any")}
+    for p in json.loads((d / "ports.json").read_text(encoding="utf-8")):
+        w = f"dist/ports:{p['id']}"
+        for l in p["logs"]:
+            if l.get("class") != LOG_CLASS.get(l["rank"]): out.append(F("Q-LOGCLASS", w, f"{l['id']} の分類 {l.get('class')} が順位 {l['rank']} と合わない"))
+            if l.get("class") in ("A", "B") and l["id"] in generic: out.append(F("Q-LOGCLASS", w, f"共通ログ {l['id']} をポート固有（{l['class']}）として数えている"))
+        has = any(l.get("class") in ("A", "B") for l in p["logs"])
+        if has == ("ポート固有のログなし（A・B なし）" in p["gaps"]): out.append(F("Q-LOGCLASS", w, "ポート固有ログの有無の判定が A・B の有無と一致しない"))
+    return out
+
+
 def check_count(db, root):
     """Q-COUNT: an ID from the Phase 0 baseline may disappear only if DATA_CHANGELOG.md names it (no silent deletion)."""
     inv = root / "docs/baseline/DATA_INVENTORY.json"
@@ -261,14 +381,48 @@ def check_count(db, root):
     base = json.loads(inv.read_text(encoding="utf-8"))["ids"]
     log = (root / "docs/DATA_CHANGELOG.md").read_text(encoding="utf-8")
     now = {f: {rid(r) for r in recs} for f, recs in db.items()}
-    return [F("Q-COUNT", f"{f}:{i}", "基準にあった ID が消えたが DATA_CHANGELOG.md に記載がない")
-            for f, ids in base.items() for i in ids if i not in now.get(f, set()) and i not in log]
+    gone = [ln for ln in log.splitlines() if re.search(r"削除|改名|統合", ln)]  # ID を挙げた行が削除・改名・統合の記録であること
+    return [F("Q-COUNT", f"{f}:{i}", "基準にあった ID が消えたが DATA_CHANGELOG.md に削除・改名の記録がない")
+            for f, ids in base.items() for i in ids if i not in now.get(f, set()) and not any(i in ln for ln in gone)]
 
 
-def check_vendor_logs(db):
-    """Phase 4 対象外: FortiGate / NEC IX のフィールドは記録のみ。"""
-    return [F("Q-VENDOR", f"log_investigation:{l['id']}", f"確度={l['certainty']}（Phase 4 で実機・公式マニュアル照合予定）", "info")
-            for l in db["log_investigation"] if l["id"] in ("LOG-FORTIGATE-VENDOR", "LOG-NECIX-VENDOR")]
+def _evidence(root):
+    p = root / "data/raw/vendor/fortios_evidence.json"
+    if not p.exists(): return {}
+    return {"SRC-FTNT-" + k.replace("FGT-", "").replace(".", ""): v for k, v in json.loads(p.read_text(encoding="utf-8"))["pages"].items()}
+
+
+def check_vendor_logs(db, root=ROOT):
+    """Q-VENDOR: ベンダーログは版・種別・ID・フィールド・CLI ごとにページ単位の出典を持ち、確認済みの項目は取得した原文の抽出結果にあること。"""
+    out, src, ev = [], {s["source_id"]: s for s in db["sources"]}, _evidence(root)
+    for l in db["log_investigation"]:
+        w, vl = f"log_investigation:{l['id']}", l.get("vendor_logs")
+        if vl is None:
+            if l["port_scope"] == "any" and l["id"].endswith("-VENDOR"): out.append(F("Q-VENDOR", w, "ベンダー機器のログに vendor_logs（版・出典付きの定義）がない"))
+            continue
+        ok_fields = set()
+        for i, e in enumerate(vl):
+            we = f"{w}/vendor_logs/{i}"
+            for s in e["source_ids"]:
+                x = src.get(s)
+                if not x: out.append(F("Q-VENDOR", we, f"出典 {s} がない")); continue
+                if urllib.parse.urlparse(x["url"]).path.strip("/") == "": out.append(F("Q-VENDOR", we, f"出典 {s} がサイトのトップページで、ページを特定していない"))
+            if e["verification_status"] != "確認済み": continue
+            if any(src.get(s, {}).get("verification_status") != "確認済み" for s in e["source_ids"]):
+                out.append(F("Q-VENDOR", we, "確認済みだが、確認済みでない出典を含む")); continue
+            pages = [ev[s] for s in e["source_ids"] if s in ev]
+            have = {f for pg in pages for f in pg.get("fields", [])}; cmds = {c for pg in pages for c in pg.get("commands", [])}
+            if not pages: out.append(F("Q-VENDOR", we, "確認済みだが原文の抽出結果（data/raw/vendor）に対応するページがない")); continue
+            for f in e["fields"]:
+                if f not in have: out.append(F("Q-VENDOR", we, f"フィールド {f} が原文のフィールド表にない"))
+            for c in e["cli_commands"]:
+                if not any(c.split(" <")[0] == k.split(" <")[0] for k in cmds): out.append(F("Q-VENDOR", we, f"CLI {c} が原文のコマンド一覧にない"))
+            for v in e["firmware_versions"]:
+                if not any(f"/{v}/" in pg["url"] for pg in pages): out.append(F("Q-VENDOR", we, f"版 {v} の資料が出典にない"))
+            ok_fields |= set(e["fields"])
+        for f in l["common_fields"] + l["vendor_specific_fields"]:
+            if f not in ok_fields: out.append(F("Q-VENDOR", w, f"フィールド {f} が確認済みの vendor_logs にない（未確認のフィールドを一覧に残している）"))
+    return out
 
 
 def run(db, root=ROOT, catalog=None):
@@ -276,7 +430,8 @@ def run(db, root=ROOT, catalog=None):
     out, _ = load_json_files(root)
     for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db), lambda: check_iana(db, root),
                lambda: check_sources(db), lambda: check_verified(db), lambda: check_cve(db), lambda: check_association(db),
-               lambda: check_display(root), lambda: check_count(db, root), lambda: check_vendor_logs(db)):
+               lambda: check_attribution(db), lambda: check_review(db), lambda: check_risk_split(db),
+               lambda: check_display(root), lambda: check_count(db, root), lambda: check_log_links(db), lambda: check_log_class(root), lambda: check_vendor_logs(db, root)):
         out += fn()
     return out
 

@@ -31,6 +31,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -54,7 +60,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -78,7 +90,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -134,6 +152,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -176,7 +200,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -200,7 +230,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -244,6 +280,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -267,7 +309,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -291,7 +339,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -315,7 +369,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -337,6 +397,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -380,6 +450,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -407,7 +483,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -431,7 +513,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -455,7 +543,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -481,6 +575,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -528,6 +632,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -551,7 +661,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -575,7 +691,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -619,6 +741,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -642,7 +770,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -666,7 +800,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -686,7 +826,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -730,6 +876,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -773,6 +925,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -796,7 +954,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -820,7 +984,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -872,6 +1042,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -898,7 +1074,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0048/",
@@ -940,7 +1117,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -964,7 +1147,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -1004,6 +1193,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1023,7 +1218,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1047,7 +1248,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -1099,6 +1306,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -1146,6 +1359,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1173,7 +1392,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1201,7 +1426,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1225,7 +1456,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1251,6 +1488,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -1294,6 +1541,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1321,7 +1574,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1345,7 +1604,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1369,7 +1634,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -1417,6 +1688,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1440,7 +1717,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1464,7 +1747,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1487,7 +1776,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0192",
@@ -1505,7 +1795,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0193",
@@ -1523,7 +1814,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0070/",
@@ -1570,6 +1862,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1597,7 +1895,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1625,7 +1929,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1653,7 +1963,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1683,6 +1999,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -1726,6 +2052,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1753,7 +2085,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1777,7 +2115,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -1829,6 +2173,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1856,7 +2206,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1884,7 +2240,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1911,7 +2273,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0223",
@@ -1933,7 +2296,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0224",
@@ -1956,7 +2320,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -1982,6 +2352,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2029,6 +2409,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2052,7 +2438,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2076,7 +2468,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2128,6 +2526,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2179,6 +2583,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2202,7 +2612,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2226,7 +2642,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2252,6 +2674,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2295,6 +2727,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2314,7 +2752,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2338,7 +2782,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2364,6 +2814,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2411,6 +2871,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2438,7 +2904,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2466,7 +2938,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2489,7 +2967,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0262",
@@ -2516,7 +2995,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2560,6 +3045,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2583,7 +3074,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2603,7 +3100,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2622,7 +3125,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0269",
@@ -2641,7 +3145,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2660,7 +3170,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0096/",
@@ -2711,6 +3222,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2754,6 +3271,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2781,7 +3304,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2805,7 +3334,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2831,6 +3366,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -2882,6 +3427,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2905,7 +3456,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2925,7 +3482,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -2944,7 +3507,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0296",
@@ -2965,6 +3529,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3012,6 +3586,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3039,7 +3619,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3063,7 +3649,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3091,7 +3683,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3135,6 +3733,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3174,6 +3778,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3193,7 +3803,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3213,7 +3829,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3307,6 +3929,16 @@
         "log_investigation_ids": [
           "LOG-WIN-AN0327",
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-WIN-AN0327",
+            "basis": "det0118_analytic"
+          }
         ]
       },
       {
@@ -3380,7 +4012,18 @@
           "vsftpd"
         ],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-AN0328",
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-LIN-AN0328",
+            "basis": "det0118_analytic"
+          }
         ]
       },
       {
@@ -3421,7 +4064,18 @@
         "transport_basis": "stated",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-AN0329",
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-ESXI-AN0329",
+            "basis": "det0118_analytic"
+          }
         ]
       },
       {
@@ -3466,7 +4120,18 @@
         "transport_basis": "service_default",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-AN0330",
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-MAC-AN0330",
+            "basis": "det0118_analytic"
+          }
         ]
       }
     ],
@@ -3518,6 +4183,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3545,7 +4216,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3573,7 +4250,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3605,7 +4288,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3653,6 +4342,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3680,7 +4375,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3704,7 +4405,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3752,6 +4459,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3787,7 +4500,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3815,7 +4534,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -3838,7 +4563,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0371",
@@ -3861,7 +4587,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3909,6 +4641,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3956,6 +4694,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -3999,6 +4743,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4026,7 +4776,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4050,7 +4806,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4074,7 +4836,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4100,6 +4868,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4147,6 +4925,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4198,6 +4982,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4245,6 +5035,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4272,7 +5068,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4300,7 +5102,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4319,7 +5127,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0459",
@@ -4337,7 +5146,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0460",
@@ -4355,7 +5165,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0461",
@@ -4376,6 +5187,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4423,6 +5244,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4450,7 +5277,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4478,7 +5311,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4522,6 +5361,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4541,7 +5386,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4561,7 +5412,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4617,6 +5474,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4644,7 +5507,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4676,7 +5545,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4724,6 +5599,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4747,7 +5628,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4771,7 +5658,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4795,7 +5688,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -4843,6 +5742,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4866,7 +5771,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4894,7 +5805,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4917,7 +5834,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0524",
@@ -4936,7 +5854,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -4959,7 +5883,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0184/",
@@ -4998,6 +5923,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5021,7 +5952,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5045,7 +5982,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5069,7 +6012,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5117,6 +6066,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5148,7 +6103,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5172,7 +6133,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5216,6 +6183,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5235,7 +6208,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5255,7 +6234,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5275,7 +6260,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5297,6 +6288,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5340,6 +6341,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5363,7 +6370,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5387,7 +6400,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5411,7 +6430,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5459,6 +6484,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5506,6 +6537,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5553,6 +6590,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5576,7 +6619,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5596,7 +6645,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5620,7 +6675,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5664,6 +6725,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5687,7 +6754,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5711,7 +6784,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -5759,6 +6838,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5782,7 +6867,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5806,7 +6897,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5830,7 +6927,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5849,7 +6952,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0215/",
@@ -5892,6 +6996,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5919,7 +7029,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5943,7 +7059,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -5967,7 +7089,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6011,6 +7139,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6034,7 +7168,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6086,6 +7226,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6113,7 +7259,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6141,7 +7293,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6185,6 +7343,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6208,7 +7372,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6232,7 +7402,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6255,7 +7431,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0240/",
@@ -6302,6 +7479,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6351,7 +7534,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0249/",
@@ -6398,6 +7582,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6425,7 +7615,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6449,7 +7645,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6497,6 +7699,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6520,7 +7728,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6544,7 +7758,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6567,7 +7787,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0754",
@@ -6590,7 +7811,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6634,6 +7861,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6661,7 +7894,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6685,7 +7924,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6709,7 +7954,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6735,6 +7986,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6778,6 +8039,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6805,7 +8072,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6833,7 +8106,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6881,6 +8160,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6900,7 +8185,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -6920,7 +8211,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -6976,6 +8273,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7023,6 +8326,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7050,7 +8359,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7074,7 +8389,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7118,6 +8439,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7173,6 +8500,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7224,6 +8557,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7275,6 +8614,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7314,7 +8659,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7346,7 +8697,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7390,6 +8747,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7413,7 +8776,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7437,7 +8806,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7463,6 +8838,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7518,6 +8903,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7541,7 +8932,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7565,7 +8962,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7605,6 +9008,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7628,7 +9037,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7648,7 +9063,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7672,7 +9093,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -7720,6 +9147,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7747,7 +9180,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7775,7 +9214,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7802,7 +9247,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0860",
@@ -7828,7 +9274,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0307/",
@@ -7871,6 +9318,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7898,7 +9351,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7926,7 +9385,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -7945,7 +9410,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0879",
@@ -7974,6 +9440,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -8017,6 +9493,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8040,7 +9522,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8060,7 +9548,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8080,7 +9574,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8106,6 +9606,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8128,7 +9638,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0320/",
@@ -8179,6 +9690,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -8222,6 +9739,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8245,7 +9768,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8273,7 +9802,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -8317,6 +9852,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8340,7 +9881,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8363,7 +9910,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0957",
@@ -8385,7 +9933,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0958",
@@ -8407,7 +9956,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0959",
@@ -8425,7 +9975,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0960",
@@ -8447,7 +9998,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0338/",
@@ -8494,6 +10046,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8521,7 +10079,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8549,7 +10113,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8568,7 +10138,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN0979",
@@ -8590,7 +10161,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0345/",
@@ -8633,6 +10205,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8652,7 +10230,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8672,7 +10256,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -8724,6 +10314,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8755,7 +10351,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8783,7 +10385,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8811,7 +10419,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -8867,6 +10481,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -8914,6 +10534,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8941,7 +10567,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8969,7 +10601,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -8996,7 +10634,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0354/",
@@ -9039,6 +10678,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9066,7 +10711,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9086,7 +10737,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9142,6 +10799,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9189,6 +10852,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9232,6 +10901,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9255,7 +10930,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9279,7 +10960,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9303,7 +10990,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9325,6 +11018,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9368,6 +11071,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9391,7 +11100,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9415,7 +11130,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9442,7 +11163,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0376/",
@@ -9489,6 +11211,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9516,7 +11244,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9540,7 +11274,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9562,6 +11302,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9585,7 +11335,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9629,6 +11385,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9652,7 +11414,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9676,7 +11444,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9698,6 +11472,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9721,7 +11505,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9773,6 +11563,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9828,6 +11624,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9879,6 +11681,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -9922,6 +11730,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9945,7 +11759,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9969,7 +11789,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -9992,7 +11818,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1104",
@@ -10015,7 +11842,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -10067,6 +11900,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10089,7 +11928,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0398/",
@@ -10136,6 +11976,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10163,7 +12009,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10191,7 +12043,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -10235,6 +12093,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10258,7 +12122,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10278,7 +12148,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10300,6 +12176,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10323,7 +12209,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -10367,6 +12259,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10390,7 +12288,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10410,7 +12314,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -10454,6 +12364,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10481,7 +12397,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10505,7 +12427,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10532,7 +12460,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0408/",
@@ -10583,6 +12512,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -10626,6 +12561,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10649,7 +12590,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10673,7 +12620,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -10721,6 +12674,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10744,7 +12703,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10768,7 +12733,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10791,7 +12762,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1157",
@@ -10813,7 +12785,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1158",
@@ -10835,7 +12808,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1159",
@@ -10860,6 +12834,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -10907,6 +12891,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10930,7 +12920,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10954,7 +12950,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -10978,7 +12980,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11000,6 +13008,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11043,6 +13061,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11066,7 +13090,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11090,7 +13120,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11110,7 +13146,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11158,6 +13200,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11181,7 +13229,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11205,7 +13259,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11257,6 +13317,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11300,6 +13366,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11323,7 +13395,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11347,7 +13425,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11371,7 +13455,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11419,6 +13509,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11442,7 +13538,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11466,7 +13568,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11489,7 +13597,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0430/",
@@ -11540,6 +13649,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11583,6 +13698,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11606,7 +13727,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11630,7 +13757,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11652,6 +13785,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11699,6 +13842,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11722,7 +13871,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11750,7 +13905,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11778,7 +13939,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11808,6 +13975,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11855,6 +14032,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11878,7 +14061,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -11906,7 +14095,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -11955,6 +14150,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12006,6 +14211,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12049,6 +14260,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12072,7 +14289,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12096,7 +14319,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12116,7 +14345,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12142,6 +14377,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12193,6 +14438,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12232,6 +14483,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12251,7 +14508,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12270,7 +14533,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1278",
@@ -12289,7 +14553,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12308,7 +14578,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0463/",
@@ -12347,6 +14618,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12366,7 +14643,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12385,7 +14668,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1286",
@@ -12404,7 +14688,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12426,6 +14716,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12469,6 +14769,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12492,7 +14798,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12516,7 +14828,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12560,6 +14878,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12583,7 +14907,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12611,7 +14941,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12635,7 +14971,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12687,6 +15029,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12738,6 +15086,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12765,7 +15119,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12789,7 +15149,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12816,7 +15182,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0476/",
@@ -12867,6 +15234,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12914,6 +15287,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -12957,6 +15336,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -12976,7 +15361,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13000,7 +15391,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -13040,6 +15437,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13059,7 +15462,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13079,7 +15488,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13098,7 +15513,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1340",
@@ -13119,6 +15535,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13137,7 +15563,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1342",
@@ -13155,7 +15582,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1343",
@@ -13173,7 +15601,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0487/",
@@ -13220,6 +15649,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -13261,7 +15696,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0490/",
@@ -13320,6 +15756,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13347,7 +15789,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13375,7 +15823,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -13423,6 +15877,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13446,7 +15906,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13470,7 +15936,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13489,7 +15961,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1373",
@@ -13507,7 +15980,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1374",
@@ -13532,6 +16006,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13555,7 +16039,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -13603,6 +16093,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -13650,6 +16146,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13673,7 +16175,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13697,7 +16205,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13721,7 +16235,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13740,7 +16260,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0502/",
@@ -13803,6 +16324,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -13854,6 +16381,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13881,7 +16414,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13909,7 +16448,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -13957,6 +16502,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -13984,7 +16535,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14008,7 +16565,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14031,7 +16594,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0514/",
@@ -14070,6 +16634,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14089,7 +16659,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14109,7 +16685,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14129,7 +16711,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14155,6 +16743,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14198,6 +16796,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14221,7 +16825,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14277,6 +16887,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14295,7 +16911,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0519/",
@@ -14338,6 +16955,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14361,7 +16984,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14381,7 +17010,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14429,6 +17064,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14452,7 +17093,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14476,7 +17123,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14524,6 +17177,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14547,7 +17206,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14571,7 +17236,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14619,6 +17290,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14662,6 +17339,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14689,7 +17372,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14713,7 +17402,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14737,7 +17432,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14785,6 +17486,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14828,6 +17535,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14855,7 +17568,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14879,7 +17598,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14903,7 +17628,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -14929,6 +17660,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -14976,6 +17717,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15003,7 +17750,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15031,7 +17784,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15054,7 +17813,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1515",
@@ -15077,7 +17837,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -15125,6 +17891,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15148,7 +17920,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15172,7 +17950,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15194,6 +17978,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -15233,6 +18027,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15252,7 +18052,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15272,7 +18078,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15291,7 +18103,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1525",
@@ -15312,6 +18125,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15330,7 +18153,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0551/",
@@ -15381,6 +18205,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -15428,6 +18258,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15451,7 +18287,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15475,7 +18317,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15494,7 +18342,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1547",
@@ -15512,7 +18361,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0560/",
@@ -15559,6 +18409,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15582,7 +18438,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15606,7 +18468,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15629,7 +18497,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0571/",
@@ -15672,6 +18541,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15695,7 +18570,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15719,7 +18600,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15739,7 +18626,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15761,6 +18654,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -15804,6 +18707,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15827,7 +18736,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15851,7 +18766,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -15870,7 +18791,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1608",
@@ -15892,7 +18814,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0583/",
@@ -15943,6 +18866,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -15990,6 +18919,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16013,7 +18948,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16037,7 +18978,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16056,7 +19003,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1616",
@@ -16078,7 +19026,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1617",
@@ -16097,7 +19046,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16116,7 +19071,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       },
       {
         "id": "AN1619",
@@ -16134,7 +19090,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0587/",
@@ -16181,6 +19138,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16204,7 +19167,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16228,7 +19197,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16248,7 +19223,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -16293,6 +19274,16 @@
         "log_investigation_ids": [
           "LOG-FORTIGATE-VENDOR",
           "LOG-NECIX-VENDOR"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-FORTIGATE-VENDOR",
+            "basis": "platform_generic"
+          },
+          {
+            "log_id": "LOG-NECIX-VENDOR",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -16340,6 +19331,12 @@
         "service_names": [],
         "log_investigation_ids": [
           "LOG-WIN-SECURITY"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-WIN-SECURITY",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -16386,7 +19383,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-LIN-AN0328"
+          "LOG-LIN-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-LIN-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16414,7 +19417,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-MAC-AN0330"
+          "LOG-MAC-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-MAC-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       },
       {
@@ -16442,7 +19451,13 @@
         "transport_basis": "none",
         "service_names": [],
         "log_investigation_ids": [
-          "LOG-ESXI-AN0329"
+          "LOG-ESXI-GENERIC"
+        ],
+        "log_links": [
+          {
+            "log_id": "LOG-ESXI-GENERIC",
+            "basis": "platform_generic"
+          }
         ]
       }
     ],
@@ -16484,7 +19499,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0830/",
@@ -16525,7 +19541,8 @@
         "port_basis": "none",
         "transport_basis": "none",
         "service_names": [],
-        "log_investigation_ids": []
+        "log_investigation_ids": [],
+        "log_links": []
       }
     ],
     "url": "https://attack.mitre.org/detectionstrategies/DET0867/",

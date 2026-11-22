@@ -25,7 +25,8 @@ class TechniqueCard extends StatelessWidget {
               style: Term.monoStyle(size: 11, color: Term.dim)),
           children: [
             if (basis != null)
-              KV('関連の根拠', [basis!.label, if (basis!.via.isNotEmpty) '経路: ${basis!.via.join(', ')}', if (basis!.note.isNotEmpty) basis!.note].join('\n')),
+              KV('関連の根拠', [basis!.label, if (basis!.sourceType.isNotEmpty) '根拠の種類: ${basis!.sourceLabel}',
+                if (basis!.via.isNotEmpty) '経路: ${basis!.via.join(', ')}', if (basis!.note.isNotEmpty) basis!.note].join('\n')),
             for (final did in t.dets)
               if (repo.dets[did] case final det?) ...[
                 Text('$did  ${det.name}', style: Term.monoStyle(size: 12, color: Term.teal)),
@@ -53,7 +54,8 @@ class SourceRow extends StatelessWidget {
     final s = repo.sources[id];
     if (s == null) return const SizedBox.shrink();
     final state = s.certainty.isNotEmpty ? s.certainty : (s.verified ? '確認済み' : '未確認');
-    return RuleCard(title: s.title, trailing: state, subtitle: [s.url, if (s.checked.isNotEmpty) '確認日 ${s.checked}'].join('\n'),
+    return RuleCard(title: s.title, trailing: state,
+        subtitle: [s.url, if (s.checked.isNotEmpty) '確認日 ${s.checked}', if (s.via.isNotEmpty) '確認方法 ${s.viaLabel}'].join('\n'),
         onTap: () => openLink(context, s.url));
   }
 }
@@ -85,6 +87,11 @@ class AttackDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) => _Scaffold('~/attacks/${a.id}', [
         TermSection(a.name, note: a.category, children: [KV('概要', a.description), KV('特徴', a.features), KV('検知方法', a.detection), KV('対策', a.defenses)]),
         ReviewSection(certainty: a.certainty, verified: a.verified, notes: a.notes),
+        if (a.mapping.isNotEmpty)
+          TermSection('status', children: [
+            KV('ATT&CK 対応付け', a.mapping), KV('本文の確認', a.content),
+            KV('ポートとの関係', a.relation == 'generic' ? '汎用（どの公開サービスにも当てはまる）' : 'サービス固有'),
+          ]),
         TermSection('att&ck', children: [for (final id in a.techniques) if (repo.techniques[id] case final t?) TechniqueCard(t, repo)]),
         TermSection('tools', children: [
           for (final t in repo.tools.values.where((t) => t.attacks.contains(a.id)))
@@ -114,9 +121,14 @@ class ToolDetailScreen extends StatelessWidget {
         TermSection('attacks', children: [
           for (final id in t.attacks) if (repo.attacks[id] case final a?) RuleCard(title: a.name, onTap: () => push(context, AttackDetailScreen(a, repo))),
         ]),
-        TermSection('att&ck', note: '${t.techniques.length}', children: [
-          for (final id in t.techniques) if (repo.techniques[id] case final x?) TechniqueCard(x, repo),
+        TermSection('att&ck 公式 (uses)', note: '${t.stixTechniques.length}', children: [
+          if (t.stixTechniques.isEmpty) Text('ATT&CK の Software として登録なし', style: Term.monoStyle(size: 11, color: Term.dim)),
+          for (final id in t.stixTechniques) if (repo.techniques[id] case final x?) TechniqueCard(x, repo),
         ]),
+        if (t.appTechniques.isNotEmpty)
+          TermSection('攻撃手法経由', note: 'アプリ内の関連付け', children: [
+            for (final id in t.appTechniques) if (repo.techniques[id] case final x?) TechniqueCard(x, repo),
+          ]),
         TermSection('logs', children: [
           for (final id in t.logs) if (repo.logs[id] case final l?) RuleCard(title: l.platform, onTap: () => push(context, LogDetailScreen(l, repo))),
         ]),
@@ -137,9 +149,16 @@ class LogDetailScreen extends StatelessWidget {
     return _Scaffold('~/logs/${l.id}', [
       TermSection(l.platform, children: [KV('検知ロジック', l.analytics), KV('調査手順', l.procedure)]),
       ReviewSection(certainty: l.certainty, verified: l.verified, notes: l.notes),
-      TermSection('channels', children: [
+      TermSection('channels', note: l.scope == 'platform' ? 'プラットフォーム共通（ポート固有ではない）' : null, children: [
         for (final (ch, code, desc) in l.channels) RuleCard(title: code == null ? ch : '$ch  $code', subtitle: desc),
       ]),
+      if (l.vendor.isNotEmpty)
+        TermSection('vendor_logs', note: '版ごと', children: [
+          for (final v in l.vendor)
+            RuleCard(title: [v.versions, '${v.type}/${v.subtype}', if (v.id.isNotEmpty) v.id].join('  '), trailing: v.status,
+                subtitle: [if (v.message.isNotEmpty) v.message, if (v.fields.isNotEmpty) 'fields: ${v.fields.join(' ')}',
+                  if (v.cli.isNotEmpty) 'cli: ${v.cli.join(' / ')}', if (v.notes.isNotEmpty) v.notes].join('\n')),
+        ]),
       TermSection('sources', children: [for (final id in l.refs) SourceRow(id, repo)]),
       ..._ports(repo, ports, (p) => '関連度: ${ref(p)?.match ?? '-'}'),
     ]);

@@ -14,7 +14,13 @@
     "scope": [
       "port_assignment"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "data/raw/iana/service-names-port-numbers.csv",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "IANA 公式 CSV（iana.yml で取得）と ports.json の登録名・説明を照合（Q-IANA）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-IANA-PROTO",
@@ -32,7 +38,12 @@
       "protocol_assignment"
     ],
     "reverified_v4": true,
-    "verified_via": "data/raw/iana/protocol-numbers-1.csv"
+    "verified_via": "original_document",
+    "verified_url": "data/raw/iana/protocol-numbers-1.csv",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "IANA 公式 CSV（iana.yml で取得）と protocols.json の番号・キーワードを照合（Q-IPPROTO）。",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ATTACK",
@@ -47,10 +58,17 @@
     "verification_status": "確認済み",
     "notes": "公式 STIX v20.1（data/raw/mitre/attack_catalog.json に ID・名称・廃止状態を収録）。",
     "scope": [
-      "reference"
+      "reference",
+      "attack_framework",
+      "detection"
     ],
     "reverified_v4": true,
-    "verified_via": "https://github.com/mitre-attack/attack-stix-data"
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-DET0118",
@@ -67,7 +85,13 @@
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-RDS",
@@ -85,7 +109,12 @@
       "service"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/remote/ports-used-by-rds.md"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/remote/ports-used-by-rds.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "RDS の役割別ポート: TCP 88 / TCP 135 / TCP・UDP 389 / TCP 636 / TCP 443 / TCP・UDP 3389 / TCP 5985 を記載。UDP 88・TCP 5986 は記載なし。",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CISA-HYGIENE",
@@ -100,10 +129,15 @@
     "verification_status": "確認済み",
     "notes": "本文: SMB, NetBIOS, Kerberos, LDAP, Telnet はインターネットに公開すべきでない（即時対処が必要）。RDP は確認した本文に記載なし。",
     "scope": [
-      "threat_guidance"
+      "government_guidance"
     ],
     "reverified_v4": true,
-    "verified_via": "CISA 公式 PDF（検索結果に表示された本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://www.cisa.gov/sites/default/files/2022-12/summit-2022-cyber-risks-cyber-hygiene-508.pdf",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "Exposed Vulnerable Services のスライドに SMB / NetBIOS / Kerberos / LDAP / Telnet / FTP / RDP / SMTP / POP3 / IMAP / DNS。SMB・NetBIOS・Kerberos・LDAP・Telnet は『インターネットに公開すべきでない』。SSH は暗号の脆弱性の文脈のみで、露出の対象には含まれない",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-FORTINET-DOCS",
@@ -115,12 +149,19 @@
     "publication_date": "2026-01-01",
     "last_updated": "2026-11-01",
     "access_date": "2026-11-21",
-    "verification_status": "一部確認",
+    "verification_status": "未確認",
     "notes": "FortiOS 7.xにおけるSyslogおよびファブリックトラフィックログの基本フィールド構造。詳細オプション構文は標準動作。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": false,
+    "verified_via": "not_verified",
+    "verified_url": "https://docs.fortinet.com/",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "サイトのトップページで、特定の資料を指していない（Phase 2 でページ単位の出典に置き換え）",
+    "usage_status": "廃止",
+    "usage_notes": "サイトのトップページで特定の資料を指さないため、ページ単位の出典（SRC-FTNT-*）に置き換え"
   },
   {
     "source_id": "SRC-NEC-IX",
@@ -132,12 +173,19 @@
     "publication_date": "2025-06-01",
     "last_updated": "2026-08-15",
     "access_date": "2026-11-21",
-    "verification_status": "一部確認",
+    "verification_status": "未確認",
     "notes": "UNIVERGE IXシリーズルータにおけるアクセスリスト適用ログおよびIPsec SAログの出力仕様。",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": false
+    "reverified_v4": false,
+    "verified_via": "not_verified",
+    "verified_url": "https://jpn.nec.com/univerge/ix/",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "サイトのトップページで、特定の資料を指していない（Phase 2 でページ単位の出典に置き換え）",
+    "usage_status": "廃止",
+    "usage_notes": "サイトのトップページで特定の資料を指さないため、ページ単位の出典（SRC-NEC-IX2235-DL・SRC-NEC-IX-FAQ-LOG）に置き換え"
   },
   {
     "source_id": "SRC-IETF-RFC",
@@ -155,7 +203,12 @@
       "port_assignment"
     ],
     "reverified_v4": true,
-    "verified_via": "https://www.rfc-editor.org/info/rfc6335"
+    "verified_via": "original_document",
+    "verified_url": "https://www.rfc-editor.org/rfc/rfc6335.html",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "6章: TCP, UDP, UDP-Lite, SCTP, DCCP は 16 bit のポート番号空間。System 0-1023 / User 1024-49151 / Dynamic 49152-65535",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1003",
@@ -173,7 +226,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1021",
@@ -191,7 +250,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1040",
@@ -209,7 +274,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1041",
@@ -227,7 +298,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1071",
@@ -245,7 +322,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1110",
@@ -263,7 +346,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1210",
@@ -281,7 +370,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1486",
@@ -299,7 +394,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1552",
@@ -317,7 +418,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1557",
@@ -335,7 +442,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1558",
@@ -353,7 +466,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1595",
@@ -371,7 +490,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-DET0314",
@@ -389,7 +514,14 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "未使用・再確認待ち",
+    "usage_notes": "DET0314 のレコードは技術の出典（SRC-MITRE-T1040）を参照しており、この出典は未参照"
   },
   {
     "source_id": "SRC-MITRE-DET0348",
@@ -407,7 +539,14 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-21",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "未使用・再確認待ち",
+    "usage_notes": "DET0348 のレコードは技術の出典（SRC-MITRE-T1041）を参照しており、この出典は未参照"
   },
   {
     "source_id": "SRC-MS-PORTS",
@@ -420,12 +559,18 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "Windows のサービス別ポート要件（Kerberos TCP/UDP 88、WinRM 2.0 TCP 5985/5986 など）",
     "scope": [
       "service",
       "port_assignment"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/networking/service-overview-and-network-port-requirements.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "Windows のサービス別ポート要件（Kerberos TCP/UDP 88、WinRM 2.0 TCP 5985/5986 など）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-HYPERV-LM",
@@ -442,7 +587,13 @@
     "scope": [
       "service"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/virtualization/troubleshoot-live-migration-guidance.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "TCP 6600 と 3343（クラスタ）の待受確認を記載",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-HYPERV-CONN",
@@ -459,7 +610,13 @@
     "scope": [
       "service"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/virtualization/hyper-v-cluster-connectivity-management-configuration.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "VMConnect のポート 2179 を記載",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-HYPERV-EVTLOG",
@@ -471,12 +628,18 @@
     "publication_date": null,
     "last_updated": null,
     "access_date": "2026-11-21",
-    "verification_status": "確認済み",
+    "verification_status": "未確認",
     "notes": "障害解析は Hyper-V-VMMS と Hyper-V-Worker から始めると記載",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": true
+    "reverified_v4": false,
+    "verified_via": "not_verified",
+    "verified_url": "https://techcommunity.microsoft.com/blog/virtualization/looking-at-the-hyper-v-event-log-january-2018-edition/382411",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "本文を取得できず（取得できたのはメタデータのみ）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-HYPERV-TS",
@@ -493,7 +656,13 @@
     "scope": [
       "log_format"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/virtualization/hyper-v-virtual-machine-input-migration-integration.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "Hyper-V-Worker のイベント 18502（VM の電源断）を記載",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-ORACLE-VBOX-TS",
@@ -506,11 +675,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "VM 起動ごとに VBox.log を作成し、既定で VM のログフォルダに置くと記載",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.oracle.com/en/virtualization/virtualbox/7.1/user/Troubleshooting.html",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "VM 起動ごとに VBox.log を作成し、既定で VM のログフォルダに置くと記載",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-ORACLE-VBOX-VRDP",
@@ -527,7 +702,13 @@
     "scope": [
       "service"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/remotevm.html",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "VRDP サーバーの既定は TCP 3389",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-ORACLE-VBOX-WEB",
@@ -544,7 +725,13 @@
     "scope": [
       "service"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.oracle.com/en/virtualization/virtualbox/6.0/admin/vboxwebsrv-daemon.html",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "vboxwebsrv の既定は HOST=localhost、PORT=18083",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CISA-AMP",
@@ -556,12 +743,18 @@
     "publication_date": null,
     "last_updated": null,
     "access_date": "2026-11-21",
-    "verification_status": "確認済み",
-    "notes": "",
+    "verification_status": "一部確認",
+    "notes": "検索結果に表示された公式ページの本文で Systems Affected の一覧（QOTD / CharGEN / Portmap / SSDP / mDNS / RIPv1 / Memcached 等）を確認。原文ページは取得できず",
     "scope": [
       "threat_advisory"
     ],
-    "reverified_v4": true
+    "reverified_v4": false,
+    "verified_via": "search_result",
+    "verified_url": "https://us-cert.cisa.gov/ncas/alerts/TA14-017A",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "検索結果に表示された公式ページの本文で Systems Affected の一覧（QOTD / CharGEN / Portmap / SSDP / mDNS / RIPv1 / Memcached 等）を確認。原文ページは取得できず",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-KERBRUTE",
@@ -576,9 +769,15 @@
     "verification_status": "確認済み",
     "notes": "事前認証失敗は 4625 でなく 4768/4771 を発生させると記載",
     "scope": [
-      "threat_advisory"
+      "tool_documentation"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/ropnop/kerbrute/master/README.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "事前認証の失敗は 4625 を発生させず、4768 / 4771 を発生させると記載",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CHISEL",
@@ -593,9 +792,15 @@
     "verification_status": "確認済み",
     "notes": "HTTP 上のトンネル。--port 既定 8080",
     "scope": [
-      "service"
+      "tool_documentation"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/jpillora/chisel/master/README.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "HTTP 上のトンネル。--port の既定は環境変数 PORT、なければ 8080",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-EVILWINRM",
@@ -608,11 +813,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "README: ハッキング・ペネトレーションテスト用の WinRM シェル",
     "scope": [
-      "service"
+      "tool_documentation"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/Hackplayers/evil-winrm/master/README.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "README: ハッキング・ペネトレーションテスト用の WinRM シェル",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-METASPLOIT-REVSHELL",
@@ -627,9 +838,15 @@
     "verification_status": "確認済み",
     "notes": "リスナー例で LPORT 4444 を使用",
     "scope": [
-      "threat_advisory"
+      "tool_documentation"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/docs/metasploit-framework.wiki/How-to-use-a-reverse-shell-in-Metasploit.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "リスナー例で LPORT 4444 を使用（Opt::LPORT の既定値は nil）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-HYDRA",
@@ -644,10 +861,15 @@
     "verification_status": "確認済み",
     "notes": "README の対応プロトコル一覧に FTP / HTTP / RDP / SMB / SSH / Telnet などを記載。",
     "scope": [
-      "service"
+      "tool_documentation"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/vanhauser-thc/thc-hydra/master/README"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/vanhauser-thc/thc-hydra/master/README",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "README の対応プロトコル一覧に FTP / HTTP / RDP / SMB / SSH / Telnet などを記載。",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-NMAP",
@@ -662,10 +884,15 @@
     "verification_status": "確認済み",
     "notes": "公式 man page: 'Network exploration tool and security / port scanner'。サービス・バージョン・OS の識別機能を記載。",
     "scope": [
-      "service"
+      "tool_documentation"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/nmap/nmap/master/docs/nmap.1"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/nmap/nmap/master/docs/nmap.1",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式 man page: 'Network exploration tool and security / port scanner'。サービス・バージョン・OS の識別機能を記載。",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SAMBA-SMBCLIENT",
@@ -680,10 +907,15 @@
     "verification_status": "確認済み",
     "notes": "man page の -p オプション: SMB/CIFS サーバの標準 TCP ポートは 139（既定）。445/tcp は本資料に記載なし。",
     "scope": [
-      "service"
+      "tool_documentation"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/samba-team/samba/master/docs-xml/manpages/smbclient.1.xml"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/samba-team/samba/master/docs-xml/manpages/smbclient.1.xml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "man page の -p オプション: SMB/CIFS サーバの標準 TCP ポートは 139（既定）。445/tcp は本資料に記載なし。",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-IMPACKET-LM",
@@ -696,11 +928,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『HackTool - Potential Impacket Lateral Movement Activity』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/process_creation/proc_creation_win_hktl_impacket_lateral_movement.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『HackTool - Potential Impacket Lateral Movement Activity』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-SMBEXEC",
@@ -713,11 +951,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『smbexec.py Service Installation』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/builtin/system/service_control_manager/win_system_hack_smbexec.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『smbexec.py Service Installation』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-CS-PIPE",
@@ -730,11 +974,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『CobaltStrike Named Pipe』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/pipe_created/pipe_created_hktl_cobaltstrike.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『CobaltStrike Named Pipe』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-KERBEROAST",
@@ -747,11 +997,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『Kerberoasting Activity - Initial Query』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/builtin/security/win_security_kerberoasting_activity.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『Kerberoasting Activity - Initial Query』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-ASREP",
@@ -764,11 +1020,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『Potential AS-REP Roasting via Kerberos TGT Requests』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/builtin/security/win_security_kerberos_asrep_roasting.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『Potential AS-REP Roasting via Kerberos TGT Requests』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-DCSYNC",
@@ -781,11 +1043,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『Active Directory Replication from Non Machine Account - DcSync Indicator』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/builtin/security/win_security_ad_replication_non_machine_account.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『Active Directory Replication from Non Machine Account - DcSync Indicator』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-PSEXESVC",
@@ -798,11 +1066,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『PsExec Service Execution』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/process_creation/proc_creation_win_sysinternals_psexesvc.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『PsExec Service Execution』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-WINRM-CHILD",
@@ -815,11 +1089,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『Suspicious Processes Spawned by WinRM』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/process_creation/proc_creation_win_winrm_susp_child_process.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『Suspicious Processes Spawned by WinRM』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-EVILWINRM",
@@ -832,11 +1112,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『HackTool - Evil-WinRm Execution - PowerShell Module』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/powershell/powershell_module/posh_pm_hktl_evil_winrm_execution.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『HackTool - Evil-WinRm Execution - PowerShell Module』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-UA-RECON",
@@ -849,11 +1135,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『Suspicious User-Agents Related To Recon Tools』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/web/webserver_generic/web_susp_useragents.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『Suspicious User-Agents Related To Recon Tools』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-RUBEUS",
@@ -866,11 +1158,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『HackTool - Rubeus Execution』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/process_creation/proc_creation_win_hktl_rubeus.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『HackTool - Rubeus Execution』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-SHARPHOUND",
@@ -883,11 +1181,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『SharpHound Recon Sessions』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/application/rpc_firewall/rpc_firewall_sharphound_recon_sessions.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『SharpHound Recon Sessions』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-CHISEL",
@@ -900,11 +1204,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『PUA - Chisel Tunneling Tool Execution』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/process_creation/proc_creation_win_pua_chisel.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『PUA - Chisel Tunneling Tool Execution』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-ADFIND",
@@ -917,11 +1227,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『PUA - AdFind Suspicious Execution』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/process_creation/proc_creation_win_pua_adfind_susp_usage.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『PUA - AdFind Suspicious Execution』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-NGROK",
@@ -934,11 +1250,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『Process Initiated Network Connection To Ngrok Domain』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/network_connection/net_connection_win_domain_ngrok.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『Process Initiated Network Connection To Ngrok Domain』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-SIGMA-LSASS",
@@ -951,11 +1273,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "SigmaHQ の原文ルールが存在し、title が『Potential Credential Dumping Activity Via LSASS』であることを確認",
     "scope": [
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/master/rules/windows/process_access/proc_access_win_lsass_memdump.yml",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "SigmaHQ の原文ルールが存在し、title が『Potential Credential Dumping Activity Via LSASS』であることを確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4624",
@@ -973,7 +1301,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4624",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4625",
@@ -991,7 +1324,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4625",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4648",
@@ -1009,7 +1347,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4648",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4662",
@@ -1027,7 +1370,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4662",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4697",
@@ -1045,7 +1393,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4697",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4768",
@@ -1063,7 +1416,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4768",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4769",
@@ -1076,11 +1434,17 @@
     "last_updated": null,
     "access_date": "2026-11-21",
     "verification_status": "確認済み",
-    "notes": "",
+    "notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
     "scope": [
       "log_format"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4771",
@@ -1098,7 +1462,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4771",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-4776",
@@ -1116,7 +1485,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4776",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-5140",
@@ -1134,7 +1508,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5140",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-EVT-5145",
@@ -1152,7 +1531,12 @@
       "log_format"
     ],
     "reverified_v4": true,
-    "verified_via": "Microsoft Learn 公式ページ本文（検索結果に表示された同一 URL の本文）"
+    "verified_via": "original_document",
+    "verified_url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5145",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "公式ページの見出し（イベント ID と名称）を原文で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1001",
@@ -1170,7 +1554,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1005",
@@ -1188,7 +1578,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1007",
@@ -1206,7 +1602,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1012",
@@ -1224,7 +1626,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1016",
@@ -1242,7 +1650,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1018",
@@ -1260,7 +1674,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1027",
@@ -1278,7 +1698,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1029",
@@ -1296,7 +1722,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1030",
@@ -1314,7 +1746,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1033",
@@ -1332,7 +1770,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1039",
@@ -1350,7 +1794,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1046",
@@ -1368,7 +1818,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1047",
@@ -1386,7 +1842,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1048",
@@ -1404,7 +1866,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1049",
@@ -1422,7 +1890,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1053",
@@ -1440,7 +1914,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1055",
@@ -1458,7 +1938,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1056",
@@ -1476,7 +1962,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1057",
@@ -1494,7 +1986,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1059",
@@ -1512,7 +2010,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1068",
@@ -1530,7 +2034,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1069",
@@ -1548,7 +2058,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1070",
@@ -1566,7 +2082,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1078",
@@ -1584,7 +2106,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1083",
@@ -1602,7 +2130,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1087",
@@ -1620,7 +2154,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1090",
@@ -1638,7 +2178,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1095",
@@ -1656,7 +2202,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1098",
@@ -1674,7 +2226,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1102",
@@ -1692,7 +2250,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1105",
@@ -1710,7 +2274,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1106",
@@ -1728,7 +2298,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1112",
@@ -1746,7 +2322,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1113",
@@ -1764,7 +2346,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1114",
@@ -1782,7 +2370,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1132",
@@ -1800,7 +2394,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1133",
@@ -1818,7 +2418,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1134",
@@ -1836,7 +2442,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1135",
@@ -1854,7 +2466,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1136",
@@ -1872,7 +2490,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1137",
@@ -1890,7 +2514,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1140",
@@ -1908,7 +2538,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1185",
@@ -1926,7 +2562,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1190",
@@ -1944,7 +2586,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1197",
@@ -1962,7 +2610,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1201",
@@ -1980,7 +2634,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1203",
@@ -1998,7 +2658,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1207",
@@ -2016,7 +2682,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1218",
@@ -2034,7 +2706,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1219",
@@ -2052,7 +2730,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1482",
@@ -2070,7 +2754,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1497",
@@ -2088,7 +2778,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1498",
@@ -2106,7 +2802,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1518",
@@ -2124,7 +2826,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1543",
@@ -2142,7 +2850,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1547",
@@ -2160,7 +2874,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1548",
@@ -2178,7 +2898,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1550",
@@ -2196,7 +2922,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1553",
@@ -2214,7 +2946,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1555",
@@ -2232,7 +2970,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1560",
@@ -2250,7 +2994,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1564",
@@ -2268,7 +3018,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1566",
@@ -2286,7 +3042,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1567",
@@ -2304,7 +3066,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1568",
@@ -2322,7 +3090,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1569",
@@ -2340,7 +3114,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1570",
@@ -2358,7 +3138,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1571",
@@ -2376,7 +3162,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1572",
@@ -2394,7 +3186,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1573",
@@ -2412,7 +3210,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1602",
@@ -2430,7 +3234,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1610",
@@ -2448,7 +3258,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1613",
@@ -2466,7 +3282,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1615",
@@ -2484,7 +3306,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1620",
@@ -2502,7 +3330,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1649",
@@ -2520,7 +3354,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1680",
@@ -2538,7 +3378,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-T1685",
@@ -2556,7 +3402,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0002",
@@ -2574,7 +3426,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0029",
@@ -2592,7 +3450,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0154",
@@ -2610,7 +3474,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0174",
@@ -2628,7 +3498,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0357",
@@ -2646,7 +3522,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0488",
@@ -2664,7 +3546,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0508",
@@ -2682,7 +3570,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0521",
@@ -2700,7 +3594,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0552",
@@ -2718,7 +3618,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S0590",
@@ -2736,7 +3642,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-S1071",
@@ -2754,7 +3666,13 @@
       "attack_technique",
       "detection"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-05",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-DOCKER-REMOTE",
@@ -2769,9 +3687,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/docker/docs/main/content/manuals/engine/daemon/remote-access.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "保護せずに接続を公開すると、リモートの非 root ユーザーがホストの root 権限を得うる",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-DOCKER-PROTECT",
@@ -2786,9 +3710,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/docker/docs/main/content/manuals/engine/security/protect-access.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "TLS で保護するデーモンの待受例に 2376",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-REDIS-SECURITY",
@@ -2803,9 +3733,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/redis/docs/main/content/operate/oss_and_stack/management/security/_index.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "信頼された環境で信頼されたクライアントが使う設計。多数のインスタンスが公開 IP で放置されている",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-REDIS-ANTIREZ",
@@ -2820,9 +3756,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "research_report"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://antirez.com/news/96",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "作者が、パスワードなしで公開された Redis で任意ファイル（authorized_keys）を書き込みシェルを得る手順を解説",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MONGODB-CHECKLIST",
@@ -2837,9 +3779,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/mongodb/docs/master/source/administration/security-checklist.txt",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "アクセス制御の有効化と認証方式の指定、ネットワーク露出の制限を推奨",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-K8S-KUBELET",
@@ -2854,9 +3802,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/kubernetes/website/main/content/en/docs/reference/access-authn-authz/kubelet-authn-authz.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "認証されない要求は system:anonymous として扱われ、既定の認可モードは AlwaysAllow。nodes/proxy は他の kubelet API に到達",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-ETCD-SECURITY",
@@ -2871,9 +3825,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/etcd-io/website/main/content/en/docs/v3.7/op-guide/security.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "既定では RBAC 認証も転送層の認証も有効でない",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-APACHE-CVE-2023-46604",
@@ -2888,9 +3848,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/apache/activemq-website/main/src/security-advisories.data/CVE-2023-46604-announcement.txt",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "Java OpenWire プロトコルのマーシャラーにリモートコード実行の脆弱性",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-NVD-CVE-2023-46604",
@@ -2902,12 +3868,18 @@
     "publication_date": null,
     "last_updated": null,
     "access_date": "2026-11-22",
-    "verification_status": "確認済み",
+    "verification_status": "未確認",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vulnerability_database"
     ],
-    "reverified_v4": true
+    "reverified_v4": false,
+    "verified_via": "not_verified",
+    "verified_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-46604",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "本文を取得できず。KEV 掲載は SRC-CISA-KEV、内容は SRC-CVE-2023-46604 で確認",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CISA-IPMI",
@@ -2924,7 +3896,13 @@
     "scope": [
       "threat_advisory"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://www.cisa.gov/news-events/alerts/2013/07/26/risks-using-intelligent-platform-management-interface-ipmi",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "IPMI は OS の制御を上書きできる低レベルのアクセスを与える。IPMI の通信（通常 UDP 623）を制限するよう記載",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CISA-TA18-106A",
@@ -2936,12 +3914,18 @@
     "publication_date": null,
     "last_updated": null,
     "access_date": "2026-11-22",
-    "verification_status": "確認済み",
+    "verification_status": "一部確認",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
       "threat_advisory"
     ],
-    "reverified_v4": true
+    "reverified_v4": false,
+    "verified_via": "search_result",
+    "verified_url": "https://us-cert.cisa.gov/ncas/alerts/TA18-106A",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "検索結果に表示された公式ページの本文で SMI (port 4786) を確認。原文ページは取得できず",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CISCO-TSA18-106A",
@@ -2956,9 +3940,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "vendor_security"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-20180416-tsa18-106a.html",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "Smart Install を使わないなら無効化を推奨。使う場合は TCP 4786 の受信を ACL で遮断",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0836",
@@ -2973,9 +3963,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0869",
@@ -2990,9 +3986,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0806",
@@ -3007,9 +4009,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0888",
@@ -3024,9 +4032,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0846-001",
@@ -3041,9 +4055,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0883",
@@ -3058,9 +4078,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0885",
@@ -3075,9 +4101,16 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "未使用・再確認待ち",
+    "usage_notes": "T0885 をポートに関連付けるかは Phase 3 の関連区分の見直しで判断"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0846-002",
@@ -3092,9 +4125,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MITRE-ICS-T0871",
@@ -3109,9 +4148,15 @@
     "verification_status": "確認済み",
     "notes": "2026-11-22 再調査で本文を確認",
     "scope": [
-      "threat_advisory"
+      "attack_technique"
     ],
-    "reverified_v4": true
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-MS-SVC-PORTS",
@@ -3124,13 +4169,19 @@
     "last_updated": null,
     "access_date": "2026-11-22",
     "verification_status": "確認済み",
-    "notes": "表に Kerberos TCP/UDP 88、WinRM 2.0 の既定 HTTP TCP 5985 / HTTPS TCP 5986 を記載。",
+    "notes": "SRC-MS-PORTS と同一 URL のため統合（ID は互換のため残す）",
     "scope": [
       "service",
       "port_assignment"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/networking/service-overview-and-network-port-requirements.md"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/MicrosoftDocs/SupportArticles-docs/main/support/windows-server/networking/service-overview-and-network-port-requirements.md",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "表に Kerberos TCP/UDP 88、WinRM 2.0 の既定 HTTP TCP 5985 / HTTPS TCP 5986 を記載。",
+    "merged_into": "SRC-MS-PORTS",
+    "usage_status": "廃止"
   },
   {
     "source_id": "SRC-CVE-2017-0144",
@@ -3141,14 +4192,19 @@
     "applicable_data": "影響製品・バージョン・CVSS・公開日",
     "publication_date": "2017-03-17",
     "last_updated": "2026-08-14",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2017-0144.json）",
     "scope": [
       "vulnerability"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2017/0xxx/CVE-2017-0144.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2017/0xxx/CVE-2017-0144.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CVE-2019-0708",
@@ -3159,14 +4215,19 @@
     "applicable_data": "影響製品・バージョン・CVSS・公開日",
     "publication_date": "2019-05-16",
     "last_updated": "2025-10-21",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2019-0708.json）",
     "scope": [
       "vulnerability"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2019/0xxx/CVE-2019-0708.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2019/0xxx/CVE-2019-0708.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CVE-2020-0796",
@@ -3177,14 +4238,19 @@
     "applicable_data": "影響製品・バージョン・CVSS・公開日",
     "publication_date": "2020-03-12",
     "last_updated": "2026-10-01",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2020-0796.json）",
     "scope": [
       "vulnerability"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2020/0xxx/CVE-2020-0796.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2020/0xxx/CVE-2020-0796.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CVE-2021-21974",
@@ -3195,14 +4261,19 @@
     "applicable_data": "影響製品・バージョン・CVSS・公開日",
     "publication_date": "2021-02-24",
     "last_updated": "2026-06-02",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2021-21974.json）",
     "scope": [
       "vulnerability"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/21xxx/CVE-2021-21974.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/21xxx/CVE-2021-21974.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CVE-2022-21893",
@@ -3213,14 +4284,19 @@
     "applicable_data": "影響製品・バージョン・CVSS・公開日",
     "publication_date": "2022-01-11",
     "last_updated": "2025-01-02",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2022-21893.json）",
     "scope": [
       "vulnerability"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2022/21xxx/CVE-2022-21893.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2022/21xxx/CVE-2022-21893.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CVE-2023-46604",
@@ -3231,14 +4307,19 @@
     "applicable_data": "影響製品・バージョン・CVSS・公開日",
     "publication_date": "2023-10-27",
     "last_updated": "2025-11-03",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2023-46604.json）",
     "scope": [
       "vulnerability"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2023/46xxx/CVE-2023-46604.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2023/46xxx/CVE-2023-46604.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CVE-2024-6387",
@@ -3249,14 +4330,19 @@
     "applicable_data": "影響製品・バージョン・CVSS・公開日",
     "publication_date": "2024-07-01",
     "last_updated": "2026-11-06",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2024-6387.json）",
     "scope": [
       "vulnerability"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2024/6xxx/CVE-2024-6387.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2024/6xxx/CVE-2024-6387.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
   },
   {
     "source_id": "SRC-CISA-KEV",
@@ -3267,7 +4353,7 @@
     "applicable_data": "KEV 掲載状況・追加日・ランサムウェアでの利用",
     "publication_date": null,
     "last_updated": "2026-11-20",
-    "access_date": "2026-11-21",
+    "access_date": "2026-11-22",
     "verification_status": "確認済み",
     "notes": "cisagov/kev-data（CISA 公式の GitHub 配布）catalogVersion 2026.11.20",
     "scope": [
@@ -3275,6 +4361,655 @@
       "threat_advisory"
     ],
     "reverified_v4": true,
-    "verified_via": "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json"
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-PANW-XPANSE-2021",
+    "title": "Cortex Xpanse Researchers Identify Missing Metric for a Modern SOC (2021 Attack Surface Threat Report)",
+    "publisher": "Palo Alto Networks",
+    "url": "https://www.paloaltonetworks.com/blog/2021/05/rsac-attack-surface-management/",
+    "document_type": "Research Report",
+    "applicable_data": "CVE 公表から探索スキャン開始までの時間（2021年1〜3月の観測）",
+    "publication_date": "2021-05-19",
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "2021年1〜3月、50 社のグローバル企業に関係する 5,000 万 IP を観測。攻撃者の探索スキャンの多くは CVE 公表から 15〜60 分後に始まり、Exchange（3月2日公表）では 5 分以内。Unit 42 の 2022 年報告（2022-07-26）はこの報告を『通常 15 分以内』と要約",
+    "scope": [
+      "research_report"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_by": "manual_review",
+    "verified_date": "2026-11-22",
+    "verified_notes": "2021-05-19 公開の本文で、観測期間（2021年1〜3月）・対象（50 社・5,000 万 IP）・15〜60 分・Exchange 5 分を確認",
+    "verified_url": "https://www.paloaltonetworks.com/blog/2021/05/rsac-attack-surface-management/",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-MITRE-T1213",
+    "title": "T1213 Data from Information Repositories",
+    "publisher": "The MITRE Corporation",
+    "url": "https://attack.mitre.org/techniques/T1213/",
+    "document_type": "MITRE ATT&CK",
+    "applicable_data": "T1213 Data from Information Repositories",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "scope": [
+      "attack_technique"
+    ],
+    "reverified_v4": true,
+    "verified_via": "official_stix",
+    "verified_url": "data/raw/mitre/attack_catalog.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式 STIX v20.1 の ID・名称・廃止状態と照合（Q-ATTACK）",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-CVE-2014-3120",
+    "title": "CVE-2014-3120 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2014-3120",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2014-07-28",
+    "last_updated": "2025-10-22",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2014-3120.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2014/3xxx/CVE-2014-3120.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-CVE-2015-1427",
+    "title": "CVE-2015-1427 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2015-1427",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2015-02-17",
+    "last_updated": "2025-10-22",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2015-1427.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2015/1xxx/CVE-2015-1427.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-CVE-2022-24706",
+    "title": "CVE-2022-24706 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2022-24706",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2022-04-26",
+    "last_updated": "2025-10-21",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2022-24706.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2022/24xxx/CVE-2022-24706.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-CVE-2025-14847",
+    "title": "CVE-2025-14847 (CVE Record)",
+    "publisher": "CVE Program",
+    "url": "https://www.cve.org/CVERecord?id=CVE-2025-14847",
+    "document_type": "Vulnerability Record",
+    "applicable_data": "影響製品・バージョン・CVSS・公開日",
+    "publication_date": "2025-12-19",
+    "last_updated": "2026-02-26",
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "CVEProject/cvelistV5 の公式 JSON を取得（CVE-2025-14847.json）",
+    "scope": [
+      "vulnerability"
+    ],
+    "reverified_v4": true,
+    "verified_via": "official_repository",
+    "verified_url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/14xxx/CVE-2025-14847.json",
+    "verified_date": "2026-11-22",
+    "verified_by": "automated_import",
+    "verified_notes": "公式データ（CVEProject/cvelistV5・cisagov/kev-data）から取込。原文は data/raw/",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-13",
+    "title": "FortiOS 7.4.11 Log Message Reference – LOG_ID_TRAFFIC_END_FORWARD",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/13",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 13 LOG_ID_TRAFFIC_END_FORWARD（Forward traffic）type=Traffic / category=forward",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/13",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGREF-13",
+    "title": "FortiOS 7.6.7 Log Message Reference – LOG_ID_TRAFFIC_END_FORWARD",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/13",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 13 LOG_ID_TRAFFIC_END_FORWARD（Forward traffic）type=Traffic / category=forward",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/13",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGID-DEF",
+    "title": "FortiOS 7.4.11 Log Message Reference",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/656858",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "ログ種別とサブ種別の ID 定義",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/656858",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、該当箇所を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGID-DEF",
+    "title": "FortiOS 7.6.7 Log Message Reference",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/656858",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "ログ種別とサブ種別の ID 定義",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/656858",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、該当箇所を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-32001",
+    "title": "FortiOS 7.4.11 Log Message Reference – LOG_ID_ADMIN_LOGIN_SUCC",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/32001",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 32001 LOG_ID_ADMIN_LOGIN_SUCC（Admin login successful）type=Event / category=system",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/32001",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-32002",
+    "title": "FortiOS 7.4.11 Log Message Reference – LOG_ID_ADMIN_LOGIN_FAIL",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/32002",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 32002 LOG_ID_ADMIN_LOGIN_FAIL（Admin login failed）type=Event / category=system",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/32002",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGREF-32002",
+    "title": "FortiOS 7.6.7 Log Message Reference – LOG_ID_ADMIN_LOGIN_FAIL",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/32002",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 32002 LOG_ID_ADMIN_LOGIN_FAIL（Admin login failed）type=Event / category=system",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/32002",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-CLI-EXEC-LOG",
+    "title": "FortiOS 7.4.11 Log Message Reference",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/cli-reference/209945028/execute-log",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "execute log コマンドの構文",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/cli-reference/209945028/execute-log",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、該当箇所を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-CLI-EXEC-LOG",
+    "title": "FortiOS 7.6.7 Log Message Reference",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/cli-reference/209945028/execute-log",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "execute log コマンドの構文",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/cli-reference/209945028/execute-log",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、該当箇所を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-39424",
+    "title": "FortiOS 7.4.11 Log Message Reference – LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_UP",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/39424",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 39424 LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_UP（SSL VPN tunnel up）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/39424",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGREF-39424",
+    "title": "FortiOS 7.6.7 Log Message Reference – LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_UP",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/39424",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 39424 LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_UP（SSL VPN tunnel up）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/39424",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-39425",
+    "title": "FortiOS 7.4.11 Log Message Reference – LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_DOWN",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/39425",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 39425 LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_DOWN（SSL VPN tunnel down）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/39425",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGREF-39425",
+    "title": "FortiOS 7.6.7 Log Message Reference – LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_DOWN",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/39425",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 39425 LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_DOWN（SSL VPN tunnel down）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/39425",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-39426",
+    "title": "FortiOS 7.4.11 Log Message Reference – LOG_ID_EVENT_SSL_VPN_USER_SSL_LOGIN_FAIL",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/39426",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 39426 LOG_ID_EVENT_SSL_VPN_USER_SSL_LOGIN_FAIL（SSL VPN login fail）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/39426",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGREF-39426",
+    "title": "FortiOS 7.6.7 Log Message Reference – LOG_ID_EVENT_SSL_VPN_USER_SSL_LOGIN_FAIL",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/39426",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 39426 LOG_ID_EVENT_SSL_VPN_USER_SSL_LOGIN_FAIL（SSL VPN login fail）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/39426",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-37138",
+    "title": "FortiOS 7.4.11 Log Message Reference – MESGID_CONN_UPDOWN",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/37138",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 37138 MESGID_CONN_UPDOWN（IPsec connection status changed）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/37138",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGREF-37138",
+    "title": "FortiOS 7.6.7 Log Message Reference – MESGID_CONN_UPDOWN",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/37138",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 37138 MESGID_CONN_UPDOWN（IPsec connection status changed）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/37138",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-74-LOGREF-37139",
+    "title": "FortiOS 7.4.11 Log Message Reference – MESGID_P2_UPDOWN",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/37139",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.4.11",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 37139 MESGID_P2_UPDOWN（IPsec phase 2 status changed）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.4.11/fortios-log-message-reference/37139",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-76-LOGREF-37139",
+    "title": "FortiOS 7.6.7 Log Message Reference – MESGID_P2_UPDOWN",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/37139",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.7",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "Message ID 37139 MESGID_P2_UPDOWN（IPsec phase 2 status changed）type=Event / category=vpn",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.7/fortios-log-message-reference/37139",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、Message ID・説明・種別・カテゴリとフィールド表を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-NEC-IX2235-DL",
+    "title": "UNIVERGE IX2235 プログラムファイル・ダウンロード",
+    "publisher": "NEC Corporation",
+    "url": "https://jpn.nec.com/univerge/ix/Download/ix2235/index.html",
+    "document_type": "Vendor Download Page",
+    "applicable_data": "IX2235 のソフトウェア版とイベントログリファレンス",
+    "notes": "検索結果に表示された本文で、Ver 10.11.17（2026-04-24）などの掲載とイベントログリファレンスが ZIP（els/index.html）であることを確認。ページと ZIP は自動取得を 403 で拒否され、原文は未取得",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "一部確認",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false,
+    "verified_via": "search_result",
+    "verified_url": "https://jpn.nec.com/univerge/ix/Download/ix2235/index.html",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "検索結果に表示された本文で、Ver 10.11.17（2026-04-24）などの掲載とイベントログリファレンスが ZIP（els/index.html）であることを確認。ページと ZIP は自動取得を 403 で拒否され、原文は未取得",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-NEC-IX-FAQ-LOG",
+    "title": "UNIVERGE IXシリーズ FAQ ロギング、SYSLOGに関するFAQ",
+    "publisher": "NEC Corporation",
+    "url": "https://jpn.nec.com/univerge/ix/faq/els.html",
+    "document_type": "Vendor FAQ",
+    "applicable_data": "IX シリーズのロギング機能",
+    "notes": "検索結果に表示された本文で、出力先（コンソール・SYSLOG サーバ・内部バッファ）、機能（ARP・IP・ICMP・PPP 等）とレベルの指定、ファシリティの既定値 local0(16) を確認。原文は未取得",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "一部確認",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": false,
+    "verified_via": "search_result",
+    "verified_url": "https://jpn.nec.com/univerge/ix/faq/els.html",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "検索結果に表示された本文で、出力先（コンソール・SYSLOG サーバ・内部バッファ）、機能（ARP・IP・ICMP・PPP 等）とレベルの指定、ファシリティの既定値 local0(16) を確認。原文は未取得",
+    "usage_status": "使用中"
+  },
+  {
+    "source_id": "SRC-FTNT-763-RN-SSLVPN",
+    "title": "FortiOS 7.6.3 Release Notes",
+    "publisher": "Fortinet Inc.",
+    "url": "https://docs.fortinet.com/document/fortigate/7.6.3/fortios-release-notes/173430/ssl-vpn-tunnel-mode-replaced-with-ipsec-vpn",
+    "document_type": "Vendor Documentation",
+    "applicable_data": "FortiOS 7.6.3",
+    "publication_date": null,
+    "last_updated": null,
+    "access_date": "2026-11-22",
+    "verification_status": "確認済み",
+    "notes": "（要約）7.6.3 から SSL VPN トンネルモードは IPsec VPN（TCP 443 で使うよう設定できる）に置き換えられ、GUI・CLI から使えなくなった。旧版の設定はアップグレードで引き継がれない。全モデルが対象。",
+    "scope": [
+      "log_format"
+    ],
+    "reverified_v4": true,
+    "verified_via": "original_document",
+    "verified_url": "https://docs.fortinet.com/document/fortigate/7.6.3/fortios-release-notes/173430/ssl-vpn-tunnel-mode-replaced-with-ipsec-vpn",
+    "verified_date": "2026-11-22",
+    "verified_by": "manual_review",
+    "verified_notes": "CI（https://github.com/tokotokokame/Port-Security/runs/137100211569）で原文を取得し、該当箇所を確認。抽出結果は data/raw/vendor/fortios_evidence.json",
+    "usage_status": "使用中"
   }
 ]

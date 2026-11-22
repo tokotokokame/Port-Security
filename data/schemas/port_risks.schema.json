@@ -127,6 +127,167 @@
     "uniqueItems": true,
     "description": "ATT&CK 技術 ID"
    },
+   "review": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "date",
+     "previous_level",
+     "result",
+     "evidence"
+    ],
+    "properties": {
+     "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+     },
+     "previous_level": {
+      "enum": [
+       "Critical",
+       "High",
+       "Medium",
+       "Low"
+      ]
+     },
+     "result": {
+      "type": "string",
+      "minLength": 1
+     },
+     "reason": {
+      "type": "string",
+      "minLength": 1
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "source_id",
+        "note"
+       ],
+       "properties": {
+        "source_id": {
+         "type": "string",
+         "pattern": "^SRC-[A-Z0-9-]+$"
+        },
+        "note": {
+         "type": "string",
+         "minLength": 1
+        }
+       }
+      }
+     }
+    },
+    "description": "v1.2 の High 再検証の結果と根拠"
+   },
+   "service_risk": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "level",
+     "factors",
+     "reason",
+     "source_ids",
+     "status"
+    ],
+    "properties": {
+     "level": {
+      "enum": [
+       "Critical",
+       "High",
+       "Medium",
+       "未評価"
+      ]
+     },
+     "factors": {
+      "type": "array",
+      "items": {
+       "enum": [
+        "known_exploited",
+        "attack_documented",
+        "government_guidance",
+        "vendor_security_warning"
+       ]
+      },
+      "uniqueItems": true
+     },
+     "reason": {
+      "type": "string",
+      "minLength": 1
+     },
+     "source_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^SRC-[A-Z0-9-]+$"
+      },
+      "uniqueItems": true
+     },
+     "status": {
+      "enum": [
+       "確認済み",
+       "一部確認",
+       "未確認"
+      ]
+     }
+    },
+    "description": "サービス固有のリスク（一次資料で確認できた要素だけで判定。docs/RISK_RUBRIC.md）"
+   },
+   "exposure_condition": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "assumed",
+     "raises",
+     "lowers",
+     "notes"
+    ],
+    "properties": {
+     "assumed": {
+      "enum": [
+       "internet",
+       "untrusted_network",
+       "internal_only",
+       "management_network_only",
+       "firewall_restricted",
+       "auth_access_control"
+      ]
+     },
+     "raises": {
+      "type": "array",
+      "items": {
+       "enum": [
+        "internet",
+        "untrusted_network",
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+       ]
+      },
+      "uniqueItems": true
+     },
+     "lowers": {
+      "type": "array",
+      "items": {
+       "enum": [
+        "internet",
+        "untrusted_network",
+        "internal_only",
+        "management_network_only",
+        "firewall_restricted",
+        "auth_access_control"
+       ]
+      },
+      "uniqueItems": true
+     },
+     "notes": {
+      "type": "string"
+     }
+    },
+    "description": "露出条件。risk_level が前提とする露出と、上げる・下げる条件"
+   },
    "source_ids": {
     "type": "array",
     "items": {

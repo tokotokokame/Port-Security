@@ -12,8 +12,9 @@ sys.path.insert(0, str(Path(__file__).parent))
 from mitre_catalog import DET0118, DET0118_TRANSPORT
 
 REFS = ["ports", "services", "protocols", "attack_patterns", "port_risks", "tools"]
-PLATFORM_LOGS = {"Windows": ["LOG-WIN-SECURITY"], "Linux": ["LOG-LIN-AN0328"], "macOS": ["LOG-MAC-AN0330"],
-                 "ESXi": ["LOG-ESXI-AN0329"], "Network Devices": ["LOG-FORTIGATE-VENDOR", "LOG-NECIX-VENDOR"]}
+# プラットフォーム共通のログ（ポート固有ではない）。DET0118 専用のログ（LOG-*-AN03xx）はここに入れない（F-06）
+PLATFORM_LOGS = {"Windows": ["LOG-WIN-SECURITY"], "Linux": ["LOG-LIN-GENERIC"], "macOS": ["LOG-MAC-GENERIC"],
+                 "ESXi": ["LOG-ESXI-GENERIC"], "Network Devices": ["LOG-FORTIGATE-VENDOR", "LOG-NECIX-VENDOR"]}
 DET0118_AN = {a[0]: a for a in DET0118["analytics"]}
 
 
@@ -72,14 +73,15 @@ def main(stix, data):
             if not a: continue
             aid = ext(a)
             plats = a.get("x_mitre_platforms", [])
+            links = [{"log_id": l, "basis": "platform_generic"} for l in sorted({l for pf in plats for l in PLATFORM_LOGS.get(pf, [])})]
             row = {"id": aid, "platforms": plats, "description": a.get("description", ""),
                    "log_sources": [{"name": l.get("name"), "channel": l.get("channel")} for l in a.get("x_mitre_log_source_references", [])],
-                   "monitored_ports": [], "port_basis": "none", "transport_basis": "none", "service_names": [],
-                   "log_investigation_ids": sorted({l for pf in plats for l in PLATFORM_LOGS.get(pf, [])})}
+                   "monitored_ports": [], "port_basis": "none", "transport_basis": "none", "service_names": []}
             if did == "DET0118" and aid in DET0118_AN:
                 _, _, ports, basis, svc, log = DET0118_AN[aid]
-                row.update(monitored_ports=ports, port_basis=basis, transport_basis=DET0118_TRANSPORT[aid], service_names=svc,
-                           log_investigation_ids=sorted(set(row["log_investigation_ids"]) | {log}))
+                row.update(monitored_ports=ports, port_basis=basis, transport_basis=DET0118_TRANSPORT[aid], service_names=svc)
+                links.append({"log_id": log, "basis": "det0118_analytic"})  # この analytic 専用のログ。他の DET には付けない
+            row.update(log_investigation_ids=sorted({x["log_id"] for x in links}), log_links=links)
             analytics.append(row)
         det_rows[did] = {"id": did, "name": d["name"], "technique_ids": targets, "version": d.get("x_mitre_version"),
                          "created_date": d["created"][:10], "last_modified": d["modified"][:10], "analytics": analytics,
@@ -101,7 +103,10 @@ def main(stix, data):
                             "document_type": f"MITRE ATT&CK v{version} (STIX)", "applicable_data": title,
                             "publication_date": None, "last_updated": None, "access_date": version_date(objs),
                             "verification_status": "確認済み", "notes": "公式STIXデータから取得",
-                            "scope": ["attack_technique", "detection"], "reverified_v4": True})
+                            "scope": ["attack_technique", "detection"], "reverified_v4": True,
+                            "verified_via": "official_stix", "verified_url": "data/raw/mitre/attack_catalog.json",
+                            "verified_date": version_date(objs), "verified_by": "automated_import",
+                            "verified_notes": f"公式 STIX v{version} の ID・名称・廃止状態と照合（Q-ATTACK）", "usage_status": "使用中"})
             have.add(sid)
     for t in out_techs: add_src(f"SRC-MITRE-{t['id']}", f"{t['id']} {t['name']}", t["url"])
     for s in software: add_src(f"SRC-MITRE-{s['id']}", f"{s['id']} {s['name']}", s["url"])

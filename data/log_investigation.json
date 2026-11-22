@@ -227,110 +227,592 @@
   },
   {
     "id": "LOG-FORTIGATE-VENDOR",
-    "platform": "FortiGate (Fortinet Firewall / FortiOS 7.x)",
+    "platform": "FortiGate（FortiOS 7.4 / 7.6。版ごとに vendor_logs で区別）",
     "log_sources": [
       {
-        "channel": "FortiGate Traffic Log",
-        "event_code": null,
-        "description": "ファイアウォールパケットセッションログ (Forward Traffic / Local Traffic)"
+        "channel": "Traffic ログ（type=traffic / subtype=forward）",
+        "event_code": 13,
+        "description": "LOG_ID_TRAFFIC_END_FORWARD（転送通信のセッション）"
       },
       {
-        "channel": "FortiGate UTM / Security Log",
-        "event_code": null,
-        "description": "IPS, WAF, Web Filter, Antivirus 検知ログ"
+        "channel": "Event ログ（type=event / subtype=system）",
+        "event_code": 32002,
+        "description": "LOG_ID_ADMIN_LOGIN_FAIL（管理者ログイン失敗）"
       },
       {
-        "channel": "FortiGate Event Log",
-        "event_code": null,
-        "description": "SSL-VPNログイン、IPsec VPN SA確立・切断、システムイベントログ"
+        "channel": "Event ログ（type=event / subtype=vpn）",
+        "event_code": 39426,
+        "description": "SSL VPN ログイン失敗（7.4。7.6.3 以降はトンネルモード廃止）"
+      },
+      {
+        "channel": "Event ログ（type=event / subtype=vpn）",
+        "event_code": 37138,
+        "description": "MESGID_CONN_UPDOWN（IPsec 接続状態の変化）"
       }
     ],
     "common_fields": [
-      "送信元IP (srcip)",
-      "送信元ポート (srcport)",
-      "宛先IP (dstip)",
-      "宛先ポート (dstport)",
-      "通信プロトコル (proto)",
-      "通信方向",
-      "接続時間 (duration)",
-      "送信バイト数 (sentbyte)",
-      "受信バイト数 (rcvdbyte)",
-      "許可・拒否 (action=accept/deny)",
-      "接続時刻 (timestamp)"
+      "srcip",
+      "srcport",
+      "dstip",
+      "dstport",
+      "proto",
+      "action",
+      "duration",
+      "sentbyte",
+      "rcvdbyte",
+      "eventtime"
     ],
     "vendor_specific_fields": [
-      "vd (Virtual Domain)",
+      "vd",
       "policyid",
       "sessionid",
-      "app (Application Name)",
-      "trandisp (SNAT/DNAT)",
+      "service",
+      "app",
+      "trandisp",
       "transip",
       "transport",
-      "vpn",
       "user",
-      "group"
+      "group",
+      "srcintf",
+      "dstintf"
     ],
-    "detection_analytics": "境界FWにおける非許可ポートへのDenyログ急増検知, SSL-VPNログイン失敗(action=ssl-login-fail)スパイク, IPSシグネチャ相関検知。",
-    "investigation_procedure": "1. srcip/dstip/dstportによるTraffic Logフィルタリング (`execute log filter device 0`, `execute log filter category 0`)\n2. action=deny のパケット発生頻度と同一セッションIDのイベント追跡\n3. SSL-VPNイベントログにおける認証成否および割り当て仮想IPの検証",
-    "unconfirmed_notes": "FortiOS 7.x公式ドキュメント準拠。高度なカスタマイズログオプション構文は環境により異なり「一部確認」として記録。",
+    "detection_analytics": "境界の転送通信ログ（13）で action が拒否の宛先ポート別の急増、管理者ログイン失敗（32002）の連続、SSL VPN ログイン失敗（39426、7.4）の急増、IPsec 接続状態の変化（37138）を監視する。閾値は環境に合わせて決める。",
+    "investigation_procedure": "1. `execute log filter device <device>` と `execute log filter category <category>` で対象のログを選ぶ\n2. `execute log filter field <name> <argument 1>` で srcip・dstip・dstport などを絞り込む\n3. `execute log display` で表示し、policyid・sessionid・action を確認する\n4. 管理者ログイン失敗（32002）は srcip・user・ui・reason、SSL VPN（39426）は remip・user・reason を確認する",
+    "unconfirmed_notes": "action の取りうる値の一覧、logid フィールド（10 桁）の構成、device・category に指定する値、IPS などの UTM ログは未確認。版の記載は資料の版（7.4.11 / 7.6.7）で、他の版での同一性は未確認。",
     "source_ids": [
-      "SRC-FORTINET-DOCS",
-      "SRC-CISA-HYGIENE"
+      "SRC-FTNT-74-CLI-EXEC-LOG",
+      "SRC-FTNT-74-LOGID-DEF",
+      "SRC-FTNT-74-LOGREF-13",
+      "SRC-FTNT-74-LOGREF-32001",
+      "SRC-FTNT-74-LOGREF-32002",
+      "SRC-FTNT-74-LOGREF-37138",
+      "SRC-FTNT-74-LOGREF-37139",
+      "SRC-FTNT-74-LOGREF-39424",
+      "SRC-FTNT-74-LOGREF-39425",
+      "SRC-FTNT-74-LOGREF-39426",
+      "SRC-FTNT-76-CLI-EXEC-LOG",
+      "SRC-FTNT-76-LOGID-DEF",
+      "SRC-FTNT-76-LOGREF-13",
+      "SRC-FTNT-76-LOGREF-32002",
+      "SRC-FTNT-76-LOGREF-37138",
+      "SRC-FTNT-76-LOGREF-37139",
+      "SRC-FTNT-76-LOGREF-39424",
+      "SRC-FTNT-76-LOGREF-39425",
+      "SRC-FTNT-76-LOGREF-39426",
+      "SRC-FTNT-763-RN-SSLVPN"
     ],
-    "verified_date": "2026-11-21",
+    "verified_date": "2026-11-22",
     "certainty": "一部確認",
     "analytics_ids": [],
     "port_scope": "any",
-    "ports": []
+    "ports": [],
+    "vendor_logs": [
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "traffic",
+        "log_subtype": "forward",
+        "log_id": "13",
+        "message": "LOG_ID_TRAFFIC_END_FORWARD（Forward traffic）",
+        "fields": [
+          "srcip",
+          "srcport",
+          "srcintf",
+          "dstip",
+          "dstport",
+          "dstintf",
+          "proto",
+          "action",
+          "policyid",
+          "sessionid",
+          "service",
+          "duration",
+          "sentbyte",
+          "rcvdbyte",
+          "trandisp",
+          "transip",
+          "transport",
+          "app",
+          "user",
+          "group",
+          "vd",
+          "eventtime",
+          "logid"
+        ],
+        "cli_commands": [
+          "execute log filter device <device>",
+          "execute log filter category <category>",
+          "execute log filter field <name> <argument 1>",
+          "execute log display"
+        ],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-13",
+          "SRC-FTNT-74-CLI-EXEC-LOG"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "event",
+        "log_subtype": "system",
+        "log_id": "32002",
+        "message": "LOG_ID_ADMIN_LOGIN_FAIL（Admin login failed）",
+        "fields": [
+          "user",
+          "ui",
+          "srcip",
+          "dstip",
+          "action",
+          "status",
+          "reason",
+          "method",
+          "logdesc"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-32002"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "event",
+        "log_subtype": "system",
+        "log_id": "32001",
+        "message": "LOG_ID_ADMIN_LOGIN_SUCC（Admin login successful）",
+        "fields": [
+          "user",
+          "ui",
+          "srcip",
+          "dstip",
+          "action",
+          "status",
+          "reason",
+          "method",
+          "logdesc"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-32001"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "39426",
+        "message": "LOG_ID_EVENT_SSL_VPN_USER_SSL_LOGIN_FAIL（SSL VPN login fail）",
+        "fields": [
+          "user",
+          "group",
+          "remip",
+          "tunneltype",
+          "action",
+          "reason",
+          "srccountry"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-39426"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "39424",
+        "message": "LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_UP（SSL VPN tunnel up）",
+        "fields": [
+          "user",
+          "group",
+          "remip",
+          "tunneltype",
+          "tunnelid",
+          "action",
+          "reason",
+          "srccountry"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-39424"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "39425",
+        "message": "LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_DOWN（SSL VPN tunnel down）",
+        "fields": [
+          "user",
+          "group",
+          "remip",
+          "tunneltype",
+          "tunnelid",
+          "action",
+          "reason",
+          "duration",
+          "sentbyte",
+          "rcvdbyte"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-39425"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "37138",
+        "message": "MESGID_CONN_UPDOWN（IPsec connection status changed）",
+        "fields": [
+          "remip",
+          "remport",
+          "locip",
+          "locport",
+          "vpntunnel",
+          "tunnelip",
+          "user",
+          "xauthuser",
+          "action",
+          "outintf"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-37138"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.4.11"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "37139",
+        "message": "MESGID_P2_UPDOWN（IPsec phase 2 status changed）",
+        "fields": [
+          "remip",
+          "remport",
+          "locip",
+          "locport",
+          "vpntunnel",
+          "phase2_name",
+          "user",
+          "action"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-74-LOGREF-37139"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.4.11 の資料で確認。他の 7.4.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.6.7"
+        ],
+        "log_type": "traffic",
+        "log_subtype": "forward",
+        "log_id": "13",
+        "message": "LOG_ID_TRAFFIC_END_FORWARD（Forward traffic）",
+        "fields": [
+          "srcip",
+          "srcport",
+          "srcintf",
+          "dstip",
+          "dstport",
+          "dstintf",
+          "proto",
+          "action",
+          "policyid",
+          "sessionid",
+          "service",
+          "duration",
+          "sentbyte",
+          "rcvdbyte",
+          "trandisp",
+          "transip",
+          "transport",
+          "app",
+          "user",
+          "group",
+          "vd",
+          "eventtime",
+          "logid"
+        ],
+        "cli_commands": [
+          "execute log filter device <device>",
+          "execute log filter category <category>",
+          "execute log filter field <name> <argument 1>",
+          "execute log display"
+        ],
+        "source_ids": [
+          "SRC-FTNT-76-LOGREF-13",
+          "SRC-FTNT-76-CLI-EXEC-LOG"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.6.7 の資料で確認。他の 7.6.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.6.7"
+        ],
+        "log_type": "event",
+        "log_subtype": "system",
+        "log_id": "32002",
+        "message": "LOG_ID_ADMIN_LOGIN_FAIL（Admin login failed）",
+        "fields": [
+          "user",
+          "ui",
+          "srcip",
+          "dstip",
+          "action",
+          "status",
+          "reason",
+          "method",
+          "logdesc"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-76-LOGREF-32002"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.6.7 の資料で確認。他の 7.6.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.6.7"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "39426",
+        "message": "LOG_ID_EVENT_SSL_VPN_USER_SSL_LOGIN_FAIL（SSL VPN login fail）",
+        "fields": [
+          "user",
+          "group",
+          "remip",
+          "tunneltype",
+          "action",
+          "reason",
+          "srccountry"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-76-LOGREF-39426",
+          "SRC-FTNT-763-RN-SSLVPN"
+        ],
+        "verification_status": "確認済み",
+        "notes": "7.6.3 以降は SSL VPN トンネルモード自体が IPsec VPN に置き換えられ GUI・CLI から削除された（リリースノート）。ログ参照には定義が残るが、7.6.3 以降に記録されるかは未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.6.7"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "39424",
+        "message": "LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_UP（SSL VPN tunnel up）",
+        "fields": [
+          "user",
+          "group",
+          "remip",
+          "tunneltype",
+          "tunnelid",
+          "action",
+          "reason",
+          "srccountry"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-76-LOGREF-39424",
+          "SRC-FTNT-763-RN-SSLVPN"
+        ],
+        "verification_status": "確認済み",
+        "notes": "7.6.3 以降は SSL VPN トンネルモード自体が IPsec VPN に置き換えられ GUI・CLI から削除された（リリースノート）。ログ参照には定義が残るが、7.6.3 以降に記録されるかは未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.6.7"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "39425",
+        "message": "LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_DOWN（SSL VPN tunnel down）",
+        "fields": [
+          "user",
+          "group",
+          "remip",
+          "tunneltype",
+          "tunnelid",
+          "action",
+          "reason",
+          "duration",
+          "sentbyte",
+          "rcvdbyte"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-76-LOGREF-39425",
+          "SRC-FTNT-763-RN-SSLVPN"
+        ],
+        "verification_status": "確認済み",
+        "notes": "7.6.3 以降は SSL VPN トンネルモード自体が IPsec VPN に置き換えられ GUI・CLI から削除された（リリースノート）。ログ参照には定義が残るが、7.6.3 以降に記録されるかは未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.6.7"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "37138",
+        "message": "MESGID_CONN_UPDOWN（IPsec connection status changed）",
+        "fields": [
+          "remip",
+          "remport",
+          "locip",
+          "locport",
+          "vpntunnel",
+          "tunnelip",
+          "user",
+          "xauthuser",
+          "action",
+          "outintf"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-76-LOGREF-37138"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.6.7 の資料で確認。他の 7.6.x での同一性は未確認"
+      },
+      {
+        "vendor": "Fortinet",
+        "product": "FortiGate (FortiOS)",
+        "firmware_versions": [
+          "7.6.7"
+        ],
+        "log_type": "event",
+        "log_subtype": "vpn",
+        "log_id": "37139",
+        "message": "MESGID_P2_UPDOWN（IPsec phase 2 status changed）",
+        "fields": [
+          "remip",
+          "remport",
+          "locip",
+          "locport",
+          "vpntunnel",
+          "phase2_name",
+          "user",
+          "action"
+        ],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-FTNT-76-LOGREF-37139"
+        ],
+        "verification_status": "確認済み",
+        "notes": "FortiOS 7.6.7 の資料で確認。他の 7.6.x での同一性は未確認"
+      }
+    ]
   },
   {
     "id": "LOG-NECIX-VENDOR",
-    "platform": "NEC UNIVERGE IX Series Router",
+    "platform": "NEC UNIVERGE IX2235",
     "log_sources": [
       {
-        "channel": "NEC IX Packet Filter Log",
+        "channel": "ロギング（コンソール・SYSLOG サーバ・内部バッファ）",
         "event_code": null,
-        "description": "IPアクセスリスト適用によるパケット通過(pass)および拒否(block) Syslog"
-      },
-      {
-        "channel": "NEC IX IPsec / VPN Log",
-        "event_code": null,
-        "description": "IPsec IKEフェーズ1/2ネゴシエーションおよびSA確立・切断ログ"
-      },
-      {
-        "channel": "NEC IX System Log",
-        "event_code": null,
-        "description": "インターフェースリンク状態変更, ログイン試行ログ"
+        "description": "機能（ARP・IP・ICMP・PPP 等）とレベルを指定して出力（NEC FAQ。原文未取得）"
       }
     ],
-    "common_fields": [
-      "送信元IP (src-ip)",
-      "送信元ポート (src-port)",
-      "宛先IP (dst-ip)",
-      "宛先ポート (dst-port)",
-      "通信プロトコル (protocol: tcp/udp/icmp)",
-      "許可・拒否 (action: pass/block)",
-      "接続時刻 (timestamp)"
-    ],
-    "vendor_specific_fields": [
-      "ident/tag (FLT, IPSEC, SYS)",
-      "in-interface",
-      "out-interface",
-      "filter-id",
-      "seq-num",
-      "router-name"
-    ],
-    "detection_analytics": "パケットフィルタ(FLT)による未許可ポート(TCP 3389, 445, 22等)へのブロック(block)ログの監視。IPsec SA切断異常の検知。",
-    "investigation_procedure": "1. Syslogサーバーで `ident=FLT` かつ `action=block` のログエントリを抽出\n2. 宛先IP/宛先ポートごとの集計によりポートスキャン元IPを特定\n3. `ident=IPSEC` でPhase-1 SA確立失敗ログの発生時刻と相関検証",
-    "unconfirmed_notes": "NEC UNIVERGE IX公式マニュアル準拠。ファームウェアバージョン(IX2000/IX3000系)による記述スタイルの違いを考慮し「一部確認」として記録。",
+    "common_fields": [],
+    "vendor_specific_fields": [],
+    "detection_analytics": "未収録（IX2235 のイベントログリファレンスを取得できていないため、検知に使うメッセージを特定していない）。",
+    "investigation_procedure": "1. 装置のソフトウェア版を確認する\n2. 同じ版のイベントログリファレンス（NEC の IX2235 ダウンロードページで配布）で、該当するメッセージ（機能名.番号）と出力条件を確認する",
+    "unconfirmed_notes": "v1.1 までのフィールド（src-ip・dst-port・action: pass/block・ident/tag・filter-id 等）は公式資料で確認できないため削除。公式のイベントログリファレンスと FAQ の原文は自動取得を拒否され未取得（出典は検索結果の本文のみ）。",
     "source_ids": [
-      "SRC-NEC-IX"
+      "SRC-NEC-IX2235-DL",
+      "SRC-NEC-IX-FAQ-LOG"
     ],
-    "verified_date": "2026-11-21",
-    "certainty": "一部確認",
+    "verified_date": "2026-11-22",
+    "certainty": "未確認",
     "analytics_ids": [],
     "port_scope": "any",
-    "ports": []
+    "ports": [],
+    "vendor_logs": [
+      {
+        "vendor": "NEC",
+        "product": "UNIVERGE IX2235",
+        "firmware_versions": [
+          "10.11.17"
+        ],
+        "log_type": "イベントログ",
+        "log_subtype": "",
+        "log_id": "",
+        "message": "",
+        "fields": [],
+        "cli_commands": [],
+        "source_ids": [
+          "SRC-NEC-IX2235-DL",
+          "SRC-NEC-IX-FAQ-LOG"
+        ],
+        "verification_status": "未確認",
+        "notes": "メッセージは「機能名.番号」の形式（例: IP.006、MODM.010）で、ソフトウェア版ごとのイベントログリファレンス（ELS）に掲載される。ELS を取得できていないため個々のメッセージ・条件・取得方法は未収録"
+      }
+    ]
   },
   {
     "id": "LOG-WIN-SECURITY",
@@ -417,7 +899,7 @@
     "detection_analytics": "認証(4624/4625/4648/4776)、Kerberos(4768/4769/4771)、共有アクセス(5140/5145)、サービス登録(4697/7045)、ディレクトリ複製(4662)を相関する。",
     "investigation_procedure": "1. 対象時間帯の 4624/4625 を送信元IP・LogonType で集計\n2. 4769 の TicketEncryptionType=0x17 と 4768 の PreAuthType=0 を抽出\n3. 5145 の共有名(ADMIN$/C$/IPC$)と 7045 のサービス名・ImagePath を突き合わせ\n4. 4662 で複製権限GUIDを持つ非コンピューターアカウント操作を確認",
     "analytics_ids": [],
-    "port_scope": "any_windows",
+    "port_scope": "platform",
     "ports": [],
     "source_ids": [
       "SRC-MS-EVT-4769",
@@ -543,5 +1025,182 @@
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
     "unconfirmed_notes": "VBoxHardening.log 等は公式トラブルシュート章に記載がないため未収録。"
+  },
+  {
+    "id": "LOG-LIN-GENERIC",
+    "platform": "Linux（プラットフォーム共通）",
+    "log_sources": [
+      {
+        "channel": "auditd:SYSCALL",
+        "event_code": null,
+        "description": "ATT&CK analytic 101 件が参照（例: execve, open, write）"
+      },
+      {
+        "channel": "NSM:Flow",
+        "event_code": null,
+        "description": "ATT&CK analytic 31 件が参照（例: conn.log, ldap.log, dns.log）"
+      },
+      {
+        "channel": "linux:syslog",
+        "event_code": null,
+        "description": "ATT&CK analytic 29 件が参照（例: /var/log/syslog, postfix/smtpd, network）"
+      },
+      {
+        "channel": "auditd:EXECVE",
+        "event_code": null,
+        "description": "ATT&CK analytic 12 件が参照（例: execve, EXECVE）"
+      },
+      {
+        "channel": "linux:osquery",
+        "event_code": null,
+        "description": "ATT&CK analytic 10 件が参照（例: file_events, process_events）"
+      },
+      {
+        "channel": "auditd:FILE",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照"
+      },
+      {
+        "channel": "NSM:Connections",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照"
+      },
+      {
+        "channel": "auditd:PATH",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照（例: PATH）"
+      }
+    ],
+    "common_fields": [],
+    "vendor_specific_fields": [],
+    "detection_analytics": "技術ごとの ATT&CK 検知戦略の analytic（Linux 向け 114 件）を参照する。このログはプラットフォーム共通で、ポートに固有ではない。",
+    "investigation_procedure": "1. ポート詳細の ATT&CK タブで技術の検知戦略（DET）を開く\n2. 対象プラットフォームの analytic が示すログ源とチャネルを確認する\n3. そのログ源で、通信の時刻・送信元・プロセスを突き合わせる",
+    "unconfirmed_notes": "",
+    "source_ids": [
+      "SRC-MITRE-ATTACK"
+    ],
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "analytics_ids": [],
+    "port_scope": "platform",
+    "ports": []
+  },
+  {
+    "id": "LOG-MAC-GENERIC",
+    "platform": "macOS（プラットフォーム共通）",
+    "log_sources": [
+      {
+        "channel": "macos:unifiedlog",
+        "event_code": null,
+        "description": "ATT&CK analytic 111 件が参照（例: process, subsystem=com.apple.TCC, com.apple.network）"
+      },
+      {
+        "channel": "macos:osquery",
+        "event_code": null,
+        "description": "ATT&CK analytic 36 件が参照（例: process_events, file_events, socket_events）"
+      },
+      {
+        "channel": "macos:endpointsecurity",
+        "event_code": null,
+        "description": "ATT&CK analytic 9 件が参照（例: ES_EVENT_TYPE_NOTIFY_EXEC, ES_EVENT_TYPE_NOTIFY_CONNECT, ES_EVENT_TYPE_NOTIFY_KEXTLOAD）"
+      },
+      {
+        "channel": "NSM:Flow",
+        "event_code": null,
+        "description": "ATT&CK analytic 9 件が参照"
+      },
+      {
+        "channel": "fs:fsusage",
+        "event_code": null,
+        "description": "ATT&CK analytic 9 件が参照（例: read/write）"
+      },
+      {
+        "channel": "macos:syslog",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照（例: system.log, /var/log/system.log）"
+      },
+      {
+        "channel": "PF:Logs",
+        "event_code": null,
+        "description": "ATT&CK analytic 2 件が参照"
+      },
+      {
+        "channel": "NSM:Firewall",
+        "event_code": null,
+        "description": "ATT&CK analytic 2 件が参照"
+      }
+    ],
+    "common_fields": [],
+    "vendor_specific_fields": [],
+    "detection_analytics": "技術ごとの ATT&CK 検知戦略の analytic（macOS 向け 112 件）を参照する。このログはプラットフォーム共通で、ポートに固有ではない。",
+    "investigation_procedure": "1. ポート詳細の ATT&CK タブで技術の検知戦略（DET）を開く\n2. 対象プラットフォームの analytic が示すログ源とチャネルを確認する\n3. そのログ源で、通信の時刻・送信元・プロセスを突き合わせる",
+    "unconfirmed_notes": "",
+    "source_ids": [
+      "SRC-MITRE-ATTACK"
+    ],
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "analytics_ids": [],
+    "port_scope": "platform",
+    "ports": []
+  },
+  {
+    "id": "LOG-ESXI-GENERIC",
+    "platform": "VMware ESXi（プラットフォーム共通）",
+    "log_sources": [
+      {
+        "channel": "esxi:hostd",
+        "event_code": null,
+        "description": "ATT&CK analytic 21 件が参照（例: /var/log/hostd.log）"
+      },
+      {
+        "channel": "esxi:vmkernel",
+        "event_code": null,
+        "description": "ATT&CK analytic 17 件が参照（例: /var/log/vmkernel.log）"
+      },
+      {
+        "channel": "esxi:shell",
+        "event_code": null,
+        "description": "ATT&CK analytic 16 件が参照（例: /var/log/shell.log, /root/.ash_history）"
+      },
+      {
+        "channel": "NSM:Flow",
+        "event_code": null,
+        "description": "ATT&CK analytic 7 件が参照（例: conn.log）"
+      },
+      {
+        "channel": "esxi:vpxd",
+        "event_code": null,
+        "description": "ATT&CK analytic 7 件が参照（例: /var/log/vmware/vpxd.log）"
+      },
+      {
+        "channel": "esxi:syslog",
+        "event_code": null,
+        "description": "ATT&CK analytic 5 件が参照（例: /var/log/syslog.log）"
+      },
+      {
+        "channel": "esxi:auth",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照（例: /var/log/auth.log）"
+      },
+      {
+        "channel": "esxcli:network",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照"
+      }
+    ],
+    "common_fields": [],
+    "vendor_specific_fields": [],
+    "detection_analytics": "技術ごとの ATT&CK 検知戦略の analytic（ESXi 向け 49 件）を参照する。このログはプラットフォーム共通で、ポートに固有ではない。",
+    "investigation_procedure": "1. ポート詳細の ATT&CK タブで技術の検知戦略（DET）を開く\n2. 対象プラットフォームの analytic が示すログ源とチャネルを確認する\n3. そのログ源で、通信の時刻・送信元・プロセスを突き合わせる",
+    "unconfirmed_notes": "",
+    "source_ids": [
+      "SRC-MITRE-ATTACK"
+    ],
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "analytics_ids": [],
+    "port_scope": "platform",
+    "ports": []
   }
 ]

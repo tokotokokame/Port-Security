@@ -13,9 +13,12 @@ from validate import load_all, validate
 import reports
 
 ROOT = Path(__file__).parent.parent
-DATA_VERSION = "1.1"
+DATA_VERSION = "1.2"
 MATCH = ["DET公式監視ポート一致", "公式文書のポート指定", "DETサービス名から推定", "ATT&CK検知戦略(プラットフォーム)",
          "攻撃手法・ツール経由", "境界機器ログ(全ポート共通)"]
+# 5 章の分類: A=公式資料がポートを明示 / B=DET がポート・通信方式を示す / B'=プラットフォーム共通 / C/D=ベンダー・境界・攻撃手法経由
+CLASS = ["B", "A", "B", "B'", "C/D", "C/D"]
+PORT_SPECIFIC = {"A", "B"}  # ポート固有のログの有無は A と B だけで判定する（B' は数えない）
 
 
 def build(db):
@@ -39,7 +42,8 @@ def build(db):
         for d in db["detection_strategies"]:
             for a in d["analytics"]:
                 if list(key) in a["monitored_ports"]:  # (番号, 通信方式) で照合。番号だけの一致は使わない
-                    for lid in a["log_investigation_ids"]: add(lid, f"{d['id']}/{a['id']}", 0 if a["port_basis"] == "official" else 2)
+                    for ln in a["log_links"]:  # DET0118 専用ログだけがポート固有（B）。同じ analytic のプラットフォーム共通ログは B'
+                        add(ln["log_id"], f"{d['id']}/{a['id']}", (0 if a["port_basis"] == "official" else 2) if ln["basis"] == "det0118_analytic" else 3)
         for l in db["log_investigation"]:
             if l["port_scope"] == "listed" and list(key) in [list(x) for x in l["ports"]]: add(l["id"], "公式文書のポート指定", 1)
             if l["port_scope"] == "any": add(l["id"], "境界機器ログ(全ポート共通)", 5)
@@ -55,7 +59,7 @@ def build(db):
         risk = ix["port_risks"].get(p["risk_id"])
         gaps = []
         if p["certainty"] != "確認済み": gaps.append("攻撃・検知記述の一次資料未付与")
-        if min(rank.values(), default=9) > 3: gaps.append("ポートに対応するホストログなし")
+        if not {CLASS[r] for r in rank.values()} & PORT_SPECIFIC: gaps.append("ポート固有のログなし（A・B なし）")
         if not risk: gaps.append("リスク評価なし")
         ports.append({
             "id": p["id"], "n": p["port_number"], "t": p["transport_protocol"], "service": p["service_name"],
@@ -68,10 +72,15 @@ def build(db):
                                            "indicators": risk.get("suspicious_indicators", ""), "focus": risk.get("investigation_focus", ""),
                                            "mitigation": risk.get("mitigation_controls", ""), "certainty": risk["certainty"],
                                            "notes": risk["unconfirmed_notes"], "verified": risk["verified_date"],
-                                           "vulns": vulns_of.get(risk["id"], [])},
-            "basis": {b["technique"]: {"relation": b["relation"], "via": b["via"], "note": b.get("note", "")} for b in p["technique_basis"]},
+                                           "vulns": vulns_of.get(risk["id"], []),
+                                           "service": {k: risk["service_risk"][k] for k in ("level", "reason", "status", "source_ids")} if "service_risk" in risk else None,
+                                           "exposure": risk.get("exposure_condition")},
+            "basis": {b["technique"]: {"relation": b["relation"], "via": b["via"], "note": b.get("note", ""), "source_type": b.get("source_type", "")}
+                      for b in p["technique_basis"]},
             "attacks": p["attack_pattern_ids"], "techniques": p["technique_ids"], "tools": tools,
-            "logs": [{"id": l, "match": MATCH[rank[l]], "rank": rank[l], "via": sorted(v)} for l, v in sorted(logs.items(), key=lambda kv: (rank[kv[0]], kv[0]))],
+            "logs": [{"id": l, "match": MATCH[rank[l]], "rank": rank[l], "class": CLASS[rank[l]], "via": sorted(v)}
+                     for l, v in sorted(logs.items(), key=lambda kv: (rank[kv[0]], kv[0]))],
+            "log_class": min((CLASS[r] for r in rank.values()), key=["A", "B", "B'", "C/D"].index, default="なし"),
             "sources": list(dict.fromkeys(p["source_ids"] + (risk or {}).get("source_ids", []) +
                                           [f"SRC-MITRE-{t.split('.')[0]}" for t in p["technique_ids"]])),
             "evidence": [{"source": e["source_id"], "kind": e["kind"], "technique": e.get("technique"),
@@ -88,7 +97,8 @@ def build(db):
                               "features": a.get("attack_features", ""), "detection": a["detection_methods"],
                               "defenses": a.get("recommended_defenses", ""), "techniques": a["technique_ids"],
                               "logs": a["log_investigation_ids"], "sources": a["source_ids"], "certainty": a["certainty"],
-                              "notes": a["unconfirmed_notes"], "verified": a["verified_date"]} for a in db["attack_patterns"]},
+                              "notes": a["unconfirmed_notes"], "verified": a["verified_date"], "mapping": a.get("attack_mapping_status", ""),
+                              "content": a.get("content_verification_status", ""), "relation": a.get("port_relation", "")} for a in db["attack_patterns"]},
         "techniques": techniques,
         "dets": {d["id"]: {"name": d["name"], "url": d["url"], "analytics": [
             {"id": a["id"], "platforms": a["platforms"], "description": a["description"],
@@ -96,14 +106,18 @@ def build(db):
         "tools": {t["id"]: {"name": t["name"], "category": t["category"], "sid": t["mitre_software_id"], "summary": t["summary"],
                             "ports": t["ports"], "artifacts": t["artifacts"], "detection": t["detection"], "attacks": t["attack_pattern_ids"],
                             "techniques": tool_techs[t["id"]], "logs": t["log_investigation_ids"], "sources": t["source_ids"],
+                            "techniques_stix": sorted(soft_tech.get(t["mitre_software_id"], [])),  # ATT&CK 公式の uses 関係
+                            "techniques_app": sorted(set(t["technique_ids"]) - set(soft_tech.get(t["mitre_software_id"], []))),  # アプリ内の関連付け
                             "certainty": t["certainty"], "notes": t["unconfirmed_notes"], "verified": t["verified_date"]} for t in db["tools"]},
         "logs": {l["id"]: {"platform": l["platform"], "sources": [[s["channel"], s["event_code"], s["description"]] for s in l["log_sources"]],
                            "analytics": l.get("detection_analytics", ""), "procedure": l["investigation_procedure"],
-                           "certainty": l["certainty"], "notes": l["unconfirmed_notes"], "refs": l["source_ids"],
+                           "certainty": l["certainty"], "notes": l["unconfirmed_notes"], "refs": l["source_ids"], "scope": l["port_scope"],
+                           "vendor": [[", ".join(v["firmware_versions"]), v["log_type"], v["log_subtype"], v["log_id"], v["message"], v["fields"],
+                                       v["cli_commands"], v["verification_status"], v["notes"]] for v in l.get("vendor_logs", [])],
                            "verified": l["verified_date"]} for l in db["log_investigation"]},
         "sources": {s["source_id"]: {"title": s["title"], "url": s["url"], "publisher": s.get("publisher", ""),
                                      "scope": s["scope"], "verified": s["reverified_v4"], "certainty": s["verification_status"],
-                                     "checked": s.get("access_date") or ""} for s in db["sources"]},
+                                     "checked": s.get("access_date") or "", "via": s.get("verified_via", "")} for s in db["sources"]},
         "vulns": {v["id"]: {"title": v["title"], "condition": v["condition"], "published": v["published"], "updated": v["updated"],
                             "cvss": [[c["score"], c["version"], c["source"], c["vector"]] for c in v["cvss"]],
                             "kev": v["kev"]["listed"], "kev_added": v["kev"].get("date_added", ""),
@@ -153,10 +167,19 @@ def quality_section(db):
     res = quality.run(db)
     c = Counter((r["code"], r["level"]) for r in res)
     codes = ["Q-JSON", "Q-SCHEMA", "Q-DUP", "Q-ATTACK", "Q-TRANSPORT", "Q-IPPROTO", "Q-IANA", "Q-VERIFIED", "Q-SRC", "Q-HIDDEN",
-             "Q-ASSOC", "Q-CVE", "Q-COUNT"]
+             "Q-ASSOC", "Q-CVE", "Q-COUNT", "Q-VIA", "Q-SCOPE", "Q-ATTR", "Q-STAT", "Q-REVIEW", "Q-RISK", "Q-VENDOR", "Q-LOGLINK", "Q-LOGCLASS"]
     L = ["", "## 品質基準（tools/quality.py / docs/DATA_QUALITY_STANDARD.md）", "", "| コード | error |", "|---|---|"]
     L += [f"| {k} | {c[(k, 'error')]} |" for k in codes]
-    L += ["", "対象外（記録のみ）:"] + [f"- {r['where']}: {r['msg']}" for r in res if r["level"] == "info"]
+    info = [f"- {r['where']}: {r['msg']}" for r in res if r["level"] == "info"]
+    if info: L += ["", "対象外（記録のみ）:"] + info
+    import metrics
+    base_p = ROOT / "docs/metrics/v1.1.json"
+    base = json.loads(base_p.read_text(encoding="utf-8")) if base_p.exists() else {}
+    dist = json.loads((ROOT / "dist/ports.json").read_text(encoding="utf-8"))
+    cat = json.loads((ROOT / "data/raw/mitre/attack_catalog.json").read_text(encoding="utf-8"))
+    L += ["", "## 指標（tools/metrics.py。v1.1 は main @ 09b8014 で同じ定義により算出した値）", ""] + metrics.table(metrics.compute(db, dist, cat), base)
+    L += ["", "- 「ポート固有ログなし」は A・B だけで判定する（v1.2 の定義）。v1.1 のアプリは B' も数えていたため、画面上の件数は 11 だった。",
+          "- ATT&CK 関連の区分は v1.2 で direct / generic / inferred / unverified に変更（v1.1 の attack_pattern・service・reference は旧区分）。"]
     return "\n".join(L) + "\n"
 
 

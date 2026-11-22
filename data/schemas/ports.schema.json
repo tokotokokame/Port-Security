@@ -139,7 +139,8 @@
      "required": [
       "technique",
       "relation",
-      "via"
+      "via",
+      "source_type"
      ],
      "properties": {
       "technique": {
@@ -149,9 +150,9 @@
       "relation": {
        "enum": [
         "direct",
-        "service",
-        "attack_pattern",
-        "reference"
+        "generic",
+        "inferred",
+        "unverified"
        ]
       },
       "via": {
@@ -163,6 +164,13 @@
       },
       "note": {
        "type": "string"
+      },
+      "source_type": {
+       "enum": [
+        "stix",
+        "document",
+        "curation"
+       ]
       }
      }
     },
