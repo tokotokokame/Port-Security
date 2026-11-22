@@ -9,6 +9,11 @@ on:
 permissions:
   contents: write
 
+# 暫定措置: 正式署名の Secrets 登録までは、main でもデバッグ署名で公開する（リリース名に明記）。
+# Secrets を登録すると自動で正式署名に切り替わる。登録後は "false" に戻すこと（docs/RELEASE_SIGNING.md）。
+env:
+  ALLOW_DEBUG_RELEASE: "true"
+
 concurrency:
   group: android-${{ github.ref }}
   cancel-in-progress: true
@@ -81,14 +86,14 @@ jobs:
             echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
             echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
             echo "SIGNING=release" >> "$GITHUB_ENV"; echo "signing: release keystore"
-          elif [ "$IS_RELEASE" = "true" ]; then
+          elif [ "$IS_RELEASE" = "true" ] && [ "$ALLOW_DEBUG_RELEASE" != "true" ]; then
             echo "::error::正式署名の Secrets が未登録（${missing# }）のため、リリース用ビルドを中止します。docs/RELEASE_SIGNING.md を参照"
             exit 1
           else
             echo "SIGNING=debug" >> "$GITHUB_ENV"
-            echo "::warning::正式署名の Secrets 未登録のため、検証用にデバッグ鍵で署名します（このビルドはリリースしません）"
+            echo "::warning::正式署名の Secrets 未登録のため、デバッグ鍵で署名します（main は ALLOW_DEBUG_RELEASE=true の場合のみ暫定公開）"
           fi
-          [ "$IS_RELEASE" = "true" ] && echo "REQUIRE_RELEASE_SIGNING=1" >> "$GITHUB_ENV" || true
+          [ "$IS_RELEASE" = "true" ] && [ -z "$missing" ] && echo "REQUIRE_RELEASE_SIGNING=1" >> "$GITHUB_ENV" || true
 
       - name: Build APK
         env:
@@ -132,12 +137,15 @@ jobs:
           OUT=app/build/app/outputs/flutter-apk
           cp $OUT/app-arm64-v8a-release.apk "port-security-$TAG-arm64.apk"
           cp $OUT/app-armeabi-v7a-release.apk "port-security-$TAG-armv7.apk"
-          test "$SIGNING" = "release"   # 正式署名でないものは公開しない
+          # 正式署名でないものは公開しない（暫定措置 ALLOW_DEBUG_RELEASE=true の場合を除く）
+          if [ "$SIGNING" = "release" ]; then SUFFIX=""; NOTE="署名証明書 SHA-256: \`CERT_PH\`（docs/signing/release-cert.sha256 と同じであることを確認してください）"
+          elif [ "$ALLOW_DEBUG_RELEASE" = "true" ]; then SUFFIX="（デバッグ署名・暫定）"; NOTE="⚠ 暫定版: デバッグ鍵で署名しています（鍵はビルドごとに異なります）。更新時は一度アンインストールしてからインストールしてください。証明書 SHA-256: \`CERT_PH\`"
+          else exit 1; fi
           sha256sum port-security-$TAG-*.apk > SHA256SUMS.txt
           CERT=$(grep -m1 '^certificate_sha256=' app/signing.txt | cut -d= -f2)
           printf '%s\n\n%s\n\n%s\n\n```\n%s\n```\n' \
             "通常のスマホは **arm64** 版をダウンロードしてください（古い32bit端末のみ armv7 版）。" \
             "提供元不明のアプリのインストール許可が必要です。" \
-            "署名証明書 SHA-256: \`$CERT\`（docs/signing/release-cert.sha256 と同じであることを確認してください）" "$(cat SHA256SUMS.txt)" > notes.md
+            "${NOTE//CERT_PH/$CERT}" "$(cat SHA256SUMS.txt)" > notes.md
           gh release create "$TAG" port-security-$TAG-*.apk SHA256SUMS.txt --target "$GITHUB_SHA" --latest \
-            --title "Port Security $TAG" --notes-file notes.md
+            --title "Port Security $TAG$SUFFIX" --notes-file notes.md
