@@ -58,6 +58,22 @@ Phase 0 基準（`docs/baseline/DATA_INVENTORY.json`）にある ID を削除・
 - 27 件以外で根拠を失った High 2 件を同じ基準で再検証し維持: RISK-11211-UDP（T1498.002 で memcache の増幅を記載。ポート番号の記載はない）、RISK-04444-TCP（T1571 の手順例）。
 - リスク分布: Critical 4 / High 55 → 40 / Medium 80 → 95 / Low 21。
 
+### Phase 2（ベンダーログ）— `tools/apply_v12.py` phase 2
+**FortiGate（F-04）**
+- 公式資料を CI（`vendor-evidence` ワークフロー、`tools/vendor_evidence.py`）で取得し、Message ID・説明・種別・カテゴリとフィールド表・CLI 構文だけを `data/raw/vendor/fortios_evidence.json` に抽出（本文は保存しない）。対象: FortiOS Log Message Reference 7.4.11 / 7.6.7、CLI Reference 7.4.11 / 7.6.7、7.6.3 リリースノート。
+- `log_investigation.vendor_logs` を追加（vendor / product / firmware_versions / log_type / log_subtype / log_id / message / fields / cli_commands / source_ids / verification_status / notes）。7.4 と 7.6 は別の項目として管理。
+  - traffic/forward 13（LOG_ID_TRAFFIC_END_FORWARD）、event/system 32002（管理者ログイン失敗）・32001（成功、7.4 のみ取得）、event/vpn 39424・39425・39426（SSL VPN）、37138・37139（IPsec）
+  - 7.6 の SSL VPN 項目: 7.6.3 で SSL VPN トンネルモードが IPsec VPN に置き換えられ GUI・CLI から削除されたことを記載（リリースノート）。7.6.3 以降に記録されるかは未確認。
+- 出典をページ単位に置き換え（SRC-FTNT-* 20 件を追加）。SRC-FORTINET-DOCS（サイトのトップ）は廃止。SRC-CISA-HYGIENE は FortiGate のログ形式を扱わないため LOG-FORTIGATE-VENDOR から外した。
+- 削除した記述: フィールド「通信方向」「接続時刻 (timestamp)」「vpn」（原文のフィールド表にない。時刻は eventtime）、ログ源「UTM / Security Log」（未取得）、`action=ssl-login-fail` という値（未確認）、`execute log filter device 0` / `category 0` の番号指定（公式は名前の指定のみ記載）。
+- 追加したフィールド（原文で確認）: srcintf, dstintf, service。
+
+**NEC UNIVERGE IX2235（F-05）**
+- 公式のダウンロードページ・イベントログリファレンス（ELS）・FAQ は自動取得を 403 で拒否された（拒否を回避する取得はしていない）。原文を確認できないため、v1.1 までの推測のフィールドと手順を削除:
+  - src-ip, src-port, dst-ip, dst-port, protocol, action: pass/block, timestamp, ident/tag (FLT, IPSEC, SYS), in-interface, out-interface, filter-id, seq-num, router-name、手順の `ident=FLT` / `action=block`
+- LOG-NECIX-VENDOR は確度を 未確認 にし、検索結果の本文で確認できた範囲（出力先・機能とレベルの指定、ソフトウェア版 10.11.17、ELS の配布形式）だけを残した。メッセージは「機能名.番号」の形式（例: IP.006、MODM.010）で ELS に載ることを記載し、個々のメッセージは未収録。
+- 出典: SRC-NEC-IX（サイトのトップ）を廃止し、SRC-NEC-IX2235-DL・SRC-NEC-IX-FAQ-LOG（いずれも検索結果のみ = 一部確認）に置き換え。
+
 ## v1.1（2026-11-22）
 
 ### Phase 0

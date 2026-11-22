@@ -2,7 +2,7 @@
 
 - データ最終検証日: 2026-11-22
 - 収録: 詳細付きポート 160 件 / IANA 登録ポート 11625 件
-- レコード総数: ports 160, services 6, protocols 7, attack_patterns 24, port_risks 160, log_investigation 9, mitre_techniques 90, detection_strategies 164, mitre_software 11, tools 18, vulnerabilities 11, sources 191
+- レコード総数: ports 160, services 6, protocols 7, attack_patterns 24, port_risks 160, log_investigation 9, mitre_techniques 90, detection_strategies 164, mitre_software 11, tools 18, vulnerabilities 11, sources 213
 - 整合性検証: **PASS**（errors=0, warnings=0）
 
 ## 詳細付きポートの到達率
@@ -166,5 +166,3 @@
 | Q-COUNT | 0 |
 
 対象外（記録のみ）:
-- log_investigation:LOG-FORTIGATE-VENDOR: 確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）
-- log_investigation:LOG-NECIX-VENDOR: 確度=一部確認（Phase 4 で実機・公式マニュアル照合予定）
