@@ -430,8 +430,87 @@ def phase2_logs():
     save("log_investigation", logs)
 
 
+# ================================================================ Phase 3: ログの関連付け（F-06・F-16）
+GENERIC = {"Linux": ("LOG-LIN-GENERIC", "Linux（プラットフォーム共通）"), "macOS": ("LOG-MAC-GENERIC", "macOS（プラットフォーム共通）"),
+           "ESXi": ("LOG-ESXI-GENERIC", "VMware ESXi（プラットフォーム共通）")}
+
+
+def phase3_logs():
+    """プラットフォーム共通ログを、データ内の ATT&CK analytic（公式 STIX）が参照するログ源から作る。ポートとは関連付けない。"""
+    from collections import Counter
+    logs = load("log_investigation"); L = by_id(logs); dets = load("detection_strategies")
+    for pf, (lid, name) in GENERIC.items():
+        an = [a for d in dets for a in d["analytics"] if pf in a["platforms"]]
+        cnt = Counter(n for a in an for n in {x["name"] for x in a["log_sources"] if x["name"]})  # 参照する analytic の数
+        chans = {}
+        for a in an:
+            for x in a["log_sources"]:
+                ch = x["channel"] or ""
+                if x["name"] and re.fullmatch(r"[\w./:=-]{1,30}", ch) and ch != "None": chans.setdefault(x["name"], Counter())[ch] += 1
+        rec = {"id": lid, "platform": name,
+               "log_sources": [{"channel": n, "event_code": None,
+                                "description": f"ATT&CK analytic {c} 件が参照" + (f"（例: {', '.join(k for k, _ in chans[n].most_common(3))}）" if n in chans else "")}
+                               for n, c in cnt.most_common(8)],
+               "common_fields": [], "vendor_specific_fields": [],
+               "detection_analytics": f"技術ごとの ATT&CK 検知戦略の analytic（{pf} 向け {len(an)} 件）を参照する。このログはプラットフォーム共通で、ポートに固有ではない。",
+               "investigation_procedure": "1. ポート詳細の ATT&CK タブで技術の検知戦略（DET）を開く\n2. 対象プラットフォームの analytic が示すログ源とチャネルを確認する\n3. そのログ源で、通信の時刻・送信元・プロセスを突き合わせる",
+               "unconfirmed_notes": "", "source_ids": ["SRC-MITRE-ATTACK"], "verified_date": DAY, "certainty": "確認済み",
+               "analytics_ids": [], "port_scope": "platform", "ports": []}
+        if lid in L: L[lid].update(rec)
+        else: logs.append(rec); L[lid] = rec
+    w = L["LOG-WIN-SECURITY"]  # F-16: any_windows は未実装だった。プラットフォーム共通として定義を直す
+    w["port_scope"] = "platform"
+    for x in logs:
+        if x["port_scope"] == "any_windows": x["port_scope"] = "platform"
+    save("log_investigation", logs)
+    src = load("sources"); S = by_id(src); m = S["SRC-MITRE-ATTACK"]
+    if "detection" not in m["scope"]: m["scope"].append("detection")  # ATT&CK は検知戦略・analytic を含む（v18 以降）
+    save("sources", src)
+
+
+# F-10: 攻撃手法ごとのポートとの関係。generic = どの公開サービスにも当てはまる / service_specific = 特定のサービスの機能に依存
+GENERIC_ATK = {"ATK-BRUTE-FORCE", "ATK-VULN-SCAN", "ATK-PUBLIC-EXPLOIT", "ATK-REMOTE-EXPLOIT", "ATK-UNAUTH-SERVICE", "ATK-EXTERNAL-REMOTE",
+               "ATK-C2-PORT", "ATK-EXFIL-ALT", "ATK-DATA-EXFIL", "ATK-TUNNEL", "ATK-AMPLIFICATION"}
+REL = {"direct": "direct", "service": "inferred", "reference": "unverified"}
+PTH_NOTE = ("T1550.002 の手順例で CrackMapExec が SMB で PtH の認証を行い、Wizard Spider・FIN13 が Invoke-SMBExec を使用。"
+            "技術の説明と手順例にポート番号の記載はなく、445/tcp との対応は SMB の標準ポートによる推定")
+
+
+def phase3_assoc():
+    atk = load("attack_patterns"); A = by_id(atk)
+    for a in atk: a["port_relation"] = "generic" if a["id"] in GENERIC_ATK else "service_specific"
+    u = A["ATK-UNAUTH-SERVICE"]  # Default Accounts（T1078.001）は「認証のないサービス」と同じではない
+    if "T1078.001" in u["technique_ids"]: u["technique_ids"].remove("T1078.001")
+    save("attack_patterns", atk)
+    ports = load("ports"); risks = load("port_risks"); R = by_id(risks); dropped = set()
+    for p in ports:
+        keep = []
+        for b in p["technique_basis"]:
+            if b["relation"] in ("attack_pattern", "generic", "inferred") and b["via"] and all(v.startswith("ATK-") for v in b["via"]):
+                b["via"] = [v for v in b["via"] if b["technique"].split(".")[0] in {t.split(".")[0] for t in A[v]["technique_ids"]}]
+                if not b["via"]: dropped.add(p["id"]); continue  # 根拠の攻撃手法から技術が外れた
+                b["relation"] = "generic" if all(v in GENERIC_ATK for v in b["via"]) else "inferred"
+            else: b["relation"] = REL.get(b["relation"], b["relation"])
+            b["source_type"] = ("stix" if all(v.startswith("SRC-MITRE-") for v in b["via"]) else "document") if b["relation"] == "direct" else "curation"
+            keep.append(b)
+        p["technique_basis"] = keep
+        lost = set(p["technique_ids"]) - {b["technique"] for b in keep}
+        p["technique_ids"] = [t for t in p["technique_ids"] if t not in lost]
+        for t in lost:
+            r = R.get(p["risk_id"])
+            if r and t in r["technique_ids"]: r["technique_ids"].remove(t)
+    smb = next(p for p in ports if p["id"] == "PORT-00445-TCP")  # F-17
+    if "ATK-PASS-THE-HASH" not in smb["attack_pattern_ids"]: smb["attack_pattern_ids"].append("ATK-PASS-THE-HASH")
+    if "T1550.002" not in smb["technique_ids"]: smb["technique_ids"].append("T1550.002")
+    if not any(b["technique"] == "T1550.002" for b in smb["technique_basis"]):
+        smb["technique_basis"].append({"technique": "T1550.002", "relation": "inferred", "via": ["ATK-PASS-THE-HASH"], "note": PTH_NOTE, "source_type": "curation"})
+    save("ports", ports); save("port_risks", risks)
+    print("T1078.001 removed from", len(dropped), "ports")
+
+
 PHASES = {"1": [phase1_sources, phase1_text, phase1_attacks, phase1_high, phase1_certainty, usage],
-          "2": [phase2_sources, phase2_logs, usage]}
+          "2": [phase2_sources, phase2_logs, usage],
+          "3": [phase3_logs, phase3_assoc]}
 
 if __name__ == "__main__":
     for ph in (sys.argv[1:] or sorted(PHASES)):

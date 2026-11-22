@@ -16,6 +16,9 @@ ROOT = Path(__file__).parent.parent
 DATA_VERSION = "1.1"
 MATCH = ["DET公式監視ポート一致", "公式文書のポート指定", "DETサービス名から推定", "ATT&CK検知戦略(プラットフォーム)",
          "攻撃手法・ツール経由", "境界機器ログ(全ポート共通)"]
+# 5 章の分類: A=公式資料がポートを明示 / B=DET がポート・通信方式を示す / B'=プラットフォーム共通 / C/D=ベンダー・境界・攻撃手法経由
+CLASS = ["B", "A", "B", "B'", "C/D", "C/D"]
+PORT_SPECIFIC = {"A", "B"}  # ポート固有のログの有無は A と B だけで判定する（B' は数えない）
 
 
 def build(db):
@@ -39,7 +42,8 @@ def build(db):
         for d in db["detection_strategies"]:
             for a in d["analytics"]:
                 if list(key) in a["monitored_ports"]:  # (番号, 通信方式) で照合。番号だけの一致は使わない
-                    for lid in a["log_investigation_ids"]: add(lid, f"{d['id']}/{a['id']}", 0 if a["port_basis"] == "official" else 2)
+                    for ln in a["log_links"]:  # DET0118 専用ログだけがポート固有（B）。同じ analytic のプラットフォーム共通ログは B'
+                        add(ln["log_id"], f"{d['id']}/{a['id']}", (0 if a["port_basis"] == "official" else 2) if ln["basis"] == "det0118_analytic" else 3)
         for l in db["log_investigation"]:
             if l["port_scope"] == "listed" and list(key) in [list(x) for x in l["ports"]]: add(l["id"], "公式文書のポート指定", 1)
             if l["port_scope"] == "any": add(l["id"], "境界機器ログ(全ポート共通)", 5)
@@ -55,7 +59,7 @@ def build(db):
         risk = ix["port_risks"].get(p["risk_id"])
         gaps = []
         if p["certainty"] != "確認済み": gaps.append("攻撃・検知記述の一次資料未付与")
-        if min(rank.values(), default=9) > 3: gaps.append("ポートに対応するホストログなし")
+        if not {CLASS[r] for r in rank.values()} & PORT_SPECIFIC: gaps.append("ポート固有のログなし（A・B なし）")
         if not risk: gaps.append("リスク評価なし")
         ports.append({
             "id": p["id"], "n": p["port_number"], "t": p["transport_protocol"], "service": p["service_name"],
@@ -71,7 +75,9 @@ def build(db):
                                            "vulns": vulns_of.get(risk["id"], [])},
             "basis": {b["technique"]: {"relation": b["relation"], "via": b["via"], "note": b.get("note", "")} for b in p["technique_basis"]},
             "attacks": p["attack_pattern_ids"], "techniques": p["technique_ids"], "tools": tools,
-            "logs": [{"id": l, "match": MATCH[rank[l]], "rank": rank[l], "via": sorted(v)} for l, v in sorted(logs.items(), key=lambda kv: (rank[kv[0]], kv[0]))],
+            "logs": [{"id": l, "match": MATCH[rank[l]], "rank": rank[l], "class": CLASS[rank[l]], "via": sorted(v)}
+                     for l, v in sorted(logs.items(), key=lambda kv: (rank[kv[0]], kv[0]))],
+            "log_class": min((CLASS[r] for r in rank.values()), key=["A", "B", "B'", "C/D"].index, default="なし"),
             "sources": list(dict.fromkeys(p["source_ids"] + (risk or {}).get("source_ids", []) +
                                           [f"SRC-MITRE-{t.split('.')[0]}" for t in p["technique_ids"]])),
             "evidence": [{"source": e["source_id"], "kind": e["kind"], "technique": e.get("technique"),
@@ -99,7 +105,7 @@ def build(db):
                             "certainty": t["certainty"], "notes": t["unconfirmed_notes"], "verified": t["verified_date"]} for t in db["tools"]},
         "logs": {l["id"]: {"platform": l["platform"], "sources": [[s["channel"], s["event_code"], s["description"]] for s in l["log_sources"]],
                            "analytics": l.get("detection_analytics", ""), "procedure": l["investigation_procedure"],
-                           "certainty": l["certainty"], "notes": l["unconfirmed_notes"], "refs": l["source_ids"],
+                           "certainty": l["certainty"], "notes": l["unconfirmed_notes"], "refs": l["source_ids"], "scope": l["port_scope"],
                            "verified": l["verified_date"]} for l in db["log_investigation"]},
         "sources": {s["source_id"]: {"title": s["title"], "url": s["url"], "publisher": s.get("publisher", ""),
                                      "scope": s["scope"], "verified": s["reverified_v4"], "certainty": s["verification_status"],

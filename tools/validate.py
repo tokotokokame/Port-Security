@@ -33,7 +33,7 @@ ID_RE = {"ports": r"PORT-\d{5}-(TCP|UDP|SCTP)", "services": r"SRV-[A-Z0-9-]+", "
 CERTAINTY = {"確認済み", "一部確認", "未確認"}
 THREAT = {"attack_technique", "detection", "threat_advisory"}
 NEEDS = {"log_investigation": {"detection", "log_format"}, "vulnerabilities": {"vulnerability"}}
-SCOPES = {"analytics", "any", "any_windows", "listed"}
+SCOPES = {"analytics", "any", "platform", "listed"}
 
 
 def load_all(d):

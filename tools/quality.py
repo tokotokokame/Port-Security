@@ -274,11 +274,11 @@ def _fam(a, b): return a == b or a.split(".")[0] == b or b.split(".")[0] == a
 
 
 def check_association(db):
-    """Q-ASSOC: every port→technique link has exactly one technique_basis whose route is true in the data.
-    direct = port evidence names the technique / attack_pattern = a linked attack pattern contains it (or parent/sub)
-    service = the linked service lists it, or a note explains the service nature / reference = note required."""
+    """Q-ASSOC: every port→technique link has exactly one technique_basis whose route is true in the data (F-10).
+    direct = port evidence names the technique / generic = linked attack patterns that apply to any exposed service contain it
+    inferred = linked service-specific attack patterns contain it, or the service lists it, or a note explains it / unverified = note required."""
     out = []
-    atk = {a["id"]: a["technique_ids"] for a in db["attack_patterns"]}
+    atk = {a["id"]: a for a in db["attack_patterns"]}
     svc = {s["id"]: s["technique_ids"] for s in db["services"]}
     for p in db["ports"]:
         w, basis = f"ports:{p['id']}", p.get("technique_basis")
@@ -287,11 +287,19 @@ def check_association(db):
         if sorted(got) != sorted(p["technique_ids"]): out.append(F("Q-ASSOC", w, f"technique_basis {got} が technique_ids と一致しない"))
         for b in basis:
             t, rel, via = b["technique"], b["relation"], b["via"]
+            pats = lambda kind: via and all(v in p["attack_pattern_ids"] and atk.get(v, {}).get("port_relation") == kind
+                                           and any(_fam(t, x) for x in atk[v]["technique_ids"]) for v in via)
             ok = {"direct": lambda: via and all(any(e["source_id"] == v and e.get("technique") == t for e in p.get("evidence", [])) for v in via),
-                  "attack_pattern": lambda: via and all(v in p["attack_pattern_ids"] and any(_fam(t, x) for x in atk.get(v, [])) for v in via),
-                  "service": lambda: (via == [p["service_id"]] and any(_fam(t, x) for x in svc.get(p["service_id"], []))) or bool(b.get("note")),
-                  "reference": lambda: bool(b.get("note"))}.get(rel, lambda: False)()
+                  "generic": lambda: pats("generic"),
+                  "inferred": lambda: pats("service_specific") or (via == [p["service_id"]] and any(_fam(t, x) for x in svc.get(p["service_id"], [])))
+                                      or bool(b.get("note")),
+                  "unverified": lambda: bool(b.get("note"))}.get(rel, lambda: False)()
             if not ok: out.append(F("Q-ASSOC", w, f"{t} の関連区分 {rel} の経路 {via} がデータと一致しない"))
+            want = ("stix" if via and all(v.startswith("SRC-MITRE-") for v in via) else "document") if rel == "direct" else "curation"
+            if b.get("source_type") != want: out.append(F("Q-ASSOC", w, f"{t} の根拠種別 source_type は {want}（ATT&CK 公式の記述か、アプリ内の関連付けかを区別）"))
+    for a in db["attack_patterns"]:
+        if "T1078.001" in a["technique_ids"] and a["id"] == "ATK-UNAUTH-SERVICE":
+            out.append(F("Q-ASSOC", f"attack_patterns:{a['id']}", "認証のないサービスに Default Accounts（T1078.001）を対応付けている"))
     return out
 
 
@@ -309,6 +317,43 @@ def check_display(root):
         if miss: out.append(F("Q-HIDDEN", f"kb.{sect}", f"アプリ用データに {', '.join(miss)} がない（画面に表示できない）"))
     if any(p["risk"] and "notes" not in p["risk"] for p in ports): out.append(F("Q-HIDDEN", "ports.risk", "リスク評価の未確認事項がアプリ用データにない"))
     if any("certainty" not in s for s in kb["sources"].values()): out.append(F("Q-HIDDEN", "kb.sources", "出典の確認状態(3値)がアプリ用データにない"))
+    return out
+
+
+def check_log_links(db):
+    """Q-LOGLINK: DET0118 専用のログは DET0118 の analytic にだけ付ける。共通ログを analytic 専用として付けない（F-06）。"""
+    out, scope = [], {l["id"]: l["port_scope"] for l in db["log_investigation"]}
+    for d in db["detection_strategies"]:
+        for a in d["analytics"]:
+            w, links = f"detection_strategies:{d['id']}/{a['id']}", a.get("log_links")
+            if links is None: out.append(F("Q-LOGLINK", w, "log_links（関連付けの根拠）がない")); continue
+            if sorted({x["log_id"] for x in links}) != sorted(a["log_investigation_ids"]):
+                out.append(F("Q-LOGLINK", w, "log_investigation_ids が log_links と一致しない"))
+            for x in links:
+                specific = scope.get(x["log_id"]) == "analytics"
+                if x["basis"] == "det0118_analytic" and (d["id"] != "DET0118" or not specific):
+                    out.append(F("Q-LOGLINK", w, f"{x['log_id']} を DET0118 の analytic 専用ログとして付けている"))
+                if x["basis"] == "platform_generic" and specific:
+                    out.append(F("Q-LOGLINK", w, f"DET0118 専用の {x['log_id']} をプラットフォーム共通ログとして付けている"))
+    return out
+
+
+LOG_CLASS = {0: "B", 1: "A", 2: "B", 3: "B'", 4: "C/D", 5: "C/D"}
+
+
+def check_log_class(root):
+    """Q-LOGCLASS: アプリ用データのログ分類が 5 章の定義どおりで、ポート固有ログの有無を A・B だけで判定していること（F-15）。"""
+    out, d = [], root / "dist"
+    if not (d / "ports.json").exists(): return [F("Q-LOGCLASS", "dist", "生成物がない")]
+    kb = json.loads((d / "kb.json").read_text(encoding="utf-8"))
+    generic = {i for i, l in kb["logs"].items() if l.get("scope") in ("platform", "any")}
+    for p in json.loads((d / "ports.json").read_text(encoding="utf-8")):
+        w = f"dist/ports:{p['id']}"
+        for l in p["logs"]:
+            if l.get("class") != LOG_CLASS.get(l["rank"]): out.append(F("Q-LOGCLASS", w, f"{l['id']} の分類 {l.get('class')} が順位 {l['rank']} と合わない"))
+            if l.get("class") in ("A", "B") and l["id"] in generic: out.append(F("Q-LOGCLASS", w, f"共通ログ {l['id']} をポート固有（{l['class']}）として数えている"))
+        has = any(l.get("class") in ("A", "B") for l in p["logs"])
+        if has == ("ポート固有のログなし（A・B なし）" in p["gaps"]): out.append(F("Q-LOGCLASS", w, "ポート固有ログの有無の判定が A・B の有無と一致しない"))
     return out
 
 
@@ -369,7 +414,7 @@ def run(db, root=ROOT, catalog=None):
     for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db), lambda: check_iana(db, root),
                lambda: check_sources(db), lambda: check_verified(db), lambda: check_cve(db), lambda: check_association(db),
                lambda: check_attribution(db), lambda: check_review(db),
-               lambda: check_display(root), lambda: check_count(db, root), lambda: check_vendor_logs(db, root)):
+               lambda: check_display(root), lambda: check_count(db, root), lambda: check_log_links(db), lambda: check_log_class(root), lambda: check_vendor_logs(db, root)):
         out += fn()
     return out
 

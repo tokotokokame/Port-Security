@@ -31,9 +31,10 @@ EVIDENCE = {"type": "object", "additionalProperties": False, "required": ["sourc
             "properties": {"source_id": SRC, "technique": {"anyOf": [TECH, {"type": "null"}]},
                            "kind": {"enum": ["技術説明", "手順例", "公式文書", "ATT&CK検知戦略", "政府勧告"]},
                            "examples": ARR(S()), "keyword": S(minLength=1)}}
-BASIS = {"type": "object", "additionalProperties": False, "required": ["technique", "relation", "via"],
-         "properties": {"technique": TECH, "relation": {"enum": ["direct", "service", "attack_pattern", "reference"]},
-                        "via": ARR(S(minLength=1)), "note": S()}}
+BASIS = {"type": "object", "additionalProperties": False, "required": ["technique", "relation", "via", "source_type"],
+         "properties": {"technique": TECH, "relation": {"enum": ["direct", "generic", "inferred", "unverified"]},
+                        "via": ARR(S(minLength=1)), "note": S(),
+                        "source_type": {"enum": ["stix", "document", "curation"]}}}  # stix=ATT&CK 公式の記述 / document=他の一次資料 / curation=アプリ内の関連付け
 EVAL = {"anyOf": [
     {"type": "object", "additionalProperties": False, "required": ["category", "basis"], "properties": {"category": S(), "basis": S()}},
     {"type": "object", "additionalProperties": False, "required": ["external_exposure", "authentication", "encryption", "known_vulnerabilities"],
@@ -48,7 +49,9 @@ ANALYTIC = {"type": "object", "additionalProperties": False,
                                                "properties": {"name": {"type": ["string", "null"]}, "channel": {"type": ["string", "null"]}}}),
                            "monitored_ports": ARR(PORT_T), "port_basis": {"enum": ["official", "inferred", "none"]},
                            "transport_basis": {"enum": ["stated", "service_default", "none"]},
-                           "service_names": ARR(S()), "log_investigation_ids": ARR(LOG)}}
+                           "service_names": ARR(S()), "log_investigation_ids": ARR(LOG),
+                           "log_links": ARR({"type": "object", "additionalProperties": False, "required": ["log_id", "basis"],
+                                             "properties": {"log_id": LOG, "basis": {"enum": ["det0118_analytic", "platform_generic"]}}})}}
 AFFECTED = {"type": "object", "additionalProperties": False, "required": ["vendor", "product", "versions"],
             "properties": {"vendor": S(minLength=1), "product": S(minLength=1), "versions": ARR(S(minLength=1), minItems=1),
                            "fixed": ARR(S()), "platforms": ARR(S())}}
@@ -118,6 +121,7 @@ FILES = {
         ("attack_features", TEXT, True, "特徴"), ("detection_methods", S(minLength=1), True, "検知方法"),
         ("recommended_defenses", TEXT, True, "対策"), ("technique_ids", U(TECH), True, "ATT&CK 技術 ID"),
         ("log_investigation_ids", U(LOG), True, "ログ調査 ID"),
+        ("port_relation", {"enum": ["generic", "service_specific"]}, False, "ポートとの関係（generic=どの公開サービスにも当てはまる）"),
         ("attack_mapping_status", CERT, False, "ATT&CK 技術への対応付けの確認状態（公式 STIX との照合）"),
         ("content_verification_status", CERT, False, "説明・特徴・検知・対策の本文の確認状態"),
         ("content_source_ids", ARR(SRC, uniqueItems=True), False, "本文の根拠資料 ID")] + COMMON),
@@ -133,7 +137,8 @@ FILES = {
         ("common_fields", ARR(S()), True, "共通フィールド"), ("vendor_specific_fields", ARR(S()), True, "製品固有フィールド"),
         ("detection_analytics", TEXT, True, "検知ロジック"), ("investigation_procedure", S(minLength=1), True, "調査手順"),
         ("analytics_ids", ARR(S(pattern=r"^AN\d{4}$")), True, "対応する ATT&CK analytic"),
-        ("port_scope", {"enum": ["analytics", "any", "any_windows", "listed"]}, True, "ポートとの対応方法"),
+        ("port_scope", {"enum": ["analytics", "any", "platform", "listed"]}, True,
+         "ポートとの対応方法（analytics=DET0118 の analytic 専用 / platform=プラットフォーム共通・ポート固有でない / any=境界機器 / listed=公式文書がポートを明示）"),
         ("ports", ARR(PORT_T), True, "port_scope=listed のときの (番号, 通信方式)"),
         ("vendor_logs", ARR(VLOG), False, "ベンダー機器のログ定義（版・種別・ID・フィールド・CLI ごとに出典を持つ）")] + COMMON),
     "mitre_techniques": ("ATT&CK 技術（公式 STIX から生成）", "id", S(pattern=r"^T\d{4}$"), [
