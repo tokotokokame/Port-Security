@@ -44,7 +44,7 @@ void main() {
       expect(docker.evidence.map((x) => x.source), contains('SRC-DOCKER-REMOTE'));
     });
     test('v1.1: CVEs are tied to a risk with a condition, never to a port alone', () {
-      expect(repo.vulns.length, 7);
+      expect(repo.vulns.length, 11); // v1.2: KEV 掲載 CVE 4 件を追加（High 再検証の根拠）
       final smb = repo.detailed.firstWhere((e) => e.label == '445/tcp').detail!.risk!;
       expect(smb.vulns, contains('CVE-2017-0144'));
       for (final v in repo.vulns.values) {

@@ -53,7 +53,9 @@ def fgt(tid, doc, versions, tokens=(), grab=GRAB, snippet=1200, near=()):
          "grab": sorted({m for g in grab for m in re.findall(g, t)})[:30],
          "tokens_found": [x for x in tokens if x in words], "tokens_missing": [x for x in tokens if x not in words],
          "snippet": t[:snippet]}
-    r["near"] = {k: [t[max(0, m.start() - 150): m.end() + 250] for m in re.finditer(k, t)][:3] for k in near}
+    body = t[t.find("Message ID"):] if "Message ID" in t else t
+    r["near"] = {k: [re.sub(r"\s+", " ", body[max(0, m.start() - 150): m.end() + 350]) for m in re.finditer(k, body)][:3] for k in near}
+    r["snippet"] = re.sub(r"\s+", " ", body)[:snippet]
     return r
 
 
@@ -96,18 +98,22 @@ def nec():
 
 def main(path):
     rep = [
-        fgt("FGT-7.4-LOGREF-13", "fortios-log-message-reference/13", V74, TRAFFIC_FIELDS),
-        fgt("FGT-7.6-LOGREF-13", "fortios-log-message-reference/13", V76, TRAFFIC_FIELDS),
-        fgt("FGT-7.4-LOGID-DEF", "fortios-log-message-reference/656858", V74, grab=[r"[a-z-]+: ?\d+"], snippet=2500),
-        fgt("FGT-7.6-LOGID-DEF", "fortios-log-message-reference/656858", V76, grab=[r"[a-z-]+: ?\d+"], snippet=2500),
+        fgt("FGT-7.4-LOGREF-13", "fortios-log-message-reference/13", V74, TRAFFIC_FIELDS, near=[r"\naction\n", r"\nlogid\n", r"\nsubtype\n"], snippet=300),
+        fgt("FGT-7.6-LOGREF-13", "fortios-log-message-reference/13", V76, TRAFFIC_FIELDS, near=[r"\naction\n", r"\nlogid\n"], snippet=300),
+        fgt("FGT-7.4-LOGID-DEF", "fortios-log-message-reference/656858", V74, grab=[r"[a-z-]+: ?\d+"], near=[r"traffic: ?0", r"event: ?1"], snippet=200),
+        fgt("FGT-7.6-LOGID-DEF", "fortios-log-message-reference/656858", V76, grab=[r"[a-z-]+: ?\d+"], near=[r"traffic: ?0", r"event: ?1"], snippet=200),
         fgt("FGT-7.4-LOGREF-32001", "fortios-log-message-reference/32001", V74, ["user", "ui", "srcip", "dstip", "action", "status", "reason", "method"]),
         fgt("FGT-7.4-LOGREF-32002", "fortios-log-message-reference/32002", V74, ["user", "ui", "srcip", "dstip", "action", "status", "reason", "method"]),
         fgt("FGT-7.6-LOGREF-32002", "fortios-log-message-reference/32002", V76, ["user", "ui", "srcip", "dstip", "action", "status", "reason", "method"]),
         fgt("FGT-7.4-CLI-EXEC-LOG", "cli-reference/209945028/execute-log", V74, grab=[r"execute log [a-z-]+(?: [a-z-]+)?"], snippet=400),
         fgt("FGT-7.6-CLI-EXEC-LOG", "cli-reference/209945028/execute-log", V76, grab=[r"execute log [a-z-]+(?: [a-z-]+)?"], snippet=400),
-        fgt("FGT-7.6.3-RN-SSLVPN", "fortios-release-notes/173430/ssl-vpn-tunnel-mode-replaced-with-ipsec-vpn", ["7.6.3"], grab=[], snippet=2500),
-        nec(),
-    ]
+        fgt("FGT-7.6.3-RN-SSLVPN", "fortios-release-notes/173430/ssl-vpn-tunnel-mode-replaced-with-ipsec-vpn", ["7.6.3"], grab=[],
+            near=[r"tunnel mode", r"not upgraded|will not be upgraded", r"443"], snippet=0),
+        fgt("FGT-7.4-CLI-EXEC-LOG-SYNTAX", "cli-reference/209945028/execute-log", V74, grab=[r"execute log filter (?:device|category|field) <[a-z ]+>[^\n]{0,80}", r"execute log display[^\n]{0,60}"],
+            near=[r"execute log filter device", r"execute log display"], snippet=0),
+    ] + [fgt(f"FGT-{lab}-LOGREF-{i}", f"fortios-log-message-reference/{i}", vs, ["user", "remip", "tunnelip", "tunneltype", "action", "reason", "srcip", "dstip"], snippet=0)
+         for i in (39424, 39425, 39426, 39947, 39948, 37138, 37139, 37141) for lab, vs in (("7.4", V74), ("7.6", V76))]
+    # NEC の配布ページは自動取得を 403 で拒否する（2026-11-22 に CI から確認）。拒否を回避する取得はしない。nec() は手動確認用に残す
     blob = json.dumps(rep, ensure_ascii=False, indent=1)
     while len(blob) > 64000:  # check run の出力上限
         for r in rep:
