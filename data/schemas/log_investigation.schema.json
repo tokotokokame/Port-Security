@@ -125,6 +125,92 @@
     },
     "description": "port_scope=listed のときの (番号, 通信方式)"
    },
+   "vendor_logs": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "vendor",
+      "product",
+      "firmware_versions",
+      "log_type",
+      "log_subtype",
+      "log_id",
+      "message",
+      "fields",
+      "cli_commands",
+      "source_ids",
+      "verification_status",
+      "notes"
+     ],
+     "properties": {
+      "vendor": {
+       "type": "string",
+       "minLength": 1
+      },
+      "product": {
+       "type": "string",
+       "minLength": 1
+      },
+      "firmware_versions": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "minItems": 1
+      },
+      "log_type": {
+       "type": "string",
+       "minLength": 1
+      },
+      "log_subtype": {
+       "type": "string"
+      },
+      "log_id": {
+       "type": "string"
+      },
+      "message": {
+       "type": "string"
+      },
+      "fields": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       }
+      },
+      "cli_commands": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       }
+      },
+      "source_ids": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^SRC-[A-Z0-9-]+$"
+       },
+       "minItems": 1,
+       "uniqueItems": true
+      },
+      "verification_status": {
+       "enum": [
+        "確認済み",
+        "一部確認",
+        "未確認"
+       ]
+      },
+      "notes": {
+       "type": "string"
+      }
+     }
+    },
+    "description": "ベンダー機器のログ定義（版・種別・ID・フィールド・CLI ごとに出典を持つ）"
+   },
    "source_ids": {
     "type": "array",
     "items": {

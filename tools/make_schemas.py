@@ -60,6 +60,13 @@ SCOPES = ["attack_technique", "detection", "threat_advisory", "threat_guidance",
           "protocol_assignment", "reference", "vulnerability", "vendor_security", "tool_documentation", "technical_documentation",
           "government_guidance", "research_report", "attack_framework", "vulnerability_database"]
 VIA = ["original_document", "official_api", "official_stix", "official_repository", "search_result", "not_verified"]
+VLOG = {"type": "object", "additionalProperties": False,
+        "required": ["vendor", "product", "firmware_versions", "log_type", "log_subtype", "log_id", "message", "fields", "cli_commands",
+                     "source_ids", "verification_status", "notes"],
+        "properties": {"vendor": S(minLength=1), "product": S(minLength=1), "firmware_versions": ARR(S(minLength=1), minItems=1),
+                       "log_type": S(minLength=1), "log_subtype": S(), "log_id": S(), "message": S(), "fields": ARR(S(minLength=1)),
+                       "cli_commands": ARR(S(minLength=1)), "source_ids": ARR(SRC, minItems=1, uniqueItems=True), "verification_status": CERT,
+                       "notes": S()}}
 REVIEW = {"type": "object", "additionalProperties": False, "required": ["date", "previous_level", "result", "evidence"],
           "properties": {"date": DATE, "previous_level": {"enum": ["Critical", "High", "Medium", "Low"]}, "result": S(minLength=1),
                          "reason": S(minLength=1), "evidence": ARR({"type": "object", "additionalProperties": False, "required": ["source_id", "note"],
@@ -127,7 +134,8 @@ FILES = {
         ("detection_analytics", TEXT, True, "検知ロジック"), ("investigation_procedure", S(minLength=1), True, "調査手順"),
         ("analytics_ids", ARR(S(pattern=r"^AN\d{4}$")), True, "対応する ATT&CK analytic"),
         ("port_scope", {"enum": ["analytics", "any", "any_windows", "listed"]}, True, "ポートとの対応方法"),
-        ("ports", ARR(PORT_T), True, "port_scope=listed のときの (番号, 通信方式)")] + COMMON),
+        ("ports", ARR(PORT_T), True, "port_scope=listed のときの (番号, 通信方式)"),
+        ("vendor_logs", ARR(VLOG), False, "ベンダー機器のログ定義（版・種別・ID・フィールド・CLI ごとに出典を持つ）")] + COMMON),
     "mitre_techniques": ("ATT&CK 技術（公式 STIX から生成）", "id", S(pattern=r"^T\d{4}$"), [
         ("name", S(minLength=1), True, "名称"), ("tactics", ARR(S(), minItems=1), True, "戦術"), ("version", S(), True, "版"),
         ("created_date", DATE, True, "作成日"), ("last_modified", DATE, True, "更新日"),

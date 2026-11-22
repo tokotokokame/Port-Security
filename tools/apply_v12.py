@@ -154,6 +154,8 @@ UNUSED = {  # F-20: 未使用でも削除しない
     "SRC-MITRE-DET0314": ("未使用・再確認待ち", "DET0314 のレコードは技術の出典（SRC-MITRE-T1040）を参照しており、この出典は未参照"),
     "SRC-MITRE-DET0348": ("未使用・再確認待ち", "DET0348 のレコードは技術の出典（SRC-MITRE-T1041）を参照しており、この出典は未参照"),
     "SRC-MITRE-ICS-T0885": ("未使用・再確認待ち", "T0885 をポートに関連付けるかは Phase 3 の関連区分の見直しで判断"),
+    "SRC-FORTINET-DOCS": ("廃止", "サイトのトップページで特定の資料を指さないため、ページ単位の出典（SRC-FTNT-*）に置き換え"),
+    "SRC-NEC-IX": ("廃止", "サイトのトップページで特定の資料を指さないため、ページ単位の出典（SRC-NEC-IX2235-DL・SRC-NEC-IX-FAQ-LOG）に置き換え"),
 }
 
 
@@ -323,7 +325,113 @@ def phase1_certainty():
         save(f, recs)
 
 
-PHASES = {"1": [phase1_sources, phase1_text, phase1_attacks, phase1_high, phase1_certainty, usage]}
+# ================================================================ Phase 2: ベンダーログ（F-04 FortiGate / F-05 NEC IX2235）
+EVID = ROOT / "data/raw/vendor/fortios_evidence.json"  # tools/vendor_evidence.py が CI で取得した公式ページの抽出結果
+FTNT_KEYS = {"LOGREF-13", "LOGID-DEF", "LOGREF-32001", "LOGREF-32002", "LOGREF-39424", "LOGREF-39425", "LOGREF-39426",
+             "LOGREF-37138", "LOGREF-37139", "CLI-EXEC-LOG"}
+FIELDS = {  # SOC 調査で使うフィールド（すべて公式ページの表にあることを Q-VENDOR が確認）
+    "13": ["srcip", "srcport", "srcintf", "dstip", "dstport", "dstintf", "proto", "action", "policyid", "sessionid", "service",
+           "duration", "sentbyte", "rcvdbyte", "trandisp", "transip", "transport", "app", "user", "group", "vd", "eventtime", "logid"],
+    "32001": ["user", "ui", "srcip", "dstip", "action", "status", "reason", "method", "logdesc"],
+    "32002": ["user", "ui", "srcip", "dstip", "action", "status", "reason", "method", "logdesc"],
+    "39424": ["user", "group", "remip", "tunneltype", "tunnelid", "action", "reason", "srccountry"],
+    "39425": ["user", "group", "remip", "tunneltype", "tunnelid", "action", "reason", "duration", "sentbyte", "rcvdbyte"],
+    "39426": ["user", "group", "remip", "tunneltype", "action", "reason", "srccountry"],
+    "37138": ["remip", "remport", "locip", "locport", "vpntunnel", "tunnelip", "user", "xauthuser", "action", "outintf"],
+    "37139": ["remip", "remport", "locip", "locport", "vpntunnel", "phase2_name", "user", "action"],
+}
+CLI = ["execute log filter device <device>", "execute log filter category <category>", "execute log filter field <name> <argument 1>", "execute log display"]
+SSLVPN_763 = "SRC-FTNT-763-RN-SSLVPN"
+
+
+def ftnt_sid(page): return "SRC-FTNT-" + page.replace("FGT-", "").replace(".", "")
+
+
+def phase2_sources():
+    ev = json.loads(EVID.read_text(encoding="utf-8")); src = [s for s in load("sources") if "." not in s["source_id"]]; S = by_id(src)
+    for page, e in ev["pages"].items():
+        key = page.split("-", 2)[2]
+        if key not in FTNT_KEYS and page != "FGT-7.6.3-RN-SSLVPN": continue
+        ver = e["url"].split("/")[5]; sid = ftnt_sid(page)
+        what = (f"Message ID {e['id']} {e['description']}（{e.get('meaning', '')}）type={e.get('type')} / category={e.get('category')}"
+                if "id" in e else ("ログ種別とサブ種別の ID 定義" if "LOGID" in page else "execute log コマンドの構文" if "CLI" in page else e.get("statement", "")))
+        rec = {"source_id": sid, "title": f"FortiOS {ver} " + ("Log Message Reference" if "LOG" in page else "CLI Reference" if "CLI" in page else "Release Notes")
+               + (f" – {e.get('description', '')}" if "id" in e else ""), "publisher": "Fortinet Inc.", "url": e["url"], "document_type": "Vendor Documentation",
+               "applicable_data": f"FortiOS {ver}", "publication_date": None, "last_updated": None, "access_date": DAY, "verification_status": "確認済み",
+               "notes": what, "scope": ["log_format"], "reverified_v4": True, "verified_via": "original_document", "verified_url": e["url"],
+               "verified_date": DAY, "verified_by": "manual_review",
+               "verified_notes": f"CI（{ev['check_run']}）で原文を取得し、{'Message ID・説明・種別・カテゴリとフィールド表' if 'id' in e else '該当箇所'}を確認。抽出結果は data/raw/vendor/fortios_evidence.json"}
+        if sid in S: S[sid].update(rec)
+        else: src.append(rec); S[sid] = rec
+    nec = [
+        {"source_id": "SRC-NEC-IX2235-DL", "title": "UNIVERGE IX2235 プログラムファイル・ダウンロード", "publisher": "NEC Corporation",
+         "url": "https://jpn.nec.com/univerge/ix/Download/ix2235/index.html", "document_type": "Vendor Download Page", "applicable_data": "IX2235 のソフトウェア版とイベントログリファレンス",
+         "notes": "検索結果に表示された本文で、Ver 10.11.17（2026-04-24）などの掲載とイベントログリファレンスが ZIP（els/index.html）であることを確認。ページと ZIP は自動取得を 403 で拒否され、原文は未取得"},
+        {"source_id": "SRC-NEC-IX-FAQ-LOG", "title": "UNIVERGE IXシリーズ FAQ ロギング、SYSLOGに関するFAQ", "publisher": "NEC Corporation",
+         "url": "https://jpn.nec.com/univerge/ix/faq/els.html", "document_type": "Vendor FAQ", "applicable_data": "IX シリーズのロギング機能",
+         "notes": "検索結果に表示された本文で、出力先（コンソール・SYSLOG サーバ・内部バッファ）、機能（ARP・IP・ICMP・PPP 等）とレベルの指定、ファシリティの既定値 local0(16) を確認。原文は未取得"},
+    ]
+    for n in nec:
+        n.update(publication_date=None, last_updated=None, access_date=DAY, verification_status="一部確認", scope=["log_format"], reverified_v4=False,
+                 verified_via="search_result", verified_url=n["url"], verified_date=DAY, verified_by="manual_review", verified_notes=n["notes"])
+        if n["source_id"] in S: S[n["source_id"]].update(n)
+        else: src.append(n); S[n["source_id"]] = n
+    save("sources", src)
+
+
+def vlog(ver, typ, sub, mid, msg, cli=False, notes=""):
+    v = ver.replace(".", "")[:2]; page = f"FGT-{ver[:3]}-LOGREF-{mid}"
+    ids = [ftnt_sid(page)] + ([ftnt_sid(f"FGT-{ver[:3]}-CLI-EXEC-LOG")] if cli else [])
+    return {"vendor": "Fortinet", "product": "FortiGate (FortiOS)", "firmware_versions": [ver], "log_type": typ, "log_subtype": sub,
+            "log_id": mid, "message": msg, "fields": FIELDS[mid], "cli_commands": CLI if cli else [], "source_ids": ids,
+            "verification_status": "確認済み", "notes": notes or f"FortiOS {ver} の資料で確認。他の {ver[:3]}.x での同一性は未確認"}
+
+
+def phase2_logs():
+    logs = load("log_investigation"); L = by_id(logs)
+    f = L["LOG-FORTIGATE-VENDOR"]
+    tun = "7.6.3 以降は SSL VPN トンネルモード自体が IPsec VPN に置き換えられ GUI・CLI から削除された（リリースノート）。ログ参照には定義が残るが、7.6.3 以降に記録されるかは未確認"
+    vl = []
+    for ver in ("7.4.11", "7.6.7"):
+        vl += [vlog(ver, "traffic", "forward", "13", "LOG_ID_TRAFFIC_END_FORWARD（Forward traffic）", cli=True),
+               vlog(ver, "event", "system", "32002", "LOG_ID_ADMIN_LOGIN_FAIL（Admin login failed）")]
+        if ver.startswith("7.4"): vl.append(vlog(ver, "event", "system", "32001", "LOG_ID_ADMIN_LOGIN_SUCC（Admin login successful）"))
+        for mid, msg in (("39426", "LOG_ID_EVENT_SSL_VPN_USER_SSL_LOGIN_FAIL（SSL VPN login fail）"), ("39424", "LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_UP（SSL VPN tunnel up）"),
+                         ("39425", "LOG_ID_EVENT_SSL_VPN_USER_TUNNEL_DOWN（SSL VPN tunnel down）")):
+            e = vlog(ver, "event", "vpn", mid, msg)
+            if ver.startswith("7.6"): e["notes"] = tun; e["source_ids"].append(SSLVPN_763)
+            vl.append(e)
+        vl += [vlog(ver, "event", "vpn", "37138", "MESGID_CONN_UPDOWN（IPsec connection status changed）"),
+               vlog(ver, "event", "vpn", "37139", "MESGID_P2_UPDOWN（IPsec phase 2 status changed）")]
+    src74, src76 = ftnt_sid("FGT-7.4-LOGID-DEF"), ftnt_sid("FGT-7.6-LOGID-DEF")
+    f.update(platform="FortiGate（FortiOS 7.4 / 7.6。版ごとに vendor_logs で区別）", vendor_logs=vl, log_sources=[
+        {"channel": "Traffic ログ（type=traffic / subtype=forward）", "event_code": 13, "description": "LOG_ID_TRAFFIC_END_FORWARD（転送通信のセッション）"},
+        {"channel": "Event ログ（type=event / subtype=system）", "event_code": 32002, "description": "LOG_ID_ADMIN_LOGIN_FAIL（管理者ログイン失敗）"},
+        {"channel": "Event ログ（type=event / subtype=vpn）", "event_code": 39426, "description": "SSL VPN ログイン失敗（7.4。7.6.3 以降はトンネルモード廃止）"},
+        {"channel": "Event ログ（type=event / subtype=vpn）", "event_code": 37138, "description": "MESGID_CONN_UPDOWN（IPsec 接続状態の変化）"}],
+        common_fields=["srcip", "srcport", "dstip", "dstport", "proto", "action", "duration", "sentbyte", "rcvdbyte", "eventtime"],
+        vendor_specific_fields=["vd", "policyid", "sessionid", "service", "app", "trandisp", "transip", "transport", "user", "group", "srcintf", "dstintf"],
+        detection_analytics="境界の転送通信ログ（13）で action が拒否の宛先ポート別の急増、管理者ログイン失敗（32002）の連続、SSL VPN ログイン失敗（39426、7.4）の急増、IPsec 接続状態の変化（37138）を監視する。閾値は環境に合わせて決める。",
+        investigation_procedure="1. `execute log filter device <device>` と `execute log filter category <category>` で対象のログを選ぶ\n2. `execute log filter field <name> <argument 1>` で srcip・dstip・dstport などを絞り込む\n3. `execute log display` で表示し、policyid・sessionid・action を確認する\n4. 管理者ログイン失敗（32002）は srcip・user・ui・reason、SSL VPN（39426）は remip・user・reason を確認する",
+        unconfirmed_notes="action の取りうる値の一覧、logid フィールド（10 桁）の構成、device・category に指定する値、IPS などの UTM ログは未確認。版の記載は資料の版（7.4.11 / 7.6.7）で、他の版での同一性は未確認。",
+        source_ids=sorted({s for e in vl for s in e["source_ids"]} | {src74, src76}), verified_date=DAY, certainty="一部確認")
+    n = L["LOG-NECIX-VENDOR"]
+    n.update(platform="NEC UNIVERGE IX2235", log_sources=[
+        {"channel": "ロギング（コンソール・SYSLOG サーバ・内部バッファ）", "event_code": None, "description": "機能（ARP・IP・ICMP・PPP 等）とレベルを指定して出力（NEC FAQ。原文未取得）"}],
+        common_fields=[], vendor_specific_fields=[],
+        vendor_logs=[{"vendor": "NEC", "product": "UNIVERGE IX2235", "firmware_versions": ["10.11.17"], "log_type": "イベントログ",
+                      "log_subtype": "", "log_id": "", "message": "", "fields": [], "cli_commands": [], "source_ids": ["SRC-NEC-IX2235-DL", "SRC-NEC-IX-FAQ-LOG"],
+                      "verification_status": "未確認",
+                      "notes": "メッセージは「機能名.番号」の形式（例: IP.006、MODM.010）で、ソフトウェア版ごとのイベントログリファレンス（ELS）に掲載される。ELS を取得できていないため個々のメッセージ・条件・取得方法は未収録"}],
+        detection_analytics="未収録（IX2235 のイベントログリファレンスを取得できていないため、検知に使うメッセージを特定していない）。",
+        investigation_procedure="1. 装置のソフトウェア版を確認する\n2. 同じ版のイベントログリファレンス（NEC の IX2235 ダウンロードページで配布）で、該当するメッセージ（機能名.番号）と出力条件を確認する",
+        unconfirmed_notes="v1.1 までのフィールド（src-ip・dst-port・action: pass/block・ident/tag・filter-id 等）は公式資料で確認できないため削除。公式のイベントログリファレンスと FAQ の原文は自動取得を拒否され未取得（出典は検索結果の本文のみ）。",
+        source_ids=["SRC-NEC-IX2235-DL", "SRC-NEC-IX-FAQ-LOG"], verified_date=DAY, certainty="未確認")
+    save("log_investigation", logs)
+
+
+PHASES = {"1": [phase1_sources, phase1_text, phase1_attacks, phase1_high, phase1_certainty, usage],
+          "2": [phase2_sources, phase2_logs, usage]}
 
 if __name__ == "__main__":
     for ph in (sys.argv[1:] or sorted(PHASES)):

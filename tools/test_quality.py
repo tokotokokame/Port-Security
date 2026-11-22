@@ -134,6 +134,22 @@ class Standards(unittest.TestCase):
             r = rec(db, "port_risks", "RISK-00512-TCP"); r["risk_level"] = "High"; r["review"]["previous_level"] = "High"
         self.caught(Q.check_review, m, "Q-REVIEW", "根拠")
 
+    def test_T06_vendor_field_not_in_source(self):
+        self.caught(Q.check_vendor_logs, lambda db: rec(db, "log_investigation", "LOG-FORTIGATE-VENDOR")["vendor_logs"][0]["fields"].append("filter-id"),
+                    "Q-VENDOR", "フィールド表にない")
+
+    def test_T06_vendor_log_site_top_source(self):
+        self.caught(Q.check_vendor_logs, lambda db: rec(db, "log_investigation", "LOG-FORTIGATE-VENDOR")["vendor_logs"][0]["source_ids"].append("SRC-FORTINET-DOCS"),
+                    "Q-VENDOR", "トップページ")
+
+    def test_T06_unverified_vendor_field_listed(self):
+        self.caught(Q.check_vendor_logs, lambda db: rec(db, "log_investigation", "LOG-NECIX-VENDOR")["vendor_specific_fields"].append("filter-id"),
+                    "Q-VENDOR", "未確認のフィールド")
+
+    def test_T06_vendor_version_without_source(self):
+        self.caught(Q.check_vendor_logs, lambda db: rec(db, "log_investigation", "LOG-FORTIGATE-VENDOR")["vendor_logs"][0]["firmware_versions"].append("7.2.0"),
+                    "Q-VENDOR", "版 7.2.0")
+
     def test_T08_search_result_as_verified(self):
         def m(db): rec(db, "sources", "SRC-CISA-AMP").update(verification_status="確認済み", reverified_v4=True)
         self.caught(Q.check_sources, m, "Q-VIA")

@@ -173,6 +173,7 @@
 | `analytics_ids` | ○ | `array` | 対応する ATT&CK analytic |
 | `port_scope` | ○ | `["analytics", "any", "any_windows", "listed"]` | ポートとの対応方法 |
 | `ports` | ○ | `array` | port_scope=listed のときの (番号, 通信方式) |
+| `vendor_logs` | — | `array` | ベンダー機器のログ定義（版・種別・ID・フィールド・CLI ごとに出典を持つ） |
 | `source_ids` | ○ | `array` | 根拠資料 ID（sources.source_id） |
 | `verified_date` | ○ | `^\d{4}-\d{2}-\d{2}$` | 最終確認日（YYYY-MM-DD） |
 | `certainty` | ○ | `["確認済み", "一部確認", "未確認"]` | 確度。確認済みには再検証済みの脅威系出典が必要 |

@@ -4,7 +4,7 @@
 level: error = 合格基準違反 / info = 記録のみ（対象外フェーズなど）
 Usage: python3 tools/quality.py [--all]   -> exit 1 if any error
 """
-import json, os, re, sys
+import json, os, re, sys, urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -319,14 +319,48 @@ def check_count(db, root):
     base = json.loads(inv.read_text(encoding="utf-8"))["ids"]
     log = (root / "docs/DATA_CHANGELOG.md").read_text(encoding="utf-8")
     now = {f: {rid(r) for r in recs} for f, recs in db.items()}
-    return [F("Q-COUNT", f"{f}:{i}", "基準にあった ID が消えたが DATA_CHANGELOG.md に記載がない")
-            for f, ids in base.items() for i in ids if i not in now.get(f, set()) and i not in log]
+    gone = [ln for ln in log.splitlines() if re.search(r"削除|改名|統合", ln)]  # ID を挙げた行が削除・改名・統合の記録であること
+    return [F("Q-COUNT", f"{f}:{i}", "基準にあった ID が消えたが DATA_CHANGELOG.md に削除・改名の記録がない")
+            for f, ids in base.items() for i in ids if i not in now.get(f, set()) and not any(i in ln for ln in gone)]
 
 
-def check_vendor_logs(db):
-    """Phase 4 対象外: FortiGate / NEC IX のフィールドは記録のみ。"""
-    return [F("Q-VENDOR", f"log_investigation:{l['id']}", f"確度={l['certainty']}（Phase 4 で実機・公式マニュアル照合予定）", "info")
-            for l in db["log_investigation"] if l["id"] in ("LOG-FORTIGATE-VENDOR", "LOG-NECIX-VENDOR")]
+def _evidence(root):
+    p = root / "data/raw/vendor/fortios_evidence.json"
+    if not p.exists(): return {}
+    return {"SRC-FTNT-" + k.replace("FGT-", "").replace(".", ""): v for k, v in json.loads(p.read_text(encoding="utf-8"))["pages"].items()}
+
+
+def check_vendor_logs(db, root=ROOT):
+    """Q-VENDOR: ベンダーログは版・種別・ID・フィールド・CLI ごとにページ単位の出典を持ち、確認済みの項目は取得した原文の抽出結果にあること。"""
+    out, src, ev = [], {s["source_id"]: s for s in db["sources"]}, _evidence(root)
+    for l in db["log_investigation"]:
+        w, vl = f"log_investigation:{l['id']}", l.get("vendor_logs")
+        if vl is None:
+            if l["port_scope"] == "any" and l["id"].endswith("-VENDOR"): out.append(F("Q-VENDOR", w, "ベンダー機器のログに vendor_logs（版・出典付きの定義）がない"))
+            continue
+        ok_fields = set()
+        for i, e in enumerate(vl):
+            we = f"{w}/vendor_logs/{i}"
+            for s in e["source_ids"]:
+                x = src.get(s)
+                if not x: out.append(F("Q-VENDOR", we, f"出典 {s} がない")); continue
+                if urllib.parse.urlparse(x["url"]).path.strip("/") == "": out.append(F("Q-VENDOR", we, f"出典 {s} がサイトのトップページで、ページを特定していない"))
+            if e["verification_status"] != "確認済み": continue
+            if any(src.get(s, {}).get("verification_status") != "確認済み" for s in e["source_ids"]):
+                out.append(F("Q-VENDOR", we, "確認済みだが、確認済みでない出典を含む")); continue
+            pages = [ev[s] for s in e["source_ids"] if s in ev]
+            have = {f for pg in pages for f in pg.get("fields", [])}; cmds = {c for pg in pages for c in pg.get("commands", [])}
+            if not pages: out.append(F("Q-VENDOR", we, "確認済みだが原文の抽出結果（data/raw/vendor）に対応するページがない")); continue
+            for f in e["fields"]:
+                if f not in have: out.append(F("Q-VENDOR", we, f"フィールド {f} が原文のフィールド表にない"))
+            for c in e["cli_commands"]:
+                if not any(c.split(" <")[0] == k.split(" <")[0] for k in cmds): out.append(F("Q-VENDOR", we, f"CLI {c} が原文のコマンド一覧にない"))
+            for v in e["firmware_versions"]:
+                if not any(f"/{v}/" in pg["url"] for pg in pages): out.append(F("Q-VENDOR", we, f"版 {v} の資料が出典にない"))
+            ok_fields |= set(e["fields"])
+        for f in l["common_fields"] + l["vendor_specific_fields"]:
+            if f not in ok_fields: out.append(F("Q-VENDOR", w, f"フィールド {f} が確認済みの vendor_logs にない（未確認のフィールドを一覧に残している）"))
+    return out
 
 
 def run(db, root=ROOT, catalog=None):
@@ -335,7 +369,7 @@ def run(db, root=ROOT, catalog=None):
     for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db), lambda: check_iana(db, root),
                lambda: check_sources(db), lambda: check_verified(db), lambda: check_cve(db), lambda: check_association(db),
                lambda: check_attribution(db), lambda: check_review(db),
-               lambda: check_display(root), lambda: check_count(db, root), lambda: check_vendor_logs(db)):
+               lambda: check_display(root), lambda: check_count(db, root), lambda: check_vendor_logs(db, root)):
         out += fn()
     return out
 
