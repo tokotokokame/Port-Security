@@ -32,6 +32,15 @@ class Signing(unittest.TestCase):
             errs, digests = C.check([str(f)], "release")
             self.assertEqual(digests, [DBG]); self.assertTrue(any("デバッグ" in e for e in errs))
 
+    def test_v2_signer_format_from_ci(self):  # 2026-11-22 の CI（build-tools 最新）の実際の出力形式
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "x.certs"
+            f.write_text("Verifies\nVerified using v2 scheme (APK Signature Scheme v2): true\n"
+                         f"V2 Signer: certificate DN: C=US, O=Android, CN=Android Debug\nV2 Signer: certificate SHA-256 digest: {DBG}\n")
+            errs, digests = C.check([str(f)], "release")
+            self.assertEqual(digests, [DBG]); self.assertTrue(any("デバッグ" in e for e in errs))
+            self.assertEqual(C.check([str(f)], "debug")[0], [])
+
     def test_unverified_apk(self):
         with tempfile.TemporaryDirectory() as d:
             f = Path(d) / "x.certs"; f.write_text("DOES NOT VERIFY\n")

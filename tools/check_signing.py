@@ -13,9 +13,9 @@ from pathlib import Path
 
 def parse(text):
     if not re.search(r"^Verifies\s*$", text, re.M): return None, None, "署名の検証に失敗（Verifies がない）"
-    # apksigner は "Signer #1 certificate ..." または v3 の "Signer (minSdkVersion=…) certificate ..." の形で出力する
-    dn = re.search(r"^Signer[^\n]*? certificate DN: (.+?)\s*$", text, re.M)
-    sha = re.search(r"^Signer[^\n]*? certificate SHA-256 digest: ([0-9a-fA-F]{64})\s*$", text, re.M)
+    # apksigner の版により "Signer #1 certificate ..." / "V2 Signer: certificate ..." / "Signer (minSdkVersion=…) certificate ..." の形になる
+    dn = re.search(r"^(?:V[\d.]+ )?Signer\b[^\n]*? certificate DN: (.+?)\s*$", text, re.M)
+    sha = re.search(r"^(?:V[\d.]+ )?Signer\b[^\n]*? certificate SHA-256 digest: ([0-9a-fA-F]{64})\s*$", text, re.M)
     if not (dn and sha): return None, None, "証明書の DN または SHA-256 を読み取れない"
     return dn.group(1).strip(), sha.group(1).lower(), None
 
