@@ -899,7 +899,7 @@
     "detection_analytics": "認証(4624/4625/4648/4776)、Kerberos(4768/4769/4771)、共有アクセス(5140/5145)、サービス登録(4697/7045)、ディレクトリ複製(4662)を相関する。",
     "investigation_procedure": "1. 対象時間帯の 4624/4625 を送信元IP・LogonType で集計\n2. 4769 の TicketEncryptionType=0x17 と 4768 の PreAuthType=0 を抽出\n3. 5145 の共有名(ADMIN$/C$/IPC$)と 7045 のサービス名・ImagePath を突き合わせ\n4. 4662 で複製権限GUIDを持つ非コンピューターアカウント操作を確認",
     "analytics_ids": [],
-    "port_scope": "any_windows",
+    "port_scope": "platform",
     "ports": [],
     "source_ids": [
       "SRC-MS-EVT-4769",
@@ -1025,5 +1025,182 @@
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
     "unconfirmed_notes": "VBoxHardening.log 等は公式トラブルシュート章に記載がないため未収録。"
+  },
+  {
+    "id": "LOG-LIN-GENERIC",
+    "platform": "Linux（プラットフォーム共通）",
+    "log_sources": [
+      {
+        "channel": "auditd:SYSCALL",
+        "event_code": null,
+        "description": "ATT&CK analytic 101 件が参照（例: execve, open, write）"
+      },
+      {
+        "channel": "NSM:Flow",
+        "event_code": null,
+        "description": "ATT&CK analytic 31 件が参照（例: conn.log, ldap.log, dns.log）"
+      },
+      {
+        "channel": "linux:syslog",
+        "event_code": null,
+        "description": "ATT&CK analytic 29 件が参照（例: /var/log/syslog, postfix/smtpd, network）"
+      },
+      {
+        "channel": "auditd:EXECVE",
+        "event_code": null,
+        "description": "ATT&CK analytic 12 件が参照（例: execve, EXECVE）"
+      },
+      {
+        "channel": "linux:osquery",
+        "event_code": null,
+        "description": "ATT&CK analytic 10 件が参照（例: file_events, process_events）"
+      },
+      {
+        "channel": "auditd:FILE",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照"
+      },
+      {
+        "channel": "NSM:Connections",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照"
+      },
+      {
+        "channel": "auditd:PATH",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照（例: PATH）"
+      }
+    ],
+    "common_fields": [],
+    "vendor_specific_fields": [],
+    "detection_analytics": "技術ごとの ATT&CK 検知戦略の analytic（Linux 向け 114 件）を参照する。このログはプラットフォーム共通で、ポートに固有ではない。",
+    "investigation_procedure": "1. ポート詳細の ATT&CK タブで技術の検知戦略（DET）を開く\n2. 対象プラットフォームの analytic が示すログ源とチャネルを確認する\n3. そのログ源で、通信の時刻・送信元・プロセスを突き合わせる",
+    "unconfirmed_notes": "",
+    "source_ids": [
+      "SRC-MITRE-ATTACK"
+    ],
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "analytics_ids": [],
+    "port_scope": "platform",
+    "ports": []
+  },
+  {
+    "id": "LOG-MAC-GENERIC",
+    "platform": "macOS（プラットフォーム共通）",
+    "log_sources": [
+      {
+        "channel": "macos:unifiedlog",
+        "event_code": null,
+        "description": "ATT&CK analytic 111 件が参照（例: process, subsystem=com.apple.TCC, com.apple.network）"
+      },
+      {
+        "channel": "macos:osquery",
+        "event_code": null,
+        "description": "ATT&CK analytic 36 件が参照（例: process_events, file_events, socket_events）"
+      },
+      {
+        "channel": "macos:endpointsecurity",
+        "event_code": null,
+        "description": "ATT&CK analytic 9 件が参照（例: ES_EVENT_TYPE_NOTIFY_EXEC, ES_EVENT_TYPE_NOTIFY_CONNECT, ES_EVENT_TYPE_NOTIFY_KEXTLOAD）"
+      },
+      {
+        "channel": "NSM:Flow",
+        "event_code": null,
+        "description": "ATT&CK analytic 9 件が参照"
+      },
+      {
+        "channel": "fs:fsusage",
+        "event_code": null,
+        "description": "ATT&CK analytic 9 件が参照（例: read/write）"
+      },
+      {
+        "channel": "macos:syslog",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照（例: system.log, /var/log/system.log）"
+      },
+      {
+        "channel": "PF:Logs",
+        "event_code": null,
+        "description": "ATT&CK analytic 2 件が参照"
+      },
+      {
+        "channel": "NSM:Firewall",
+        "event_code": null,
+        "description": "ATT&CK analytic 2 件が参照"
+      }
+    ],
+    "common_fields": [],
+    "vendor_specific_fields": [],
+    "detection_analytics": "技術ごとの ATT&CK 検知戦略の analytic（macOS 向け 112 件）を参照する。このログはプラットフォーム共通で、ポートに固有ではない。",
+    "investigation_procedure": "1. ポート詳細の ATT&CK タブで技術の検知戦略（DET）を開く\n2. 対象プラットフォームの analytic が示すログ源とチャネルを確認する\n3. そのログ源で、通信の時刻・送信元・プロセスを突き合わせる",
+    "unconfirmed_notes": "",
+    "source_ids": [
+      "SRC-MITRE-ATTACK"
+    ],
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "analytics_ids": [],
+    "port_scope": "platform",
+    "ports": []
+  },
+  {
+    "id": "LOG-ESXI-GENERIC",
+    "platform": "VMware ESXi（プラットフォーム共通）",
+    "log_sources": [
+      {
+        "channel": "esxi:hostd",
+        "event_code": null,
+        "description": "ATT&CK analytic 21 件が参照（例: /var/log/hostd.log）"
+      },
+      {
+        "channel": "esxi:vmkernel",
+        "event_code": null,
+        "description": "ATT&CK analytic 17 件が参照（例: /var/log/vmkernel.log）"
+      },
+      {
+        "channel": "esxi:shell",
+        "event_code": null,
+        "description": "ATT&CK analytic 16 件が参照（例: /var/log/shell.log, /root/.ash_history）"
+      },
+      {
+        "channel": "NSM:Flow",
+        "event_code": null,
+        "description": "ATT&CK analytic 7 件が参照（例: conn.log）"
+      },
+      {
+        "channel": "esxi:vpxd",
+        "event_code": null,
+        "description": "ATT&CK analytic 7 件が参照（例: /var/log/vmware/vpxd.log）"
+      },
+      {
+        "channel": "esxi:syslog",
+        "event_code": null,
+        "description": "ATT&CK analytic 5 件が参照（例: /var/log/syslog.log）"
+      },
+      {
+        "channel": "esxi:auth",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照（例: /var/log/auth.log）"
+      },
+      {
+        "channel": "esxcli:network",
+        "event_code": null,
+        "description": "ATT&CK analytic 4 件が参照"
+      }
+    ],
+    "common_fields": [],
+    "vendor_specific_fields": [],
+    "detection_analytics": "技術ごとの ATT&CK 検知戦略の analytic（ESXi 向け 49 件）を参照する。このログはプラットフォーム共通で、ポートに固有ではない。",
+    "investigation_procedure": "1. ポート詳細の ATT&CK タブで技術の検知戦略（DET）を開く\n2. 対象プラットフォームの analytic が示すログ源とチャネルを確認する\n3. そのログ源で、通信の時刻・送信元・プロセスを突き合わせる",
+    "unconfirmed_notes": "",
+    "source_ids": [
+      "SRC-MITRE-ATTACK"
+    ],
+    "verified_date": "2026-11-22",
+    "certainty": "確認済み",
+    "analytics_ids": [],
+    "port_scope": "platform",
+    "ports": []
   }
 ]

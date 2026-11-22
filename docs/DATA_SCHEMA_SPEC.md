@@ -131,6 +131,7 @@
 | `recommended_defenses` | ○ | `string` | 対策 |
 | `technique_ids` | ○ | `array` | ATT&CK 技術 ID |
 | `log_investigation_ids` | ○ | `array` | ログ調査 ID |
+| `port_relation` | — | `["generic", "service_specific"]` | ポートとの関係（generic=どの公開サービスにも当てはまる） |
 | `attack_mapping_status` | — | `["確認済み", "一部確認", "未確認"]` | ATT&CK 技術への対応付けの確認状態（公式 STIX との照合） |
 | `content_verification_status` | — | `["確認済み", "一部確認", "未確認"]` | 説明・特徴・検知・対策の本文の確認状態 |
 | `content_source_ids` | — | `array` | 本文の根拠資料 ID |
@@ -171,7 +172,7 @@
 | `detection_analytics` | ○ | `string` | 検知ロジック |
 | `investigation_procedure` | ○ | `string` | 調査手順 |
 | `analytics_ids` | ○ | `array` | 対応する ATT&CK analytic |
-| `port_scope` | ○ | `["analytics", "any", "any_windows", "listed"]` | ポートとの対応方法 |
+| `port_scope` | ○ | `["analytics", "any", "platform", "listed"]` | ポートとの対応方法（analytics=DET0118 の analytic 専用 / platform=プラットフォーム共通・ポート固有でない / any=境界機器 / listed=公式文書がポートを明示） |
 | `ports` | ○ | `array` | port_scope=listed のときの (番号, 通信方式) |
 | `vendor_logs` | — | `array` | ベンダー機器のログ定義（版・種別・ID・フィールド・CLI ごとに出典を持つ） |
 | `source_ids` | ○ | `array` | 根拠資料 ID（sources.source_id） |

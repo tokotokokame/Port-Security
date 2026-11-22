@@ -70,6 +70,13 @@
     "uniqueItems": true,
     "description": "ログ調査 ID"
    },
+   "port_relation": {
+    "enum": [
+     "generic",
+     "service_specific"
+    ],
+    "description": "ポートとの関係（generic=どの公開サービスにも当てはまる）"
+   },
    "attack_mapping_status": {
     "enum": [
      "確認済み",

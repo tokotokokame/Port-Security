@@ -540,7 +540,6 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -1366,7 +1365,6 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -1403,7 +1401,6 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190",
       "T1210"
     ],
@@ -1429,7 +1426,6 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -1465,9 +1461,7 @@
     "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -1490,7 +1484,6 @@
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -1526,9 +1519,7 @@
     "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -1550,9 +1541,7 @@
     "suspicious_indicators": "外部からの接続、認証失敗の連続、大量データ取得",
     "investigation_focus": "DB監査ログ、接続元、クエリ量",
     "mitigation_controls": "外部公開の停止、認証の有効化、最小権限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -1623,9 +1612,7 @@
     "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
     "investigation_focus": "ブローカーのログ、接続元",
     "mitigation_controls": "認証とTLS、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -1671,9 +1658,7 @@
     "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
     "investigation_focus": "ブローカーのログ、接続元",
     "mitigation_controls": "認証とTLS、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -1719,9 +1704,7 @@
     "suspicious_indicators": "認証なしの接続、想定外のトピック購読・発行",
     "investigation_focus": "ブローカーのログ、接続元",
     "mitigation_controls": "認証とTLS、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -1911,8 +1894,7 @@
     "investigation_focus": "API監査ログ、コンテナ作成イベント",
     "mitigation_controls": "TLSと認証、RBAC、外部公開の停止",
     "technique_ids": [
-      "T1613",
-      "T1078.001"
+      "T1613"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -1960,7 +1942,6 @@
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -1985,7 +1966,6 @@
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -2009,9 +1989,7 @@
     "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2033,9 +2011,7 @@
     "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2057,9 +2033,7 @@
     "suspicious_indicators": "外部からの閲覧、既定の認証情報の使用",
     "investigation_focus": "アクセスログ、認証ログ",
     "mitigation_controls": "認証の必須化、外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2154,7 +2128,6 @@
     "investigation_focus": "機器のログ、要求元、設定変更履歴",
     "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
     "technique_ids": [
-      "T1078.001",
       "T1110"
     ],
     "source_ids": [
@@ -2355,7 +2328,6 @@
     "investigation_focus": "機器のログ、要求元、設定変更履歴",
     "mitigation_controls": "管理ネットワークの分離、認証付きの版への移行、外部遮断",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -2437,8 +2409,7 @@
     "investigation_focus": "共有/転送ログ、転送量、接続元",
     "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
     "technique_ids": [
-      "T1039",
-      "T1078.001"
+      "T1039"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -2541,9 +2512,7 @@
     "suspicious_indicators": "想定外の共有アクセス、大量の読み書き・転送",
     "investigation_focus": "共有/転送ログ、転送量、接続元",
     "mitigation_controls": "外部公開の停止、アクセス権の最小化、暗号化プロトコルへの移行",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2669,9 +2638,7 @@
     "suspicious_indicators": "外部からの印刷ジョブ、設定変更",
     "investigation_focus": "プリンタ/スプーラのログ",
     "mitigation_controls": "外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2717,9 +2684,7 @@
     "suspicious_indicators": "外部からの印刷ジョブ、設定変更",
     "investigation_focus": "プリンタ/スプーラのログ",
     "mitigation_controls": "外部公開の停止",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2742,7 +2707,6 @@
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -2766,9 +2730,7 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-ICS-T0846-001"
@@ -2802,9 +2764,7 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-ICS-T0869"
@@ -2839,7 +2799,6 @@
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -2876,7 +2835,6 @@
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -2907,9 +2865,7 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2931,9 +2887,7 @@
     "suspicious_indicators": "制御ネットワーク外からの接続、書込み系コマンド",
     "investigation_focus": "ICS向けIDS、FWログ",
     "mitigation_controls": "ネットワーク分離、通信の許可リスト化",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -3016,9 +2970,7 @@
     "suspicious_indicators": "外部・想定外端末からの接続、短時間の認証失敗の連続",
     "investigation_focus": "認証ログ(成功/失敗)、接続元IP、セッション時間",
     "mitigation_controls": "外部公開の停止とVPN経由化、多要素認証、接続元の制限",
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],

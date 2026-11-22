@@ -30,7 +30,8 @@
     "category": "",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-REMOTE-EXPLOIT",
@@ -61,7 +62,8 @@
     "category": "",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-LATERAL-MOVE",
@@ -91,7 +93,8 @@
     "category": "",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-CRED-THEFT",
@@ -123,7 +126,8 @@
     "category": "",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-DATA-EXFIL",
@@ -152,7 +156,8 @@
     "category": "",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-VULN-SCAN",
@@ -185,7 +190,8 @@
     "content_source_ids": [
       "SRC-PANW-XPANSE-2021"
     ],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-RANSOMWARE",
@@ -215,7 +221,8 @@
     "category": "",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-KERBEROAST",
@@ -243,7 +250,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-NAME-POISON",
@@ -269,7 +277,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-PASS-THE-HASH",
@@ -294,7 +303,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-DCSYNC",
@@ -319,7 +329,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-REMOTE-EXEC",
@@ -350,7 +361,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-AD-RECON",
@@ -382,7 +394,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-AMPLIFICATION",
@@ -408,7 +421,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-PUBLIC-EXPLOIT",
@@ -432,7 +446,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-EXTERNAL-REMOTE",
@@ -459,7 +474,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-C2-PORT",
@@ -488,7 +504,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-TUNNEL",
@@ -516,7 +533,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-REMOTE-ACCESS-SW",
@@ -540,7 +558,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-EXFIL-ALT",
@@ -565,7 +584,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-UNAUTH-SERVICE",
@@ -576,7 +596,6 @@
     "detection_methods": "公開スキャン結果との突合、想定外の送信元からの接続、管理 API の操作ログ。",
     "recommended_defenses": "認証の有効化、外部公開の停止、既定アカウントの変更。",
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "log_investigation_ids": [
@@ -592,7 +611,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "generic"
   },
   {
     "id": "ATK-CONTAINER-API",
@@ -618,7 +638,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-MAIL-ABUSE",
@@ -644,7 +665,8 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   },
   {
     "id": "ATK-HYPERVISOR",
@@ -676,6 +698,7 @@
     "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "attack_mapping_status": "確認済み",
     "content_source_ids": [],
-    "content_verification_status": "一部確認"
+    "content_verification_status": "一部確認",
+    "port_relation": "service_specific"
   }
 ]

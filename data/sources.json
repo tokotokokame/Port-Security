@@ -59,7 +59,8 @@
     "notes": "公式 STIX v20.1（data/raw/mitre/attack_catalog.json に ID・名称・廃止状態を収録）。",
     "scope": [
       "reference",
-      "attack_framework"
+      "attack_framework",
+      "detection"
     ],
     "reverified_v4": true,
     "verified_via": "official_stix",

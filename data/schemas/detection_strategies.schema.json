@@ -157,6 +157,29 @@
         "type": "string",
         "pattern": "^LOG-[A-Z0-9-]+$"
        }
+      },
+      "log_links": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "log_id",
+         "basis"
+        ],
+        "properties": {
+         "log_id": {
+          "type": "string",
+          "pattern": "^LOG-[A-Z0-9-]+$"
+         },
+         "basis": {
+          "enum": [
+           "det0118_analytic",
+           "platform_generic"
+          ]
+         }
+        }
+       }
       }
      }
     },

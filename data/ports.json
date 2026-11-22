@@ -46,7 +46,8 @@
         "relation": "direct",
         "via": [
           "SRC-CISA-AMP"
-        ]
+        ],
+        "source_type": "document"
       }
     ]
   },
@@ -97,7 +98,8 @@
         "relation": "direct",
         "via": [
           "SRC-CISA-AMP"
-        ]
+        ],
+        "source_type": "document"
       }
     ]
   },
@@ -135,10 +137,11 @@
     "technique_basis": [
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -199,31 +202,35 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1048",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1048"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1110.001",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1110"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -281,31 +288,35 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1021.004",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-LATERAL-MOVE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1572",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-TUNNEL"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -339,7 +350,6 @@
     "technique_ids": [
       "T1040",
       "T1595",
-      "T1078.001",
       "T1110.001"
     ],
     "protocol_id": "PROTO-TCP",
@@ -350,31 +360,27 @@
     "technique_basis": [
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
-      },
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110.001",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1110"
-        ]
+        ],
+        "source_type": "stix"
       }
     ],
     "evidence": [
@@ -423,17 +429,19 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1566",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-MAIL-ABUSE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -486,7 +494,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1040"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -525,10 +534,11 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -607,21 +617,24 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1071"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1041",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1041"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1498.002",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1498"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -671,17 +684,19 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1557.003",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1557"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -719,10 +734,11 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -760,9 +776,10 @@
     "technique_basis": [
       {
         "technique": "T1552.001",
-        "relation": "reference",
+        "relation": "unverified",
         "via": [],
-        "note": "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）"
+        "note": "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）",
+        "source_type": "curation"
       }
     ]
   },
@@ -802,16 +819,18 @@
     "technique_basis": [
       {
         "technique": "T1552.001",
-        "relation": "reference",
+        "relation": "unverified",
         "via": [],
-        "note": "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）"
+        "note": "TFTP は認証なしで設定ファイルを取得できるため、ファイル内の資格情報が狙われうる（一次資料未付与）",
+        "source_type": "curation"
       },
       {
         "technique": "T1498.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-AMPLIFICATION"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -878,24 +897,27 @@
     "technique_basis": [
       {
         "technique": "T1595.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1071.001",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1071"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1190",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1190"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -960,24 +982,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1558.003",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1558"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1558.004",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1558"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -1032,17 +1057,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1558.003",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1558"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -1065,9 +1092,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-ICS-T0846-001"
@@ -1090,15 +1115,7 @@
         "keyword": "Industroyer・PLC-Blaster が 102 番を走査"
       }
     ],
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-00110-TCP",
@@ -1138,24 +1155,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1114.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-MAIL-ABUSE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1193,10 +1213,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1249,14 +1270,16 @@
         "relation": "direct",
         "via": [
           "SRC-CISA-AMP"
-        ]
+        ],
+        "source_type": "document"
       },
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1306,17 +1329,19 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1498.002",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1498"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -1376,29 +1401,33 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1021",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-LATERAL-MOVE",
           "ATK-REMOTE-EXEC"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1047",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-REMOTE-EXEC"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1003.006",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-DCSYNC"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1453,14 +1482,16 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1557"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1498.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-AMPLIFICATION"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1499,10 +1530,11 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1572,14 +1604,16 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1210"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1021.002",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1021"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -1633,24 +1667,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1114.002",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1114"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -1705,31 +1742,35 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1498.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-AMPLIFICATION"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1602.001",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1602"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -1767,10 +1808,11 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1808,10 +1850,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -1877,31 +1920,35 @@
     "technique_basis": [
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1087.002",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1087"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1110.001",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1110"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -1943,17 +1990,19 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1498.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-AMPLIFICATION"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2009,15 +2058,17 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1486",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-RANSOMWARE",
           "ATK-HYPERVISOR"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2093,28 +2144,32 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1071"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1041",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1041"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2152,10 +2207,11 @@
     "technique_basis": [
       {
         "technique": "T1071.001",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-DATA-EXFIL"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2179,7 +2235,8 @@
       "ATK-RANSOMWARE",
       "ATK-VULN-SCAN",
       "ATK-REMOTE-EXEC",
-      "ATK-NAME-POISON"
+      "ATK-NAME-POISON",
+      "ATK-PASS-THE-HASH"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -2193,7 +2250,8 @@
       "T1210",
       "T1021.002",
       "T1486",
-      "T1569.002"
+      "T1569.002",
+      "T1550.002"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": "SRV-SMB",
@@ -2217,28 +2275,41 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1021.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-LATERAL-MOVE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1486",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-RANSOMWARE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1569.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-REMOTE-EXEC"
-        ]
+        ],
+        "source_type": "curation"
+      },
+      {
+        "technique": "T1550.002",
+        "relation": "inferred",
+        "via": [
+          "ATK-PASS-THE-HASH"
+        ],
+        "note": "T1550.002 の手順例で CrackMapExec が SMB で PtH の認証を行い、Wizard Spider・FIN13 が Invoke-SMBExec を使用。技術の説明と手順例にポート番号の記載はなく、445/tcp との対応は SMB の標準ポートによる推定",
+        "source_type": "curation"
       }
     ]
   },
@@ -2277,10 +2348,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2319,10 +2391,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2362,17 +2435,19 @@
     "technique_basis": [
       {
         "technique": "T1566",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-MAIL-ABUSE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2414,24 +2489,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1133",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-EXTERNAL-REMOTE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2456,7 +2534,6 @@
       "ATK-VULN-SCAN"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -2492,18 +2569,12 @@
     ],
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2543,17 +2614,19 @@
     "technique_basis": [
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2593,17 +2666,19 @@
     "technique_basis": [
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2641,10 +2716,11 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2682,10 +2758,11 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2708,9 +2785,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -2720,15 +2795,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-00515-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-00520-UDP",
@@ -2777,7 +2844,8 @@
         "relation": "direct",
         "via": [
           "SRC-CISA-AMP"
-        ]
+        ],
+        "source_type": "document"
       }
     ]
   },
@@ -2816,18 +2884,20 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1039",
-        "relation": "service",
+        "relation": "inferred",
         "via": [
           "afpovertcp"
         ],
-        "note": "T1039 はネットワーク共有上のデータ取得。AFP はファイル共有プロトコル"
+        "note": "T1039 はネットワーク共有上のデータ取得。AFP はファイル共有プロトコル",
+        "source_type": "curation"
       }
     ]
   },
@@ -2868,17 +2938,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1566",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-MAIL-ABUSE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -2919,16 +2991,18 @@
     "technique_basis": [
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1046",
-        "relation": "reference",
+        "relation": "unverified",
         "via": [],
-        "note": "RPC over HTTP のエンドポイントマッパーは RPC インターフェースの列挙に使われうる（一次資料未付与）"
+        "note": "RPC over HTTP のエンドポイントマッパーは RPC インターフェースの列挙に使われうる（一次資料未付与）",
+        "source_type": "curation"
       }
     ]
   },
@@ -2953,7 +3027,6 @@
       "ATK-BRUTE-FORCE"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1110"
     ],
     "source_ids": [
@@ -2977,18 +3050,12 @@
     ],
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3027,11 +3094,12 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT",
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3086,17 +3154,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1087.002",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1087"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -3134,10 +3204,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3177,17 +3248,19 @@
     "technique_basis": [
       {
         "technique": "T1572",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-TUNNEL"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1071.004",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-DATA-EXFIL"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3212,8 +3285,7 @@
       "ATK-EXFIL-ALT"
     ],
     "technique_ids": [
-      "T1039",
-      "T1078.001"
+      "T1039"
     ],
     "source_ids": [
       "SRC-IANA-PORT"
@@ -3227,18 +3299,12 @@
     "technique_basis": [
       {
         "technique": "T1039",
-        "relation": "service",
+        "relation": "inferred",
         "via": [
           "rsync"
         ],
-        "note": "T1039 はネットワーク共有上のデータ取得。rsync のモジュールはファイル共有として公開される"
-      },
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
+        "note": "T1039 はネットワーク共有上のデータ取得。rsync のモジュールはファイル共有として公開される",
+        "source_type": "curation"
       }
     ]
   },
@@ -3292,7 +3358,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -3330,10 +3397,11 @@
     "technique_basis": [
       {
         "technique": "T1048",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-EXFIL-ALT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3371,10 +3439,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3426,17 +3495,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1114.002",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1114"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -3476,17 +3547,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1114.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-MAIL-ABUSE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3541,7 +3614,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1090"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -3581,17 +3655,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1133",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-EXTERNAL-REMOTE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3633,24 +3709,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1133",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-EXTERNAL-REMOTE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3703,17 +3782,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -3752,10 +3833,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3795,17 +3877,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3843,10 +3927,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3887,24 +3972,27 @@
     "technique_basis": [
       {
         "technique": "T1557",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3944,17 +4032,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -3992,10 +4082,11 @@
     "technique_basis": [
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4018,9 +4109,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -4030,15 +4119,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-01883-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-01900-UDP",
@@ -4089,14 +4170,16 @@
         "relation": "direct",
         "via": [
           "SRC-CISA-AMP"
-        ]
+        ],
+        "source_type": "document"
       },
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4134,10 +4217,11 @@
     "technique_basis": [
       {
         "technique": "T1557",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-NAME-POISON"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4189,18 +4273,20 @@
     "technique_basis": [
       {
         "technique": "T1039",
-        "relation": "service",
+        "relation": "inferred",
         "via": [
           "nfs"
         ],
-        "note": "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル"
+        "note": "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル",
+        "source_type": "curation"
       },
       {
         "technique": "T1135",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1135"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -4251,18 +4337,20 @@
     "technique_basis": [
       {
         "technique": "T1039",
-        "relation": "service",
+        "relation": "inferred",
         "via": [
           "nfs"
         ],
-        "note": "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル"
+        "note": "T1039 はネットワーク共有上のデータ取得。NFS はファイル共有プロトコル",
+        "source_type": "curation"
       },
       {
         "technique": "T1135",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1135"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -4302,18 +4390,20 @@
     "technique_basis": [
       {
         "technique": "T1078",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-HYPERVISOR"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1021",
-        "relation": "service",
+        "relation": "inferred",
         "via": [
           "vmrdp"
         ],
-        "note": "VMConnect は Hyper-V の VM コンソールへのリモート接続を受け付けるサービス"
+        "note": "VMConnect は Hyper-V の VM コンソールへのリモート接続を受け付けるサービス",
+        "source_type": "curation"
       }
     ]
   },
@@ -4372,24 +4462,27 @@
     "technique_basis": [
       {
         "technique": "T1610",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CONTAINER-API"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1613",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1613"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4446,17 +4539,19 @@
     "technique_basis": [
       {
         "technique": "T1610",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CONTAINER-API"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1613",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1613"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -4481,8 +4576,7 @@
       "ATK-UNAUTH-SERVICE"
     ],
     "technique_ids": [
-      "T1613",
-      "T1078.001"
+      "T1613"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
@@ -4506,17 +4600,11 @@
     "technique_basis": [
       {
         "technique": "T1613",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CONTAINER-API"
-        ]
-      },
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4554,10 +4642,11 @@
     "technique_basis": [
       {
         "technique": "T1613",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CONTAINER-API"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4580,9 +4669,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-ICS-T0806",
@@ -4614,15 +4701,7 @@
         "keyword": "IEC 104 で遠隔機器情報を探索"
       }
     ],
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-02483-TCP",
@@ -4659,16 +4738,18 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1078.001",
-        "relation": "reference",
+        "relation": "unverified",
         "via": [],
-        "note": "Oracle の既定アカウント悪用の可能性（一次資料未付与）"
+        "note": "Oracle の既定アカウント悪用の可能性（一次資料未付与）",
+        "source_type": "curation"
       }
     ]
   },
@@ -4706,10 +4787,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4734,7 +4816,6 @@
       "ATK-PUBLIC-EXPLOIT"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -4748,19 +4829,13 @@
     "risk_id": "RISK-03000-TCP",
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE",
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -4813,7 +4888,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1090"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -4836,9 +4912,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -4848,15 +4922,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-03260-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-03268-TCP",
@@ -4923,21 +4989,24 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1087"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1069.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-AD-RECON"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1482",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1482"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -4994,14 +5063,16 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1087"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1069.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-AD-RECON"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5041,16 +5112,18 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1021.005",
-        "relation": "reference",
+        "relation": "unverified",
         "via": [],
-        "note": "Apple Remote Desktop は画面共有に VNC 系の仕組みを使う（3283/tcp との対応は一次資料未付与）"
+        "note": "Apple Remote Desktop は画面共有に VNC 系の仕組みを使う（3283/tcp との対応は一次資料未付与）",
+        "source_type": "curation"
       }
     ]
   },
@@ -5103,17 +5176,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -5152,10 +5227,11 @@
     "technique_basis": [
       {
         "technique": "T1078",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-HYPERVISOR"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5194,10 +5270,11 @@
     "technique_basis": [
       {
         "technique": "T1078",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-HYPERVISOR"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5257,31 +5334,35 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1021.001",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-LATERAL-MOVE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1133",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-EXTERNAL-REMOTE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5336,7 +5417,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1210"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -5374,10 +5456,11 @@
     "technique_basis": [
       {
         "technique": "T1090",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-TUNNEL"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5415,10 +5498,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5457,10 +5541,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5519,10 +5604,11 @@
     "technique_basis": [
       {
         "technique": "T1571",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-C2-PORT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5562,17 +5648,19 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1133",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-EXTERNAL-REMOTE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5610,10 +5698,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5637,7 +5726,6 @@
       "ATK-UNAUTH-SERVICE"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -5677,18 +5765,12 @@
     ],
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1190"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -5711,9 +5793,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -5723,15 +5803,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-04840-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-04899-TCP",
@@ -5767,10 +5839,11 @@
     "technique_basis": [
       {
         "technique": "T1219",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-REMOTE-ACCESS-SW"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5808,10 +5881,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5851,17 +5925,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5899,10 +5975,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5940,10 +6017,11 @@
     "technique_basis": [
       {
         "technique": "T1071",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-C2-PORT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -5981,10 +6059,11 @@
     "technique_basis": [
       {
         "technique": "T1071",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-C2-PORT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6034,17 +6113,19 @@
     "technique_basis": [
       {
         "technique": "T1557.001",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-NAME-POISON"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1498.002",
         "relation": "direct",
         "via": [
           "SRC-CISA-AMP"
-        ]
+        ],
+        "source_type": "document"
       }
     ]
   },
@@ -6095,7 +6176,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1557"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -6136,17 +6218,19 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6170,7 +6254,6 @@
       "ATK-UNAUTH-SERVICE"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -6184,18 +6267,12 @@
     "risk_id": "RISK-05601-TCP",
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6233,10 +6310,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6259,9 +6337,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -6271,15 +6347,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-05672-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-05800-TCP",
@@ -6334,14 +6402,16 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1021"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6396,24 +6466,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1040",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CRED-THEFT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1021.005",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-LATERAL-MOVE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6466,7 +6539,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1219"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -6490,7 +6564,6 @@
       "ATK-UNAUTH-SERVICE"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -6504,18 +6577,12 @@
     "risk_id": "RISK-05984-TCP",
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6573,15 +6640,17 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1021.006",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-LATERAL-MOVE",
           "ATK-REMOTE-EXEC"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6638,15 +6707,17 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       },
       {
         "technique": "T1021.006",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-LATERAL-MOVE",
           "ATK-REMOTE-EXEC"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6700,7 +6771,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-DET0118"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -6723,9 +6795,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -6735,15 +6805,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-06000-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-06343-UDP",
@@ -6779,10 +6841,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6807,7 +6870,6 @@
       "ATK-REMOTE-EXPLOIT"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190",
       "T1210"
     ],
@@ -6840,25 +6902,20 @@
     ],
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6907,17 +6964,19 @@
     "technique_basis": [
       {
         "technique": "T1610",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CONTAINER-API"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1613",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1613"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -6955,10 +7014,11 @@
     "technique_basis": [
       {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -6997,10 +7057,11 @@
     "technique_basis": [
       {
         "technique": "T1078",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-HYPERVISOR"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7055,7 +7116,8 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1071"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -7094,11 +7156,12 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT",
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7138,17 +7201,19 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1595.002",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7186,10 +7251,11 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7232,24 +7298,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7287,10 +7356,11 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7313,9 +7383,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -7325,15 +7393,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-08086-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-08088-TCP",
@@ -7369,10 +7429,11 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7414,24 +7475,27 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7469,10 +7533,11 @@
     "technique_basis": [
       {
         "technique": "T1110",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-BRUTE-FORCE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7511,11 +7576,12 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT",
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7553,10 +7619,11 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7580,9 +7647,7 @@
       "ATK-UNAUTH-SERVICE",
       "ATK-BRUTE-FORCE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -7592,15 +7657,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-09042-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-09090-TCP",
@@ -7621,9 +7678,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -7633,15 +7688,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-09090-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-09092-TCP",
@@ -7662,9 +7709,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -7674,15 +7719,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-09092-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-09100-TCP",
@@ -7703,9 +7740,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -7715,15 +7750,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-09100-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-09200-TCP",
@@ -7745,7 +7772,6 @@
       "ATK-UNAUTH-SERVICE"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -7759,18 +7785,12 @@
     "risk_id": "RISK-09200-TCP",
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7793,9 +7813,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -7805,15 +7823,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-09300-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-09389-TCP",
@@ -7851,17 +7861,19 @@
     "technique_basis": [
       {
         "technique": "T1087.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-AD-RECON"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1069.002",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-AD-RECON"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7899,10 +7911,11 @@
     "technique_basis": [
       {
         "technique": "T1595",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7940,10 +7953,11 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -7966,9 +7980,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -7978,15 +7990,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-10050-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-10051-TCP",
@@ -8007,9 +8011,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT"
     ],
@@ -8019,15 +8021,7 @@
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-10051-TCP",
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-10250-TCP",
@@ -8084,17 +8078,19 @@
     "technique_basis": [
       {
         "technique": "T1610",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
           "ATK-CONTAINER-API"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1613",
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1613"
-        ]
+        ],
+        "source_type": "stix"
       }
     ]
   },
@@ -8118,7 +8114,6 @@
       "ATK-UNAUTH-SERVICE"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -8132,18 +8127,12 @@
     "risk_id": "RISK-11211-TCP",
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -8194,7 +8183,8 @@
         "relation": "direct",
         "via": [
           "SRC-CISA-AMP"
-        ]
+        ],
+        "source_type": "document"
       }
     ]
   },
@@ -8235,18 +8225,19 @@
     "technique_basis": [
       {
         "technique": "T1078",
-        "relation": "attack_pattern",
+        "relation": "inferred",
         "via": [
-          "ATK-HYPERVISOR",
-          "ATK-UNAUTH-SERVICE"
-        ]
+          "ATK-HYPERVISOR"
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -8269,9 +8260,7 @@
     "attack_pattern_ids": [
       "ATK-UNAUTH-SERVICE"
     ],
-    "technique_ids": [
-      "T1078.001"
-    ],
+    "technique_ids": [],
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-ICS-T0869"
@@ -8291,15 +8280,7 @@
         "keyword": "DNP3 が攻撃に使われうる標準プロトコルとして明記"
       }
     ],
-    "technique_basis": [
-      {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      }
-    ]
+    "technique_basis": []
   },
   {
     "id": "PORT-27017-TCP",
@@ -8321,7 +8302,6 @@
       "ATK-UNAUTH-SERVICE"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1190"
     ],
     "source_ids": [
@@ -8345,18 +8325,12 @@
     ],
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-UNAUTH-SERVICE"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -8381,7 +8355,6 @@
       "ATK-VULN-SCAN"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -8405,18 +8378,12 @@
     ],
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -8441,7 +8408,6 @@
       "ATK-VULN-SCAN"
     ],
     "technique_ids": [
-      "T1078.001",
       "T1046"
     ],
     "source_ids": [
@@ -8465,18 +8431,12 @@
     ],
     "technique_basis": [
       {
-        "technique": "T1078.001",
-        "relation": "attack_pattern",
-        "via": [
-          "ATK-UNAUTH-SERVICE"
-        ]
-      },
-      {
         "technique": "T1046",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-VULN-SCAN"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   },
@@ -8535,17 +8495,19 @@
     "technique_basis": [
       {
         "technique": "T1190",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-PUBLIC-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       },
       {
         "technique": "T1210",
-        "relation": "attack_pattern",
+        "relation": "generic",
         "via": [
           "ATK-REMOTE-EXPLOIT"
-        ]
+        ],
+        "source_type": "curation"
       }
     ]
   }

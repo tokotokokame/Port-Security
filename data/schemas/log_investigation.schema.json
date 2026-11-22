@@ -96,10 +96,10 @@
     "enum": [
      "analytics",
      "any",
-     "any_windows",
+     "platform",
      "listed"
     ],
-    "description": "ポートとの対応方法"
+    "description": "ポートとの対応方法（analytics=DET0118 の analytic 専用 / platform=プラットフォーム共通・ポート固有でない / any=境界機器 / listed=公式文書がポートを明示）"
    },
    "ports": {
     "type": "array",

@@ -74,6 +74,30 @@ Phase 0 基準（`docs/baseline/DATA_INVENTORY.json`）にある ID を削除・
 - LOG-NECIX-VENDOR は確度を 未確認 にし、検索結果の本文で確認できた範囲（出力先・機能とレベルの指定、ソフトウェア版 10.11.17、ELS の配布形式）だけを残した。メッセージは「機能名.番号」の形式（例: IP.006、MODM.010）で ELS に載ることを記載し、個々のメッセージは未収録。
 - 出典: SRC-NEC-IX（サイトのトップ）を廃止し、SRC-NEC-IX2235-DL・SRC-NEC-IX-FAQ-LOG（いずれも検索結果のみ = 一部確認）に置き換え。
 
+### Phase 3（ログと ATT&CK の関連付け）— `tools/apply_v12.py` phase 3 / `tools/import_mitre.py`
+**DET0118 専用ログの限定（F-06）**
+- これまで `import_mitre.py` はプラットフォームが一致するだけで、すべての DET の analytic に DET0118 専用ログ（LOG-LIN-AN0328・LOG-MAC-AN0330・LOG-ESXI-AN0329）を付けていた。DET0118 の analytic だけに付けるよう変更（他の DET への付与 0 件）。
+- プラットフォーム共通ログを別定義として追加: LOG-LIN-GENERIC・LOG-MAC-GENERIC・LOG-ESXI-GENERIC（内容は公式 STIX の analytic が参照するログ源の集計、port_scope=platform）。Windows は既存の LOG-WIN-SECURITY を共通ログとして使う。
+- analytic に `log_links`（log_id と根拠 det0118_analytic / platform_generic）を追加し、生成時に関連付けの根拠を保持。
+- SRC-MITRE-ATTACK の scope に detection を追加（ATT&CK は検知戦略と analytic を含む）。
+
+**関連区分（F-10・F-17・F-18）**
+- `technique_basis.relation` を direct / generic / inferred / unverified に変更（旧: direct / attack_pattern / service / reference）。
+  - attack_pattern → どの公開サービスにも当てはまる攻撃手法（BRUTE-FORCE, VULN-SCAN, PUBLIC-EXPLOIT, REMOTE-EXPLOIT, UNAUTH-SERVICE, EXTERNAL-REMOTE, C2-PORT, EXFIL-ALT, DATA-EXFIL, TUNNEL, AMPLIFICATION）経由は generic、それ以外は inferred
+  - service → inferred、reference → unverified
+  - 結果: direct 60 / generic 125 / inferred 53 / unverified 5
+- `technique_basis.source_type` を追加: stix（ATT&CK 公式の記述）/ document（他の一次資料）/ curation（アプリ内の関連付け）。ATT&CK の公式な関係と、アプリが付けた関連を区別する。
+- `attack_patterns.port_relation`（generic / service_specific）を追加。
+- ATK-UNAUTH-SERVICE から T1078.001（Default Accounts）を削除。既定アカウントの悪用は「認証のないサービス」と同じではないため。この経路だけで T1078.001 が付いていた 32 ポートと対応するリスク評価から T1078.001 を削除（PORT-02483-TCP の参考扱いの 1 件は残す）。
+  - 技術が 0 件になったポート（17）: 102, 515, 1883, 2404, 3260, 4840, 5672, 6000, 8086, 9042, 9090, 9092, 9100, 9300, 10050, 10051, 20000/tcp（validate は警告）。102・20000 の High の根拠は ATT&CK for ICS で、Enterprise の技術一覧には含まれない。
+- ATK-PASS-THE-HASH を PORT-00445-TCP に関連付け（T1550.002、inferred）。公式 STIX の手順例で CrackMapExec が SMB で PtH を行い、Wizard Spider・FIN13 が Invoke-SMBExec を使う。説明と手順例にポート番号はないため direct にはしない。
+
+**ログ分類と判定（F-15・F-16）**
+- アプリ用データ（dist/ports.json）の各ログに分類 `class`（A / B / B' / C/D）、ポートに最良の分類 `log_class` を出力。
+- 「ポート固有のログなし」の判定を A・B だけで行うよう変更（旧: B' も数えていた）。対象 11 → 136 ポート。
+- 分類の内訳（v1.1 → v1.2）: A 5 → 5 / B 19 → 19 / B' 125 → 107 / C/D 11 → 29。B' から C/D への 18 件は T1078.001 の削除で ATT&CK の技術がなくなったため（技術 0 件の 17 ポートと 2379/tcp）。3389/tcp は A と B の両方があり、表示上の最良分類を A とした。
+- `port_scope` の `any_windows`（未実装だった）を廃止し `platform` に変更。LOG-WIN-SECURITY と共通ログ 3 件が該当（ポートと直接には関連付けない）。
+
 ## v1.1（2026-11-22）
 
 ### Phase 0
