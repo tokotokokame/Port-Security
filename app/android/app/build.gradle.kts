@@ -45,8 +45,13 @@ android {
 
     buildTypes {
         release {
-            // Falls back to debug keys when no release keystore is provided (local testing only).
-            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
+            // 正式リリース（CI の main）は正式な署名鍵が必須。REQUIRE_RELEASE_SIGNING=1 で鍵がなければ失敗する。
+            // それ以外（ローカル・PR の検証）はデバッグ鍵で署名する。デバッグ鍵の APK は公開しない。
+            val release = signingConfigs.findByName("release")
+            if (release == null && System.getenv("REQUIRE_RELEASE_SIGNING") == "1") {
+                throw GradleException("REQUIRE_RELEASE_SIGNING=1 but ANDROID_KEYSTORE_PATH is not set")
+            }
+            signingConfig = release ?: signingConfigs.getByName("debug")
         }
     }
 }

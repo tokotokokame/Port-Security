@@ -20,7 +20,10 @@
 
 ## 署名
 
-リリース鍵は GitHub Secrets で管理し、リポジトリにはコミットしません（`.gitignore` で `*.jks` / `*.keystore` を除外）。Secrets が未設定のビルドはデバッグ鍵で署名されます。デバッグ鍵はビルドごとに異なるため、アップデートの際は一度アンインストールが必要です。
+- リリース鍵は管理者が作成し、GitHub Secrets（`ANDROID_KEYSTORE_BASE64` / `ANDROID_KEYSTORE_PASSWORD` / `ANDROID_KEY_ALIAS` / `ANDROID_KEY_PASSWORD`）にだけ置きます。リポジトリにはコミットしません（`.gitignore` で `*.jks` / `*.keystore` を除外）。手順は [docs/RELEASE_SIGNING.md](docs/RELEASE_SIGNING.md)。
+- **main（正式リリース）では Secrets が 1 つでも欠けているとビルドが失敗し、リリースしません。** Gradle も `REQUIRE_RELEASE_SIGNING=1` のときは鍵がなければ失敗します。デバッグ鍵での署名は PR・feature ブランチの検証用だけで、その APK は公開しません。
+- ビルド後に `tools/check_signing.py` が `apksigner` の結果を検査します（デバッグ証明書の拒否、APK 間の証明書の一致、`docs/signing/release-cert.sha256` に固定した証明書との一致）。
+- v1.0.31 以前はデバッグ鍵で署名されていました（ビルドごとに異なる鍵）。正式署名の最初のリリースへ更新するときは一度アンインストールが必要です。
 
 ## 脆弱性の報告
 
