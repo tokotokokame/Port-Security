@@ -110,6 +110,37 @@ class Standards(unittest.TestCase):
             (Path(d) / "dist/ports.json").write_text((ROOT / "dist/ports.json").read_text(encoding="utf-8"), encoding="utf-8")
             self.assertTrue(any(x["code"] == "Q-HIDDEN" for x in Q.check_display(Path(d))))
 
+    # ---- v1.2 注入試験（修正指示書 8 章）
+    def test_T02_statistic_without_source(self):
+        def m(db): rec(db, "attack_patterns", "ATK-BRUTE-FORCE")["attack_features"] += " 攻撃の 80% は夜間に発生。"
+        self.caught(Q.check_attribution, m, "Q-STAT")
+
+    def test_T03_baseless_attribution(self):
+        def m(db): rec(db, "ports", "PORT-00022-TCP")["recommended_defenses"] += "（CISA緊急勧告）"
+        self.caught(Q.check_attribution, m, "Q-ATTR", "CISA")
+
+    def test_T03_mirai_without_source(self):
+        def m(db): rec(db, "ports", "PORT-00023-TCP")["malicious_exploitation_cases"] += " Mirai による感染。"
+        self.caught(Q.check_attribution, m, "Q-ATTR", "Mirai")
+
+    def test_T04_scope_content_mismatch(self):
+        self.caught(Q.check_sources, lambda db: rec(db, "sources", "SRC-REDIS-SECURITY")["scope"].append("threat_advisory"), "Q-SCOPE")
+
+    def test_T05_risk_without_reason(self):
+        self.caught(Q.check_review, lambda db: rec(db, "port_risks", "RISK-00512-TCP")["review"].pop("reason"), "Q-REVIEW", "理由")
+
+    def test_T05_high_without_evidence(self):
+        def m(db):
+            r = rec(db, "port_risks", "RISK-00512-TCP"); r["risk_level"] = "High"; r["review"]["previous_level"] = "High"
+        self.caught(Q.check_review, m, "Q-REVIEW", "根拠")
+
+    def test_T08_search_result_as_verified(self):
+        def m(db): rec(db, "sources", "SRC-CISA-AMP").update(verification_status="確認済み", reverified_v4=True)
+        self.caught(Q.check_sources, m, "Q-VIA")
+
+    def test_T08_unrecorded_verification(self):
+        self.caught(Q.check_sources, lambda db: rec(db, "sources", "SRC-KERBRUTE").pop("verified_url"), "Q-VIA", "所在")
+
 
 if __name__ == "__main__":
     unittest.main()

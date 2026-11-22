@@ -12,6 +12,17 @@ TRANSPORT = {"TCP": 6, "UDP": 17, "SCTP": 132, "DCCP": 33}
 SRC_STATUS = {"確認済み", "一部確認", "未確認"}
 CVE_RE = re.compile(r"\bCVE-\d{4}-\d{4,7}\b")
 TECH_RE = re.compile(r"\b(T\d{4}(?:\.\d{3})?)\b")
+VIA_STATUS = {"original_document": "確認済み", "official_api": "確認済み", "official_stix": "確認済み", "official_repository": "確認済み",
+              "search_result": "一部確認", "not_verified": "未確認"}  # 検索結果は原文確認として扱わない
+SCOPE_RULE = {"attack_technique": r"MITRE", "attack_framework": r"MITRE", "threat_advisory": r"CISA|US-CERT|JPCERT|NCSC|NSA|FBI",
+              "government_guidance": r"CISA|US-CERT|JPCERT|NCSC|NSA|FBI|NISC", "tool_documentation": r"Project Documentation",
+              "vulnerability_database": r"Vulnerability Database", "research_report": r"Research Report|Author Blog"}
+ATTRIB = {"CISA": r"CISA|Cybersecurity and Infrastructure", "US-CERT": r"CISA|US-CERT", "Palo Alto": r"Palo Alto", "Unit 42": r"Palo Alto",
+          "Mirai": r"Mirai", "JPCERT": r"JPCERT", "NSA": r"NSA", "FBI": r"FBI"}
+STAT_RE = re.compile(r"\d[\d,.]*\s*(%|％|分以内|分後|時間以内|万台|万件|万 ?IP|倍|割)")
+RISK_SCOPE = {"attack_technique", "detection", "threat_advisory", "government_guidance", "vulnerability", "vendor_security", "research_report"}
+STAT_SCOPE = {"research_report", "government_guidance", "threat_advisory"}
+NON_TEXT = {"source_ids", "content_source_ids", "evidence", "technique_basis", "review", "id"}
 SKIP_TEXT = {"detection_strategies", "mitre_techniques", "mitre_software"}  # MITRE 由来の原文
 
 
@@ -166,6 +177,53 @@ def check_sources(db):
         if s.get("reverified_v4") and s.get("verification_status") not in ("確認済み",): out.append(F("Q-SRC", w, "再検証済みなのに確認状態が確認済みでない"))
         if s.get("verification_status") == "確認済み" and not s.get("access_date"): out.append(F("Q-SRC", w, "確認済みなのに確認日(access_date)がない"))
         if s.get("verification_status") == "確認済み" and not s.get("reverified_v4"): out.append(F("Q-SRC", w, "確認済みだが内容の再確認記録がない（v3 からの継承値）"))
+        via = s.get("verified_via")
+        if via not in VIA_STATUS: out.append(F("Q-VIA", w, f"確認方法 verified_via='{via}' が未定義値")); continue
+        if VIA_STATUS[via] != s.get("verification_status"):
+            out.append(F("Q-VIA", w, f"確認方法 {via} では確認状態は {VIA_STATUS[via]}（データは {s.get('verification_status')}）"))
+        if via != "not_verified" and not (s.get("verified_url") and s.get("verified_date") and s.get("verified_notes")):
+            out.append(F("Q-VIA", w, "確認した原文の所在・日付・範囲（verified_url / verified_date / verified_notes）がない"))
+        for sc in s.get("scope", []):
+            rule = SCOPE_RULE.get(sc)
+            if rule and not re.search(rule, f"{s.get('publisher')} | {s.get('document_type')}"):
+                out.append(F("Q-SCOPE", w, f"scope '{sc}' が発行者・資料種別（{s.get('publisher')} / {s.get('document_type')}）と合わない"))
+    return out
+
+
+def _text(r): return json.dumps({k: v for k, v in r.items() if k not in NON_TEXT}, ensure_ascii=False)
+
+
+def check_attribution(db):
+    """Q-ATTR: 本文で組織名を挙げるなら、その組織の確認済み出典が必要。Q-STAT: 統計値には調査報告・政府資料の確認済み出典が必要。"""
+    out, src = [], {s["source_id"]: s for s in db["sources"]}
+    for f, recs in db.items():
+        if f in SKIP_TEXT or f in ("sources", "vulnerabilities"): continue
+        for r in recs:
+            w, t = f"{f}:{rid(r)}", _text(r)
+            ids = [s for s in r.get("source_ids", []) + r.get("content_source_ids", []) if src.get(s, {}).get("verification_status") == "確認済み"]
+            for org, pub in ATTRIB.items():
+                if org in t and not any(re.search(pub, src[s]["publisher"] + " " + src[s].get("verified_notes", "") + " " + src[s]["title"]) for s in ids):
+                    out.append(F("Q-ATTR", w, f"本文が「{org}」に帰属させているが、確認済みの該当出典がない"))
+            for m in STAT_RE.finditer(t):  # 数値が、調査報告・政府資料の確認済み出典の確認範囲（verified_notes）に記録されていること
+                num = re.match(r"[\d,.]+", m.group(0)).group(0)
+                if not any(set(src[s]["scope"]) & STAT_SCOPE and num in src[s].get("verified_notes", "") for s in ids):
+                    out.append(F("Q-STAT", w, f"統計値「{m.group(0)}」を確認した調査報告・政府資料の出典がない"))
+    return out
+
+
+def check_review(db):
+    """Q-REVIEW: High は再検証の根拠が必須。判定を変えたものは理由が必須。"""
+    out, src = [], {s["source_id"]: s for s in db["sources"]}
+    port_src = {p["risk_id"]: p["source_ids"] + [e["source_id"] for e in p.get("evidence", [])] for p in db["ports"]}
+    for r in db["port_risks"]:
+        w, rv = f"port_risks:{r['id']}", r.get("review")
+        cand = r["source_ids"] + port_src.get(r["id"], [])
+        strong = any(src.get(x, {}).get("verification_status") == "確認済み" and set(src[x]["scope"]) & RISK_SCOPE for x in cand)
+        if r["risk_level"] in ("Critical", "High") and not (rv and rv["evidence"]) and not strong:
+            out.append(F("Q-REVIEW", w, f"{r['risk_level']} だが攻撃・脆弱性・政府資料の確認済み根拠も再検証の根拠（review.evidence）もない"))
+        if rv and rv["previous_level"] != r["risk_level"] and not rv.get("reason"): out.append(F("Q-REVIEW", w, "リスク判定を変更したが理由（review.reason）がない"))
+        for e in (rv or {}).get("evidence", []):
+            if e["source_id"] not in r["source_ids"]: out.append(F("Q-REVIEW", w, f"再検証の根拠 {e['source_id']} が source_ids にない"))
     return out
 
 
@@ -276,6 +334,7 @@ def run(db, root=ROOT, catalog=None):
     out, _ = load_json_files(root)
     for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db), lambda: check_iana(db, root),
                lambda: check_sources(db), lambda: check_verified(db), lambda: check_cve(db), lambda: check_association(db),
+               lambda: check_attribution(db), lambda: check_review(db),
                lambda: check_display(root), lambda: check_count(db, root), lambda: check_vendor_logs(db)):
         out += fn()
     return out

@@ -56,6 +56,15 @@ CVSS = {"type": "object", "additionalProperties": False, "required": ["version",
         "properties": {"version": {"enum": ["2.0", "3.0", "3.1", "4.0"]}, "score": {"type": "number", "minimum": 0, "maximum": 10},
                        "severity": S(), "vector": S(pattern=r"^(CVSS:\d\.\d/)?AV:"), "source": S(minLength=1)}}
 
+SCOPES = ["attack_technique", "detection", "threat_advisory", "threat_guidance", "log_format", "service", "port_assignment",
+          "protocol_assignment", "reference", "vulnerability", "vendor_security", "tool_documentation", "technical_documentation",
+          "government_guidance", "research_report", "attack_framework", "vulnerability_database"]
+VIA = ["original_document", "official_api", "official_stix", "official_repository", "search_result", "not_verified"]
+REVIEW = {"type": "object", "additionalProperties": False, "required": ["date", "previous_level", "result", "evidence"],
+          "properties": {"date": DATE, "previous_level": {"enum": ["Critical", "High", "Medium", "Low"]}, "result": S(minLength=1),
+                         "reason": S(minLength=1), "evidence": ARR({"type": "object", "additionalProperties": False, "required": ["source_id", "note"],
+                                                                   "properties": {"source_id": SRC, "note": S(minLength=1)}})}}
+
 FILES = {
     "ports": ("詳細付きポート（1 レコード = 番号 + 通信方式）", "id", S(pattern=r"^PORT-\d{5}-(TCP|UDP|SCTP|DCCP)$"), [
         ("port_number", PORT, True, "ポート番号"), ("transport_protocol", TRANSPORT, True, "通信方式"),
@@ -76,7 +85,8 @@ FILES = {
         ("service_name", S(minLength=1), True, "IANA 登録名"), ("risk_level", {"enum": ["Critical", "High", "Medium", "Low"]}, True, "リスク"),
         ("reason_targeted", TEXT, True, "狙われる理由"), ("evaluation_factors", EVAL, True, "評価要素（v3 形式 / v5 形式）"),
         ("suspicious_indicators", TEXT, True, "不審な兆候"), ("investigation_focus", TEXT, True, "調査の焦点"),
-        ("mitigation_controls", TEXT, True, "対策"), ("technique_ids", U(TECH), True, "ATT&CK 技術 ID")] + COMMON),
+        ("mitigation_controls", TEXT, True, "対策"), ("technique_ids", U(TECH), True, "ATT&CK 技術 ID"),
+        ("review", REVIEW, False, "v1.2 の High 再検証の結果と根拠")] + COMMON),
     "services": ("サービス（プロトコル）", "id", S(pattern=r"^SRV-[A-Z0-9-]+$"), [
         ("service_name", S(minLength=1), True, "サービス名"), ("formal_name", TEXT, True, "正式名"),
         ("ports", ARR(PORT_T, minItems=1, uniqueItems=True), True, "(番号, 通信方式)。参照元ポートと一致"),
@@ -100,7 +110,10 @@ FILES = {
         ("attack_name", S(minLength=1), True, "名称"), ("category", S(), True, "区分"), ("description", TEXT, True, "概要"),
         ("attack_features", TEXT, True, "特徴"), ("detection_methods", S(minLength=1), True, "検知方法"),
         ("recommended_defenses", TEXT, True, "対策"), ("technique_ids", U(TECH), True, "ATT&CK 技術 ID"),
-        ("log_investigation_ids", U(LOG), True, "ログ調査 ID")] + COMMON),
+        ("log_investigation_ids", U(LOG), True, "ログ調査 ID"),
+        ("attack_mapping_status", CERT, False, "ATT&CK 技術への対応付けの確認状態（公式 STIX との照合）"),
+        ("content_verification_status", CERT, False, "説明・特徴・検知・対策の本文の確認状態"),
+        ("content_source_ids", ARR(SRC, uniqueItems=True), False, "本文の根拠資料 ID")] + COMMON),
     "tools": ("攻撃ツール（検知の痕跡のみ）", "id", S(pattern=r"^TOOL-[A-Z0-9-]+$"), [
         ("name", S(minLength=1), True, "名称"), ("category", S(), True, "区分"),
         ("mitre_software_id", {"anyOf": [S(pattern=r"^S\d{4}$"), {"type": "null"}]}, True, "ATT&CK Software ID"),
@@ -137,11 +150,16 @@ FILES = {
         ("document_type", S(minLength=1), True, "資料種別"), ("applicable_data", S(), True, "適用対象"),
         ("publication_date", NDATE, True, "公開日"), ("last_updated", NDATE, True, "更新日"), ("access_date", DATE, True, "確認日"),
         ("verification_status", CERT, True, "内容の確認状態"), ("notes", TEXT, True, "確認した内容"),
-        ("scope", ARR({"enum": ["attack_technique", "detection", "threat_advisory", "threat_guidance", "log_format", "service",
-                                "port_assignment", "protocol_assignment", "reference", "vulnerability"]}, minItems=1, uniqueItems=True),
+        ("scope", ARR({"enum": SCOPES}, minItems=1, uniqueItems=True),
          True, "根拠として使える範囲"),
         ("reverified_v4", {"type": "boolean"}, True, "内容を再確認済みか（確認済みでは true 必須）"),
-        ("verified_via", S(minLength=1), False, "実際に内容を確認した資料（公式リポジトリの原文など）")]),
+        ("verified_via", {"enum": VIA}, False, "確認方法。search_result は原文確認として扱わない"),
+        ("verified_url", S(minLength=1), False, "実際に確認した原文の所在（URL または data/raw のパス）"),
+        ("verified_date", DATE, False, "確認方法を記録した日"), ("verified_by", {"enum": ["manual_review", "automated_import"]}, False, "確認者"),
+        ("verified_notes", S(), False, "確認した範囲。URL が存在するだけでは主張の根拠にならない"),
+        ("usage_status", {"enum": ["使用中", "未使用・将来利用予定", "未使用・再確認待ち", "廃止"]}, False, "参照状況"),
+        ("usage_notes", S(minLength=1), False, "未使用の理由"),
+        ("merged_into", SRC, False, "統合先の出典 ID（ID は互換のため残す）")]),
     "vulnerabilities": ("CVE（製品・バージョン経由。ポートに直接紐付けない）", "id", S(pattern=r"^CVE-\d{4}-\d{4,7}$"), [
         ("title", S(minLength=1), True, "CVE レコードの題名"), ("description", S(minLength=1), True, "CNA の説明（英語原文の要約）"),
         ("affected", ARR(AFFECTED, minItems=1), True, "影響製品・バージョン（CVE レコードの affected）"),
