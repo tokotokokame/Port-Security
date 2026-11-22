@@ -1,0 +1,30 @@
+name: vendor-evidence
+# FortiGate / NEC IX の公式資料を取得し、データで使う項目が原文にあるかを報告する（資料はコミットしない）。
+on:
+  workflow_dispatch:
+  push:
+    branches: ["feature/**"]
+    paths: ["tools/vendor_evidence.py", ".github/workflows/vendor-evidence.yml"]
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/vendor_evidence.py vendor_evidence.json
+      - name: Post report as a check run
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          python3 - <<'E'
+          import json, os
+          rep = open("vendor_evidence.json", encoding="utf-8").read()
+          json.dump({"name": "vendor-evidence-report", "head_sha": os.environ["GITHUB_SHA"], "status": "completed", "conclusion": "neutral",
+                     "output": {"title": "公式資料の取得結果", "summary": "tools/vendor_evidence.py の出力（JSON）", "text": rep}},
+                    open("payload.json", "w", encoding="utf-8"), ensure_ascii=False)
+          E
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/check-runs" --input payload.json --jq .html_url
