@@ -17,6 +17,26 @@ TRAFFIC_FIELDS = ["logid", "type", "subtype", "level", "vd", "eventtime", "srcip
 GRAB = [r"Message ID: ?\d+", r"Message Description: ?\S+", r"Message Meaning: ?[^\n]{1,80}", r"Type: ?\S+", r"Category: ?\S+", r"Severity: ?\S+"]
 
 
+class Rows(html.parser.HTMLParser):
+    """表の各行のセル（ログ参照の「Log Field Name / Description / Data Type / Length」表からフィールド名を取り出す）。"""
+    def __init__(self): super().__init__(); self.rows, self.row, self.cell = [], None, None
+    def handle_starttag(self, t, a):
+        if t == "tr": self.row = []
+        elif t in ("td", "th") and self.row is not None: self.cell = []
+    def handle_endtag(self, t):
+        if t in ("td", "th") and self.cell is not None and self.row is not None: self.row.append(" ".join("".join(self.cell).split())); self.cell = None
+        elif t == "tr" and self.row is not None: self.rows.append(self.row); self.row = None
+    def handle_data(self, d):
+        if self.cell is not None: self.cell.append(d)
+
+
+def field_names(raw):
+    p = Rows(); p.feed(raw.decode("utf-8", "replace"))
+    hdr = next((i for i, r in enumerate(p.rows) if r[:1] == ["Log Field Name"]), None)
+    if hdr is None: return []
+    return sorted({r[0] for r in p.rows[hdr + 1:] if r and re.fullmatch(r"[a-z][a-z0-9_-]*", r[0]) and len(r) >= 3})
+
+
 class Text(html.parser.HTMLParser):
     def __init__(self): super().__init__(); self.out, self.skip = [], 0
     def handle_starttag(self, t, a):
@@ -41,7 +61,7 @@ def first(urls):
     errs = []
     for u in urls:
         try:
-            raw, final = get(u); return u, final, text(raw), errs
+            raw, final = get(u); first.raw = raw; return u, final, text(raw), errs
         except Exception as e: errs.append(f"{u}: {e}")
     return None, None, "", errs
 
@@ -50,6 +70,7 @@ def fgt(tid, doc, versions, tokens=(), grab=GRAB, snippet=1200, near=()):
     url, final, t, errs = first([FGT.format(v=v, doc=doc) for v in versions])
     words = set(re.findall(r"[A-Za-z][A-Za-z0-9_-]*", t))
     r = {"id": tid, "url": url, "final_url": final, "errors": errs[-3:], "chars": len(t),
+         "field_names": field_names(first.raw) if url and "log-message-reference" in doc else [],
          "grab": sorted({m for g in grab for m in re.findall(g, t)})[:30],
          "tokens_found": [x for x in tokens if x in words], "tokens_missing": [x for x in tokens if x not in words],
          "snippet": t[:snippet]}
