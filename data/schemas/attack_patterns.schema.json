@@ -70,6 +70,31 @@
     "uniqueItems": true,
     "description": "ログ調査 ID"
    },
+   "attack_mapping_status": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "ATT&CK 技術への対応付けの確認状態（公式 STIX との照合）"
+   },
+   "content_verification_status": {
+    "enum": [
+     "確認済み",
+     "一部確認",
+     "未確認"
+    ],
+    "description": "説明・特徴・検知・対策の本文の確認状態"
+   },
+   "content_source_ids": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^SRC-[A-Z0-9-]+$"
+    },
+    "uniqueItems": true,
+    "description": "本文の根拠資料 ID"
+   },
    "source_ids": {
     "type": "array",
     "items": {

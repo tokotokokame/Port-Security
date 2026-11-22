@@ -61,6 +61,7 @@
 | `investigation_focus` | ○ | `string` | 調査の焦点 |
 | `mitigation_controls` | ○ | `string` | 対策 |
 | `technique_ids` | ○ | `array` | ATT&CK 技術 ID |
+| `review` | — | `object` | v1.2 の High 再検証の結果と根拠 |
 | `source_ids` | ○ | `array` | 根拠資料 ID（sources.source_id） |
 | `verified_date` | ○ | `^\d{4}-\d{2}-\d{2}$` | 最終確認日（YYYY-MM-DD） |
 | `certainty` | ○ | `["確認済み", "一部確認", "未確認"]` | 確度。確認済みには再検証済みの脅威系出典が必要 |
@@ -130,6 +131,9 @@
 | `recommended_defenses` | ○ | `string` | 対策 |
 | `technique_ids` | ○ | `array` | ATT&CK 技術 ID |
 | `log_investigation_ids` | ○ | `array` | ログ調査 ID |
+| `attack_mapping_status` | — | `["確認済み", "一部確認", "未確認"]` | ATT&CK 技術への対応付けの確認状態（公式 STIX との照合） |
+| `content_verification_status` | — | `["確認済み", "一部確認", "未確認"]` | 説明・特徴・検知・対策の本文の確認状態 |
+| `content_source_ids` | — | `array` | 本文の根拠資料 ID |
 | `source_ids` | ○ | `array` | 根拠資料 ID（sources.source_id） |
 | `verified_date` | ○ | `^\d{4}-\d{2}-\d{2}$` | 最終確認日（YYYY-MM-DD） |
 | `certainty` | ○ | `["確認済み", "一部確認", "未確認"]` | 確度。確認済みには再検証済みの脅威系出典が必要 |
@@ -241,7 +245,14 @@
 | `notes` | ○ | `string` | 確認した内容 |
 | `scope` | ○ | `array` | 根拠として使える範囲 |
 | `reverified_v4` | ○ | `boolean` | 内容を再確認済みか（確認済みでは true 必須） |
-| `verified_via` | — | `string` | 実際に内容を確認した資料（公式リポジトリの原文など） |
+| `verified_via` | — | `["original_document", "official_api", "official_stix", "official_repository", "search_result", "not_verified"]` | 確認方法。search_result は原文確認として扱わない |
+| `verified_url` | — | `string` | 実際に確認した原文の所在（URL または data/raw のパス） |
+| `verified_date` | — | `^\d{4}-\d{2}-\d{2}$` | 確認方法を記録した日 |
+| `verified_by` | — | `["manual_review", "automated_import"]` | 確認者 |
+| `verified_notes` | — | `string` | 確認した範囲。URL が存在するだけでは主張の根拠にならない |
+| `usage_status` | — | `["使用中", "未使用・将来利用予定", "未使用・再確認待ち", "廃止"]` | 参照状況 |
+| `usage_notes` | — | `string` | 未使用の理由 |
+| `merged_into` | — | `^SRC-[A-Z0-9-]+$` | 統合先の出典 ID（ID は互換のため残す） |
 
 ## vulnerabilities.json — CVE（製品・バージョン経由。ポートに直接紐付けない）
 

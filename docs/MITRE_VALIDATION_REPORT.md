@@ -11,7 +11,7 @@
 | ID | 公式名 | 状態 | 本データの名称 | 紐付くポート（関連区分） |
 |---|---|---|---|---|
 | T1110 | Brute Force | 有効 | Brute Force | attack_pattern 44 |
-| T1110.001 | Password Guessing | 有効 | Password Guessing | — |
+| T1110.001 | Password Guessing | 有効 | Password Guessing | direct 3 |
 | T1110.002 | Password Cracking | 有効 | Password Cracking | attack_pattern 2 |
 | T1110.003 | Password Spraying | 有効 | Password Spraying | — |
 | T1110.004 | Credential Stuffing | 有効 | （未収録） | — |
@@ -27,7 +27,7 @@ ATT&CK の技術とポート番号は直接結び付けず、経路（Port → �
 
 | 区分 | 件数 | 意味 |
 |---|---|---|
-| direct | 57 | ポート固有の根拠（ATT&CK 手続き例・検知戦略・公式文書）が技術を名指し |
+| direct | 60 | ポート固有の根拠（ATT&CK 手続き例・検知戦略・公式文書）が技術を名指し |
 | attack_pattern | 204 | 紐付く攻撃手法がその技術（または親・サブ技術）を含む |
 | service | 5 | サービスの性質から対象になる |
 | reference | 5 | 参考情報（一次資料未付与） |

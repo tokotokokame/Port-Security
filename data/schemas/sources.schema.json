@@ -103,7 +103,14 @@
       "port_assignment",
       "protocol_assignment",
       "reference",
-      "vulnerability"
+      "vulnerability",
+      "vendor_security",
+      "tool_documentation",
+      "technical_documentation",
+      "government_guidance",
+      "research_report",
+      "attack_framework",
+      "vulnerability_database"
      ]
     },
     "minItems": 1,
@@ -115,9 +122,55 @@
     "description": "内容を再確認済みか（確認済みでは true 必須）"
    },
    "verified_via": {
+    "enum": [
+     "original_document",
+     "official_api",
+     "official_stix",
+     "official_repository",
+     "search_result",
+     "not_verified"
+    ],
+    "description": "確認方法。search_result は原文確認として扱わない"
+   },
+   "verified_url": {
     "type": "string",
     "minLength": 1,
-    "description": "実際に内容を確認した資料（公式リポジトリの原文など）"
+    "description": "実際に確認した原文の所在（URL または data/raw のパス）"
+   },
+   "verified_date": {
+    "type": "string",
+    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+    "description": "確認方法を記録した日"
+   },
+   "verified_by": {
+    "enum": [
+     "manual_review",
+     "automated_import"
+    ],
+    "description": "確認者"
+   },
+   "verified_notes": {
+    "type": "string",
+    "description": "確認した範囲。URL が存在するだけでは主張の根拠にならない"
+   },
+   "usage_status": {
+    "enum": [
+     "使用中",
+     "未使用・将来利用予定",
+     "未使用・再確認待ち",
+     "廃止"
+    ],
+    "description": "参照状況"
+   },
+   "usage_notes": {
+    "type": "string",
+    "minLength": 1,
+    "description": "未使用の理由"
+   },
+   "merged_into": {
+    "type": "string",
+    "pattern": "^SRC-[A-Z0-9-]+$",
+    "description": "統合先の出典 ID（ID は互換のため残す）"
    }
   }
  }

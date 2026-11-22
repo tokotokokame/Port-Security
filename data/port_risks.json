@@ -7,7 +7,7 @@
     "risk_level": "Critical",
     "reason_targeted": "Windowsのグラフィカルデスクトップへのフルアクセスを提供するため、ランサムウェアグループや侵入者にとって最大の侵入・制御目標となる。",
     "evaluation_factors": {
-      "external_exposure": "インターネットからの直接露出時は極めて危険 (CISA Bad Practice)",
+      "external_exposure": "インターネットからの直接露出時は極めて危険 (CISA は RDP を露出した脆弱なサービスの例に挙げる)",
       "authentication": "NLA無効化や弱固パスワード運用時にブルートフォース突破が容易",
       "encryption": "TLS/RDP固有暗号化が適用されるが中間者攻撃や認証前脆弱性(BlueKeep等)が存在",
       "known_vulnerabilities": "CVE-2019-0708 (BlueKeep RCE), CVE-2022-21893 等多数の歴史的・現代的既知脆弱性"
@@ -37,7 +37,7 @@
     "risk_level": "Critical",
     "reason_targeted": "未認証でのリモートコード実行やネットワーク全域への即時横展開(ワーム型拡散)が可能な歴史的・現代的脆弱性が集中するため。(CISA最優先遮断勧告)",
     "evaluation_factors": {
-      "external_exposure": "インターネットへの露出は例外なく即時無条件遮断対象 (CISA緊急勧告)",
+      "external_exposure": "インターネットへの露出は例外なく即時無条件遮断対象 (CISA: SMB はインターネットに公開すべきでない)",
       "authentication": "SMB v1/v2におけるNTLMハッシュ奪取やPass-the-Hash攻撃の標的",
       "encryption": "SMB 3.xでの暗号化が推奨されるが過去の平文・弱暗号構成の残存リスク",
       "known_vulnerabilities": "MS17-010 (EternalBlue, CVE-2017-0144), CVE-2020-0796 (SMBGhost RCE) 等の高高評価CVE"
@@ -74,8 +74,7 @@
     "investigation_focus": "Linux auth.log, auditd execve, SSHトンネル確立ログ, 送信元IPアドレス",
     "mitigation_controls": "パスワード認証の全廃・公開鍵認証/証明書認証の強制, Fail2ban自動ブロック, IPアドレス制限, MFA導入",
     "source_ids": [
-      "SRC-MITRE-DET0118",
-      "SRC-CISA-HYGIENE"
+      "SRC-MITRE-DET0118"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -146,18 +145,19 @@
     "transport_protocol": "TCP",
     "service_name": "Telnet",
     "risk_level": "High",
-    "reason_targeted": "ID・パスワードを含む全ての通信が完全に平文で送信され、パケット盗聴や認証奪取が容易なため。(CISA Bad Practice)",
+    "reason_targeted": "ID・パスワードを含む全ての通信が完全に平文で送信され、パケット盗聴や認証奪取が容易なため。(CISA: Telnet はインターネットに公開すべきでない)",
     "evaluation_factors": {
       "external_exposure": "インターネット露出時は即座に自動化ボットネットの標的",
       "authentication": "単一プレーンテキストパスワード認証",
       "encryption": "暗号化一切なし",
-      "known_vulnerabilities": "Miraiボットネット等によるデフォルトパスワードの乱用"
+      "known_vulnerabilities": "既定・推測可能なパスワードの悪用（総当たりの主な対象: ATT&CK T1110.001）"
     },
     "suspicious_indicators": "Telnetポートへの自動スキャン接続, 平文認証文字列のネットワークパケット内検知",
     "investigation_focus": "ネットワークキャプチャ, 境界FWアクセスログ",
     "mitigation_controls": "Telnetサービスの全廃およびSSH(TCP 22)への完全移行",
     "source_ids": [
-      "SRC-CISA-HYGIENE"
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-T1110"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
@@ -165,7 +165,22 @@
     "technique_ids": [
       "T1040",
       "T1595"
-    ]
+    ],
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "T1110.001 の説明で Telnet (23/TCP) を総当たりの主な対象に列挙"
+        },
+        {
+          "source_id": "SRC-CISA-HYGIENE",
+          "note": "Telnet はインターネットに公開すべきでない"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-00080-TCP",
@@ -492,18 +507,30 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-CISA-AMP"
+      "SRC-CISA-AMP",
+      "SRC-MITRE-T1498"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1498",
+          "note": "T1498.002 の説明で memcache プロトコルが最大 51,200 倍の増幅を示したと記載（ポート番号の記載はない）"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-11211-TCP",
     "port_number": 11211,
     "transport_protocol": "TCP",
     "service_name": "memcache",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なしでのキャッシュ内容の取得・改ざん",
     "evaluation_factors": {
       "category": "データベース・キャッシュ",
@@ -521,7 +548,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-00464-TCP",
@@ -708,7 +742,7 @@
     "port_number": 2179,
     "transport_protocol": "TCP",
     "service_name": "vmrdp",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "管理者権限の悪用による VM の操作・画面取得",
     "evaluation_factors": {
       "category": "仮想化基盤",
@@ -727,14 +761,21 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-06600-TCP",
     "port_number": 6600,
     "transport_protocol": "TCP",
     "service_name": "mshvlm",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "移行通信の盗聴・不正な移行",
     "evaluation_factors": {
       "category": "仮想化基盤",
@@ -752,7 +793,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-03343-TCP",
@@ -809,7 +857,7 @@
     "port_number": 18083,
     "transport_protocol": "TCP",
     "service_name": "(未登録)",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "外部公開時の VM 操作",
     "evaluation_factors": {
       "category": "仮想化基盤",
@@ -828,7 +876,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-00902-TCP",
@@ -899,11 +954,23 @@
       "T1021.005"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1021"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1021",
+          "note": "T1021 の説明に Apple Remote Desktop (ARD) をリモート管理の例として記載"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-05800-TCP",
@@ -935,7 +1002,7 @@
     "port_number": 512,
     "transport_protocol": "TCP",
     "service_name": "exec",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "平文認証の盗聴、遠隔実行",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -953,14 +1020,21 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-00513-TCP",
     "port_number": 513,
     "transport_protocol": "TCP",
     "service_name": "login",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "平文認証の盗聴、信頼関係の悪用",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -978,7 +1052,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-05938-TCP",
@@ -1289,11 +1370,23 @@
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-CISA-KEV",
+          "note": "CVE-2025-14847（MongoDB Server の未認証メモリ読み取り）が KEV に掲載"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-06379-TCP",
@@ -1340,11 +1433,23 @@
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-CISA-KEV",
+          "note": "Elasticsearch の CVE-2015-1427・CVE-2014-3120（リモートコード実行）が KEV に掲載"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-09300-TCP",
@@ -1389,11 +1494,23 @@
       "T1190"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-CISA-KEV",
+          "note": "CVE-2022-24706（Apache CouchDB の安全でない既定の初期化）が KEV に掲載"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-09042-TCP",
@@ -1731,11 +1848,28 @@
       "T1613"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1613",
+      "SRC-MITRE-T1552"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1613",
+          "note": "T1613 の説明に Kubernetes API での探索"
+        },
+        {
+          "source_id": "SRC-MITRE-T1552",
+          "note": "Peirates などが T1552.007（コンテナ API）を悪用する手続き例"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-10250-TCP",
@@ -2180,7 +2314,7 @@
     "port_number": 7547,
     "transport_protocol": "TCP",
     "service_name": "cwmp",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "外部公開された管理機能の悪用",
     "evaluation_factors": {
       "category": "ネットワーク機器管理",
@@ -2197,7 +2331,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-04786-TCP",
@@ -2229,7 +2370,7 @@
     "port_number": 2049,
     "transport_protocol": "TCP",
     "service_name": "nfs",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "誤った export 設定によるファイル取得",
     "evaluation_factors": {
       "category": "ファイル共有・転送",
@@ -2247,7 +2388,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-02049-UDP",
@@ -2279,7 +2427,7 @@
     "port_number": 873,
     "transport_protocol": "TCP",
     "service_name": "rsync",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なしモジュールからのファイル取得",
     "evaluation_factors": {
       "category": "ファイル共有・転送",
@@ -2297,7 +2445,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-00548-TCP",
@@ -2377,7 +2532,7 @@
     "port_number": 3260,
     "transport_protocol": "TCP",
     "service_name": "iscsi-target",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なしでのボリュームへのアクセス",
     "evaluation_factors": {
       "category": "ファイル共有・転送",
@@ -2394,7 +2549,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-05060-UDP",
@@ -2608,11 +2770,23 @@
       "T1078.001"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0846-001"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-ICS-T0846-001",
+          "note": "PLC-Blaster（S1006）がネットワーク上の Siemens S7 PLC を探索して感染（T0846.001 の手続き例）"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-20000-TCP",
@@ -2632,11 +2806,23 @@
       "T1078.001"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0869"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-ICS-T0869",
+          "note": "T0869 の説明に DNP3 を C2 に使われうるプロトコルとして記載"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-44818-TCP",
@@ -2657,18 +2843,30 @@
       "T1046"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-ICS-T0871"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-ICS-T0871",
+          "note": "CyberAv3ngers の手続き例（T0871）に EtherNet/IP CIP"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-47808-UDP",
     "port_number": 47808,
     "transport_protocol": "UDP",
     "service_name": "bacnet",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "空調・照明等の制御",
     "evaluation_factors": {
       "category": "制御システム",
@@ -2686,7 +2884,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-02404-TCP",
@@ -2779,18 +2984,30 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-METASPLOIT-REVSHELL"
+      "SRC-METASPLOIT-REVSHELL",
+      "SRC-MITRE-T1571"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1571",
+          "note": "T1571 の手続き例で C0032（TEMP.Veles）と DarkVishnya が 4444 を C2 に使用"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-06000-TCP",
     "port_number": 6000,
     "transport_protocol": "TCP",
     "service_name": "x11",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "認証なし X サーバーからの画面取得・入力",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -2807,7 +3024,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-00853-TCP",
@@ -2974,11 +3198,28 @@
       "T1048"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1110",
+      "SRC-MITRE-T1048"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "T1110.001 の説明で FTP (21/TCP) を総当たりの主な対象に列挙"
+        },
+        {
+          "source_id": "SRC-MITRE-T1048",
+          "note": "T1048.003 の説明に FTP による持ち出し"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-00025-TCP",
@@ -3411,11 +3652,28 @@
     ],
     "source_ids": [
       "SRC-MS-RDS",
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1110",
+      "SRC-CISA-HYGIENE"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "T1110.001 の説明で LDAP (389/TCP) を総当たりの主な対象に列挙"
+        },
+        {
+          "source_id": "SRC-CISA-HYGIENE",
+          "note": "LDAP はインターネットに公開すべきでない"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-00389-UDP",
@@ -3724,7 +3982,7 @@
     "port_number": 1521,
     "transport_protocol": "TCP",
     "service_name": "ncube-lm",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "TNS Listener脆弱性悪用, SYSTEM/SCOTTアカウントへの辞書攻撃",
     "evaluation_factors": {
       "category": "データベース・キャッシュ",
@@ -3742,7 +4000,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-01701-UDP",
@@ -3773,7 +4038,7 @@
     "port_number": 1723,
     "transport_protocol": "TCP",
     "service_name": "pptp",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "MS-CHAPv2の解読脆弱性を狙う中間者攻撃・認証奪取",
     "evaluation_factors": {
       "category": "VPN・トンネル",
@@ -3792,7 +4057,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-03306-TCP",
@@ -3825,7 +4097,7 @@
     "port_number": 3389,
     "transport_protocol": "UDP",
     "service_name": "ms-wbt-server",
-    "risk_level": "High",
+    "risk_level": "Medium",
     "reason_targeted": "DoS攻撃, RDPセッション干渉試行",
     "evaluation_factors": {
       "category": "リモート管理",
@@ -3843,7 +4115,14 @@
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "Medium に変更",
+      "evidence": [],
+      "reason": "ATT&CK・KEV・政府勧告で、このサービスの悪用や攻撃対象としての記載を確認できなかった。IANA の登録は攻撃リスクの根拠にしない"
+    }
   },
   {
     "id": "RISK-04500-UDP",
@@ -3889,11 +4168,28 @@
       "T1210"
     ],
     "source_ids": [
-      "SRC-IANA-PORT"
+      "SRC-IANA-PORT",
+      "SRC-MITRE-T1110",
+      "SRC-MITRE-T1213"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
-    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。"
+    "unconfirmed_notes": "リスクは docs/RISK_RUBRIC.md の基準による編集判断。",
+    "review": {
+      "date": "2026-11-22",
+      "previous_level": "High",
+      "result": "High を維持",
+      "evidence": [
+        {
+          "source_id": "SRC-MITRE-T1110",
+          "note": "P.A.S. Webshell（S0598）が PostgreSQL などへの総当たりを行う（T1110.001 の手続き例）"
+        },
+        {
+          "source_id": "SRC-MITRE-T1213",
+          "note": "T1213.006 の説明に PostgreSQL"
+        }
+      ]
+    }
   },
   {
     "id": "RISK-05900-TCP",

@@ -621,8 +621,8 @@
       "SRC-METASPLOIT-REVSHELL"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。"
   },
   {
     "id": "TOOL-HYDRA",
@@ -805,7 +805,7 @@
       "SRC-KERBRUTE"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。"
   }
 ]

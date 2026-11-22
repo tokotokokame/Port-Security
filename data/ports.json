@@ -26,8 +26,8 @@
       "SRC-CISA-AMP"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
     "risk_id": "RISK-00017-UDP",
@@ -77,8 +77,8 @@
       "SRC-CISA-AMP"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
     "risk_id": "RISK-00019-UDP",
@@ -163,7 +163,8 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MITRE-T1048"
+      "SRC-MITRE-T1048",
+      "SRC-MITRE-T1110"
     ],
     "verified_date": "2026-11-22",
     "certainty": "一部確認",
@@ -171,7 +172,8 @@
     "technique_ids": [
       "T1110",
       "T1040",
-      "T1048"
+      "T1048",
+      "T1110.001"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
@@ -185,6 +187,13 @@
         "kind": "技術説明",
         "examples": [],
         "keyword": "FTP"
+      },
+      {
+        "source_id": "SRC-MITRE-T1110",
+        "technique": "T1110.001",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "T1110.001 の説明で FTP (21/TCP) を総当たりの主な対象に列挙"
       }
     ],
     "technique_basis": [
@@ -207,6 +216,13 @@
         "relation": "direct",
         "via": [
           "SRC-MITRE-T1048"
+        ]
+      },
+      {
+        "technique": "T1110.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1110"
         ]
       }
     ]
@@ -303,7 +319,7 @@
     "purpose": "非暗号化テキストによるリモートターミナル接続機能を提供する。",
     "technical_description": "双方向8ビット通信チャネルを提供。全てのデータおよびパスワードが平文送信。",
     "normal_usage_examples": "レガシーネットワーク機器・組み込み機器の初期設定",
-    "malicious_exploitation_cases": "平文認証情報の盗聴, デフォルトパスワードによるボットネット(Mirai)感染",
+    "malicious_exploitation_cases": "平文認証情報の盗聴, デフォルトパスワードによるボットネット感染",
     "suspicious_traffic_features": "外部からのアクセス試行, パケット内平文認証文字列",
     "investigation_checkpoints": "境界FW拒否ログ, ネットワークパケットキャプチャ",
     "recommended_defenses": "Telnetの完全廃止およびSSH(TCP 22)への移行",
@@ -314,7 +330,8 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-CISA-HYGIENE"
+      "SRC-CISA-HYGIENE",
+      "SRC-MITRE-T1110"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
@@ -322,7 +339,8 @@
     "technique_ids": [
       "T1040",
       "T1595",
-      "T1078.001"
+      "T1078.001",
+      "T1110.001"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
@@ -350,6 +368,22 @@
         "via": [
           "ATK-UNAUTH-SERVICE"
         ]
+      },
+      {
+        "technique": "T1110.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1110"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "source_id": "SRC-MITRE-T1110",
+        "technique": "T1110.001",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "T1110.001 の説明で Telnet (23/TCP) を総当たりの主な対象に列挙"
       }
     ]
   },
@@ -969,7 +1003,7 @@
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-T1558",
-      "SRC-MS-SVC-PORTS"
+      "SRC-MS-PORTS"
     ],
     "verified_date": "2026-11-22",
     "certainty": "確認済み",
@@ -1195,8 +1229,8 @@
       "SRC-CISA-AMP"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
     "risk_id": "RISK-00111-UDP",
@@ -1443,7 +1477,7 @@
     "malicious_exploitation_cases": "NetBIOS名前スプーフィング, 境界露出時の情報漏洩",
     "suspicious_traffic_features": "境界でのNetBIOSパケット受信",
     "investigation_checkpoints": "境界FW拒否ログ",
-    "recommended_defenses": "境界でのNetBIOSポート遮断(CISA Bad Practice)",
+    "recommended_defenses": "境界でのNetBIOSポート遮断(CISA: NetBIOS はインターネットに公開すべきでない)",
     "attack_pattern_ids": [
       "ATK-VULN-SCAN"
     ],
@@ -1803,7 +1837,8 @@
     "source_ids": [
       "SRC-MS-RDS",
       "SRC-IANA-PORT",
-      "SRC-MITRE-T1087"
+      "SRC-MITRE-T1087",
+      "SRC-MITRE-T1110"
     ],
     "verified_date": "2026-11-22",
     "certainty": "一部確認",
@@ -1811,7 +1846,8 @@
     "technique_ids": [
       "T1040",
       "T1110",
-      "T1087.002"
+      "T1087.002",
+      "T1110.001"
     ],
     "protocol_id": "PROTO-TCP",
     "service_id": null,
@@ -1829,6 +1865,13 @@
           "S0483 IcedID"
         ],
         "keyword": "LDAP"
+      },
+      {
+        "source_id": "SRC-MITRE-T1110",
+        "technique": "T1110.001",
+        "kind": "技術説明",
+        "examples": [],
+        "keyword": "T1110.001 の説明で LDAP (389/TCP) を総当たりの主な対象に列挙"
       }
     ],
     "technique_basis": [
@@ -1852,6 +1895,13 @@
         "via": [
           "SRC-MITRE-T1087"
         ]
+      },
+      {
+        "technique": "T1110.001",
+        "relation": "direct",
+        "via": [
+          "SRC-MITRE-T1110"
+        ]
       }
     ]
   },
@@ -1868,14 +1918,15 @@
     "malicious_exploitation_cases": "CLDAPアンプ攻撃 (超高倍率リフレクションDDoS)",
     "suspicious_traffic_features": "外部IPからの大型CLDAPレスポンス誘発リクエスト",
     "investigation_checkpoints": "境界FWログ, パケット増幅率監視",
-    "recommended_defenses": "外部からのUDP 389遮断 (CISA要請)",
+    "recommended_defenses": "外部からのUDP 389遮断 (CISA: LDAP はインターネットに公開すべきでない)",
     "attack_pattern_ids": [
       "ATK-VULN-SCAN",
       "ATK-AMPLIFICATION"
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-MS-RDS"
+      "SRC-MS-RDS",
+      "SRC-CISA-HYGIENE"
     ],
     "verified_date": "2026-11-21",
     "certainty": "一部確認",
@@ -2121,7 +2172,7 @@
     "malicious_exploitation_cases": "EternalBlue等のRCE脆弱性悪用, Pass-the-Hash横展開, ランサムウェア感染",
     "suspicious_traffic_features": "外部からのTCP 445アクセス試行, 内部での多端末ADMIN$共有連続接続",
     "investigation_checkpoints": "Sysmon Event 3/11, Windows Security Event 4624, SMBログ",
-    "recommended_defenses": "境界でのTCP 445完全遮断(CISA緊急勧告), SMB v1廃止, SMB Signing/Encryption",
+    "recommended_defenses": "境界でのTCP 445完全遮断(CISA: SMB はインターネットに公開すべきでない), SMB v1廃止, SMB Signing/Encryption",
     "attack_pattern_ids": [
       "ATK-REMOTE-EXPLOIT",
       "ATK-LATERAL-MOVE",
@@ -2706,8 +2757,8 @@
       "SRC-CISA-AMP"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
     "risk_id": "RISK-00520-UDP",
@@ -4018,8 +4069,8 @@
       "SRC-CISA-AMP"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
     "risk_id": "RISK-01900-UDP",
@@ -4438,8 +4489,8 @@
       "SRC-ETCD-SECURITY"
     ],
     "verified_date": "2026-11-22",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-02379-TCP",
@@ -5175,7 +5226,8 @@
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MS-RDS",
-      "SRC-MITRE-DET0118"
+      "SRC-MITRE-DET0118",
+      "SRC-CISA-HYGIENE"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -5436,7 +5488,8 @@
     ],
     "source_ids": [
       "SRC-IANA-PORT",
-      "SRC-METASPLOIT-REVSHELL"
+      "SRC-METASPLOIT-REVSHELL",
+      "SRC-MITRE-T1571"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -5451,6 +5504,16 @@
         "kind": "公式文書",
         "examples": [],
         "keyword": "公式ドキュメントのリバースシェル例で LPORT=4444 を使用（フレームワークの既定値ではない: Opt::LPORT default=nil）"
+      },
+      {
+        "source_id": "SRC-MITRE-T1571",
+        "technique": "T1571",
+        "kind": "手順例",
+        "examples": [
+          "C0032",
+          "DarkVishnya"
+        ],
+        "keyword": "T1571 の手続き例で C0032（TEMP.Veles）と DarkVishnya が 4444 を C2 に使用"
       }
     ],
     "technique_basis": [
@@ -5954,8 +6017,8 @@
       "SRC-CISA-AMP"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
     "risk_id": "RISK-05353-UDP",
@@ -6544,7 +6607,7 @@
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-MITRE-DET0118",
-      "SRC-MS-SVC-PORTS"
+      "SRC-MS-PORTS"
     ],
     "verified_date": "2026-11-21",
     "certainty": "確認済み",
@@ -6754,8 +6817,8 @@
       "SRC-REDIS-ANTIREZ"
     ],
     "verified_date": "2026-11-22",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-TCP",
     "service_id": null,
     "risk_id": "RISK-06379-TCP",
@@ -8111,8 +8174,8 @@
       "SRC-CISA-AMP"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "v1.2: 根拠がベンダー資料・ツール資料・検索結果のみで、攻撃手法・検知・脅威勧告の再検証済み資料がないため一部確認に変更。",
     "protocol_id": "PROTO-UDP",
     "service_id": null,
     "risk_id": "RISK-11211-UDP",
@@ -8444,7 +8507,8 @@
     "source_ids": [
       "SRC-IANA-PORT",
       "SRC-APACHE-CVE-2023-46604",
-      "SRC-NVD-CVE-2023-46604"
+      "SRC-NVD-CVE-2023-46604",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-22",
     "certainty": "確認済み",
@@ -8461,7 +8525,7 @@
         "keyword": "OpenWire プロトコルのマーシャラーにリモートコード実行の脆弱性"
       },
       {
-        "source_id": "SRC-NVD-CVE-2023-46604",
+        "source_id": "SRC-CISA-KEV",
         "technique": null,
         "kind": "公式文書",
         "examples": [],

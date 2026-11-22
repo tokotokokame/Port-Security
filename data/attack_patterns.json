@@ -13,8 +13,8 @@
       "SRC-MITRE-T1110"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "T1110 (Brute Force), T1110.001 (Password Guessing), T1110.003 (Password Spraying) に正しく分類。",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "technique_ids": [
       "T1110",
       "T1110.001",
@@ -27,7 +27,10 @@
       "LOG-FORTIGATE-VENDOR",
       "LOG-NECIX-VENDOR"
     ],
-    "category": ""
+    "category": "",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-REMOTE-EXPLOIT",
@@ -40,11 +43,12 @@
       "SRC-MITRE-DET0118",
       "SRC-MITRE-ATTACK",
       "SRC-CISA-HYGIENE",
-      "SRC-MITRE-T1210"
+      "SRC-MITRE-T1210",
+      "SRC-CISA-KEV"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "T1210 (Exploitation of Remote Services) および DET0118 アナリティクスと完全合致。",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "technique_ids": [
       "T1210"
     ],
@@ -54,7 +58,10 @@
       "LOG-ESXI-AN0329",
       "LOG-MAC-AN0330"
     ],
-    "category": ""
+    "category": "",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-LATERAL-MOVE",
@@ -69,8 +76,8 @@
       "SRC-MITRE-T1021"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "Sub-technique T1021.001(RDP), T1021.002(SMB), T1021.004(SSH) を明記。",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "technique_ids": [
       "T1021",
       "T1021.001",
@@ -81,7 +88,10 @@
     "log_investigation_ids": [
       "LOG-WIN-AN0327"
     ],
-    "category": ""
+    "category": "",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-CRED-THEFT",
@@ -99,8 +109,8 @@
       "SRC-MITRE-T1558"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "欠損していた参照ID `ATK-CRED-THEFT` を正式定義。",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "technique_ids": [
       "T1003",
       "T1040",
@@ -110,7 +120,10 @@
     "log_investigation_ids": [
       "LOG-WIN-AN0327"
     ],
-    "category": ""
+    "category": "",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-DATA-EXFIL",
@@ -125,8 +138,8 @@
       "SRC-MITRE-T1071"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "欠損していた参照ID `ATK-DATA-EXFIL` を正式定義。",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "technique_ids": [
       "T1041",
       "T1071.001",
@@ -136,24 +149,28 @@
       "LOG-WIN-AN0327",
       "LOG-FORTIGATE-VENDOR"
     ],
-    "category": ""
+    "category": "",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-VULN-SCAN",
     "attack_name": "アクティブスキャン・ポート/サービス探索 (Reconnaissance)",
     "description": "攻撃対象のネットワークに対し、アクティブなIPアドレス、開いているポート、稼働サービス・OSバージョンを特定するために探索パケット(SYN, UDP, ICMP)を送信する予備調査手法。",
-    "attack_features": "短時間に単一または分散IPから特定IPの複数ポートへの連続SYNパケット送信。CISA分析によればCVE公表後15分以内に無差別探索スキャンが発生。",
+    "attack_features": "短時間に単一または分散IPから特定IPの複数ポートへの連続SYNパケット送信。Palo Alto Networks の観測（2021年1〜3月、50 社・5,000 万 IP）では、探索スキャンの多くが CVE 公表から 15〜60 分後に始まった（Exchange では 5 分以内）。",
     "detection_methods": "IDS/IPSおよびFWログでの未許可ポート接続拒否(DENY/BLOCK)パケットの急増検知。複数ポートへの接続リセット発生率上昇の監視。",
     "recommended_defenses": "不要なポートの完全閉じ(ステルス化), ポートスキャン自動検知による一時的IPブロック, 外部露出面の最小化",
     "source_ids": [
       "SRC-MITRE-ATTACK",
       "SRC-CISA-HYGIENE",
       "SRC-MITRE-T1595",
-      "SRC-MITRE-T1046"
+      "SRC-MITRE-T1046",
+      "SRC-PANW-XPANSE-2021"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "T1595 (Active Scanning) および T1595.002 (Vulnerability Scanning) に対応。",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "特徴の統計は SRC-PANW-XPANSE-2021 で確認。それ以外の文は出典との逐条照合を未実施。",
     "technique_ids": [
       "T1595",
       "T1595.002",
@@ -163,7 +180,12 @@
       "LOG-FORTIGATE-VENDOR",
       "LOG-NECIX-VENDOR"
     ],
-    "category": ""
+    "category": "",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [
+      "SRC-PANW-XPANSE-2021"
+    ],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-RANSOMWARE",
@@ -180,8 +202,8 @@
       "SRC-MITRE-T1210"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": "T1486 (Data Encrypted for Impact) を割り当て。",
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
     "technique_ids": [
       "T1486",
       "T1210"
@@ -190,7 +212,10 @@
       "LOG-WIN-AN0327",
       "LOG-ESXI-AN0329"
     ],
-    "category": ""
+    "category": "",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-KERBEROAST",
@@ -214,8 +239,11 @@
       "SRC-MITRE-T1558"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-NAME-POISON",
@@ -237,8 +265,11 @@
       "SRC-MITRE-T1557"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-PASS-THE-HASH",
@@ -259,8 +290,11 @@
       "SRC-MITRE-T1550"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-DCSYNC",
@@ -281,8 +315,11 @@
       "SRC-MITRE-T1003"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-REMOTE-EXEC",
@@ -309,8 +346,11 @@
       "SRC-MITRE-T1021"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-AD-RECON",
@@ -338,8 +378,11 @@
       "SRC-MITRE-T1018"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-AMPLIFICATION",
@@ -361,8 +404,11 @@
       "SRC-MITRE-T1498"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-PUBLIC-EXPLOIT",
@@ -382,8 +428,11 @@
       "SRC-MITRE-T1190"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-EXTERNAL-REMOTE",
@@ -406,8 +455,11 @@
       "SRC-MITRE-T1078"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-C2-PORT",
@@ -432,8 +484,11 @@
       "SRC-MITRE-T1071"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-TUNNEL",
@@ -457,8 +512,11 @@
       "SRC-MITRE-T1090"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-REMOTE-ACCESS-SW",
@@ -478,8 +536,11 @@
       "SRC-MITRE-T1219"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-EXFIL-ALT",
@@ -500,8 +561,11 @@
       "SRC-MITRE-T1048"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-UNAUTH-SERVICE",
@@ -524,8 +588,11 @@
       "SRC-MITRE-T1190"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-CONTAINER-API",
@@ -547,8 +614,11 @@
       "SRC-MITRE-T1613"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-MAIL-ABUSE",
@@ -570,8 +640,11 @@
       "SRC-MITRE-T1114"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   },
   {
     "id": "ATK-HYPERVISOR",
@@ -599,7 +672,10 @@
       "SRC-MITRE-T1486"
     ],
     "verified_date": "2026-11-21",
-    "certainty": "確認済み",
-    "unconfirmed_notes": ""
+    "certainty": "一部確認",
+    "unconfirmed_notes": "説明・特徴・検知方法・対策の各文は出典との逐条照合を未実施（ATT&CK で確認したのは技術分類のみ）。",
+    "attack_mapping_status": "確認済み",
+    "content_source_ids": [],
+    "content_verification_status": "一部確認"
   }
 ]

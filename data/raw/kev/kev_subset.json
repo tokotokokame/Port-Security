@@ -4,6 +4,22 @@
  "source": "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json",
  "vulnerabilities": [
   {
+   "cveID": "CVE-2025-14847",
+   "cwes": [
+    "CWE-130"
+   ],
+   "dateAdded": "2025-12-29",
+   "dueDate": "2026-01-19",
+   "forensicTriage": "No",
+   "knownRansomwareCampaignUse": "Unknown",
+   "notes": "This vulnerability could affect an open-source component, third-party library, protocol, or proprietary implementation that could be used by different products. For more information, please see: https://jira.mongodb.org/browse/SERVER-115508 ; https://nvd.nist.gov/vuln/detail/CVE-2025-14847",
+   "product": "MongoDB and MongoDB Server",
+   "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+   "shortDescription": "MongoDB Server contains an improper handling of length parameter inconsistency vulnerability in Zlib compressed protocol headers. This vulnerability may allow a read of uninitialized heap memory by an unauthenticated client.",
+   "vendorProject": "MongoDB",
+   "vulnerabilityName": "MongoDB and MongoDB Server Improper Handling of Length Parameter Inconsistency Vulnerability"
+  },
+  {
    "cveID": "CVE-2023-46604",
    "cwes": [
     "CWE-502"
@@ -18,6 +34,54 @@
    "shortDescription": "Apache ActiveMQ contains a deserialization of untrusted data vulnerability that may allow a remote attacker with network access to a broker to run shell commands by manipulating serialized class types in the OpenWire protocol to cause the broker to instantiate any class on the classpath.",
    "vendorProject": "Apache",
    "vulnerabilityName": "Apache ActiveMQ Deserialization of Untrusted Data Vulnerability"
+  },
+  {
+   "cveID": "CVE-2022-24706",
+   "cwes": [
+    "CWE-1188"
+   ],
+   "dateAdded": "2022-08-25",
+   "dueDate": "2022-09-15",
+   "forensicTriage": "No",
+   "knownRansomwareCampaignUse": "Unknown",
+   "notes": "https://lists.apache.org/thread/w24wo0h8nlctfps65txvk0oc5hdcnv00;  https://nvd.nist.gov/vuln/detail/CVE-2022-24706",
+   "product": "CouchDB",
+   "requiredAction": "Apply updates per vendor instructions.",
+   "shortDescription": "Apache CouchDB contains an insecure default initialization of resource vulnerability which can allow an attacker to escalate to administrative privileges.",
+   "vendorProject": "Apache",
+   "vulnerabilityName": "Apache CouchDB Insecure Default Initialization of Resource Vulnerability"
+  },
+  {
+   "cveID": "CVE-2015-1427",
+   "cwes": [
+    "CWE-284"
+   ],
+   "dateAdded": "2022-03-25",
+   "dueDate": "2022-04-15",
+   "forensicTriage": "No",
+   "knownRansomwareCampaignUse": "Unknown",
+   "notes": "https://nvd.nist.gov/vuln/detail/CVE-2015-1427",
+   "product": "Elasticsearch",
+   "requiredAction": "Apply updates per vendor instructions.",
+   "shortDescription": "The Groovy scripting engine in Elasticsearch allows remote attackers to bypass the sandbox protection mechanism and execute arbitrary shell commands.",
+   "vendorProject": "Elastic",
+   "vulnerabilityName": "Elasticsearch Groovy Scripting Engine Remote Code Execution Vulnerability"
+  },
+  {
+   "cveID": "CVE-2014-3120",
+   "cwes": [
+    "CWE-284"
+   ],
+   "dateAdded": "2022-03-25",
+   "dueDate": "2022-04-15",
+   "forensicTriage": "No",
+   "knownRansomwareCampaignUse": "Unknown",
+   "notes": "https://nvd.nist.gov/vuln/detail/CVE-2014-3120",
+   "product": "Elasticsearch",
+   "requiredAction": "Apply updates per vendor instructions.",
+   "shortDescription": "Elasticsearch enables dynamic scripting, which allows remote attackers to execute arbitrary MVEL expressions and Java code.",
+   "vendorProject": "Elastic",
+   "vulnerabilityName": "Elasticsearch Remote Code Execution Vulnerability"
   },
   {
    "cveID": "CVE-2020-0796",
