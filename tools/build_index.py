@@ -13,7 +13,7 @@ from validate import load_all, validate
 import reports
 
 ROOT = Path(__file__).parent.parent
-DATA_VERSION = "1.1"
+DATA_VERSION = "1.2"
 MATCH = ["DET公式監視ポート一致", "公式文書のポート指定", "DETサービス名から推定", "ATT&CK検知戦略(プラットフォーム)",
          "攻撃手法・ツール経由", "境界機器ログ(全ポート共通)"]
 # 5 章の分類: A=公式資料がポートを明示 / B=DET がポート・通信方式を示す / B'=プラットフォーム共通 / C/D=ベンダー・境界・攻撃手法経由
@@ -159,10 +159,19 @@ def quality_section(db):
     res = quality.run(db)
     c = Counter((r["code"], r["level"]) for r in res)
     codes = ["Q-JSON", "Q-SCHEMA", "Q-DUP", "Q-ATTACK", "Q-TRANSPORT", "Q-IPPROTO", "Q-IANA", "Q-VERIFIED", "Q-SRC", "Q-HIDDEN",
-             "Q-ASSOC", "Q-CVE", "Q-COUNT"]
+             "Q-ASSOC", "Q-CVE", "Q-COUNT", "Q-VIA", "Q-SCOPE", "Q-ATTR", "Q-STAT", "Q-REVIEW", "Q-RISK", "Q-VENDOR", "Q-LOGLINK", "Q-LOGCLASS"]
     L = ["", "## 品質基準（tools/quality.py / docs/DATA_QUALITY_STANDARD.md）", "", "| コード | error |", "|---|---|"]
     L += [f"| {k} | {c[(k, 'error')]} |" for k in codes]
-    L += ["", "対象外（記録のみ）:"] + [f"- {r['where']}: {r['msg']}" for r in res if r["level"] == "info"]
+    info = [f"- {r['where']}: {r['msg']}" for r in res if r["level"] == "info"]
+    if info: L += ["", "対象外（記録のみ）:"] + info
+    import metrics
+    base_p = ROOT / "docs/metrics/v1.1.json"
+    base = json.loads(base_p.read_text(encoding="utf-8")) if base_p.exists() else {}
+    dist = json.loads((ROOT / "dist/ports.json").read_text(encoding="utf-8"))
+    cat = json.loads((ROOT / "data/raw/mitre/attack_catalog.json").read_text(encoding="utf-8"))
+    L += ["", "## 指標（tools/metrics.py。v1.1 は main @ 09b8014 で同じ定義により算出した値）", ""] + metrics.table(metrics.compute(db, dist, cat), base)
+    L += ["", "- 「ポート固有ログなし」は A・B だけで判定する（v1.2 の定義）。v1.1 のアプリは B' も数えていたため、画面上の件数は 11 だった。",
+          "- ATT&CK 関連の区分は v1.2 で direct / generic / inferred / unverified に変更（v1.1 の attack_pattern・service・reference は旧区分）。"]
     return "\n".join(L) + "\n"
 
 

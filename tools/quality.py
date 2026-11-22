@@ -200,7 +200,8 @@ def check_attribution(db):
         if f in SKIP_TEXT or f in ("sources", "vulnerabilities"): continue
         for r in recs:
             w, t = f"{f}:{rid(r)}", _text(r)
-            ids = [s for s in r.get("source_ids", []) + r.get("content_source_ids", []) if src.get(s, {}).get("verification_status") == "確認済み"]
+            ids = [s for s in r.get("source_ids", []) + r.get("content_source_ids", []) + r.get("service_risk", {}).get("source_ids", [])
+                   if src.get(s, {}).get("verification_status") == "確認済み"]
             for org, pub in ATTRIB.items():
                 if org in t and not any(re.search(pub, src[s]["publisher"] + " " + src[s].get("verified_notes", "") + " " + src[s]["title"]) for s in ids):
                     out.append(F("Q-ATTR", w, f"本文が「{org}」に帰属させているが、確認済みの該当出典がない"))
@@ -208,6 +209,22 @@ def check_attribution(db):
                 num = re.match(r"[\d,.]+", m.group(0)).group(0)
                 if not any(set(src[s]["scope"]) & STAT_SCOPE and num in src[s].get("verified_notes", "") for s in ids):
                     out.append(F("Q-STAT", w, f"統計値「{m.group(0)}」を確認した調査報告・政府資料の出典がない"))
+    return out
+
+
+def check_risk_split(db):
+    """Q-RISK: service_risk と exposure_condition を分けて持ち、service_risk は確認済みの根拠と判定規則に一致すること（F-14）。"""
+    sys.path.insert(0, str(Path(__file__).parent)); from apply_v12 import service_risk
+    out, S = [], {s["source_id"]: s for s in db["sources"]}
+    ports = {p["risk_id"]: p for p in db["ports"]}
+    kev = {rid for v in db["vulnerabilities"] if v["kev"]["listed"] for rid in v["risk_ids"]}
+    for r in db["port_risks"]:
+        w = f"port_risks:{r['id']}"
+        if "service_risk" not in r or "exposure_condition" not in r: out.append(F("Q-RISK", w, "service_risk / exposure_condition が未設定")); continue
+        sr = r["service_risk"]
+        if sr != service_risk(r, ports.get(r["id"]), S, kev): out.append(F("Q-RISK", w, "service_risk が根拠と判定規則から再計算した値と一致しない"))
+        if sr["factors"] and not sr["source_ids"]: out.append(F("Q-RISK", w, "service_risk の要素に根拠資料がない"))
+        if not sr["reason"].strip(): out.append(F("Q-RISK", w, "service_risk の理由が空"))
     return out
 
 
@@ -413,7 +430,7 @@ def run(db, root=ROOT, catalog=None):
     out, _ = load_json_files(root)
     for fn in (lambda: check_schema(db, root), lambda: check_ids(db), lambda: check_attack(db, cat), lambda: check_transport(db), lambda: check_iana(db, root),
                lambda: check_sources(db), lambda: check_verified(db), lambda: check_cve(db), lambda: check_association(db),
-               lambda: check_attribution(db), lambda: check_review(db),
+               lambda: check_attribution(db), lambda: check_review(db), lambda: check_risk_split(db),
                lambda: check_display(root), lambda: check_count(db, root), lambda: check_log_links(db), lambda: check_log_class(root), lambda: check_vendor_logs(db, root)):
         out += fn()
     return out

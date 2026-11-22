@@ -508,9 +508,43 @@ def phase3_assoc():
     print("T1078.001 removed from", len(dropped), "ports")
 
 
+# ================================================================ Phase 4: リスクの分離（F-14）
+FACTOR_TEXT = {"known_exploited": "悪用が確認された脆弱性（CISA KEV）", "attack_documented": "ATT&CK がこのサービス・ポートへの攻撃を記載",
+               "government_guidance": "政府機関が露出の危険を指摘", "vendor_security_warning": "ベンダーが保護なしの公開の危険を記載"}
+EXPOSURE = {"assumed": "internet", "raises": ["internet", "untrusted_network"],
+            "lowers": ["internal_only", "management_network_only", "firewall_restricted", "auth_access_control"],
+            "notes": "risk_level は RISK_RUBRIC の観点 1（外部に露出したときの影響）を前提にした評価。到達できる範囲を狭めると下がる"}
+
+
+def service_risk(r, port, S, kev_risks):
+    ok = lambda s: S.get(s, {}).get("verification_status") == "確認済み"
+    srcs = set(r["source_ids"]) | set(port["source_ids"] if port else []) | {e["source_id"] for e in (port or {}).get("evidence", [])}
+    f, ids = [], set()
+    if r["id"] in kev_risks: f.append("known_exploited"); ids.add("SRC-CISA-KEV")
+    att = {v for b in (port or {}).get("technique_basis", []) if b["relation"] == "direct" and b["source_type"] == "stix" for v in b["via"]}
+    att |= {e["source_id"] for e in r.get("review", {}).get("evidence", []) + (port or {}).get("evidence", []) if e["source_id"].startswith("SRC-MITRE-")}
+    if att: f.append("attack_documented"); ids |= att
+    for code, scopes in (("government_guidance", {"government_guidance", "threat_advisory"}), ("vendor_security_warning", {"vendor_security"})):
+        hit = {s for s in srcs if ok(s) and set(S[s]["scope"]) & scopes}
+        if hit: f.append(code); ids |= hit
+    k, a, g = "known_exploited" in f, "attack_documented" in f, {"government_guidance", "vendor_security_warning"} & set(f)
+    level = ("Critical" if k and a and g else "High" if k or (a and g) else "Medium" if f else "未評価")
+    reason = "、".join(FACTOR_TEXT[x] for x in f) if f else "一次資料で悪用・攻撃・露出の危険の記載を確認できていない（低リスクという意味ではない）"
+    return {"level": level, "factors": f, "reason": reason, "source_ids": sorted(ids), "status": "確認済み" if f else "未確認"}
+
+
+def phase4_risk():
+    risks = load("port_risks"); S = by_id(load("sources")); ports = {p["risk_id"]: p for p in load("ports")}
+    kev_risks = {rid for v in load("vulnerabilities") if v["kev"]["listed"] for rid in v["risk_ids"]}
+    for r in risks:
+        r["service_risk"] = service_risk(r, ports.get(r["id"]), S, kev_risks)
+        r["exposure_condition"] = dict(EXPOSURE)
+    save("port_risks", risks)
+
+
 PHASES = {"1": [phase1_sources, phase1_text, phase1_attacks, phase1_high, phase1_certainty, usage],
           "2": [phase2_sources, phase2_logs, usage],
-          "3": [phase3_logs, phase3_assoc]}
+          "3": [phase3_logs, phase3_assoc], "4": [phase4_risk]}
 
 if __name__ == "__main__":
     for ph in (sys.argv[1:] or sorted(PHASES)):

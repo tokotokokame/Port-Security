@@ -172,6 +172,12 @@ class Standards(unittest.TestCase):
             r = rec(db, "port_risks", "RISK-00512-TCP"); r["risk_level"] = "High"; r["review"]["previous_level"] = "High"
         self.caught(Q.check_review, m, "Q-REVIEW", "根拠")
 
+    def test_T05_service_risk_without_basis(self):
+        self.caught(Q.check_risk_split, lambda db: rec(db, "port_risks", "RISK-06379-TCP")["service_risk"].update(level="Critical"), "Q-RISK", "再計算")
+
+    def test_T05_exposure_unset(self):
+        self.caught(Q.check_risk_split, lambda db: rec(db, "port_risks", "RISK-00445-TCP").pop("exposure_condition"), "Q-RISK", "未設定")
+
     def test_T06_vendor_field_not_in_source(self):
         self.caught(Q.check_vendor_logs, lambda db: rec(db, "log_investigation", "LOG-FORTIGATE-VENDOR")["vendor_logs"][0]["fields"].append("filter-id"),
                     "Q-VENDOR", "フィールド表にない")

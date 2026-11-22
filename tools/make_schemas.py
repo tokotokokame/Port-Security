@@ -70,6 +70,13 @@ VLOG = {"type": "object", "additionalProperties": False,
                        "log_type": S(minLength=1), "log_subtype": S(), "log_id": S(), "message": S(), "fields": ARR(S(minLength=1)),
                        "cli_commands": ARR(S(minLength=1)), "source_ids": ARR(SRC, minItems=1, uniqueItems=True), "verification_status": CERT,
                        "notes": S()}}
+SRISK = {"type": "object", "additionalProperties": False, "required": ["level", "factors", "reason", "source_ids", "status"],
+         "properties": {"level": {"enum": ["Critical", "High", "Medium", "未評価"]},
+                        "factors": ARR({"enum": ["known_exploited", "attack_documented", "government_guidance", "vendor_security_warning"]}, uniqueItems=True),
+                        "reason": S(minLength=1), "source_ids": ARR(SRC, uniqueItems=True), "status": CERT}}
+EXPO_CODES = {"enum": ["internet", "untrusted_network", "internal_only", "management_network_only", "firewall_restricted", "auth_access_control"]}
+EXPO = {"type": "object", "additionalProperties": False, "required": ["assumed", "raises", "lowers", "notes"],
+        "properties": {"assumed": EXPO_CODES, "raises": ARR(EXPO_CODES, uniqueItems=True), "lowers": ARR(EXPO_CODES, uniqueItems=True), "notes": S()}}
 REVIEW = {"type": "object", "additionalProperties": False, "required": ["date", "previous_level", "result", "evidence"],
           "properties": {"date": DATE, "previous_level": {"enum": ["Critical", "High", "Medium", "Low"]}, "result": S(minLength=1),
                          "reason": S(minLength=1), "evidence": ARR({"type": "object", "additionalProperties": False, "required": ["source_id", "note"],
@@ -96,7 +103,9 @@ FILES = {
         ("reason_targeted", TEXT, True, "狙われる理由"), ("evaluation_factors", EVAL, True, "評価要素（v3 形式 / v5 形式）"),
         ("suspicious_indicators", TEXT, True, "不審な兆候"), ("investigation_focus", TEXT, True, "調査の焦点"),
         ("mitigation_controls", TEXT, True, "対策"), ("technique_ids", U(TECH), True, "ATT&CK 技術 ID"),
-        ("review", REVIEW, False, "v1.2 の High 再検証の結果と根拠")] + COMMON),
+        ("review", REVIEW, False, "v1.2 の High 再検証の結果と根拠"),
+        ("service_risk", SRISK, False, "サービス固有のリスク（一次資料で確認できた要素だけで判定。docs/RISK_RUBRIC.md）"),
+        ("exposure_condition", EXPO, False, "露出条件。risk_level が前提とする露出と、上げる・下げる条件")] + COMMON),
     "services": ("サービス（プロトコル）", "id", S(pattern=r"^SRV-[A-Z0-9-]+$"), [
         ("service_name", S(minLength=1), True, "サービス名"), ("formal_name", TEXT, True, "正式名"),
         ("ports", ARR(PORT_T, minItems=1, uniqueItems=True), True, "(番号, 通信方式)。参照元ポートと一致"),
