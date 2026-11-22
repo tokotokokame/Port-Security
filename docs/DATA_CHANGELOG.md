@@ -98,6 +98,12 @@ Phase 0 基準（`docs/baseline/DATA_INVENTORY.json`）にある ID を削除・
 - 分類の内訳（v1.1 → v1.2）: A 5 → 5 / B 19 → 19 / B' 125 → 107 / C/D 11 → 29。B' から C/D への 18 件は T1078.001 の削除で ATT&CK の技術がなくなったため（技術 0 件の 17 ポートと 2379/tcp）。3389/tcp は A と B の両方があり、表示上の最良分類を A とした。
 - `port_scope` の `any_windows`（未実装だった）を廃止し `platform` に変更。LOG-WIN-SECURITY と共通ログ 3 件が該当（ポートと直接には関連付けない）。
 
+### Phase 4（リスクの分離・指標）— `tools/apply_v12.py` phase 4
+- `port_risks` に `service_risk`（level / factors / reason / source_ids / status）と `exposure_condition`（assumed / raises / lowers / notes）を追加（F-14）。`risk_level` は互換のため残す。判定規則は docs/RISK_RUBRIC.md。
+  - service_risk の内訳: Critical 2 / High 12 / Medium 50 / 未評価 96（未評価は一次資料で要素を確認できていないもの）
+- VALIDATION_REPORT に指標と v1.1 からの差分を追加（`tools/metrics.py`、基準値 `docs/metrics/v1.1.json` は main @ 09b8014 から算出）。
+- DATA_VERSION を 1.2 に変更。
+
 ## v1.1（2026-11-22）
 
 ### Phase 0

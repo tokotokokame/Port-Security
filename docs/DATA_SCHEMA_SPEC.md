@@ -62,6 +62,8 @@
 | `mitigation_controls` | ○ | `string` | 対策 |
 | `technique_ids` | ○ | `array` | ATT&CK 技術 ID |
 | `review` | — | `object` | v1.2 の High 再検証の結果と根拠 |
+| `service_risk` | — | `object` | サービス固有のリスク（一次資料で確認できた要素だけで判定。docs/RISK_RUBRIC.md） |
+| `exposure_condition` | — | `object` | 露出条件。risk_level が前提とする露出と、上げる・下げる条件 |
 | `source_ids` | ○ | `array` | 根拠資料 ID（sources.source_id） |
 | `verified_date` | ○ | `^\d{4}-\d{2}-\d{2}$` | 最終確認日（YYYY-MM-DD） |
 | `certainty` | ○ | `["確認済み", "一部確認", "未確認"]` | 確度。確認済みには再検証済みの脅威系出典が必要 |
