@@ -43,6 +43,12 @@ class OverviewTab extends StatelessWidget {
           KV('狙われる理由', r.reason), KV('不審な兆候', r.indicators), KV('調査の焦点', r.focus), KV('緩和策', r.mitigation),
           KV('評価の確度', r.certainty), KV('評価の未確認事項', r.notes),
         ]),
+      if (r != null && r.serviceLevel.isNotEmpty)
+        TermSection('service_risk', note: r.serviceLevel, children: [
+          KV('根拠の要素', r.serviceReason), KV('確認状態', r.serviceStatus), KV('根拠資料', r.serviceSources.join('\n'), mono: true),
+          KV('評価の前提', Risk.ex(r.exposure)),
+          KV('上がる条件', r.raises.map(Risk.ex).join('\n')), KV('下がる条件', r.lowers.map(Risk.ex).join('\n')),
+        ]),
       if (r != null && r.vulns.isNotEmpty)
         TermSection('cve', note: '製品・バージョン依存', children: [
           for (final id in r.vulns) if (repo.vulns[id] case final v?) VulnCard(v, repo),
@@ -107,11 +113,11 @@ class LogsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) => _tab(context, [
         TermSection('checkpoints', children: [KV('確認ポイント', d.checkpoints)]),
-        TermSection('logs', note: '関連度順', children: [
+        TermSection('logs', note: '関連度順（A・B=ポート固有 / B\'=共通 / C/D=境界・経由）', children: [
           for (final l in d.logs)
             if (repo.logs[l.id] case final s?)
-              RuleCard(title: s.platform, trailing: 'r${l.rank}', subtitle: '${l.match} · ${l.via.take(3).join(', ')}',
-                  onTap: () => push(context, LogDetailScreen(s, repo))),
+              RuleCard(title: s.platform, trailing: l.cls.isEmpty ? 'r${l.rank}' : '[${l.cls}] r${l.rank}',
+                  subtitle: '${l.match} · ${l.via.take(3).join(', ')}', onTap: () => push(context, LogDetailScreen(s, repo))),
         ]),
       ]);
 }

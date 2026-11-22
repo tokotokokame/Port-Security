@@ -72,8 +72,11 @@ def build(db):
                                            "indicators": risk.get("suspicious_indicators", ""), "focus": risk.get("investigation_focus", ""),
                                            "mitigation": risk.get("mitigation_controls", ""), "certainty": risk["certainty"],
                                            "notes": risk["unconfirmed_notes"], "verified": risk["verified_date"],
-                                           "vulns": vulns_of.get(risk["id"], [])},
-            "basis": {b["technique"]: {"relation": b["relation"], "via": b["via"], "note": b.get("note", "")} for b in p["technique_basis"]},
+                                           "vulns": vulns_of.get(risk["id"], []),
+                                           "service": {k: risk["service_risk"][k] for k in ("level", "reason", "status", "source_ids")} if "service_risk" in risk else None,
+                                           "exposure": risk.get("exposure_condition")},
+            "basis": {b["technique"]: {"relation": b["relation"], "via": b["via"], "note": b.get("note", ""), "source_type": b.get("source_type", "")}
+                      for b in p["technique_basis"]},
             "attacks": p["attack_pattern_ids"], "techniques": p["technique_ids"], "tools": tools,
             "logs": [{"id": l, "match": MATCH[rank[l]], "rank": rank[l], "class": CLASS[rank[l]], "via": sorted(v)}
                      for l, v in sorted(logs.items(), key=lambda kv: (rank[kv[0]], kv[0]))],
@@ -94,7 +97,8 @@ def build(db):
                               "features": a.get("attack_features", ""), "detection": a["detection_methods"],
                               "defenses": a.get("recommended_defenses", ""), "techniques": a["technique_ids"],
                               "logs": a["log_investigation_ids"], "sources": a["source_ids"], "certainty": a["certainty"],
-                              "notes": a["unconfirmed_notes"], "verified": a["verified_date"]} for a in db["attack_patterns"]},
+                              "notes": a["unconfirmed_notes"], "verified": a["verified_date"], "mapping": a.get("attack_mapping_status", ""),
+                              "content": a.get("content_verification_status", ""), "relation": a.get("port_relation", "")} for a in db["attack_patterns"]},
         "techniques": techniques,
         "dets": {d["id"]: {"name": d["name"], "url": d["url"], "analytics": [
             {"id": a["id"], "platforms": a["platforms"], "description": a["description"],
@@ -102,14 +106,18 @@ def build(db):
         "tools": {t["id"]: {"name": t["name"], "category": t["category"], "sid": t["mitre_software_id"], "summary": t["summary"],
                             "ports": t["ports"], "artifacts": t["artifacts"], "detection": t["detection"], "attacks": t["attack_pattern_ids"],
                             "techniques": tool_techs[t["id"]], "logs": t["log_investigation_ids"], "sources": t["source_ids"],
+                            "techniques_stix": sorted(soft_tech.get(t["mitre_software_id"], [])),  # ATT&CK 公式の uses 関係
+                            "techniques_app": sorted(set(t["technique_ids"]) - set(soft_tech.get(t["mitre_software_id"], []))),  # アプリ内の関連付け
                             "certainty": t["certainty"], "notes": t["unconfirmed_notes"], "verified": t["verified_date"]} for t in db["tools"]},
         "logs": {l["id"]: {"platform": l["platform"], "sources": [[s["channel"], s["event_code"], s["description"]] for s in l["log_sources"]],
                            "analytics": l.get("detection_analytics", ""), "procedure": l["investigation_procedure"],
                            "certainty": l["certainty"], "notes": l["unconfirmed_notes"], "refs": l["source_ids"], "scope": l["port_scope"],
+                           "vendor": [[", ".join(v["firmware_versions"]), v["log_type"], v["log_subtype"], v["log_id"], v["message"], v["fields"],
+                                       v["cli_commands"], v["verification_status"], v["notes"]] for v in l.get("vendor_logs", [])],
                            "verified": l["verified_date"]} for l in db["log_investigation"]},
         "sources": {s["source_id"]: {"title": s["title"], "url": s["url"], "publisher": s.get("publisher", ""),
                                      "scope": s["scope"], "verified": s["reverified_v4"], "certainty": s["verification_status"],
-                                     "checked": s.get("access_date") or ""} for s in db["sources"]},
+                                     "checked": s.get("access_date") or "", "via": s.get("verified_via", "")} for s in db["sources"]},
         "vulns": {v["id"]: {"title": v["title"], "condition": v["condition"], "published": v["published"], "updated": v["updated"],
                             "cvss": [[c["score"], c["version"], c["source"], c["vector"]] for c in v["cvss"]],
                             "kev": v["kev"]["listed"], "kev_added": v["kev"].get("date_added", ""),

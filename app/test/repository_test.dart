@@ -122,6 +122,42 @@ void main() {
     });
   });
 
+  group('v1.2', () {
+    test('log class: port-specific is A/B only, DET0118 logs never ride on other DETs', () {
+      for (final e in repo.detailed) {
+        final d = e.detail!;
+        expect(d.logs.every((l) => {'A', 'B', "B'", 'C/D'}.contains(l.cls)), isTrue, reason: e.label);
+        final specific = d.logs.any((l) => l.cls == 'A' || l.cls == 'B');
+        expect(d.gaps.contains('ポート固有のログなし（A・B なし）'), !specific, reason: e.label);
+        for (final l in d.logs.where((l) => l.cls == 'A' || l.cls == 'B')) {
+          expect(repo.logs[l.id]!.scope, isNot('platform'), reason: '${e.label} ${l.id}');
+        }
+      }
+    });
+    test('FortiGate vendor logs are version-scoped and sourced; NEC IX keeps no unverified fields', () {
+      final f = repo.logs['LOG-FORTIGATE-VENDOR']!;
+      expect(f.vendor.map((v) => v.versions).toSet(), {'7.4.11', '7.6.7'});
+      expect(f.vendor.firstWhere((v) => v.id == '13').fields, containsAll(['srcip', 'dstport', 'action']));
+      final n = repo.logs['LOG-NECIX-VENDOR']!;
+      expect(n.certainty, '未確認');
+      expect(n.vendor.single.fields, isEmpty);
+    });
+    test('risk keeps risk level and separates service risk / exposure', () {
+      final smb = repo.detailed.firstWhere((e) => e.label == '445/tcp').detail!.risk!;
+      expect(smb.level, 'Critical');
+      expect(smb.serviceLevel, 'Critical');
+      expect(smb.exposure, 'internet');
+      expect(repo.detailed.every((e) => e.detail!.risk == null || e.detail!.risk!.serviceLevel.isNotEmpty), isTrue);
+    });
+    test('attack status split and tool uses vs in-app association', () {
+      expect(repo.attacks.values.every((a) => a.mapping.isNotEmpty && a.content.isNotEmpty), isTrue);
+      final imp = repo.tools.values.firstWhere((t) => t.name == 'Impacket');
+      expect(imp.stixTechniques, isNotEmpty);
+      expect(imp.appTechniques.every((t) => !imp.stixTechniques.contains(t)), isTrue);
+      expect(repo.sources['SRC-CISA-AMP']!.viaLabel, '検索結果のみ');
+    });
+  });
+
   group('robustness', () {
     test('wrong top-level shapes are rejected', () {
       expect(() => Repository.fromStrings('{}', '{}', '[]'), throwsFormatException);
