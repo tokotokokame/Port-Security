@@ -23,6 +23,15 @@ class Signing(unittest.TestCase):
     def test_release_rejects_unpinned(self): self.assertTrue(self.run_check([("CN=Port Security", DBG)], "release", REL))
     def test_debug_build_reports_only(self): self.assertEqual(self.run_check([("CN=Android Debug, O=Android, C=US", DBG)], "debug"), [])
 
+    def test_v3_signer_format(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "x.certs"
+            f.write_text("Verifies\nVerified using v3 scheme (APK Signature Scheme v3): true\n"
+                         f"Signer (minSdkVersion=24, maxSdkVersion=2147483647) certificate DN: C=US, O=Android, CN=Android Debug\n"
+                         f"Signer (minSdkVersion=24, maxSdkVersion=2147483647) certificate SHA-256 digest: {DBG.upper()}\n")
+            errs, digests = C.check([str(f)], "release")
+            self.assertEqual(digests, [DBG]); self.assertTrue(any("デバッグ" in e for e in errs))
+
     def test_unverified_apk(self):
         with tempfile.TemporaryDirectory() as d:
             f = Path(d) / "x.certs"; f.write_text("DOES NOT VERIFY\n")

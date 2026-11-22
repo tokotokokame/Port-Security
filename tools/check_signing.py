@@ -13,17 +13,20 @@ from pathlib import Path
 
 def parse(text):
     if not re.search(r"^Verifies\s*$", text, re.M): return None, None, "署名の検証に失敗（Verifies がない）"
-    dn = re.search(r"^Signer #1 certificate DN: (.+)$", text, re.M)
-    sha = re.search(r"^Signer #1 certificate SHA-256 digest: ([0-9a-f]{64})$", text, re.M)
+    # apksigner は "Signer #1 certificate ..." または v3 の "Signer (minSdkVersion=…) certificate ..." の形で出力する
+    dn = re.search(r"^Signer[^\n]*? certificate DN: (.+?)\s*$", text, re.M)
+    sha = re.search(r"^Signer[^\n]*? certificate SHA-256 digest: ([0-9a-fA-F]{64})\s*$", text, re.M)
     if not (dn and sha): return None, None, "証明書の DN または SHA-256 を読み取れない"
-    return dn.group(1).strip(), sha.group(1), None
+    return dn.group(1).strip(), sha.group(1).lower(), None
 
 
 def check(files, require, pin=None):
     errs, digests = [], {}
     for f in files:
         dn, sha, err = parse(Path(f).read_text(encoding="utf-8"))
-        if err: errs.append(f"{f}: {err}"); continue
+        if err:
+            head = " | ".join(l for l in Path(f).read_text(encoding="utf-8").splitlines() if "certificate" in l or "Verif" in l)[:600]
+            errs.append(f"{f}: {err}（出力: {head or '空'}）"); continue
         digests[f] = sha
         if require == "release" and "CN=Android Debug" in dn: errs.append(f"{f}: デバッグ証明書で署名されている（{dn}）")
     if require == "release":
